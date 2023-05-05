@@ -82,6 +82,5 @@ export const tailwindConfig: Config = {
         13: "3.25rem",
       },
     },
-    foo: defaultTheme,
   },
 };
