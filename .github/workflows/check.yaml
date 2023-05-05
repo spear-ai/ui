@@ -1,0 +1,38 @@
+name: Checks
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+  push:
+    branches:
+      - main
+jobs:
+  checks:
+    name: Build and Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3.3.0
+        with:
+          fetch-depth: 2
+          token: ${{ secrets.GH_PAT }}
+      - name: Cache Turborepo tasks
+        uses: actions/cache@v3.2.5
+        with:
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          path: .turbo
+          restore-keys: |
+            ${{ runner.os }}-turbo-
+      - name: Setup Node.js
+        uses: actions/setup-node@v3.6.0
+        with:
+          cache: yarn
+          node-version-file: .node-version
+      - name: Install Node.js dependencies
+        run: yarn install
+      - name: Build
+        run: yarn build
+      - name: Check
+        run: yarn check
