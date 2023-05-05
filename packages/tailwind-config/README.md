@@ -12,8 +12,8 @@ yarn add -D tailwindcss @spear-ai/tailwind-config
 
 Add the following to your `tailwind.config.cjs` file:
 
-```js
-import { tailwindConfig as baseTailwindConfig } from "@spear-ai/tailwind-config";
+```cjs
+const baseTailwindConfig = require("@spear-ai/tailwind-config").tailwindConfig;
 
 /** @type {import('tailwindcss').Config} */
 const tailwindConfig = {
