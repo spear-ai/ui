@@ -18,7 +18,7 @@
     "tailwindcss-animate": "^1.0.5"
   },
   "devDependencies": {
-    "@spear-ai/eslint-config": "4.1.1",
+    "@spear-ai/eslint-config": "6.0.0",
     "@spear-ai/npm-package-json-lint-config": "1.0.4",
     "@spear-ai/prettier-config": "1.0.0",
     "eslint": "8.39.0",
