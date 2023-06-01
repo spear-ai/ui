@@ -12,7 +12,7 @@
     "@changesets/cli": "2.26.1",
     "@commitlint/cli": "17.6.3",
     "@commitlint/config-conventional": "17.6.3",
-    "@spear-ai/eslint-config": "4.1.1",
+    "@spear-ai/eslint-config": "6.0.0",
     "@spear-ai/npm-package-json-lint-config": "1.0.4",
     "@spear-ai/prettier-config": "1.0.0",
     "commitlint": "17.6.3",
