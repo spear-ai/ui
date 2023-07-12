@@ -1,15 +1,16 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
-import { TinyColor } from "@ctrl/tinycolor";
-import radixColorGroups from "@radix-ui/colors";
 import containerQueriesPlugin from "@tailwindcss/container-queries";
 import formsPlugin from "@tailwindcss/forms";
 import typographyPlugin from "@tailwindcss/typography";
 import { Config } from "tailwindcss";
-import { paramCase } from "param-case";
 import animatePlugin from "tailwindcss-animate";
+import plugin from "tailwindcss/plugin";
 import scrollbarPlugin from "tailwind-scrollbar";
 import defaultTheme from "tailwindcss/defaultTheme";
+import { colors, createThemeStyle } from "./theme";
+
+export { createThemeStyle } from "./theme";
 
 const radixUiDataAttributes = {
   active: 'state~="active"',
@@ -28,37 +29,23 @@ const radixUiDataAttributes = {
   "side-top": 'side="top"',
 };
 
-const colors = {
-  black: "black",
-  white: "white",
-  ...Object.fromEntries(
-    Object.entries(radixColorGroups).flatMap(([radixColorGroupName, radixColors]) => {
-      const colorGroupName = paramCase(radixColorGroupName); // “redDarkA” → “red-dark-a”
-      const colorRegex = /^.*?(?<step>\d+)/u; // {group}-{step} e.g. “{red-dark}-{9}”
-
-      const cssByStep = Object.fromEntries(
-        Object.entries(radixColors).map(([radixColorName, radixCss]) => {
-          const step = Number(colorRegex.exec(radixColorName)!.groups?.step);
-          const css = new TinyColor(radixCss).toHex8String();
-          return [step, css];
-        })
-      );
-
-      return [[colorGroupName, cssByStep]];
-    })
-  ),
-};
+const themeStylePlugin = plugin(({ addUtilities }) => {
+  addUtilities(createThemeStyle());
+});
 
 export const tailwindConfig: Config = {
   content: ["./src/**/*.{cjs,js,jsx,mjs,ts,tsx}"],
   darkMode: ["class"],
-  plugins: [animatePlugin, containerQueriesPlugin, formsPlugin, scrollbarPlugin, typographyPlugin],
+  plugins: [
+    animatePlugin,
+    containerQueriesPlugin,
+    formsPlugin,
+    scrollbarPlugin,
+    themeStylePlugin,
+    typographyPlugin,
+  ],
   theme: {
-    colors: {
-      ...colors,
-      current: "currentColor",
-      transparent: "transparent",
-    },
+    colors,
     data: radixUiDataAttributes,
     extend: {
       aria: {
