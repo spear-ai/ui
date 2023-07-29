@@ -4,6 +4,7 @@ import containerQueriesPlugin from "@tailwindcss/container-queries";
 import formsPlugin from "@tailwindcss/forms";
 import typographyPlugin from "@tailwindcss/typography";
 import { Config } from "tailwindcss";
+import threeDPlugin from "tailwindcss-3d";
 import animatePlugin from "tailwindcss-animate";
 import scrollbarPlugin from "tailwind-scrollbar";
 import defaultTheme from "tailwindcss/defaultTheme";
@@ -20,6 +21,7 @@ export const tailwindConfig: Config = {
     formsPlugin,
     radixColorThemePlugin,
     scrollbarPlugin,
+    threeDPlugin,
     typographyPlugin,
   ],
   theme: {
@@ -46,6 +48,9 @@ export const tailwindConfig: Config = {
       },
       padding: {
         13: "3.25rem",
+      },
+      scale: {
+        "-1": "-1",
       },
     },
   },
