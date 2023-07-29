@@ -9,7 +9,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@mertasan/tailwindcss-variables": "2.6.1",
+    "@mertasan/tailwindcss-variables": "^2.6.1",
     "@radix-ui/colors": "^1.0.1",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "^0.5.4",
@@ -17,9 +17,10 @@
     "colord": "^2.9.3",
     "param-case": "^3.0.4",
     "tailwind-scrollbar": "^3.0.4",
+    "tailwindcss-3d": "^0.2.6",
     "tailwindcss-animate": "^1.0.6",
     "ts-invariant": "^0.10.3",
-    "type-fest": "4.0.0"
+    "type-fest": "^4.0.0"
   },
   "devDependencies": {
     "@spear-ai/eslint-config": "9.0.0",

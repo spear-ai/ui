@@ -1356,7 +1356,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mertasan/tailwindcss-variables@npm:2.6.1":
+"@mertasan/tailwindcss-variables@npm:^2.6.1":
   version: 2.6.1
   resolution: "@mertasan/tailwindcss-variables@npm:2.6.1"
   dependencies:
@@ -1567,7 +1567,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@spear-ai/tailwind-config@workspace:packages/tailwind-config"
   dependencies:
-    "@mertasan/tailwindcss-variables": 2.6.1
+    "@mertasan/tailwindcss-variables": ^2.6.1
     "@radix-ui/colors": ^1.0.1
     "@spear-ai/eslint-config": 9.0.0
     "@spear-ai/npm-package-json-lint-config": 2.0.2
@@ -1584,10 +1584,11 @@ __metadata:
     prettier: 3.0.0
     tailwind-scrollbar: ^3.0.4
     tailwindcss: 3.3.3
+    tailwindcss-3d: ^0.2.6
     tailwindcss-animate: ^1.0.6
     ts-invariant: ^0.10.3
     tsup: 7.1.0
-    type-fest: 4.0.0
+    type-fest: ^4.0.0
     typescript: 5.1.6
   peerDependencies:
     tailwindcss: ^3.3.2
@@ -5908,7 +5909,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.21":
+"lodash@npm:4.17.21, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.21":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
@@ -7975,6 +7976,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tailwindcss-3d@npm:^0.2.6":
+  version: 0.2.6
+  resolution: "tailwindcss-3d@npm:0.2.6"
+  dependencies:
+    lodash: 4.17.21
+  peerDependencies:
+    tailwindcss: ">=3.2.0"
+  checksum: 16a48ea72ab682884d340e9c5645e3b37663eef39bc62ccd7c18aad884a805e8058cfd25908fe8dbc1c787d5e31ca39dc4fd4229a917b1d160ee1e9ac417c9f8
+  languageName: node
+  linkType: hard
+
 "tailwindcss-animate@npm:^1.0.6":
   version: 1.0.6
   resolution: "tailwindcss-animate@npm:1.0.6"
@@ -8443,13 +8455,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"type-fest@npm:4.0.0":
-  version: 4.0.0
-  resolution: "type-fest@npm:4.0.0"
-  checksum: 716f32ac341b1cf35bf08cc5cc6a11822436333966d3f4d94758112f45829efa3efb643ebc74a53e514e68a1bddab144d0153d654e072b41ba9bd98bcf841d75
-  languageName: node
-  linkType: hard
-
 "type-fest@npm:^0.13.1":
   version: 0.13.1
   resolution: "type-fest@npm:0.13.1"
@@ -8489,6 +8494,13 @@ __metadata:
   version: 3.13.1
   resolution: "type-fest@npm:3.13.1"
   checksum: c06b0901d54391dc46de3802375f5579868949d71f93b425ce564e19a428a0d411ae8d8cb0e300d330071d86152c3ea86e744c3f2860a42a79585b6ec2fdae8e
+  languageName: node
+  linkType: hard
+
+"type-fest@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "type-fest@npm:4.0.0"
+  checksum: 716f32ac341b1cf35bf08cc5cc6a11822436333966d3f4d94758112f45829efa3efb643ebc74a53e514e68a1bddab144d0153d654e072b41ba9bd98bcf841d75
   languageName: node
   linkType: hard
 
