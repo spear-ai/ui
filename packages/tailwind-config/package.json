@@ -7,27 +7,32 @@
     "email": "org@spear.ai",
     "url": "https://spear.ai"
   },
+  "type": "module",
   "dependencies": {
-    "@ctrl/tinycolor": "^3.6.0",
-    "@radix-ui/colors": "^0.1.8",
+    "@mertasan/tailwindcss-variables": "2.6.1",
+    "@radix-ui/colors": "^1.0.1",
     "@tailwindcss/container-queries": "^0.1.1",
-    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/forms": "^0.5.4",
     "@tailwindcss/typography": "^0.5.9",
+    "colord": "^2.9.3",
     "param-case": "^3.0.4",
-    "tailwind-scrollbar": "^3.0.0",
-    "tailwindcss-animate": "^1.0.5"
+    "tailwind-scrollbar": "^3.0.4",
+    "tailwindcss-animate": "^1.0.6",
+    "ts-invariant": "^0.10.3",
+    "type-fest": "4.0.0"
   },
   "devDependencies": {
-    "@spear-ai/eslint-config": "4.1.1",
-    "@spear-ai/npm-package-json-lint-config": "1.0.4",
-    "@spear-ai/prettier-config": "1.0.0",
-    "eslint": "8.39.0",
+    "@spear-ai/eslint-config": "9.0.0",
+    "@spear-ai/npm-package-json-lint-config": "2.0.2",
+    "@spear-ai/prettier-config": "2.0.3",
+    "@types/mertasan__tailwindcss-variables": "2.6.0",
+    "eslint": "8.46.0",
     "graphql": "15.8.0",
-    "npm-package-json-lint": "6.4.0",
-    "prettier": "2.8.8",
-    "tailwindcss": "3.3.2",
-    "tsup": "6.7.0",
-    "typescript": "5.0.4"
+    "npm-package-json-lint": "7.0.0",
+    "prettier": "3.0.0",
+    "tailwindcss": "3.3.3",
+    "tsup": "7.1.0",
+    "typescript": "5.1.6"
   },
   "license": "MIT",
   "main": "./dist/index.cjs",
@@ -36,12 +41,12 @@
     "tailwindcss": "^3.3.2"
   },
   "repository": {
-    "directory": "packages/eslint-config",
     "type": "git",
+    "directory": "packages/eslint-config",
     "url": "https://github.com/spear-ai/ui.git"
   },
   "scripts": {
-    "build": "tsup src --clean --dts --format cjs,esm",
+    "build": "tsup src --clean --dts --format cjs,esm src/index.ts",
     "dev": "yarn build --watch",
     "fix": "yarn fix:eslint && yarn fix:prettier",
     "fix:eslint": "yarn lint:eslint --fix",
@@ -53,6 +58,5 @@
     "typecheck": "tsc --noEmit",
     "update": "yarn upgrade-interactive"
   },
-  "type": "module",
   "types": "./dist/index.d.ts"
 }
