@@ -26,27 +26,24 @@ export default tailwindConfig;
 Customize the theme:
 
 ```ts
-import { tailwindConfig as baseTailwindConfig, createColorTheme } from "@spear-ai/tailwind-config";
+import { tailwindConfig as baseTailwindConfig } from "@spear-ai/tailwind-config";
 import type { Config } from "tailwindcss";
-import plugin from "tailwindcss/plugin";
 
 const tailwindConfig: Config = {
-  plugins: [
-    ...(baseTailwindConfig?.plugins ?? []),
-    plugin(({ addUtilities }) => {
-      addUtilities(
-        createThemeStyle({
-          colorScales: {
-            neutral: "slate",
-            neutralDark: "mauve",
-            primary: "blue",
-            primaryDark: "indigo",
-            secondaryDark: "lime",
-          },
-        }),
-      );
-    }),
-  ],
+  ...baseTailwindConfig,
+  theme: {
+    ...baseTailwindConfig?.theme,
+    extend: {
+      ...baseTailwindConfig?.theme?.extend,
+      theme: {
+        canvas: "grey",
+        neutralDark: "mauve",
+        neutralLight: "slate",
+        primaryDark: "indigo",
+        primaryLight: "blue",
+      },
+    },
+  },
 };
 
 export default tailwindConfig;
@@ -60,7 +57,11 @@ Theme color scales controlled by CSS Variables (Computed Properties).
 
 A [gray](https://www.radix-ui.com/docs/colors/palette-composition/scales#grays) Radix color scale. Defaults to `"grey"`.
 
-`neutral-dark`
+`neutralLight`
+
+Defaults to the light variant of the `neutral` color’s scale.
+
+`neutralDark`
 
 Defaults to the dark variant of the `neutral` color’s scale.
 
@@ -70,19 +71,27 @@ Defaults to the dark variant of the `neutral` color’s scale.
 
 A [colored](https://www.radix-ui.com/docs/colors/palette-composition/scales#colors) Radix color scale. Defaults to the `neutral` scale.
 
-`primary-dark`
+`primaryLight`
+
+Defaults to the light variant of the `primary` color’s scale.
+
+`primaryDark`
 
 Defaults to the dark variant of the `primary` color’s scale.
 
 ---
 
-`secondary`
+`canvas`
 
-Alternative to the primary color. Defaults to the `primary` color.
+Application background color. Defaults to the `primary` color.
 
-`secondary-dark`
+`canvasLight`
 
-Defaults to the dark variant of the `secondary` color’s scale.
+Defaults to the light variant of the `canvas` color’s scale.
+
+`canvasDark`
+
+Defaults to the dark variant of the `canvas` color’s scale.
 
 ---
 
@@ -90,19 +99,27 @@ Defaults to the dark variant of the `secondary` color’s scale.
 
 A positive valence color (Info, Loading, Pending). Defaults to `"blue"`.
 
-`positive-dark`
+`positiveLight`
+
+Defaults to the light variant of the `positive` color’s scale.
+
+`positiveDark`
 
 Defaults to the dark variant of the `positive` color’s scale.
 
 ---
 
-`x-positive`
+`xPositive`
 
 An extra positive valence color (e.g. Success, Completed). Defaults to `"green"`.
 
-`x-positive-dark`
+`xPositiveLight`
 
-Defaults to the dark variant of the `x-positive` color’s scale.
+Defaults to the light variant of the `xPositive` color’s scale.
+
+`xPositiveDark`
+
+Defaults to the dark variant of the `xPositive` color’s scale.
 
 ---
 
@@ -110,16 +127,24 @@ Defaults to the dark variant of the `x-positive` color’s scale.
 
 A negative valence color (e.g. Warning, Paused). Defaults to `"yellow"`.
 
-`negative-dark`
+`negativeLight`
+
+Defaults to the light variant of the `negative` color’s scale.
+
+`negativeDark`
 
 Defaults to the dark variant of the `negative` color’s scale.
 
 ---
 
-`x-negative`
+`xNegative`
 
 An extra negative valence color (e.g. Error, Danger). Defaults to `"red"`.
 
-`x-negative-dark`
+`xNegativeLight`
 
-Defaults to the dark variant of the `x-negative` color’s scale.
+Defaults to the light variant of the `xNegative` color’s scale.
+
+`xNegativeDark`
+
+Defaults to the dark variant of the `xNegative` color’s scale.

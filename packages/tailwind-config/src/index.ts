@@ -5,33 +5,11 @@ import formsPlugin from "@tailwindcss/forms";
 import typographyPlugin from "@tailwindcss/typography";
 import { Config } from "tailwindcss";
 import animatePlugin from "tailwindcss-animate";
-import plugin from "tailwindcss/plugin";
 import scrollbarPlugin from "tailwind-scrollbar";
 import defaultTheme from "tailwindcss/defaultTheme";
-import { colors, createThemeStyle } from "./theme";
-
-export { createThemeStyle } from "./theme";
-
-const radixUiDataAttributes = {
-  active: 'state~="active"',
-  checked: 'state="checked"',
-  closed: 'state~="closed"',
-  "delayed-open": 'state="delayed-open"',
-  disabled: 'disabled=""',
-  highlighted: 'highlighted=""',
-  "is-hidden": 'is-hidden="true"',
-  on: 'state~="on"',
-  open: 'state~="open"',
-  placeholder: 'placeholder=""',
-  "side-bottom": 'side="bottom"',
-  "side-left": 'side="left"',
-  "side-right": 'side="right"',
-  "side-top": 'side="top"',
-};
-
-const themeStylePlugin = plugin(({ addUtilities }) => {
-  addUtilities(createThemeStyle());
-});
+import { colors } from "./tailwind-radix-colors";
+import { data } from "./tailwind-radix-primitives";
+import { radixColorThemePlugin } from "./tailwind-radix-color-theme-plugin";
 
 export const tailwindConfig: Config = {
   content: ["./src/**/*.{cjs,js,jsx,mjs,ts,tsx}"],
@@ -40,20 +18,21 @@ export const tailwindConfig: Config = {
     animatePlugin,
     containerQueriesPlugin,
     formsPlugin,
+    radixColorThemePlugin,
     scrollbarPlugin,
-    themeStylePlugin,
     typographyPlugin,
   ],
   theme: {
     colors,
-    data: radixUiDataAttributes,
     extend: {
       aria: {
         "current-page": 'current="page"',
+        invalid: 'invalid="true"',
       },
       borderWidth: {
         1: "1px",
       },
+      data,
       fontFamily: {
         sans: ["Inter", ...defaultTheme.fontFamily.sans],
       },

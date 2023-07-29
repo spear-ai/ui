@@ -1,0 +1,16 @@
+export const data = {
+  active: 'state~="active"',
+  checked: 'state="checked"',
+  closed: 'state~="closed"',
+  "delayed-open": 'state="delayed-open"',
+  disabled: 'disabled=""',
+  highlighted: "highlighted",
+  "is-hidden": 'is-hidden="true"',
+  on: 'state~="on"',
+  open: 'state~="open"',
+  placeholder: 'placeholder=""',
+  "side-bottom": 'side="bottom"',
+  "side-left": 'side="left"',
+  "side-right": 'side="right"',
+  "side-top": 'side="top"',
+};
