@@ -1,5 +1,11 @@
 # @spear-ai/tailwind-config
 
+## 2.0.2
+
+### Patch Changes
+
+- [#41](https://github.com/spear-ai/ui/pull/41) [`c9f970e`](https://github.com/spear-ai/ui/commit/c9f970eb6f92d5f9007e9a45a8612ce949aa783d) Thanks [@psirenny](https://github.com/psirenny)! - Fixed light and dark color names.
+
 ## 2.0.1
 
 ### Patch Changes
