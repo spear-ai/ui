@@ -36,13 +36,11 @@ export const getColorName = (options: {
   isDark: boolean;
   isOverlay?: undefined | boolean;
   scaleName: string;
-  step: number;
 }) => {
-  const { isAlpha, isDark, isOverlay = false, scaleName, step } = options;
+  const { isAlpha, isDark, isOverlay = false, scaleName } = options;
   let colorName = scaleName;
   colorName += isOverlay ? "" : isDark ? "-dark" : "-light";
   colorName += isAlpha ? "-a" : "";
-  colorName += `-${step}`;
   return colorName;
 };
 
@@ -75,28 +73,32 @@ export const getColorValue = (options: {
   return isVariable ? value : `hsl(${value})`;
 };
 
-export const literalColors: { [name: string]: string } = {
+export type Colors = { [name: string]: string | { [step: string]: string } };
+
+export const literalColors: Colors = {
   black: "black",
   white: "white",
 };
 
 for (const scaleName of overlayRadixColorScaleNameList) {
-  for (const step of stepList) {
-    const colorName = getColorName({
-      isAlpha: true,
-      isDark: false,
-      isOverlay: true,
-      scaleName,
-      step,
-    });
+  const colorName = getColorName({
+    isAlpha: true,
+    isDark: false,
+    isOverlay: true,
+    scaleName,
+  });
 
-    literalColors[colorName] = getColorValue({
-      isAlpha: true,
-      isDark: false,
-      scaleName,
+  literalColors[colorName] = Object.fromEntries(
+    stepList.map((step) => [
       step,
-    });
-  }
+      getColorValue({
+        isAlpha: true,
+        isDark: false,
+        scaleName,
+        step,
+      }),
+    ]),
+  );
 }
 
 for (const scaleName of hueRadixColorScaleNameList) {
@@ -104,21 +106,24 @@ for (const scaleName of hueRadixColorScaleNameList) {
 
   for (const isDark of [false, true]) {
     for (const isAlpha of [false, true]) {
-      for (const step of stepList) {
-        const colorName = getColorName({
-          isAlpha,
-          isDark,
-          scaleName,
-          step,
-        });
+      const colorName = getColorName({
+        isAlpha: true,
+        isDark: false,
+        isOverlay: true,
+        scaleName,
+      });
 
-        literalColors[colorName] = getColorValue({
-          isAlpha,
-          isDark,
-          scaleName,
+      literalColors[colorName] = Object.fromEntries(
+        stepList.map((step) => [
           step,
-        });
-      }
+          getColorValue({
+            isAlpha,
+            isDark,
+            scaleName,
+            step,
+          }),
+        ]),
+      );
     }
   }
 }

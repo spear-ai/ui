@@ -3,6 +3,7 @@
 import variablesApi from "@mertasan/tailwindcss-variables/api";
 import plugin from "tailwindcss/plugin";
 import {
+  Colors,
   RadixGrayColorScaleName,
   RadixHueColorScaleName,
   getColorValue,
@@ -84,10 +85,6 @@ export const themeColorNameList = [
   "x-negative",
   "x-positive",
 ];
-
-type Colors = {
-  [name: string]: string | { [step: number]: string };
-};
 
 type Variables = {
   DEFAULT: { colors: Colors };
