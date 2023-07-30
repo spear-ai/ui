@@ -1,5 +1,11 @@
 # @spear-ai/tailwind-config
 
+## 2.0.1
+
+### Patch Changes
+
+- [#39](https://github.com/spear-ai/ui/pull/39) [`5320db5`](https://github.com/spear-ai/ui/commit/5320db5df1fe4445795b688f80f88bb1a8329d06) Thanks [@psirenny](https://github.com/psirenny)! - Improved TailwindCSS ESLint plugin performance by nesting color steps. ⚡
+
 ## 2.0.0
 
 ### Major Changes
