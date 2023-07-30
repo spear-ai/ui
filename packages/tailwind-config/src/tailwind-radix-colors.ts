@@ -107,9 +107,8 @@ for (const scaleName of hueRadixColorScaleNameList) {
   for (const isDark of [false, true]) {
     for (const isAlpha of [false, true]) {
       const colorName = getColorName({
-        isAlpha: true,
-        isDark: false,
-        isOverlay: true,
+        isAlpha,
+        isDark,
         scaleName,
       });
 
