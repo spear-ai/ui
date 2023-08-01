@@ -1578,7 +1578,7 @@ __metadata:
     "@types/mertasan__tailwindcss-variables": 2.6.0
     colord: ^2.9.3
     eslint: 8.46.0
-    graphql: 15.8.0
+    graphql: 16.7.1
     npm-package-json-lint: 7.0.0
     param-case: ^3.0.4
     prettier: 3.0.0
@@ -1608,7 +1608,7 @@ __metadata:
     "@spear-ai/prettier-config": 2.0.3
     commitlint: 17.6.7
     eslint: 8.46.0
-    graphql: 15.8.0
+    graphql: 16.7.1
     husky: 8.0.3
     npm-package-json-lint: 7.0.0
     prettier: 3.0.0
@@ -4827,10 +4827,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql@npm:15.8.0":
-  version: 15.8.0
-  resolution: "graphql@npm:15.8.0"
-  checksum: 423325271db8858428641b9aca01699283d1fe5b40ef6d4ac622569ecca927019fce8196208b91dd1d8eb8114f00263fe661d241d0eb40c10e5bfd650f86ec5e
+"graphql@npm:16.7.1":
+  version: 16.7.1
+  resolution: "graphql@npm:16.7.1"
+  checksum: c924d8428daf0e96a5ea43e9bc3cd1b6802899907d284478ac8f705c8fd233a0a51eef915f7569fb5de8acb2e85b802ccc6c85c2b157ad805c1e9adba5a299bd
   languageName: node
   linkType: hard
 
