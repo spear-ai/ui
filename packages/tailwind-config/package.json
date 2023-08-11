@@ -20,7 +20,7 @@
     "tailwindcss-3d": "^0.2.6",
     "tailwindcss-animate": "^1.0.6",
     "ts-invariant": "^0.10.3",
-    "type-fest": "^4.0.0"
+    "type-fest": "^4.2.0"
   },
   "devDependencies": {
     "@spear-ai/eslint-config": "9.0.0",
