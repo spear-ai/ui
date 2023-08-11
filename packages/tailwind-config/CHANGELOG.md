@@ -1,5 +1,11 @@
 # @spear-ai/tailwind-config
 
+## 2.1.0
+
+### Minor Changes
+
+- [#50](https://github.com/spear-ai/ui/pull/50) [`96a728f`](https://github.com/spear-ai/ui/commit/96a728f8aafd720e4905f1681bdc9279fffa6111) Thanks [@psirenny](https://github.com/psirenny)! - Extended Tailwind Typography plugin with theme color.
+
 ## 2.0.2
 
 ### Patch Changes
