@@ -12,6 +12,10 @@ import { colors } from "./tailwind-radix-colors";
 import { data } from "./tailwind-radix-primitives";
 import { radixColorThemePlugin } from "./tailwind-radix-color-theme-plugin";
 
+// Work around limitation of the `theme()` function not parsing `"<alpha-value>"`:
+// https://github.com/tailwindlabs/tailwindcss/issues/9143#issuecomment-1674128599
+const removeColorValueAlpha = (colorValue: string) => colorValue.replace("<alpha-value>", "1");
+
 export const tailwindConfig: Config = {
   content: ["./src/**/*.{cjs,js,jsx,mjs,ts,tsx}"],
   darkMode: ["class"],
@@ -52,6 +56,22 @@ export const tailwindConfig: Config = {
       scale: {
         "-1": "-1",
       },
+      typography: ({ theme }: { theme: (path: string) => string }) => ({
+        theme: {
+          css: {
+            "--tw-prose-body": removeColorValueAlpha(theme("colors.neutral[11]")),
+            "--tw-prose-bold": removeColorValueAlpha(theme("colors.neutral[12]")),
+            "--tw-prose-code": removeColorValueAlpha(theme("colors.primary-a[11]")),
+            "--tw-prose-headings": removeColorValueAlpha(theme("colors.neutral[12]")),
+            "--tw-prose-hr": removeColorValueAlpha(theme("colors.neutral[6]")),
+            "--tw-prose-links": removeColorValueAlpha(theme("colors.primary[12]")),
+            "--tw-prose-pre-bg": removeColorValueAlpha(theme("colors.primary-a[3]")),
+            "--tw-prose-pre-code": removeColorValueAlpha(theme("colors.primary-a[11]")),
+            "--tw-prose-quote-borders": removeColorValueAlpha(theme("colors.primary[6]")),
+            "--tw-prose-quotes": removeColorValueAlpha(theme("colors.neutral[12]")),
+          },
+        },
+      }),
     },
   },
 };
