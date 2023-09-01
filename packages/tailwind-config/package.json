@@ -23,7 +23,7 @@
     "type-fest": "^4.0.0"
   },
   "devDependencies": {
-    "@spear-ai/eslint-config": "9.0.0",
+    "@spear-ai/eslint-config": "12.0.2",
     "@spear-ai/npm-package-json-lint-config": "2.0.2",
     "@spear-ai/prettier-config": "2.0.3",
     "@types/mertasan__tailwindcss-variables": "2.6.0",
