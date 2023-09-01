@@ -1471,10 +1471,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@radix-ui/colors@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "@radix-ui/colors@npm:1.0.1"
-  checksum: 5f2129f540c4d503ac9188ebf9c920fd81e34fb4a6b873a2b51474c8d128499cbb25865faa2346f77cd26349b1745c4ec9f51b30f4eea9bb04e606089a1d1567
+"@radix-ui/colors@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "@radix-ui/colors@npm:2.1.0"
+  checksum: ef189be5225ced8b0da22c7e1499692829c1a0b2bcebc28e335ab2a42080fc393ac316a8e610ad295e76070e58ce0e7637c8afb6e729ac8f7057c977ce4d5ea2
   languageName: node
   linkType: hard
 
@@ -1568,7 +1568,7 @@ __metadata:
   resolution: "@spear-ai/tailwind-config@workspace:packages/tailwind-config"
   dependencies:
     "@mertasan/tailwindcss-variables": ^2.6.1
-    "@radix-ui/colors": ^1.0.1
+    "@radix-ui/colors": ^2.1.0
     "@spear-ai/eslint-config": 9.0.0
     "@spear-ai/npm-package-json-lint-config": 2.0.2
     "@spear-ai/prettier-config": 2.0.3
