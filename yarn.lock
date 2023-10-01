@@ -1588,7 +1588,7 @@ __metadata:
     tailwindcss-animate: ^1.0.6
     ts-invariant: ^0.10.3
     tsup: 7.1.0
-    type-fest: ^4.0.0
+    type-fest: ^4.3.3
     typescript: 5.1.6
   peerDependencies:
     tailwindcss: ^3.3.2
@@ -8497,10 +8497,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"type-fest@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "type-fest@npm:4.0.0"
-  checksum: 716f32ac341b1cf35bf08cc5cc6a11822436333966d3f4d94758112f45829efa3efb643ebc74a53e514e68a1bddab144d0153d654e072b41ba9bd98bcf841d75
+"type-fest@npm:^4.3.3":
+  version: 4.3.3
+  resolution: "type-fest@npm:4.3.3"
+  checksum: 843c1bb3c2c185594a3a3d67bd92e8194dfa31ca0d88c078371efdd8d2150ea278a624cb260c91824e1f486ff06759c96bc03a134af7f0575e2d06eaa8be1c32
   languageName: node
   linkType: hard
 
