@@ -14,7 +14,7 @@
     "@commitlint/cli": "17.6.7",
     "@commitlint/config-conventional": "17.6.7",
     "@spear-ai/eslint-config": "9.0.0",
-    "@spear-ai/npm-package-json-lint-config": "2.0.2",
+    "@spear-ai/npm-package-json-lint-config": "3.0.2",
     "@spear-ai/prettier-config": "2.0.3",
     "commitlint": "17.6.7",
     "eslint": "8.46.0",

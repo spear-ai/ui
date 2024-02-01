@@ -1543,14 +1543,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spear-ai/npm-package-json-lint-config@npm:2.0.2":
-  version: 2.0.2
-  resolution: "@spear-ai/npm-package-json-lint-config@npm:2.0.2"
+"@spear-ai/npm-package-json-lint-config@npm:3.0.2":
+  version: 3.0.2
+  resolution: "@spear-ai/npm-package-json-lint-config@npm:3.0.2"
   dependencies:
     npm-package-json-lint-config-default: ^6.0.0
   peerDependencies:
-    npm-package-json-lint: ^6.4.0
-  checksum: e5dcb9e32f952a85a12e9a910fd04b7c456106fd288de853175cd6df529f5b5c74e1ad59387dd4aff549c55b7c94fb520e051fa0afb2b2f9d551cbc724d3620e
+    npm-package-json-lint: ">=6.4.0 <8"
+  checksum: 92ff4cb80cb81105da919056c9db9abecf120a56f216e9d515c96c6396954afb82f3880934ac2bee635e228f68c681d393e65b9fafa88a351873f47caed282f7
   languageName: node
   linkType: hard
 
@@ -1570,7 +1570,7 @@ __metadata:
     "@mertasan/tailwindcss-variables": ^2.6.1
     "@radix-ui/colors": ^1.0.1
     "@spear-ai/eslint-config": 9.0.0
-    "@spear-ai/npm-package-json-lint-config": 2.0.2
+    "@spear-ai/npm-package-json-lint-config": 3.0.2
     "@spear-ai/prettier-config": 2.0.3
     "@tailwindcss/container-queries": ^0.1.1
     "@tailwindcss/forms": ^0.5.4
@@ -1604,7 +1604,7 @@ __metadata:
     "@commitlint/cli": 17.6.7
     "@commitlint/config-conventional": 17.6.7
     "@spear-ai/eslint-config": 9.0.0
-    "@spear-ai/npm-package-json-lint-config": 2.0.2
+    "@spear-ai/npm-package-json-lint-config": 3.0.2
     "@spear-ai/prettier-config": 2.0.3
     commitlint: 17.6.7
     eslint: 8.46.0
