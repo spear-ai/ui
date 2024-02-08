@@ -1,79 +1,77 @@
-/* eslint-disable import/no-extraneous-dependencies */
-
 import variablesApi from "@mertasan/tailwindcss-variables/api";
 import plugin from "tailwindcss/plugin";
 import {
   Colors,
-  RadixGrayColorScaleName,
-  RadixHueColorScaleName,
   getColorValue,
   getContrastColorValue,
+  RadixGrayColorScaleName,
+  RadixHueColorScaleName,
   stepList,
 } from "./tailwind-radix-colors";
 
 export type RadixColorThemeOptions = {
   /** A radix color scale for the application’s background color. Defaults to the `primary` color scale. */
-  canvas?: undefined | RadixHueColorScaleName;
+  canvas?: RadixHueColorScaleName | undefined;
 
   /** Defaults to the dark variant of the `canvas` color’s scale. */
-  canvasDark?: undefined | RadixHueColorScaleName;
+  canvasDark?: RadixHueColorScaleName | undefined;
 
   /** Defaults to the light variant of the `canvas` color’s scale. */
-  canvasLight?: undefined | RadixHueColorScaleName;
+  canvasLight?: RadixHueColorScaleName | undefined;
 
   /** A negative valence color (e.g. Warning, Paused). Defaults to `"yellow"`. */
-  negative?: undefined | RadixHueColorScaleName;
+  negative?: RadixHueColorScaleName | undefined;
 
   /** Defaults to the dark variant of the `negative` color’s scale. */
-  negativeDark?: undefined | RadixHueColorScaleName;
+  negativeDark?: RadixHueColorScaleName | undefined;
 
   /** Defaults to the light variant of the `negative` color’s scale. */
-  negativeLight?: undefined | RadixHueColorScaleName;
+  negativeLight?: RadixHueColorScaleName | undefined;
 
   /** A [gray](https://www.radix-ui.com/docs/colors/palette-composition/scales#grays) Radix color scale. Defaults to `"grey"`. */
-  neutral?: undefined | RadixGrayColorScaleName;
+  neutral?: RadixGrayColorScaleName | undefined;
 
   /** Defaults to the dark variant of the `neutral` color’s scale. */
-  neutralDark?: undefined | RadixGrayColorScaleName;
+  neutralDark?: RadixGrayColorScaleName | undefined;
 
   /** Defaults to the light variant of the `neutral` color’s scale. */
-  neutralLight?: undefined | RadixGrayColorScaleName;
+  neutralLight?: RadixGrayColorScaleName | undefined;
 
   /** A positive valence color (Info, Loading, Pending). Defaults to `"blue"`. */
-  positive?: undefined | RadixHueColorScaleName;
+  positive?: RadixHueColorScaleName | undefined;
 
   /** Defaults to the dark variant of the `positive` color’s scale. */
-  positiveDark?: undefined | RadixHueColorScaleName;
+  positiveDark?: RadixHueColorScaleName | undefined;
 
   /** Defaults to the light variant of the `positive` color’s scale. */
-  positiveLight?: undefined | RadixHueColorScaleName;
+  positiveLight?: RadixHueColorScaleName | undefined;
 
   /** A Radix color scale for the application’s primary accent color. Defaults to the `neutral` color scale. */
-  primary?: undefined | RadixHueColorScaleName;
+  primary?: RadixHueColorScaleName | undefined;
 
   /** Defaults to the dark variant of the `primary` color’s scale. */
-  primaryDark?: undefined | RadixHueColorScaleName;
+  primaryDark?: RadixHueColorScaleName | undefined;
 
   /** Defaults to the light variant of the `primary` color’s scale. */
-  primaryLight?: undefined | RadixHueColorScaleName;
+  primaryLight?: RadixHueColorScaleName | undefined;
 
   /** An extra negative valence color (e.g. Error, Danger). Defaults to `"red"`. */
-  xNegative?: undefined | RadixHueColorScaleName;
+  xNegative?: RadixHueColorScaleName | undefined;
 
   /** Defaults to the dark variant of the `x-negative` color’s scale. */
-  xNegativeDark?: undefined | RadixHueColorScaleName;
+  xNegativeDark?: RadixHueColorScaleName | undefined;
 
   /** Defaults to the light variant of the `x-negative` color’s scale. */
-  xNegativeLight?: undefined | RadixHueColorScaleName;
+  xNegativeLight?: RadixHueColorScaleName | undefined;
 
   /** Defaults to the dark variant of the `x-negative` color’s scale. */
-  xPositive?: undefined | RadixHueColorScaleName;
+  xPositive?: RadixHueColorScaleName | undefined;
 
   /** Defaults to the dark variant of the `x-positive` color’s scale. */
-  xPositiveDark?: undefined | RadixHueColorScaleName;
+  xPositiveDark?: RadixHueColorScaleName | undefined;
 
   /** Defaults to the light variant of the `x-positive` color’s scale. */
-  xPositiveLight?: undefined | RadixHueColorScaleName;
+  xPositiveLight?: RadixHueColorScaleName | undefined;
 };
 
 export const themeColorNameList = [
@@ -95,77 +93,77 @@ const colors: Colors = {};
 for (const themeColorName of themeColorNameList) {
   // {
   //   primary: {
-  //     1: "hsl(var(--colors-primary-1) / <alpha-value>)",
-  //     2: "hsl(var(--colors-primary-2) / <alpha-value>)",
+  //     1: "oklch(var(--colors-primary-1) / <alpha-value>)",
+  //     2: "oklch(var(--colors-primary-2) / <alpha-value>)",
   //     ⋮
-  //     12: "hsl(var(--colors-primary-12) / <alpha-value>)",
+  //     12: "oklch(var(--colors-primary-12) / <alpha-value>)",
   //   },
   // }
   colors[themeColorName] = Object.fromEntries(
-    stepList.map((step) => [step, `hsl(var(--colors-${themeColorName}-${step}) / <alpha-value>)`]),
+    stepList.map((step) => [step, `oklch(var(--colors-${themeColorName}-${step}) / <alpha-value>)`]),
   );
 
   // {
   //   "primary-a": {
-  //     1: "hsl(var(--colors-primary-a-1))",
-  //     2: "hsl(var(--colors-primary-a-2))",
+  //     1: "oklch(var(--colors-primary-a-1))",
+  //     2: "oklch(var(--colors-primary-a-2))",
   //     ⋮
-  //     12: "hsl(var(--colors-primary-a-12))",
+  //     12: "oklch(var(--colors-primary-a-12))",
   //   },
   // }
   colors[`${themeColorName}-a`] = Object.fromEntries(
     // The alpha value is built-in to the color
-    stepList.map((step) => [step, `hsl(var(--colors-${themeColorName}-a-${step}))`]),
+    stepList.map((step) => [step, `oklch(var(--colors-${themeColorName}-a-${step}))`]),
   );
 
   // {
   //   "primary-light": {
-  //     1: "hsl(var(--colors-primary-light-1) / <alpha-value>)",
-  //     2: "hsl(var(--colors-primary-light-2) / <alpha-value>)",
+  //     1: "oklch(var(--colors-primary-light-1) / <alpha-value>)",
+  //     2: "oklch(var(--colors-primary-light-2) / <alpha-value>)",
   //     ⋮
-  //     12: "hsl(var(--colors-primary-light-12) / <alpha-value>)",
+  //     12: "oklch(var(--colors-primary-light-12) / <alpha-value>)",
   //   },
   // }
   colors[`${themeColorName}-light`] = Object.fromEntries(
-    stepList.map((step) => [step, `hsl(var(--colors-${themeColorName}-light-${step}) / <alpha-value>)`]),
+    stepList.map((step) => [step, `oklch(var(--colors-${themeColorName}-light-${step}) / <alpha-value>)`]),
   );
 
   // {
   //   "primary-light-a": {
-  //     1: "hsl(var(--colors-primary-light-a-1))",
-  //     2: "hsl(var(--colors-primary-light-a-2))",
+  //     1: "oklch(var(--colors-primary-light-a-1))",
+  //     2: "oklch(var(--colors-primary-light-a-2))",
   //     ⋮
-  //     12: "hsl(var(--colors-primary-light-a-12))",
+  //     12: "oklch(var(--colors-primary-light-a-12))",
   //   },
   // }
   colors[`${themeColorName}-light-a`] = Object.fromEntries(
     // The alpha value is built-in to the color
-    stepList.map((step) => [step, `hsl(var(--colors-${themeColorName}-light-a-${step}))`]),
+    stepList.map((step) => [step, `oklch(var(--colors-${themeColorName}-light-a-${step}))`]),
   );
 
   // {
   //   "primary-dark": {
-  //     1: "hsl(var(--colors-primary-dark-1) / <alpha-value>)",
-  //     2: "hsl(var(--colors-primary-dark-2) / <alpha-value>)",
+  //     1: "oklch(var(--colors-primary-dark-1) / <alpha-value>)",
+  //     2: "oklch(var(--colors-primary-dark-2) / <alpha-value>)",
   //     ⋮
-  //     12: "hsl(var(--colors-primary-dark-12) / <alpha-value>)",
+  //     12: "oklch(var(--colors-primary-dark-12) / <alpha-value>)",
   //   },
   // }
   colors[`${themeColorName}-dark`] = Object.fromEntries(
-    stepList.map((step) => [step, `hsl(var(--colors-${themeColorName}-dark-${step}) / <alpha-value>)`]),
+    stepList.map((step) => [step, `oklch(var(--colors-${themeColorName}-dark-${step}) / <alpha-value>)`]),
   );
 
   // {
   //   "primary-dark-a": {
-  //     1: "hsl(var(--colors-primary-dark-a-1))",
-  //     2: "hsl(var(--colors-primary-dark-a-2))",
+  //     1: "oklch(var(--colors-primary-dark-a-1))",
+  //     2: "oklch(var(--colors-primary-dark-a-2))",
   //     ⋮
-  //     12: "hsl(var(--colors-primary-dark-a-12))",
+  //     12: "oklch(var(--colors-primary-dark-a-12))",
   //   },
   // }
   colors[`${themeColorName}-dark-a`] = Object.fromEntries(
     // The alpha value is built-in to the color
-    stepList.map((step) => [step, `hsl(var(--colors-${themeColorName}-dark-a-${step}))`]),
+    stepList.map((step) => [step, `oklch(var(--colors-${themeColorName}-dark-a-${step}))`]),
   );
 
   colors[`${themeColorName}-contrast`] = `var(--colors-${themeColorName}-contrast)`;
@@ -175,7 +173,7 @@ for (const themeColorName of themeColorNameList) {
 
 export const radixColorThemePlugin = plugin(
   ({ addComponents, config, theme }) => {
-    const options: RadixColorThemeOptions = theme("theme") ?? {};
+    const options: RadixColorThemeOptions = theme("theme", {});
     const { canvas, negative, neutral, positive, primary, xNegative, xPositive } = options;
     const neutralLight = options.neutralLight ?? neutral ?? "gray";
     const neutralDark = options.neutralDark ?? neutral ?? "gray";
@@ -223,10 +221,10 @@ export const radixColorThemePlugin = plugin(
     for (const variable of themeVariableList) {
       // {
       //   "primary-light": {
-      //     1: "{h}deg {s}% {l}%",
-      //     2: "{h}deg {s}% {l}%",
+      //     1: "{l} {c} {h}",
+      //     2: "{l} {c} {h}",
       //     ⋮
-      //     12: "{h}deg {s}% {l}%",
+      //     12: "{l} {c} {h}",
       //   },
       // }
       rootVariables.DEFAULT.colors[`${variable.name}-light`] = Object.fromEntries(
@@ -244,10 +242,10 @@ export const radixColorThemePlugin = plugin(
 
       // {
       //   "primary-light-a": {
-      //     1: "{h}deg {s}% {l}% {a}",
-      //     2: "{h}deg {s}% {l}% {a}",
+      //     1: "{l} {c} {h} / {a}",
+      //     2: "{l} {c} {h} / {a}",
       //     ⋮
-      //     12: "{h}deg {s}% {l}% {a}",
+      //     12: "{l} {c} {h} / {a}",
       //   },
       // }
       rootVariables.DEFAULT.colors[`${variable.name}-light-a`] = Object.fromEntries(
@@ -272,10 +270,10 @@ export const radixColorThemePlugin = plugin(
 
       // {
       //   "primary-dark": {
-      //     1: "{h}deg {s}% {l}%",
-      //     2: "{h}deg {s}% {l}%",
+      //     1: "{l} {c} {h}",
+      //     2: "{l} {c} {h}",
       //     ⋮
-      //     12: "{h}deg {s}% {l}%",
+      //     12: "{l} {c} {h}",
       //   },
       // }
       rootVariables.DEFAULT.colors[`${variable.name}-dark`] = Object.fromEntries(
@@ -293,10 +291,10 @@ export const radixColorThemePlugin = plugin(
 
       // {
       //   "primary-dark-a": {
-      //     1: "{h}deg {s}% {l}% {a}",
-      //     2: "{h}deg {s}% {l}% {a}",
+      //     1: "{l} {c} {h} / {a}",
+      //     2: "{l} {c} {h} / {a}",
       //     ⋮
-      //     12: "{h}deg {s}% {l}% {a}",
+      //     12: "{l} {c} {h} / {a}",
       //   },
       // }
       rootVariables.DEFAULT.colors[`${variable.name}-dark-a`] = Object.fromEntries(
@@ -352,9 +350,8 @@ export const radixColorThemePlugin = plugin(
       //     "primary-contrast": var(--colors-primary-light-contrast),
       //   },
       // }
-      lightVariables.DEFAULT.colors[
-        `${variable.name}-contrast`
-      ] = `var(--colors-${variable.name}-light-contrast)`;
+      lightVariables.DEFAULT.colors[`${variable.name}-contrast`] =
+        `var(--colors-${variable.name}-light-contrast)`;
 
       // {
       //   ".dark": {
@@ -389,9 +386,8 @@ export const radixColorThemePlugin = plugin(
       //     "primary-contrast": var(--colors-primary-dark-contrast),
       //   },
       // }
-      darkVariables.DEFAULT.colors[
-        `${variable.name}-contrast`
-      ] = `var(--colors-${variable.name}-dark-contrast)`;
+      darkVariables.DEFAULT.colors[`${variable.name}-contrast`] =
+        `var(--colors-${variable.name}-dark-contrast)`;
     }
 
     const darkModeSelector = (config("darkMode") as [string])[0];

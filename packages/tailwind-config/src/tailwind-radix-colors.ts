@@ -1,18 +1,23 @@
 import radixColorGroups from "@radix-ui/colors";
-import { colord } from "colord";
-import { paramCase } from "param-case";
+import { kebabCase } from "change-case";
+import { oklch } from "culori";
 import { Replace } from "type-fest";
 
-export type RadixColorScaleName = Replace<Replace<keyof typeof radixColorGroups, "A", "">, "Dark", "">;
-export type RadixGrayColorScaleName = "gray" | "olive" | "mauve" | "sage" | "sand" | "slate";
+export type RadixColorScaleName = Replace<
+  Replace<Replace<keyof typeof radixColorGroups, "A", "">, "Dark", "">,
+  "P3",
+  ""
+>;
+export type RadixGrayColorScaleName = "gray" | "mauve" | "olive" | "sage" | "sand" | "slate";
 export type RadixOverlayColorScaleName = "black" | "white";
 export type RadixHueColorScaleName = Exclude<RadixColorScaleName, RadixOverlayColorScaleName>;
 
 export const colorScaleNameList: RadixColorScaleName[] = Object.keys(radixColorGroups).flatMap(
   (radixColorGroupName) => {
     if (radixColorGroupName.endsWith("A")) return [];
+    if (radixColorGroupName.endsWith("P3")) return [];
     if (radixColorGroupName.endsWith("Dark")) return [];
-    return paramCase(radixColorGroupName) as RadixColorScaleName;
+    return kebabCase(radixColorGroupName) as RadixColorScaleName;
   },
 );
 
@@ -34,7 +39,7 @@ export const stepList = Array.from({ length: 12 }, (_, index) => index + 1);
 export const getColorName = (options: {
   isAlpha: boolean;
   isDark: boolean;
-  isOverlay?: undefined | boolean;
+  isOverlay?: boolean | undefined;
   scaleName: string;
 }) => {
   const { isAlpha, isDark, isOverlay = false, scaleName } = options;
@@ -47,7 +52,7 @@ export const getColorName = (options: {
 export const getColorValue = (options: {
   isAlpha: boolean;
   isDark: boolean;
-  isVariable?: undefined | boolean;
+  isVariable?: boolean | undefined;
   scaleName: string;
   step: number;
 }) => {
@@ -59,6 +64,8 @@ export const getColorValue = (options: {
     groupKey += "Dark";
   }
 
+  groupKey += "P3";
+
   if (isAlpha) {
     groupKey += "A";
     stepKey += "A";
@@ -67,13 +74,15 @@ export const getColorValue = (options: {
   stepKey += `${step}`;
 
   const colorGroup = radixColorGroups[groupKey as keyof typeof radixColorGroups];
-  const colorValue = colorGroup[stepKey as keyof typeof colorGroup];
-  const hsl = colord(colorValue).toHsl();
-  const value = isAlpha ? `${hsl.h}deg ${hsl.s}% ${hsl.l}% / ${hsl.a}` : `${hsl.h}deg ${hsl.s}% ${hsl.l}%`;
+  const colorValue = colorGroup[stepKey as keyof typeof colorGroup] as string;
+  const lch = oklch(colorValue);
+  const value = isAlpha
+    ? `${lch?.l ?? 0} ${lch?.c ?? 0} ${lch?.h ?? 0} / ${lch?.alpha ?? 1}`
+    : `${lch?.l ?? 0} ${lch?.c ?? 0} ${lch?.h ?? 0}`;
   return isVariable ? value : `hsl(${value})`;
 };
 
-export type Colors = { [name: string]: string | { [step: string]: string } };
+export type Colors = Record<string, Record<string, string> | string>;
 
 export const literalColors: Colors = {
   black: "black",
