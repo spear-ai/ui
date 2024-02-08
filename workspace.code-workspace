@@ -8,59 +8,59 @@
       "sleistner.vscode-fileutils",
       "tyriar.sort-lines",
       "wix.vscode-import-cost",
-      "yzhang.markdown-all-in-one"
+      "yzhang.markdown-all-in-one",
     ],
-    "unwantedRecommendations": []
+    "unwantedRecommendations": [],
   },
   "folders": [
     {
       "name": "spear-ai/ui",
-      "path": "."
+      "path": ".",
     },
     {
       "name": "spear-ai/tailwind-config",
-      "path": "packages/tailwind-config"
-    }
+      "path": "packages/tailwind-config",
+    },
   ],
   "settings": {
     "[javascript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[javascriptreact]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[json]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[json5]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[jsonc]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[markdown]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[toml]": {
-      "editor.tabSize": 2
+      "editor.tabSize": 2,
     },
     "[typescript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[typescriptreact]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[yaml]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode",
-      "editor.tabSize": 2
+      "editor.tabSize": 2,
     },
     "editor.autoClosingQuotes": "always",
     "editor.codeActionsOnSave": {
-      "source.fixAll": "explicit"
+      "source.fixAll": "explicit",
     },
     "editor.formatOnSave": true,
     "editor.quickSuggestions": {
-      "strings": true
+      "strings": true,
     },
     "eslint.experimental.useFlatConfig": true,
     "eslint.validate": [
@@ -73,10 +73,10 @@
       "toml",
       "typescript",
       "typescriptreact",
-      "yaml"
+      "yaml",
     ],
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true
-  }
+    "files.trimTrailingWhitespace": true,
+  },
 }

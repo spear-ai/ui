@@ -2,19 +2,19 @@ version: 2
 updates:
   - directory: /
     labels:
-      - 🌋 technical debt
+      - 🔧 maintenance
     package-ecosystem: github-actions
     schedule:
       interval: monthly
   - directory: /
     labels:
-      - 🌋 technical debt
+      - 🔧 maintenance
     package-ecosystem: npm
     schedule:
       interval: monthly
   - directory: /packages/tailwind-config
     labels:
-      - 🌋 technical debt
+      - 🔧 maintenance
     package-ecosystem: npm
     schedule:
       interval: monthly
