@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@spear-ai/eslint-config": "9.0.0",
-    "@spear-ai/npm-package-json-lint-config": "2.0.2",
+    "@spear-ai/npm-package-json-lint-config": "3.1.0",
     "@spear-ai/prettier-config": "2.0.3",
     "@types/mertasan__tailwindcss-variables": "2.6.0",
     "eslint": "8.46.0",
