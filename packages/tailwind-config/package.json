@@ -14,7 +14,7 @@
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.10",
-    "change-case": "5.4.2",
+    "change-case": "^5.4.2",
     "culori": "^4.0.1",
     "tailwind-scrollbar": "^3.0.5",
     "tailwindcss-3d": "^1.0.4",
@@ -51,16 +51,14 @@
     "url": "https://github.com/spear-ai/ui.git"
   },
   "scripts": {
-    "build": "tsup src --clean --dts --format cjs,esm src/index.ts",
-    "dev": "yarn build --watch",
-    "fix": "yarn fix:eslint && yarn fix:prettier",
-    "fix:eslint": "yarn lint:eslint --fix",
-    "fix:prettier": "prettier --write .",
-    "lint": "yarn lint:eslint && yarn lint:prettier && yarn lint:npm",
-    "lint:eslint": "eslint --max-warnings 0 .",
-    "lint:npm": "npmPkgJsonLint .",
-    "lint:prettier": "prettier --check .",
-    "typecheck": "tsc --noEmit"
+    "build": "tsup src --clean --dts --format cjs,esm",
+    "dev": "yarn run build --watch",
+    "eslint:check": "eslint --max-warnings 0 .",
+    "eslint:fix": "yarn eslint:check --fix",
+    "npmpkgjsonlint:check": "npmPkgJsonLint .",
+    "prettier:check": "prettier --check .",
+    "prettier:fix": "prettier --write .",
+    "typescript:check": "tsc --noEmit"
   },
   "types": "./dist/index.d.ts"
 }

@@ -1,4 +1,4 @@
-name: Checks
+name: Build and check
 on:
   pull_request:
     types:
@@ -20,7 +20,7 @@ jobs:
       TURBO_TEAM: ${{ vars.TURBO_TEAM }}
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
     steps:
-      - name: Checkout Git repository
+      - name: Checkout repository
         uses: actions/checkout@v4.1.1
         with:
           fetch-depth: 2
