@@ -16,9 +16,9 @@ jobs:
       should-deploy: ${{ steps.changesets.outputs.hasChangesets == 'false' }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3.5.3
+        uses: actions/checkout@v4.1.1
       - name: Setup Node.js
-        uses: actions/setup-node@v3.7.0
+        uses: actions/setup-node@v4.0.2
         with:
           cache: yarn
           node-version-file: .node-version

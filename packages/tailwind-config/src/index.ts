@@ -1,16 +1,14 @@
-/* eslint-disable import/no-extraneous-dependencies */
-
 import containerQueriesPlugin from "@tailwindcss/container-queries";
 import formsPlugin from "@tailwindcss/forms";
 import typographyPlugin from "@tailwindcss/typography";
+import scrollbarPlugin from "tailwind-scrollbar";
 import { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 import threeDPlugin from "tailwindcss-3d";
 import animatePlugin from "tailwindcss-animate";
-import scrollbarPlugin from "tailwind-scrollbar";
-import defaultTheme from "tailwindcss/defaultTheme";
+import { radixColorThemePlugin } from "./tailwind-radix-color-theme-plugin";
 import { colors } from "./tailwind-radix-colors";
 import { data } from "./tailwind-radix-primitives";
-import { radixColorThemePlugin } from "./tailwind-radix-color-theme-plugin";
 
 // Work around limitation of the `theme()` function not parsing `"<alpha-value>"`:
 // https://github.com/tailwindlabs/tailwindcss/issues/9143#issuecomment-1674128599
