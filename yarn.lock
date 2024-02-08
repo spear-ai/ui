@@ -1554,12 +1554,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spear-ai/prettier-config@npm:2.0.3":
-  version: 2.0.3
-  resolution: "@spear-ai/prettier-config@npm:2.0.3"
+"@spear-ai/prettier-config@npm:2.1.0":
+  version: 2.1.0
+  resolution: "@spear-ai/prettier-config@npm:2.1.0"
   peerDependencies:
-    prettier: ^2.8.7
-  checksum: 10/811945b602bfc0af7bda9942002fc43de93851b3cced1547c7c408b1af4ec5e3e784647d3f3b83d71f5e0e1c0a3fac996d48d505ac078ef41075b91c03be546c
+    prettier: ">=2.8.7 <4"
+  checksum: 10/f65f7db7a0ca989b70bbde99d54126a5dd01fc0122c1033ceef24d3c643c6a2a6f22c221937c4bdcdfd39aef4069c70c5495d666d276f25725cecf91c91d32af
   languageName: node
   linkType: hard
 
@@ -1571,7 +1571,7 @@ __metadata:
     "@radix-ui/colors": "npm:^1.0.1"
     "@spear-ai/eslint-config": "npm:9.0.0"
     "@spear-ai/npm-package-json-lint-config": "npm:2.0.2"
-    "@spear-ai/prettier-config": "npm:2.0.3"
+    "@spear-ai/prettier-config": "npm:2.1.0"
     "@tailwindcss/container-queries": "npm:^0.1.1"
     "@tailwindcss/forms": "npm:^0.5.4"
     "@tailwindcss/typography": "npm:^0.5.9"
@@ -1605,7 +1605,7 @@ __metadata:
     "@commitlint/config-conventional": "npm:17.6.7"
     "@spear-ai/eslint-config": "npm:9.0.0"
     "@spear-ai/npm-package-json-lint-config": "npm:2.0.2"
-    "@spear-ai/prettier-config": "npm:2.0.3"
+    "@spear-ai/prettier-config": "npm:2.1.0"
     commitlint: "npm:17.6.7"
     eslint: "npm:8.46.0"
     graphql: "npm:15.8.0"
