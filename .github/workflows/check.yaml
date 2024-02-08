@@ -30,7 +30,7 @@ jobs:
           cache: yarn
           node-version-file: .node-version
       - name: Install Node.js dependencies
-        run: yarn install --check-cache --immutable --immutable-cache
+        run: yarn install
       - name: Build
         run: yarn turbo run build
       - name: Check
