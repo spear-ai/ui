@@ -25,7 +25,7 @@
     "turbo": "1.10.12"
   },
   "license": "",
-  "packageManager": "yarn@3.4.1",
+  "packageManager": "yarn@4.1.0",
   "private": true,
   "repository": {
     "type": "git",
@@ -44,8 +44,7 @@
     "root:fix": "yarn root:lint:eslint --fix",
     "root:lint:eslint": "eslint --max-warnings 0 .",
     "root:lint:npm": "npmPkgJsonLint .",
-    "root:lint:prettier": "prettier --check .",
-    "update": "yarn upgrade-interactive"
+    "root:lint:prettier": "prettier --check ."
   },
   "workspaces": [
     "packages/*"

@@ -56,8 +56,7 @@
     "lint:eslint": "eslint --max-warnings 0 .",
     "lint:npm": "npmPkgJsonLint .",
     "lint:prettier": "prettier --check .",
-    "typecheck": "tsc --noEmit",
-    "update": "yarn upgrade-interactive"
+    "typecheck": "tsc --noEmit"
   },
   "types": "./dist/index.d.ts"
 }
