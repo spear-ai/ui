@@ -1,5 +1,27 @@
 # @spear-ai/tailwind-config
 
+## 3.0.0
+
+### Major Changes
+
+- [#102](https://github.com/spear-ai/ui/pull/102) [`da5e417`](https://github.com/spear-ai/ui/commit/da5e41765e2416d557b6c1bfcb82a8fb2f50afb2) Thanks [@psirenny](https://github.com/psirenny)! - Changed Tailwind Config color format from RGB to OKLCH.
+
+- [#96](https://github.com/spear-ai/ui/pull/96) [`c7aadf2`](https://github.com/spear-ai/ui/commit/c7aadf210280bade6306e392971a99b6004ef11d) Thanks [@psirenny](https://github.com/psirenny)! - Updated to Node.js v20.
+
+### Minor Changes
+
+- [#102](https://github.com/spear-ai/ui/pull/102) [`da5e417`](https://github.com/spear-ai/ui/commit/da5e41765e2416d557b6c1bfcb82a8fb2f50afb2) Thanks [@psirenny](https://github.com/psirenny)! - Updated GitHub Actions.
+
+- [#102](https://github.com/spear-ai/ui/pull/102) [`da5e417`](https://github.com/spear-ai/ui/commit/da5e41765e2416d557b6c1bfcb82a8fb2f50afb2) Thanks [@psirenny](https://github.com/psirenny)! - Added support for Radix P3 colors.
+
+### Patch Changes
+
+- [#102](https://github.com/spear-ai/ui/pull/102) [`da5e417`](https://github.com/spear-ai/ui/commit/da5e41765e2416d557b6c1bfcb82a8fb2f50afb2) Thanks [@psirenny](https://github.com/psirenny)! - Updated Node.js dependencies.
+
+- [#103](https://github.com/spear-ai/ui/pull/103) [`5464ab6`](https://github.com/spear-ai/ui/commit/5464ab6b9bacf5eb879f0b1610c9df772f7976ac) Thanks [@psirenny](https://github.com/psirenny)! - Updated Turbo tasks.
+
+- [#97](https://github.com/spear-ai/ui/pull/97) [`2ff74a4`](https://github.com/spear-ai/ui/commit/2ff74a46c2d31dd0867a9106e45462cf8809fe57) Thanks [@psirenny](https://github.com/psirenny)! - Updated to Yarn v4.
+
 ## 2.1.0
 
 ### Minor Changes
