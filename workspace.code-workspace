@@ -14,12 +14,16 @@
   },
   "folders": [
     {
-      "name": "spear-ai/ui",
+      "name": "spear-ai",
       "path": ".",
     },
     {
       "name": "spear-ai/tailwind-config",
       "path": "packages/tailwind-config",
+    },
+    {
+      "name": "spear-ai/ui",
+      "path": "packages/ui",
     },
   ],
   "settings": {

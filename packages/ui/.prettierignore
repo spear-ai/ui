@@ -1,0 +1,13 @@
+!.*
+.benchmark-output.json
+.next
+__generated__
+data
+dist
+example-data
+exported-schema.mjs
+node_modules
+package.json
+schema.graphql
+storybook-static
+public
