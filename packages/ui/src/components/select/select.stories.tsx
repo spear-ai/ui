@@ -72,12 +72,14 @@ const PreviewSelect = (properties: {
                 className="group mt-3 inline-flex h-9 w-full cursor-default items-center justify-between gap-1 rounded-lg bg-white-a-3 pe-2 ps-3.5 text-base leading-none text-neutral-12 shadow outline outline-offset-0 outline-neutral-a-7 data-disabled:pointer-events-none data-disabled:text-neutral-8 data-disabled:outline-neutral-a-6 data-open:outline-neutral-a-8 data-placeholder:text-neutral-9 hover:outline-neutral-a-8 sm:ps-3 sm:text-sm [[data-invalid]_&]:outline-x-negative-a-7 [[data-invalid]_&]:data-disabled:outline-x-negative-a-6 [[data-invalid]_&]:hover:outline-x-negative-a-8"
                 id={sensorFormId}
               >
-                <Select.Value
-                  placeholder={intl.formatMessage({
-                    defaultMessage: "Select a sensor",
-                    id: "W2C6Wt",
-                  })}
-                />
+                <span className="truncate">
+                  <Select.Value
+                    placeholder={intl.formatMessage({
+                      defaultMessage: "Select a sensor",
+                      id: "W2C6Wt",
+                    })}
+                  />
+                </span>
                 <Select.Icon className="text-neutral-11 group-data-disabled:text-neutral-8">
                   <CaretSortIcon className="size-5" />
                 </Select.Icon>
