@@ -7,10 +7,14 @@ import { AppLayout } from "@/app/layout";
 const storybookPreview: Preview = {
   decorators: [
     (Story, context) => {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      const background = (context.globals.backgrounds?.value ?? "canvas-1") as string | null;
+      const layout = (context.parameters.layout ?? "padded") as string;
       const direction = (context.globals.direction ?? "ltr") as "ltr" | "rtl";
+      const product = context.globals.product as string;
 
       return (
-        <AppLayout direction={direction}>
+        <AppLayout background={background} direction={direction} layout={layout} product={product}>
           <Story />
         </AppLayout>
       );
@@ -36,12 +40,17 @@ const storybookPreview: Preview = {
       },
     },
     product: {
-      defaultValue: "forerunner",
+      defaultValue: "underway",
       description: "Spear AI Product",
       toolbar: {
         dynamicTitle: true,
         icon: "lightning",
-        items: ["DFS", "Forerunner", "GalapaGo", "Underway"],
+        items: [
+          { title: "DFS", value: "dfs" },
+          { title: "Forerunner", value: "forerunner" },
+          { title: "GalapaGo", value: "galapago" },
+          { title: "Underway", value: "underway" },
+        ],
         title: "Theme",
       },
     },
@@ -54,8 +63,8 @@ const storybookPreview: Preview = {
         cellSize: 8,
       },
       values: [
-        { name: "canvas-1", value: "hsl(var(--colors-canvas-1) / 1);" },
-        { name: "canvas-2", value: "hsl(var(--colors-canvas-2) / 1);" },
+        { name: "Canvas 1", value: "canvas-1" },
+        { name: "Canvas 2", value: "canvas-2" },
       ],
     },
     controls: {

@@ -10,12 +10,8 @@ const eslintConfig = [
   {
     ignores: [
       "**/.next/*",
-      "**/__generated__/*",
-      "**/coverage/*",
       "**/dist/*",
       "**/public/*",
-      "**/graphql/pothos/__generated__",
-      "**/messages/__generated__",
       "**/storybook-static/*",
       "next-env.d.ts",
     ],

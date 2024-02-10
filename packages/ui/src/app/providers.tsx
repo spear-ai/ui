@@ -2,19 +2,30 @@
 
 import { Provider as RadixDirectionProvider } from "@radix-ui/react-direction";
 import { Provider as RadixTooltipProvider } from "@radix-ui/react-tooltip";
+import { usePreviousDistinct } from "@react-hookz/web";
 import { ThemeProvider } from "next-themes";
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import { IntlProvider, ReactIntlErrorCode } from "react-intl";
-import { messagesByLocale } from "@/messages/messages";
 
-export const AppProviders = (properties: { children: ReactNode; direction: "ltr" | "rtl" }) => {
-  const { children, direction } = properties;
-  const messages = messagesByLocale["en-US"];
+export const AppProviders = (properties: {
+  children: ReactNode;
+  direction: "ltr" | "rtl";
+  product: string;
+}) => {
+  const { children, direction, product } = properties;
+  const previousProduct = usePreviousDistinct(product);
+
+  useEffect(() => {
+    if (previousProduct !== undefined) {
+      document.body.classList.remove(previousProduct);
+    }
+
+    document.body.classList.add(product);
+  }, [previousProduct, product]);
 
   return (
     <IntlProvider
       locale="en-US"
-      messages={messages}
       onError={(error) => {
         if (error.code !== ReactIntlErrorCode.MISSING_TRANSLATION) {
           // We don’t want to translate messages in stories; however, we still
