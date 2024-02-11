@@ -1,4 +1,5 @@
 import "./style.css";
+import "./storybook.css";
 import logoIcon from "@spear-ai/logo/assets/logo-icon.svg";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";

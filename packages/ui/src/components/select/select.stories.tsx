@@ -152,6 +152,9 @@ export const Example: Story = {
     isDisabled: false,
     isSquished: false,
   },
+  parameters: {
+    layout: "centered",
+  },
 };
 
 export default meta;

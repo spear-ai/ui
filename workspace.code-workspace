@@ -79,6 +79,9 @@
       "typescriptreact",
       "yaml",
     ],
+    "files.associations": {
+      "*.css": "tailwindcss",
+    },
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,

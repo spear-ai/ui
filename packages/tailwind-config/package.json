@@ -16,8 +16,8 @@
     "@tailwindcss/typography": "^0.5.10",
     "change-case": "^5.4.2",
     "culori": "^4.0.1",
-    "tailwind-scrollbar": "^3.0.5",
-    "tailwindcss-3d": "^1.0.4",
+    "tailwind-scrollbar": "^3.1.0",
+    "tailwindcss-3d": "^1.0.5",
     "tailwindcss-animate": "^1.0.7",
     "ts-invariant": "^0.10.3",
     "type-fest": "^4.10.2"

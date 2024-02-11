@@ -4332,9 +4332,9 @@ __metadata:
     postcss: "npm:8.4.35"
     prettier: "npm:3.2.5"
     react: "npm:18.2.0"
-    tailwind-scrollbar: "npm:^3.0.5"
+    tailwind-scrollbar: "npm:^3.1.0"
     tailwindcss: "npm:3.4.1"
-    tailwindcss-3d: "npm:^1.0.4"
+    tailwindcss-3d: "npm:^1.0.5"
     tailwindcss-animate: "npm:^1.0.7"
     ts-invariant: "npm:^0.10.3"
     tsup: "npm:8.0.2"
@@ -5448,12 +5448,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/helpers@npm:0.5.3":
-  version: 0.5.3
-  resolution: "@swc/helpers@npm:0.5.3"
+"@swc/helpers@npm:0.5.6":
+  version: 0.5.6
+  resolution: "@swc/helpers@npm:0.5.6"
   dependencies:
     tslib: "npm:^2.4.0"
-  checksum: 10/5ed4329cd36106e4c3c9c9fa710fae5b80521accce697d81030c42798c4653237f719269c24c26adf42579e15e1f720f31cd63983dea30debd298582a6cbd20a
+  checksum: 10/16f0a18367b1248317dcc3e5f32411da1a2906f983f4f072e394dfed37523385bc4d7bf71bab204cc8b3875c024a91421dd5c1f9c5bad1b1172fcb50aa2ec96f
   languageName: node
   linkType: hard
 
@@ -16754,24 +16754,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwind-scrollbar@npm:^3.0.5":
-  version: 3.0.5
-  resolution: "tailwind-scrollbar@npm:3.0.5"
+"tailwind-scrollbar@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "tailwind-scrollbar@npm:3.1.0"
   peerDependencies:
     tailwindcss: 3.x
-  checksum: 10/bc21e2ae3b6f034ea9daf4c8453f3f78b502c9ff2a05a469a8f9801bec99723c966d6534ee450ecb81f661ce0d3708917049d52c1f48e10717678e0e234386e2
+  checksum: 10/c51a4788e72a9113155e2a8c472f45b280da190db999a7fc817f042adef7bc3890c15719f7d18bf34cf4817a414b29f42f622ed20d20658d06f654ad85dee20b
   languageName: node
   linkType: hard
 
-"tailwindcss-3d@npm:^1.0.4":
-  version: 1.0.4
-  resolution: "tailwindcss-3d@npm:1.0.4"
+"tailwindcss-3d@npm:^1.0.5":
+  version: 1.0.5
+  resolution: "tailwindcss-3d@npm:1.0.5"
   dependencies:
-    "@swc/helpers": "npm:0.5.3"
+    "@swc/helpers": "npm:0.5.6"
     lodash: "npm:4.17.21"
   peerDependencies:
     tailwindcss: ">=3.2.0"
-  checksum: 10/42addf5601b10ed1c3c7bf5ca631cf8bf85ee6a6b65dd1b289a44e52562456bf446595c8b882f2f16b8257f434406faf3fe7938dd98c16e63b8b8f1d2e6d8676
+  checksum: 10/246325caa98d32b3a91bfc83bdd8d1f346712779f9266a5eea8f6a94f16a10b16273f1edadcd5b5a30e16298046a1fcb4bce382abe649aa72299b4297a528100
   languageName: node
   linkType: hard
 

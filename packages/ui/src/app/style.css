@@ -4,18 +4,6 @@
 @tailwind screens;
 
 @layer base {
-  :root,
-  body,
-  #storybook-root {
-    height: 100%;
-    width: 100%;
-  }
-
-  body {
-    background: transparent !important;
-    padding: 0 !important;
-  }
-
   * {
     @apply focus-visible:outline outline-1 focus-visible:outline-2 outline-offset-2 focus-visible:outline-primary-7;
   }
