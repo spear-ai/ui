@@ -8,7 +8,7 @@ const storybookPreview: Preview = {
   decorators: [
     (Story, context) => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      const background = (context.globals.backgrounds?.value ?? "canvas-1") as string | null;
+      const background = (context.globals.backgrounds?.value ?? "canvas-2") as string | null;
       const layout = (context.parameters.layout ?? "padded") as string;
       const direction = (context.globals.direction ?? "ltr") as "ltr" | "rtl";
       const product = context.globals.product as string;

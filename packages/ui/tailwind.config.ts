@@ -37,7 +37,7 @@ const tailwindConfig: Config = {
         },
         underway: {
           neutral: "mauve",
-          primary: "indigo",
+          primary: "iris",
         },
       },
     },
