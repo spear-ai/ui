@@ -1,9 +1,23 @@
 import { tailwindConfig as baseTailwindConfig } from "@spear-ai/tailwind-config";
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 const tailwindConfig: Config = {
   ...baseTailwindConfig,
-  safelist: ["group/dfs", "group/forerunner", "group/galapago", "group/underway"],
+  plugins: [
+    ...(baseTailwindConfig.plugins ?? []),
+    plugin(({ matchVariant }) => {
+      matchVariant("theme", (value) => `.theme-${value} &`, {
+        values: {
+          dfs: "dfs",
+          forerunner: "forerunner",
+          galapago: "galapago",
+          underway: "underway",
+        },
+      });
+    }),
+  ],
+  safelist: ["theme-dfs", "theme-forerunner", "theme-galapago", "theme-underway"],
   theme: {
     ...baseTailwindConfig.theme,
     extend: {
