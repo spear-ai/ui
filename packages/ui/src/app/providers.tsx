@@ -17,10 +17,10 @@ export const AppProviders = (properties: {
 
   useEffect(() => {
     if (previousProduct !== undefined) {
-      document.documentElement.classList.remove(`is-product-${previousProduct}`);
+      document.documentElement.classList.remove(`group/${previousProduct}`);
     }
 
-    document.documentElement.classList.add(`is-product-${product}`);
+    document.documentElement.classList.add(`group/${product}`);
   }, [previousProduct, product]);
 
   return (
