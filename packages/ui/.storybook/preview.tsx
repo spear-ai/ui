@@ -57,7 +57,7 @@ const storybookPreview: Preview = {
   },
   parameters: {
     backgrounds: {
-      default: "canvas-1",
+      default: "canvas-2",
       grid: {
         cellAmount: 1,
         cellSize: 8,

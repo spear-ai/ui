@@ -69,7 +69,7 @@ const PreviewSelect = (properties: {
             <Select.Root disabled={isDisabled}>
               <Select.Trigger
                 // eslint-disable-next-line tailwindcss/no-arbitrary-value
-                className="group mt-3 inline-flex h-9 w-full cursor-default items-center justify-between gap-1 rounded-lg bg-white-a-3 pe-2 ps-3.5 text-base leading-none text-neutral-12 shadow outline outline-offset-0 outline-neutral-a-7 data-disabled:pointer-events-none data-disabled:text-neutral-8 data-disabled:outline-neutral-a-6 data-open:outline-neutral-a-8 data-placeholder:text-neutral-9 hover:outline-neutral-a-8 sm:ps-3 sm:text-sm [[data-invalid]_&]:outline-x-negative-a-7 [[data-invalid]_&]:data-disabled:outline-x-negative-a-6 [[data-invalid]_&]:hover:outline-x-negative-a-8"
+                className="group mt-3 inline-flex h-9 w-full cursor-default items-center justify-between gap-1 rounded-lg bg-white-a-3 pe-2 ps-3.5 text-base leading-none text-neutral-12 outline outline-offset-0 outline-neutral-a-7 data-disabled:pointer-events-none data-disabled:text-neutral-8 data-disabled:outline-neutral-a-6 data-open:outline-neutral-a-8 data-placeholder:text-neutral-9 hover:outline-neutral-a-8 product-underway:shadow sm:ps-3 sm:text-sm [[data-invalid]_&]:outline-x-negative-a-7 [[data-invalid]_&]:data-disabled:outline-x-negative-a-6 [[data-invalid]_&]:hover:outline-x-negative-a-8"
                 id={sensorFormId}
               >
                 <span className="truncate">
@@ -86,7 +86,7 @@ const PreviewSelect = (properties: {
               </Select.Trigger>
               <Select.Portal>
                 <Select.Content
-                  className="isolate max-h-select-content-available-height rounded-xl bg-white-a-3 shadow-lg !outline !outline-1 outline-offset-0 !outline-neutral-a-6 product-forerunner:backdrop-blur"
+                  className="max-h-select-content-available-height isolate rounded-xl bg-white-a-3 shadow-lg !outline !outline-1 outline-offset-0 !outline-neutral-a-6 product-forerunner:backdrop-blur"
                   position="popper"
                   sideOffset={8}
                 >
