@@ -32,10 +32,6 @@ const tailwindConfig: Config = {
     ...baseTailwindConfig.theme,
     extend: {
       ...baseTailwindConfig.theme?.extend,
-      spacing: {
-        ...baseTailwindConfig.theme?.extend?.spacing,
-        "select-content-available-height": "var(--radix-select-content-available-height)",
-      },
       themes: {
         dfs: {
           neutral: "sand",
