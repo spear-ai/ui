@@ -79,7 +79,7 @@ export const getColorValue = (options: {
   const value = isAlpha
     ? `${lch?.l ?? 0} ${lch?.c ?? 0} ${lch?.h ?? 0} / ${lch?.alpha ?? 1}`
     : `${lch?.l ?? 0} ${lch?.c ?? 0} ${lch?.h ?? 0}`;
-  return isVariable ? value : `hsl(${value})`;
+  return isVariable ? value : `oklch(${value})`;
 };
 
 export type Colors = Record<string, Record<string, string> | string>;
