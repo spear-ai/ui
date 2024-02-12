@@ -188,7 +188,7 @@ export const radixColorThemePlugin = plugin(
     };
 
     for (const [themeName, themeOptions] of Object.entries(options)) {
-      const themeSelector = themeName === "DEFAULT" ? ":root *" : `.is-product-${themeName}`;
+      const themeSelector = themeName === "DEFAULT" ? "*" : `.is-product-${themeName}`;
 
       rootVariables[themeSelector] = {
         colors: {},
