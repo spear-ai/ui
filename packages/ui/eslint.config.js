@@ -8,13 +8,7 @@ import {
 
 const eslintConfig = [
   {
-    ignores: [
-      "**/.next/*",
-      "**/dist/*",
-      "**/public/*",
-      "**/storybook-static/*",
-      "next-env.d.ts",
-    ],
+    ignores: ["**/.next/*", "**/dist/*", "**/public/*", "**/storybook-static/*", "next-env.d.ts"],
   },
   ...baseEslintConfig,
   ...nextEslintConfig,
