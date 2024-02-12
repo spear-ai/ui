@@ -61,7 +61,7 @@ export const AppLayout = (properties: {
 
   return (
     <div
-      className={`size-full ${backgroundClassName} ${layoutClassName} ${inter.className}`}
+      className={`size-full ${backgroundClassName} ${layoutClassName} ${inter.className} selection:bg-primary-9 selection:text-primary-contrast theme-dfs:selection:bg-black theme-dfs:selection:text-white theme-forerunner:selection:bg-black theme-forerunner:selection:text-white theme-dfs:dark:selection:bg-primary-9 theme-dfs:dark:selection:text-primary-contrast theme-forerunner:dark:selection:bg-white theme-forerunner:dark:selection:text-black`}
       dir={direction}
       lang="en-US"
     >
