@@ -1,15 +1,12 @@
-@tailwind base;
+:root,
+body,
+#storybook-root {
+  height: 100%;
+  width: 100%;
+}
 
-@layer base {
-  :root,
-  body,
-  #storybook-root {
-    height: 100%;
-    width: 100%;
-  }
-
-  body {
-    background: transparent !important;
-    padding: 0 !important;
-  }
+body,
+#storybook-root {
+  background: transparent !important;
+  padding: 0 !important;
 }
