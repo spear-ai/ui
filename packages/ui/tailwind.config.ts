@@ -24,7 +24,9 @@ const tailwindConfig: Config = {
       ...baseTailwindConfig.theme?.extend,
       themes: {
         dfs: {
+          canvas: "orange",
           neutral: "sand",
+          primary: "sand",
         },
         forerunner: {
           primary: "gray",
