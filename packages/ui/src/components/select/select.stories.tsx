@@ -86,7 +86,7 @@ const PreviewSelect = (properties: {
               </Select.Trigger>
               <Select.Portal>
                 <Select.Content
-                  className="isolate max-h-select-content-available-height rounded-xl bg-white-a-3 shadow-lg !outline !outline-1 outline-offset-0 !outline-neutral-a-6 backdrop-blur"
+                  className="isolate max-h-select-content-available-height rounded-xl bg-white-a-3 shadow-lg !outline !outline-1 outline-offset-0 !outline-neutral-a-6 product-forerunner:backdrop-blur"
                   position="popper"
                   sideOffset={8}
                 >
