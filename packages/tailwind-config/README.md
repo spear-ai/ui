@@ -35,12 +35,14 @@ const tailwindConfig: Config = {
     ...baseTailwindConfig?.theme,
     extend: {
       ...baseTailwindConfig?.theme?.extend,
-      theme: {
-        canvas: "grey",
-        neutralDark: "mauve",
-        neutralLight: "slate",
-        primaryDark: "indigo",
-        primaryLight: "blue",
+      themes: {
+        DEFAULT: {
+          canvas: "grey",
+          neutralDark: "mauve",
+          neutralLight: "slate",
+          primaryDark: "indigo",
+          primaryLight: "blue",
+        },
       },
     },
   },
