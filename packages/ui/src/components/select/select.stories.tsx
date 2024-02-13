@@ -69,7 +69,7 @@ const PreviewSelect = (properties: {
             <Select.Root disabled={isDisabled}>
               <Select.Trigger
                 // eslint-disable-next-line tailwindcss/no-arbitrary-value
-                className="group mt-3 inline-flex h-9 w-full cursor-default items-center justify-between gap-1 rounded-lg bg-white-a-3 pe-2 ps-3.5 text-base leading-none text-neutral-12 shadow outline outline-offset-0 outline-neutral-a-7 data-disabled:pointer-events-none data-disabled:text-neutral-a-8 data-open:outline-2 data-open:outline-primary-a-8 data-placeholder:text-neutral-11 focus-visible:outline-primary-a-8 theme-dfs:bg-canvas-1 theme-galapago:bg-white theme-galapago:text-neutral-light-12 theme-galapago:data-disabled:text-neutral-light-7 theme-galapago:data-placeholder:text-neutral-light-9 theme-dfs:dark:bg-white-a-3 theme-forerunner:dark:bg-black-a-3 sm:ps-3 sm:text-sm [[data-invalid]_&]:outline-x-negative-a-7 [[data-invalid]_&]:data-disabled:outline-x-negative-a-6"
+                className="group mt-3 inline-flex h-9 w-full cursor-default items-center justify-between gap-1 rounded-lg bg-white-a-3 pe-2 ps-3.5 text-base leading-none text-neutral-12 shadow outline outline-offset-0 outline-neutral-a-7 data-disabled:pointer-events-none data-disabled:text-neutral-a-8 data-open:outline-2 data-open:outline-primary-a-8 data-placeholder:text-neutral-11 focus-visible:outline-primary-a-8 theme-dfs:bg-canvas-1 theme-galapago:bg-white theme-dfs:dark:bg-white-a-3 theme-forerunner:dark:bg-black-a-3 theme-galapago:dark:bg-black-a-3 sm:ps-3 sm:text-sm [[data-invalid]_&]:outline-x-negative-a-7 [[data-invalid]_&]:data-disabled:outline-x-negative-a-6"
                 id={sensorFormId}
               >
                 <span className="truncate">
@@ -86,7 +86,7 @@ const PreviewSelect = (properties: {
               </Select.Trigger>
               <Select.Portal>
                 <Select.Content
-                  className="isolate max-h-select-content-available-height rounded-xl bg-canvas-1 shadow-lg !outline !outline-1 outline-offset-0 !outline-neutral-a-6 backdrop-blur theme-forerunner:bg-white-a-3 theme-galapago:bg-white theme-galapago:data-placeholder:text-neutral-light-11 theme-underway:shadow-2xl"
+                  className="isolate max-h-select-content-available-height rounded-xl bg-canvas-1 shadow-lg !outline !outline-1 outline-offset-0 !outline-neutral-a-6 backdrop-blur theme-forerunner:bg-white-a-3 theme-galapago:bg-white theme-underway:shadow-2xl theme-galapago:dark:bg-black-a-3"
                   position="popper"
                   sideOffset={8}
                 >
@@ -95,7 +95,7 @@ const PreviewSelect = (properties: {
                   </Select.ScrollUpButton>
                   <Select.Viewport className="p-1">
                     <Select.Item
-                      className="cursor-default select-none rounded-lg py-2.5 pe-5 ps-2 text-base leading-none text-neutral-11 outline-none data-highlighted:bg-primary-9 data-highlighted:text-neutral-contrast data-highlighted:outline-none theme-galapago:text-neutral-light-9 theme-galapago:data-highlighted:bg-primary-light-9 theme-galapago:data-highlighted:text-neutral-light-contrast sm:py-1.5 sm:text-sm"
+                      className="cursor-default select-none rounded-lg py-2.5 pe-5 ps-2 text-base leading-none text-neutral-11 outline-none data-highlighted:bg-primary-9 data-highlighted:text-neutral-contrast data-highlighted:outline-none sm:py-1.5 sm:text-sm"
                       value="0"
                     >
                       {intl.formatMessage({
@@ -105,7 +105,7 @@ const PreviewSelect = (properties: {
                     </Select.Item>
                     {sensorList.map((sensor) => (
                       <Select.Item
-                        className="relative cursor-default select-none rounded-lg py-2.5 pe-5 ps-2 text-base leading-none text-neutral-12 data-highlighted:bg-primary-9 data-highlighted:text-neutral-contrast data-highlighted:outline-none theme-galapago:text-neutral-light-12 theme-galapago:data-highlighted:bg-primary-light-9 theme-galapago:data-highlighted:text-neutral-light-contrast sm:py-1.5 sm:text-sm"
+                        className="relative cursor-default select-none rounded-lg py-2.5 pe-5 ps-2 text-base leading-none text-neutral-12 data-highlighted:bg-primary-9 data-highlighted:text-neutral-contrast data-highlighted:outline-none sm:py-1.5 sm:text-sm"
                         key={sensor.id}
                         value={sensor.id}
                       >

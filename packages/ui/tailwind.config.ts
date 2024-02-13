@@ -33,7 +33,8 @@ const tailwindConfig: Config = {
         },
         galapago: {
           canvas: "gray",
-          primary: "blue",
+          primaryDark: "green",
+          primaryLight: "blue",
         },
         underway: {
           neutral: "mauve",
