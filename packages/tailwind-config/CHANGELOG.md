@@ -1,5 +1,27 @@
 # @spear-ai/tailwind-config
 
+## 4.0.0
+
+### Major Changes
+
+- [#108](https://github.com/spear-ai/ui/pull/108) [`c028b47`](https://github.com/spear-ai/ui/commit/c028b47045f379061538f105351a902f543d0ee7) Thanks [@psirenny](https://github.com/psirenny)! - Refactored Tailwind Theme plugin to take a collection of themes. This is a breaking change. To update, pass in a dictionary. e.g. `themes: { DEFAULT: {} }`.
+
+### Minor Changes
+
+- [#112](https://github.com/spear-ai/ui/pull/112) [`b3d4071`](https://github.com/spear-ai/ui/commit/b3d40710f137f4e23945d0f63cfc7fe06b61d722) Thanks [@psirenny](https://github.com/psirenny)! - Revert group theme selector to `theme-` selector.
+
+- [#109](https://github.com/spear-ai/ui/pull/109) [`b86ff35`](https://github.com/spear-ai/ui/commit/b86ff35b0c457870bbc0275872bd74d65169e7d8) Thanks [@psirenny](https://github.com/psirenny)! - Added support for Radix UI spacing variables.
+
+- [#111](https://github.com/spear-ai/ui/pull/111) [`37fc0e7`](https://github.com/spear-ai/ui/commit/37fc0e7791fd34e0536262455e1a6dc1bc11373c) Thanks [@psirenny](https://github.com/psirenny)! - Use named groups for themes.
+
+### Patch Changes
+
+- [#107](https://github.com/spear-ai/ui/pull/107) [`5697d15`](https://github.com/spear-ai/ui/commit/5697d1538541fee997aa233f3d199c7992790c65) Thanks [@psirenny](https://github.com/psirenny)! - Ensure Yarn install is immutable.
+
+- [#110](https://github.com/spear-ai/ui/pull/110) [`82eec2e`](https://github.com/spear-ai/ui/commit/82eec2ed59ea64b488ab922a15a63a717e53d2e3) Thanks [@psirenny](https://github.com/psirenny)! - Fixed color formatted as HSL instead of OKLCH.
+
+- [#105](https://github.com/spear-ai/ui/pull/105) [`ba38dc7`](https://github.com/spear-ai/ui/commit/ba38dc73198da9a253adde38ccaa328502f5a830) Thanks [@psirenny](https://github.com/psirenny)! - Removed Yarn zero-installs.
+
 ## 3.0.0
 
 ### Major Changes
