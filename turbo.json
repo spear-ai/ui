@@ -95,6 +95,11 @@
       "cache": false,
       "dependsOn": ["^build"]
     },
+    "storybook:build": {
+      "dependsOn": ["^build"],
+      "dotEnv": [".env", ".env.local", ".env.production", ".env.production.local"],
+      "outputs": ["storybook-static/**"]
+    },
     "typescript:check": {
       "dependsOn": ["^build"],
       "inputs": ["**/*.cjs", "**/*.js", "**/*.json", "**/*.mjs", "**/*.ts", "**/*.tsx", "tsconfig.json"]
