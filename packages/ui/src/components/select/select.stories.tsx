@@ -86,14 +86,14 @@ const PreviewSelect = (properties: {
               </Select.Trigger>
               <Select.Portal>
                 <Select.Content
-                  className="isolate max-h-select-content-available-height rounded-xl bg-canvas-1 shadow-lg !outline !outline-1 outline-offset-0 !outline-neutral-a-6 backdrop-blur theme-forerunner:bg-white-a-3 theme-galapago:bg-white theme-underway:shadow-2xl theme-galapago:dark:bg-black-a-3"
+                  className="isolate max-h-select-content-available-height rounded-xl bg-canvas-1 shadow-lg !outline !outline-1 outline-offset-0 !outline-neutral-a-6 backdrop-blur data-closed:duration-1000 data-closed:animate-out data-closed:fade-out data-closed:zoom-out-95 data-open:animate-in data-open:fade-in data-side-bottom:slide-in-from-top-2 data-side-left:slide-in-from-right-2 data-side-right:slide-in-from-left-2 data-side-top:slide-in-from-bottom-2 theme-forerunner:bg-white-a-3 theme-galapago:bg-white theme-underway:shadow-2xl theme-galapago:dark:bg-black-a-3"
                   position="popper"
                   sideOffset={8}
                 >
                   <Select.ScrollUpButton className="flex h-6 cursor-default items-center justify-center rounded-t-xl text-neutral-11">
                     <ChevronUpIcon />
                   </Select.ScrollUpButton>
-                  <Select.Viewport className="p-1">
+                  <Select.Viewport className="h-select-trigger-height w-full min-w-select-trigger-width p-1">
                     <Select.Item
                       className="cursor-default select-none rounded-lg py-2.5 pe-5 ps-2 text-base leading-none text-neutral-11 outline-none data-highlighted:bg-primary-9 data-highlighted:text-neutral-contrast data-highlighted:outline-none sm:py-1.5 sm:text-sm"
                       value="0"
