@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "yarn workspace @spear-ai/ui run storybook:build",
+  "buildCommand": "yarn turbo run build && yarn workspace @spear-ai/ui run storybook:build",
   "devCommand": "yarn workspace @spear-ai/ui run storybook:dev",
   "installCommand": "yarn install",
   "outputDirectory": "packages/ui/storybook-static"
