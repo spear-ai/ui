@@ -1,0 +1,11 @@
+{
+  "extends": "@spear-ai/npm-package-json-lint-config/spear-application",
+  "rules": {
+    "prefer-absolute-version-devDependencies": [
+      "error",
+      {
+        "exceptions": ["@spear-ai/tailwind-config"]
+      }
+    ]
+  }
+}
