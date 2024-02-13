@@ -10,3 +10,12 @@
   </p>
 </div>
 <!-- markdownlint-restore MD033 MD041 -->
+
+# Installation
+
+`yarn install`
+
+# Usage
+
+`yarn turbo run build`
+`yarn turbo run dev`
