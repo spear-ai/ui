@@ -95,7 +95,7 @@ const PreviewSelect = (properties: {
                   </Select.ScrollUpButton>
                   <Select.Viewport className="h-select-trigger-height w-full min-w-select-trigger-width p-1">
                     <Select.Item
-                      className="cursor-default select-none rounded-lg py-2.5 pe-5 ps-2 text-base leading-none text-neutral-11 outline-none data-highlighted:bg-primary-5 data-highlighted:outline-none sm:py-1.5 sm:text-sm"
+                      className="cursor-default select-none rounded-lg py-2.5 pe-5 ps-2 text-base leading-none text-neutral-11 outline-none data-highlighted:bg-primary-5 data-highlighted:outline-none hover:bg-primary-4 sm:py-1.5 sm:text-sm"
                       value="0"
                     >
                       {intl.formatMessage({
@@ -105,7 +105,7 @@ const PreviewSelect = (properties: {
                     </Select.Item>
                     {sensorList.map((sensor) => (
                       <Select.Item
-                        className="relative cursor-default select-none rounded-lg py-2.5 pe-5 ps-2 text-base leading-none text-neutral-12 data-highlighted:bg-primary-5 data-highlighted:outline-none sm:py-1.5 sm:text-sm"
+                        className="relative cursor-default select-none rounded-lg py-2.5 pe-5 ps-2 text-base leading-none text-neutral-12 data-highlighted:bg-primary-5 data-highlighted:outline-none hover:bg-primary-4 sm:py-1.5 sm:text-sm"
                         key={sensor.id}
                         value={sensor.id}
                       >
