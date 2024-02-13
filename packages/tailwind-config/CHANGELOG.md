@@ -1,5 +1,11 @@
 # @spear-ai/tailwind-config
 
+## 4.0.1
+
+### Patch Changes
+
+- [#117](https://github.com/spear-ai/ui/pull/117) [`1bc62e1`](https://github.com/spear-ai/ui/commit/1bc62e12e3df8599f461df5ea7c1c7a04b22e52d) Thanks [@psirenny](https://github.com/psirenny)! - Fixed README usage instructions.
+
 ## 4.0.0
 
 ### Major Changes
