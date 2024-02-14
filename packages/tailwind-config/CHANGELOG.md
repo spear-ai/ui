@@ -1,5 +1,13 @@
 # @spear-ai/tailwind-config
 
+## 4.0.2
+
+### Patch Changes
+
+- [#119](https://github.com/spear-ai/ui/pull/119) [`9a046d8`](https://github.com/spear-ai/ui/commit/9a046d8779a34c0b7e0f4dfbce95946f821193bf) Thanks [@psirenny](https://github.com/psirenny)! - Increased fetch depth of Release GitHub Action workflow.
+
+- [#120](https://github.com/spear-ai/ui/pull/120) [`5bdd326`](https://github.com/spear-ai/ui/commit/5bdd32620b42e26e920436bcecce4667b98375b3) Thanks [@psirenny](https://github.com/psirenny)! - Revert changelog repository rename.
+
 ## 4.0.1
 
 ### Patch Changes
