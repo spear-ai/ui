@@ -1,8 +1,8 @@
 {
-  "$schema": "https://unpkg.com/@changesets/config@2.2.0/schema.json",
+  "$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
   "access": "public",
   "baseBranch": "main",
-  "changelog": ["@changesets/changelog-github", { "repo": "spear-ai/ui" }],
+  "changelog": ["@changesets/changelog-github", { "repo": "spear-ai/ui-monorepo" }],
   "commit": false,
   "fixed": [],
   "ignore": [],
