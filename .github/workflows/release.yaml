@@ -18,6 +18,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4.1.1
+        with:
+          fetch-depth: 0
       - name: Setup Node.js
         uses: actions/setup-node@v4.0.2
         with:
@@ -45,3 +47,4 @@ jobs:
           title: Release 🚀
           version: yarn run version
           commit: Release 🚀
+          publish: yarn run publish-packages
