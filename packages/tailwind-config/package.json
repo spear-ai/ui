@@ -47,7 +47,7 @@
   },
   "repository": {
     "type": "git",
-    "directory": "packages/eslint-config",
+    "directory": "packages/tailwind-config",
     "url": "https://github.com/spear-ai/ui.git"
   },
   "scripts": {
