@@ -73,8 +73,7 @@ const createFetchResponse = (options: {
 
 export type RelayEnvironment = Environment & {
   options: {
-    /** The max amount of time to keep an entity Relay’s cache. */
-    /** The maximum time to keep entities inside Relay’s cache. */
+    /** The most recent fetch latency metrics. */
     recentFetchLatencyList: number[];
   };
 };
