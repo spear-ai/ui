@@ -174,7 +174,7 @@ for (const themeColorName of themeColorNameList) {
 
 export const radixColorThemePlugin = plugin(
   ({ addComponents, config, theme }) => {
-    const options: RadixColorThemePluginOptions = theme("themes", {});
+    const options: RadixColorThemePluginOptions = theme("themes", { DEFAULT: {} });
     const rootVariables: Record<string, Variables> = {};
     const lightVariables: Record<string, Variables> = {};
     const darkVariables: Record<string, Variables> = {};
