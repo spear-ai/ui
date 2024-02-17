@@ -10,7 +10,7 @@ import {
   Variables,
 } from "relay-runtime";
 
-export const networkFetch = async (
+const networkFetch = async (
   request: RequestParameters,
   variables: Variables,
   apiUrl: string,
@@ -34,9 +34,10 @@ const createFetchResponse = (options: {
   apiUrl: string;
   cacheSize: number;
   cacheTtl: number;
+  latencyRetentionCount: number;
   recentFetchLatencyList: number[];
 }) => {
-  const { apiUrl, cacheSize, cacheTtl, recentFetchLatencyList } = options;
+  const { apiUrl, cacheSize, cacheTtl, latencyRetentionCount, recentFetchLatencyList } = options;
 
   const responseCache: QueryResponseCache = new QueryResponseCache({
     size: cacheSize,
@@ -59,8 +60,10 @@ const createFetchResponse = (options: {
     const fetchStart = performance.now();
     const fetchResult = await networkFetch(parameters, variables, apiUrl);
     const fetchEnd = performance.now();
+
     recentFetchLatencyList.push(fetchEnd - fetchStart);
-    if (recentFetchLatencyList.length > 100) {
+
+    if (recentFetchLatencyList.length > latencyRetentionCount) {
       recentFetchLatencyList.shift();
     }
 
@@ -70,21 +73,36 @@ const createFetchResponse = (options: {
 
 export type RelayEnvironment = Environment & {
   options: {
+    /** The max amount of time to keep an entity Relay’s cache. */
+    /** The maximum time to keep entities inside Relay’s cache. */
     recentFetchLatencyList: number[];
   };
 };
 
 export const createEnvironment = (options: {
+  /** The GraphQL API URL. */
   apiUrl: string;
+  /** The maximum number of entities to keep inside Relay’s cache. */
   cacheSize?: number | undefined;
+  /** The maximum time to keep entities inside Relay’s cache. */
   cacheTtl?: number | undefined;
+  /** The maximum number of latency metrics to retain. */
+  latencyRetentionCount?: number | undefined;
 }): RelayEnvironment => {
-  const { apiUrl, cacheSize = 100, cacheTtl = 5000 } = options;
+  const { apiUrl, cacheSize = 100, cacheTtl = 5000, latencyRetentionCount = 100 } = options;
   const recentFetchLatencyList: number[] = [];
 
   return new Environment({
     isServer: false,
-    network: Network.create(createFetchResponse({ apiUrl, cacheSize, cacheTtl, recentFetchLatencyList })),
+    network: Network.create(
+      createFetchResponse({
+        apiUrl,
+        cacheSize,
+        cacheTtl,
+        latencyRetentionCount,
+        recentFetchLatencyList,
+      }),
+    ),
     options: { recentFetchLatencyList },
     store: new Store(RecordSource.create()),
   }) as RelayEnvironment;
