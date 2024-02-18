@@ -30,13 +30,13 @@ const sensorList = [
 ];
 
 const PreviewSelect = (properties: {
-  hasDescription: boolean;
   hasError: boolean;
   hasLabel: boolean;
+  hasLabelDescription: boolean;
   isDisabled: boolean;
   isSquished: boolean;
 }) => {
-  const { hasDescription, hasError, hasLabel, isDisabled, isSquished } = properties;
+  const { hasError, hasLabel, hasLabelDescription, isDisabled, isSquished } = properties;
   const intl = useIntl();
   const sensorFormId = useId();
 
@@ -56,7 +56,7 @@ const PreviewSelect = (properties: {
               })}
             </Label>
           ) : null}
-          {hasLabel && hasDescription ? (
+          {hasLabel && hasLabelDescription ? (
             // eslint-disable-next-line tailwindcss/no-arbitrary-value
             <p className="mt-1 text-base/6 text-neutral-11 group-has-[[data-disabled]]:text-neutral-9 sm:text-sm/6">
               {intl.formatMessage({
@@ -146,9 +146,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Example: Story = {
   args: {
-    hasDescription: true,
     hasError: false,
     hasLabel: true,
+    hasLabelDescription: true,
     isDisabled: false,
     isSquished: false,
   },
