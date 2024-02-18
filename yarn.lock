@@ -5783,7 +5783,7 @@ __metadata:
     tailwindcss: "npm:3.4.1"
     tailwindcss-3d: "npm:^1.0.5"
     tailwindcss-animate: "npm:^1.0.7"
-    tailwindcss-react-aria-components: "npm:1.1.1"
+    tailwindcss-react-aria-components: "npm:^1.1.1"
     ts-invariant: "npm:^0.10.3"
     tsup: "npm:8.0.2"
     type-fest: "npm:^4.10.2"
@@ -18372,7 +18372,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss-react-aria-components@npm:1.1.1":
+"tailwindcss-react-aria-components@npm:1.1.1, tailwindcss-react-aria-components@npm:^1.1.1":
   version: 1.1.1
   resolution: "tailwindcss-react-aria-components@npm:1.1.1"
   peerDependencies:
