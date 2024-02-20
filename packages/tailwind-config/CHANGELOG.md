@@ -1,5 +1,11 @@
 # @spear-ai/tailwind-config
 
+## 4.1.0
+
+### Minor Changes
+
+- [#122](https://github.com/spear-ai/ui/pull/122) [`292aad6`](https://github.com/spear-ai/ui/commit/292aad6113376e9706fc95b4d265d71f2eb8a9ed) Thanks [@psirenny](https://github.com/psirenny)! - Improved default value for Tailwind Color Theme plugin.
+
 ## 4.0.2
 
 ### Patch Changes
