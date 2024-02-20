@@ -1,0 +1,50 @@
+{
+  "name": "@spear-ai/relay-environment",
+  "version": "1.0.0",
+  "description": "Spear AI Relay Environment",
+  "author": {
+    "name": "Spear AI",
+    "email": "org@spear.ai",
+    "url": "https://spear.ai"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@spear-ai/eslint-config": "17.1.0",
+    "@spear-ai/npm-package-json-lint-config": "3.1.0",
+    "@spear-ai/prettier-config": "2.1.0",
+    "@types/relay-runtime": "14.1.23",
+    "autoprefixer": "10.4.17",
+    "eslint": "8.56.0",
+    "graphql": "16.8.1",
+    "npm-package-json-lint": "7.1.0",
+    "prettier": "3.2.5",
+    "react": "18.2.0",
+    "react-relay": "16.2.0",
+    "relay-runtime": "16.2.0",
+    "tailwindcss": "3.4.1",
+    "tsup": "8.0.2",
+    "typescript": "5.3.3"
+  },
+  "license": "MIT",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "peerDependencies": {
+    "relay-runtime": "^16.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "directory": "packages/relay-environment",
+    "url": "https://github.com/spear-ai/ui.git"
+  },
+  "scripts": {
+    "build": "tsup src --clean --dts --format cjs,esm",
+    "dev": "yarn run build --watch",
+    "eslint:check": "eslint --max-warnings 0 .",
+    "eslint:fix": "yarn eslint:check --fix",
+    "npmpkgjsonlint:check": "npmPkgJsonLint .",
+    "prettier:check": "prettier --check .",
+    "prettier:fix": "prettier --write .",
+    "typescript:check": "tsc --noEmit"
+  },
+  "types": "./dist/index.d.ts"
+}
