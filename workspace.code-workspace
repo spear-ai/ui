@@ -18,6 +18,10 @@
       "path": ".",
     },
     {
+      "name": "spear-ai/relay-environment",
+      "path": "packages/relay-environment",
+    },
+    {
       "name": "spear-ai/tailwind-config",
       "path": "packages/tailwind-config",
     },
