@@ -93,14 +93,14 @@ const PreviewSelect = (properties: {
               })}
             </p>
           ) : null}
-          <Button className="group mt-3 inline-flex h-9 w-full cursor-default select-none items-center justify-between gap-1 rounded-lg border border-transparent bg-white-a-3 pe-2 ps-3.5 text-base leading-none shadow outline outline-offset-0 outline-neutral-a-7 entering:outline-2 entering:outline-primary-a-8 group-invalid:outline-x-negative-a-7 focus-visible:outline-primary-a-8 group-disabled:pointer-events-none group-invalid:group-disabled:outline-x-negative-a-6 theme-dfs:bg-canvas-1 theme-galapago:bg-white theme-dfs:dark:bg-white-a-3 theme-forerunner:dark:bg-black-a-3 theme-galapago:dark:bg-black-a-3 sm:ps-3 sm:text-sm">
+          <Button className="group mt-2 inline-flex h-9 w-full cursor-default select-none items-center justify-between gap-1 rounded-lg border border-transparent bg-white-a-3 pe-2 ps-3.5 text-base leading-none shadow outline outline-offset-0 outline-neutral-a-7 entering:outline-2 entering:outline-primary-a-8 group-invalid:outline-x-negative-a-7 focus-visible:outline-primary-a-8 group-disabled:pointer-events-none group-invalid:group-disabled:outline-x-negative-a-6 theme-dfs:bg-canvas-1 theme-galapago:bg-white theme-dfs:dark:bg-white-a-3 theme-forerunner:dark:bg-black-a-3 theme-galapago:dark:bg-black-a-3 sm:ps-3 sm:text-sm">
             <SelectValue className="truncate text-neutral-12 placeholder-shown:text-neutral-11 group-disabled:text-neutral-a-8" />
             <span aria-hidden className="text-neutral-11 group-disabled:text-neutral-8">
               <CaretSortIcon className="size-5" />
             </span>
           </Button>
           {hasError ? (
-            <FieldError className="mt-3 block text-base/6 text-x-negative-11 group-disabled:opacity-50 sm:text-sm/6">
+            <FieldError className="mt-2 block text-base/6 text-x-negative-11 group-disabled:opacity-50 sm:text-sm/6">
               {intl.formatMessage({
                 defaultMessage: "Sensor is invalid.",
                 id: "JsiKrm",
