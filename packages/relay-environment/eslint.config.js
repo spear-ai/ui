@@ -7,6 +7,18 @@ const eslintConfig = [
   },
   ...baseEslintConfig,
   prettierConfig,
+  {
+    files: [
+      "**/*.md/**/*.cjs",
+      "**/*.md/**/*.js",
+      "**/*.md/**/*.jsx",
+      "**/*.md/**/*.ts",
+      "**/*.md/**/*.tsx",
+    ],
+    rules: {
+      "import/no-unresolved": ["off"],
+    },
+  },
 ];
 
 export default eslintConfig;
