@@ -1,9 +1,18 @@
-import * as Form from "@radix-ui/react-form";
-import { CaretSortIcon, CheckIcon, ChevronDownIcon, ChevronUpIcon } from "@radix-ui/react-icons";
-import { Label } from "@radix-ui/react-label";
-import * as Select from "@radix-ui/react-select";
+import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
+import { useControlledState } from "@react-stately/utils";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useId } from "react";
+import {
+  Button,
+  FieldError,
+  Form,
+  Label,
+  ListBox,
+  ListBoxItem,
+  Popover,
+  Select,
+  SelectValue,
+} from "react-aria-components";
 import { useIntl } from "react-intl";
 
 const sensorList = [
@@ -30,24 +39,44 @@ const sensorList = [
 ];
 
 const PreviewSelect = (properties: {
-  hasDescription: boolean;
   hasError: boolean;
   hasLabel: boolean;
+  hasLabelDescription: boolean;
+  isAlwaysOpen: boolean;
   isDisabled: boolean;
+  isOptional: boolean;
   isSquished: boolean;
 }) => {
-  const { hasDescription, hasError, hasLabel, isDisabled, isSquished } = properties;
+  const { hasError, hasLabel, hasLabelDescription, isAlwaysOpen, isDisabled, isOptional, isSquished } =
+    properties;
   const intl = useIntl();
   const sensorFormId = useId();
+  const [value, setValue] = useControlledState<string | null>(undefined, null);
 
   return (
     <div className={`w-full ${isSquished ? "max-w-36" : "max-w-xs"}`}>
-      <Form.Root className="relative w-full">
-        <Form.Field className="group" name="sensor" serverInvalid={hasError}>
+      <Form className="relative w-full">
+        <Select
+          className="group w-full focus:outline-none"
+          isDisabled={isDisabled}
+          isInvalid={hasError}
+          isOpen={isAlwaysOpen ? true : undefined}
+          onSelectionChange={
+            isOptional
+              ? (key) => {
+                  setValue(key === "" ? null : `${key}`);
+                }
+              : undefined
+          }
+          placeholder={intl.formatMessage({
+            defaultMessage: "Select a sensor",
+            id: "W2C6Wt",
+          })}
+          selectedKey={isOptional ? value : undefined}
+        >
           {hasLabel ? (
             <Label
-              // eslint-disable-next-line tailwindcss/no-arbitrary-value
-              className="block select-none text-base/6 text-neutral-12 group-has-[[data-disabled]]:text-neutral-11 sm:text-sm/6"
+              className="block select-none text-base/6 text-neutral-12 group-disabled:text-neutral-11 sm:text-sm/6"
               htmlFor={sensorFormId}
             >
               {intl.formatMessage({
@@ -56,84 +85,56 @@ const PreviewSelect = (properties: {
               })}
             </Label>
           ) : null}
-          {hasLabel && hasDescription ? (
-            // eslint-disable-next-line tailwindcss/no-arbitrary-value
-            <p className="mt-1 text-base/6 text-neutral-11 group-has-[[data-disabled]]:text-neutral-9 sm:text-sm/6">
+          {hasLabel && hasLabelDescription ? (
+            <p className="mt-1 text-base/6 text-neutral-11 group-disabled:text-neutral-9 sm:text-sm/6">
               {intl.formatMessage({
                 defaultMessage: "A mechanical device sensitive to sound.",
                 id: "2YVoI/",
               })}
             </p>
           ) : null}
-          <Form.Control asChild>
-            <Select.Root disabled={isDisabled}>
-              <Select.Trigger
-                // eslint-disable-next-line tailwindcss/no-arbitrary-value
-                className="group mt-3 inline-flex h-9 w-full cursor-default items-center justify-between gap-1 rounded-lg bg-white-a-3 pe-2 ps-3.5 text-base leading-none text-neutral-12 shadow outline outline-offset-0 outline-neutral-a-7 data-disabled:pointer-events-none data-disabled:text-neutral-a-8 data-open:outline-2 data-open:outline-primary-a-8 data-placeholder:text-neutral-11 focus-visible:outline-primary-a-8 theme-dfs:bg-canvas-1 theme-galapago:bg-white theme-dfs:dark:bg-white-a-3 theme-forerunner:dark:bg-black-a-3 theme-galapago:dark:bg-black-a-3 sm:ps-3 sm:text-sm [[data-invalid]_&]:outline-x-negative-a-7 [[data-invalid]_&]:data-disabled:outline-x-negative-a-6"
-                id={sensorFormId}
-              >
-                <span className="truncate">
-                  <Select.Value
-                    placeholder={intl.formatMessage({
-                      defaultMessage: "Select a sensor",
-                      id: "W2C6Wt",
-                    })}
-                  />
-                </span>
-                <Select.Icon className="text-neutral-11 group-data-disabled:text-neutral-8">
-                  <CaretSortIcon className="size-5" />
-                </Select.Icon>
-              </Select.Trigger>
-              <Select.Portal>
-                <Select.Content
-                  className="isolate max-h-select-content-available-height rounded-xl bg-canvas-1 shadow-lg !outline !outline-1 outline-offset-0 !outline-neutral-a-6 backdrop-blur data-closed:duration-1000 data-closed:animate-out data-closed:fade-out data-closed:zoom-out-95 data-open:animate-in data-open:fade-in data-side-bottom:slide-in-from-top-2 data-side-left:slide-in-from-right-2 data-side-right:slide-in-from-left-2 data-side-top:slide-in-from-bottom-2 theme-forerunner:bg-white-a-3 theme-galapago:bg-white theme-underway:shadow-2xl theme-galapago:dark:bg-black-a-3"
-                  position="popper"
-                  sideOffset={8}
-                >
-                  <Select.ScrollUpButton className="flex h-6 cursor-default items-center justify-center rounded-t-xl text-neutral-11">
-                    <ChevronUpIcon />
-                  </Select.ScrollUpButton>
-                  <Select.Viewport className="h-select-trigger-height w-full min-w-select-trigger-width p-1">
-                    <Select.Item
-                      className="cursor-default select-none rounded-lg py-2.5 pe-5 ps-2 text-base leading-none text-neutral-11 outline-none data-highlighted:bg-primary-5 data-highlighted:outline-none hover:bg-primary-4 sm:py-1.5 sm:text-sm"
-                      value="0"
-                    >
-                      {intl.formatMessage({
-                        defaultMessage: "None",
-                        id: "450Fty",
-                      })}
-                    </Select.Item>
-                    {sensorList.map((sensor) => (
-                      <Select.Item
-                        className="relative cursor-default select-none rounded-lg py-2.5 pe-5 ps-2 text-base leading-none text-neutral-12 data-highlighted:bg-primary-5 data-highlighted:outline-none hover:bg-primary-4 sm:py-1.5 sm:text-sm"
-                        key={sensor.id}
-                        value={sensor.id}
-                      >
-                        <Select.ItemText>{sensor.name}</Select.ItemText>
-                        <Select.ItemIndicator className="absolute top-2 inline-flex size-4 items-center justify-center ltr:right-1 rtl:left-1">
-                          <CheckIcon className="size-4" />
-                        </Select.ItemIndicator>
-                      </Select.Item>
-                    ))}
-                  </Select.Viewport>
-                  <Select.ScrollDownButton className="flex h-6 cursor-default items-center justify-center rounded-b-xl text-neutral-11">
-                    <ChevronDownIcon />
-                  </Select.ScrollDownButton>
-                </Select.Content>
-              </Select.Portal>
-            </Select.Root>
-          </Form.Control>
+          <Button className="group mt-2 inline-flex h-9 w-full cursor-default select-none items-center justify-between gap-1 rounded-lg border border-transparent bg-white-a-3 pe-2 ps-3.5 text-base leading-none shadow outline outline-offset-0 outline-neutral-a-7 entering:outline-2 entering:outline-primary-a-8 group-invalid:outline-x-negative-a-7 group-disabled:pointer-events-none group-invalid:group-disabled:outline-x-negative-a-6 focus-visible:outline-primary-a-8 theme-dfs:bg-canvas-1 theme-galapago:bg-white theme-dfs:dark:bg-white-a-3 theme-forerunner:dark:bg-black-a-3 theme-galapago:dark:bg-black-a-3 sm:ps-3 sm:text-sm">
+            <SelectValue className="truncate text-neutral-12 placeholder-shown:text-neutral-11 group-disabled:text-neutral-a-8" />
+            <span aria-hidden className="text-neutral-11 group-disabled:text-neutral-8">
+              <CaretSortIcon className="size-5" />
+            </span>
+          </Button>
           {hasError ? (
-            // eslint-disable-next-line tailwindcss/no-arbitrary-value
-            <Form.Message className="mt-3 block text-base/6 text-x-negative-11 group-has-[[data-disabled]]:opacity-50 sm:text-sm/6">
+            <FieldError className="mt-2 block text-base/6 text-x-negative-11 group-disabled:opacity-50 sm:text-sm/6">
               {intl.formatMessage({
                 defaultMessage: "Sensor is invalid.",
                 id: "JsiKrm",
               })}
-            </Form.Message>
+            </FieldError>
           ) : null}
-        </Form.Field>
-      </Form.Root>
+          <Popover className="isolate min-w-select-trigger-width overflow-auto rounded-xl border-transparent bg-canvas-1 p-1 shadow-lg outline outline-1 outline-offset-0 outline-neutral-a-6 backdrop-blur placement-left:slide-in-from-right-2 placement-right:slide-in-from-left-2 placement-top:slide-in-from-bottom-2 placement-bottom:slide-in-from-top-2 entering:duration-100 entering:animate-in entering:fade-in exiting:duration-75 exiting:animate-out exiting:fade-out exiting:zoom-out-95 theme-forerunner:bg-white-a-3 theme-galapago:bg-white theme-underway:shadow-2xl theme-galapago:dark:bg-black-a-3">
+            <ListBox className="outline-none">
+              <ListBoxItem
+                className="cursor-default select-none rounded-lg py-2.5 pe-5 ps-2 text-base leading-none text-neutral-11 outline-none hover:bg-primary-4 focus:bg-primary-5 focus:outline-none sm:py-1.5 sm:text-sm"
+                id=""
+              >
+                {intl.formatMessage({
+                  defaultMessage: "No sensor",
+                  id: "W2b7y5",
+                })}
+              </ListBoxItem>
+              {sensorList.map((sensor) => (
+                <ListBoxItem
+                  className="group/item relative cursor-default select-none rounded-lg py-2.5 pe-7 ps-2 text-base leading-none text-neutral-12 outline-none hover:bg-primary-4 focus:bg-primary-5 sm:py-1.5 sm:text-sm rtl:text-right"
+                  id={sensor.id}
+                  key={sensor.id}
+                  textValue={sensor.name}
+                >
+                  <span>{sensor.name}</span>
+                  <span className="absolute end-1.5 top-2 inline-flex size-4 items-center justify-center opacity-0 group-selected/item:opacity-100">
+                    <CheckIcon className="size-4" />
+                  </span>
+                </ListBoxItem>
+              ))}
+            </ListBox>
+          </Popover>
+        </Select>
+      </Form>
     </div>
   );
 };
@@ -146,10 +147,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Example: Story = {
   args: {
-    hasDescription: true,
     hasError: false,
     hasLabel: true,
+    hasLabelDescription: true,
+    isAlwaysOpen: false,
     isDisabled: false,
+    isOptional: true,
     isSquished: false,
   },
   parameters: {

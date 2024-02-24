@@ -23,6 +23,10 @@ export const AppProviders = (properties: {
     document.documentElement.classList.add(`theme-${product}`);
   }, [previousProduct, product]);
 
+  useEffect(() => {
+    document.documentElement.dir = direction;
+  }, [direction]);
+
   return (
     <IntlProvider
       locale="en-US"

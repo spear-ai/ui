@@ -7,4 +7,24 @@
   * {
     @apply focus-visible:outline outline-1 focus-visible:outline-2 outline-offset-2 focus-visible:outline-primary-7;
   }
+
+  [type="text"]:focus,
+  input:where(:not([type])),
+  [type="email"]:focus,
+  [type="email"]:focus,
+  [type="url"]:focus,
+  [type="password"]:focus,
+  [type="number"]:focus,
+  [type="date"]:focus,
+  [type="datetime-local"]:focus,
+  [type="month"]:focus,
+  [type="search"]:focus,
+  [type="tel"]:focus,
+  [type="time"]:focus,
+  [type="week"]:focus,
+  [multiple]:focus,
+  textarea:focus,
+  select:focus {
+    @apply outline outline-2 outline-offset-0 outline-primary-a-7 border-transparent ring-0 ring-offset-0;
+  }
 }
