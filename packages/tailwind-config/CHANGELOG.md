@@ -1,5 +1,11 @@
 # @spear-ai/tailwind-config
 
+## 4.1.1
+
+### Patch Changes
+
+- [#131](https://github.com/spear-ai/ui/pull/131) [`cac89e5`](https://github.com/spear-ai/ui/commit/cac89e5cfb0e0525c68055423528640c79212439) Thanks [@psirenny](https://github.com/psirenny)! - Added missing React Aria Components plugin to the Tailwind config.
+
 ## 4.1.0
 
 ### Minor Changes
