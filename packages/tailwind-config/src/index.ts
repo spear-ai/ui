@@ -6,6 +6,7 @@ import { Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme";
 import threeDPlugin from "tailwindcss-3d";
 import animatePlugin from "tailwindcss-animate";
+import reactAriaComponentsPlugin from "tailwindcss-react-aria-components";
 import { radixColorThemePlugin } from "./tailwind-radix-color-theme-plugin";
 import { colors } from "./tailwind-radix-colors";
 import { data } from "./tailwind-radix-primitives";
@@ -22,6 +23,7 @@ export const tailwindConfig: Config = {
     containerQueriesPlugin,
     formsPlugin,
     radixColorThemePlugin,
+    reactAriaComponentsPlugin,
     scrollbarPlugin,
     threeDPlugin,
     typographyPlugin,

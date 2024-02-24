@@ -1,13 +1,11 @@
 import { tailwindConfig as baseTailwindConfig } from "@spear-ai/tailwind-config";
 import type { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin";
-import reactAriaComponentsPlugin from "tailwindcss-react-aria-components";
 
 const tailwindConfig: Config = {
   ...baseTailwindConfig,
   plugins: [
     ...(baseTailwindConfig.plugins ?? []),
-    reactAriaComponentsPlugin,
     plugin(({ matchVariant }) => {
       matchVariant("theme", (value) => `.theme-${value} &`, {
         values: {
