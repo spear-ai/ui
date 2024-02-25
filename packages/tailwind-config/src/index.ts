@@ -97,7 +97,7 @@ export const tailwindConfig: Config = {
         "tooltip-trigger-width": "var(--radix-tooltip-trigger-width)",
       },
       typography: ({ theme }: { theme: (path: string) => string }) => ({
-        theme: {
+        DEFAULT: {
           css: {
             "--tw-prose-body": removeColorValueAlpha(theme("colors.neutral[11]")),
             "--tw-prose-bold": removeColorValueAlpha(theme("colors.neutral[12]")),
