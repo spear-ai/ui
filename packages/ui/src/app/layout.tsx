@@ -67,6 +67,7 @@ export const AppLayout = (properties: {
       <AppProviders direction={direction} product={product}>
         {children}
       </AppProviders>
+      <div id="storybook-portal" />
     </div>
   );
 };
