@@ -145,7 +145,7 @@ const meta = {
 
 type Story = StoryObj<typeof meta>;
 
-export const Example: Story = {
+export const Standard: Story = {
   args: {
     hasError: false,
     hasLabel: true,

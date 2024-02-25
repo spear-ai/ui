@@ -2,11 +2,10 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { FieldError, Form, Input, Label, TextField } from "react-aria-components";
 import { useIntl } from "react-intl";
 
-const PreviewSelect = (properties: {
+const PreviewTextField = (properties: {
   hasError: boolean;
   hasLabel: boolean;
   hasLabelDescription: boolean;
-  isAlwaysOpen: boolean;
   isDisabled: boolean;
   isSquished: boolean;
 }) => {
@@ -57,17 +56,16 @@ const PreviewSelect = (properties: {
 };
 
 const meta = {
-  component: PreviewSelect,
-} satisfies Meta<typeof PreviewSelect>;
+  component: PreviewTextField,
+} satisfies Meta<typeof PreviewTextField>;
 
 type Story = StoryObj<typeof meta>;
 
-export const Example: Story = {
+export const Standard: Story = {
   args: {
     hasError: false,
     hasLabel: true,
     hasLabelDescription: true,
-    isAlwaysOpen: false,
     isDisabled: false,
     isSquished: false,
   },

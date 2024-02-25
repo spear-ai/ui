@@ -1,11 +1,10 @@
 "use client";
 
-import { Provider as RadixDirectionProvider } from "@radix-ui/react-direction";
-import { Provider as RadixTooltipProvider } from "@radix-ui/react-tooltip";
 import { usePreviousDistinct } from "@react-hookz/web";
 import { ThemeProvider } from "next-themes";
 import { ReactNode, useEffect } from "react";
 import { IntlProvider, ReactIntlErrorCode } from "react-intl";
+import { StorybookProvider } from "@/components/storybook-provider/storybook-provider";
 
 export const AppProviders = (properties: {
   children: ReactNode;
@@ -28,21 +27,21 @@ export const AppProviders = (properties: {
   }, [direction]);
 
   return (
-    <IntlProvider
-      locale="en-US"
-      onError={(error) => {
-        if (error.code !== ReactIntlErrorCode.MISSING_TRANSLATION) {
-          // We don’t want to translate messages in stories; however, we still
-          // format message strings to make it easy to copy & paste examples.
-          console.error(error); // eslint-disable-line no-console
-        }
-      }}
-    >
-      <ThemeProvider attribute="class" defaultTheme="dark">
-        <RadixDirectionProvider dir={direction}>
-          <RadixTooltipProvider>{children}</RadixTooltipProvider>
-        </RadixDirectionProvider>
-      </ThemeProvider>
-    </IntlProvider>
+    <StorybookProvider>
+      <IntlProvider
+        locale="en-US"
+        onError={(error) => {
+          if (error.code !== ReactIntlErrorCode.MISSING_TRANSLATION) {
+            // We don’t want to translate messages in stories; however, we still
+            // format message strings to make it easy to copy & paste examples.
+            console.error(error); // eslint-disable-line no-console
+          }
+        }}
+      >
+        <ThemeProvider attribute="class" defaultTheme="dark">
+          {children}
+        </ThemeProvider>
+      </IntlProvider>
+    </StorybookProvider>
   );
 };

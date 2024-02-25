@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-const PreviewSelect = () => (
+const PreviewSpinner = () => (
   <svg className="size-5 animate-spin text-neutral-11" fill="none" viewBox="0 0 24 24">
     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
     <path
@@ -12,12 +12,12 @@ const PreviewSelect = () => (
 );
 
 const meta = {
-  component: PreviewSelect,
-} satisfies Meta<typeof PreviewSelect>;
+  component: PreviewSpinner,
+} satisfies Meta<typeof PreviewSpinner>;
 
 type Story = StoryObj<typeof meta>;
 
-export const Example: Story = {
+export const Standard: Story = {
   parameters: {
     layout: "centered",
   },
