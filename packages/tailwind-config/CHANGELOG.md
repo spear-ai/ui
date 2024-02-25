@@ -1,5 +1,13 @@
 # @spear-ai/tailwind-config
 
+## 4.1.2
+
+### Patch Changes
+
+- [#135](https://github.com/spear-ai/ui/pull/135) [`9fcd67a`](https://github.com/spear-ai/ui/commit/9fcd67a2cd77ef2293099b9460ad8f5a3ec482ee) Thanks [@psirenny](https://github.com/psirenny)! - Fixed typography variables not applying to the default theme.
+
+- [#134](https://github.com/spear-ai/ui/pull/134) [`d0e84df`](https://github.com/spear-ai/ui/commit/d0e84df8a4a5bbf47d4519d47e37ad629ba85f1b) Thanks [@psirenny](https://github.com/psirenny)! - Updated dependencies.
+
 ## 4.1.1
 
 ### Patch Changes
