@@ -39,7 +39,7 @@ const sensorList = [
 ];
 
 const PreviewSelect = (properties: {
-  hasError: boolean;
+  isInvalid: boolean;
   hasLabel: boolean;
   hasLabelDescription: boolean;
   isAlwaysOpen: boolean;
@@ -47,7 +47,7 @@ const PreviewSelect = (properties: {
   isOptional: boolean;
   isSquished: boolean;
 }) => {
-  const { hasError, hasLabel, hasLabelDescription, isAlwaysOpen, isDisabled, isOptional, isSquished } =
+  const { isInvalid, hasLabel, hasLabelDescription, isAlwaysOpen, isDisabled, isOptional, isSquished } =
     properties;
   const intl = useIntl();
   const sensorFormId = useId();
@@ -59,7 +59,7 @@ const PreviewSelect = (properties: {
         <Select
           className="group w-full focus:outline-none"
           isDisabled={isDisabled}
-          isInvalid={hasError}
+          isInvalid={isInvalid}
           isOpen={isAlwaysOpen ? true : undefined}
           onSelectionChange={
             isOptional
@@ -99,7 +99,7 @@ const PreviewSelect = (properties: {
               <CaretSortIcon className="size-5" />
             </span>
           </Button>
-          {hasError ? (
+          {isInvalid ? (
             <FieldError className="mt-2 block text-base/6 text-x-negative-11 group-disabled:opacity-50 sm:text-sm/6">
               {intl.formatMessage({
                 defaultMessage: "Sensor is invalid.",
@@ -147,7 +147,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Standard: Story = {
   args: {
-    hasError: false,
+    isInvalid: false,
     hasLabel: true,
     hasLabelDescription: true,
     isAlwaysOpen: false,

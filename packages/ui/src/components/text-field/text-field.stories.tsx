@@ -3,13 +3,13 @@ import { FieldError, Form, Input, Label, TextField } from "react-aria-components
 import { useIntl } from "react-intl";
 
 const PreviewTextField = (properties: {
-  hasError: boolean;
   hasLabel: boolean;
   hasLabelDescription: boolean;
   isDisabled: boolean;
+  isInvalid: boolean;
   isSquished: boolean;
 }) => {
-  const { hasError, hasLabel, hasLabelDescription, isDisabled, isSquished } = properties;
+  const { hasLabel, hasLabelDescription, isDisabled, isInvalid, isSquished } = properties;
   const intl = useIntl();
 
   return (
@@ -18,7 +18,7 @@ const PreviewTextField = (properties: {
         <TextField
           className="group w-full"
           isDisabled={isDisabled}
-          isInvalid={hasError}
+          isInvalid={isInvalid}
           isRequired
           type="email"
           validationBehavior="aria"
@@ -63,10 +63,10 @@ type Story = StoryObj<typeof meta>;
 
 export const Standard: Story = {
   args: {
-    hasError: false,
     hasLabel: true,
     hasLabelDescription: true,
     isDisabled: false,
+    isInvalid: false,
     isSquished: false,
   },
   parameters: {
