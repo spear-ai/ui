@@ -39,15 +39,15 @@ const sensorList = [
 ];
 
 const PreviewSelect = (properties: {
-  isInvalid: boolean;
   hasLabel: boolean;
   hasLabelDescription: boolean;
   isAlwaysOpen: boolean;
   isDisabled: boolean;
+  isInvalid: boolean;
   isOptional: boolean;
   isSquished: boolean;
 }) => {
-  const { isInvalid, hasLabel, hasLabelDescription, isAlwaysOpen, isDisabled, isOptional, isSquished } =
+  const { hasLabel, hasLabelDescription, isAlwaysOpen, isDisabled, isInvalid, isOptional, isSquished } =
     properties;
   const intl = useIntl();
   const sensorFormId = useId();
@@ -147,11 +147,11 @@ type Story = StoryObj<typeof meta>;
 
 export const Standard: Story = {
   args: {
-    isInvalid: false,
     hasLabel: true,
     hasLabelDescription: true,
     isAlwaysOpen: false,
     isDisabled: false,
+    isInvalid: false,
     isOptional: true,
     isSquished: false,
   },
