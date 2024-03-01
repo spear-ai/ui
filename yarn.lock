@@ -5313,7 +5313,7 @@ __metadata:
     "@storybook/addon-links": "npm:8.0.0-beta.5"
     "@storybook/addon-onboarding": "npm:1.0.11"
     "@storybook/addon-themes": "npm:8.0.0-beta.5"
-    "@storybook/addon-viewport": "npm:8.0.0-beta.5"
+    "@storybook/addon-viewport": "npm:8.0.0-rc.0"
     "@storybook/blocks": "npm:8.0.0-beta.5"
     "@storybook/nextjs": "npm:8.0.0-beta.5"
     "@storybook/react": "npm:8.0.0-beta.5"
@@ -5522,6 +5522,15 @@ __metadata:
   dependencies:
     memoizerific: "npm:^1.11.3"
   checksum: 10/0fe167c5ad4b3bc7f21b7e256133c0187f592618cb4e47ed260afc6ab82a97d7ce2d88dab94a5fdda9d30986b29c37affd13624cf0160590a22aea58b1871b9d
+  languageName: node
+  linkType: hard
+
+"@storybook/addon-viewport@npm:8.0.0-rc.0":
+  version: 8.0.0-rc.0
+  resolution: "@storybook/addon-viewport@npm:8.0.0-rc.0"
+  dependencies:
+    memoizerific: "npm:^1.11.3"
+  checksum: 10/72cc550046ae6467ea78df05ac5e4255029f9cab351bcac133fa5b1380cab8db0ccba01caa64bde3c0a4b2c9098060e9ea3baa0eeaac6549177859d03f68c2e8
   languageName: node
   linkType: hard
 
