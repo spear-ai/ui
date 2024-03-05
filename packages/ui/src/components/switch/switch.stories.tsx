@@ -30,8 +30,8 @@ const PreviewSwitch = (properties: {
             {hasLabel ? (
               <span className="ms-3 flex-1 text-sm font-medium leading-6 text-neutral-12 group-disabled:text-neutral-11">
                 {intl.formatMessage({
-                  defaultMessage: "Enabled",
-                  id: "V52jNn",
+                  defaultMessage: "Receive notifications",
+                  id: "D6jkwD",
                 })}
               </span>
             ) : null}
