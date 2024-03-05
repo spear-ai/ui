@@ -4,14 +4,14 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { useId } from "react";
 import {
   Button,
+  ComboBox,
   FieldError,
   Form,
+  Input,
   Label,
   ListBox,
   ListBoxItem,
   Popover,
-  Select,
-  SelectValue,
 } from "react-aria-components";
 import { useIntl } from "react-intl";
 
@@ -38,7 +38,7 @@ const sensorList = [
   { id: "20", name: "Hyper Matrix 6" },
 ];
 
-const PreviewSelect = (properties: {
+const PreviewComboBox = (properties: {
   hasLabel: boolean;
   hasLabelDescription: boolean;
   isAlwaysOpen: boolean;
@@ -56,18 +56,19 @@ const PreviewSelect = (properties: {
   return (
     <div className={`w-full ${isSquished ? "max-w-36" : "max-w-xs"}`}>
       <Form className="relative w-full">
-        <Select
+        <ComboBox
           className="group w-full focus:outline-none"
           isDisabled={isDisabled}
           isInvalid={isInvalid}
           isOpen={isAlwaysOpen ? true : undefined}
-          onSelectionChange={
-            isOptional
-              ? (key) => {
-                  setValue(key === "" ? null : `${key}`);
-                }
-              : undefined
-          }
+          // OnSelectionChange={
+          //   isOptional
+          //     ? (key) => {
+          //         setValue(key === "" ? null : `${key}`);
+          //       }
+          //     : undefined
+          // }
+          menuTrigger="focus"
           placeholder={intl.formatMessage({
             defaultMessage: "Select a sensor",
             id: "W2C6Wt",
@@ -93,12 +94,14 @@ const PreviewSelect = (properties: {
               })}
             </p>
           ) : null}
-          <Button className="group mt-2 inline-flex h-9 w-full cursor-default select-none items-center justify-between gap-1 rounded-lg border border-transparent bg-white-a-3 pe-2 ps-3.5 text-base leading-none shadow outline outline-offset-0 outline-neutral-a-7 entering:outline-2 entering:outline-primary-a-8 group-invalid:outline-x-negative-a-7 group-disabled:pointer-events-none group-disabled:bg-neutral-a-3 group-disabled:outline-neutral-a-6 group-invalid:group-disabled:outline-x-negative-a-6 focus-visible:outline-primary-a-8 theme-dfs:bg-canvas-1 theme-dfs:group-disabled:bg-neutral-a-3 theme-forerunner:group-disabled:bg-neutral-a-3 theme-galapago:bg-white theme-galapago:group-disabled:bg-neutral-a-3 theme-dfs:dark:bg-white-a-3 theme-forerunner:dark:bg-black-a-3 theme-galapago:dark:bg-black-a-3 sm:ps-3 sm:text-sm">
-            <SelectValue className="truncate text-neutral-12 placeholder-shown:text-neutral-11 group-disabled:text-neutral-a-8" />
-            <span aria-hidden className="text-neutral-11 group-disabled:text-neutral-8">
-              <CaretSortIcon className="size-5" />
-            </span>
-          </Button>
+          <div className="relative mt-2">
+            <Input className="theme-galapago::group-disabled:bg-neutral-a-3 group inline-flex h-9 w-full rounded-lg border border-transparent bg-white-a-3 pe-2 ps-3.5 text-base leading-none text-neutral-12 shadow outline outline-offset-0 outline-neutral-a-7 placeholder:text-neutral-9 entering:outline-2 entering:outline-primary-a-8 group-invalid:outline-x-negative-a-7 group-disabled:pointer-events-none group-disabled:bg-neutral-a-3 group-disabled:outline-neutral-a-6 group-invalid:group-disabled:outline-x-negative-a-6 focus-visible:outline-primary-a-8 theme-dfs:bg-canvas-1 theme-dfs:group-disabled:bg-neutral-a-3 theme-forerunner:group-disabled:bg-neutral-a-3 theme-galapago:bg-white theme-dfs:dark:bg-white-a-3 theme-forerunner:dark:bg-black-a-3 theme-galapago:dark:bg-black-a-3 sm:ps-3 sm:text-sm" />
+            <Button className="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
+              <span aria-hidden className="text-neutral-11 group-disabled:text-neutral-8">
+                <CaretSortIcon className="size-5" />
+              </span>
+            </Button>
+          </div>
           {isInvalid ? (
             <FieldError className="mt-2 block text-base/6 text-x-negative-11 group-disabled:opacity-50 sm:text-sm/6">
               {intl.formatMessage({
@@ -133,15 +136,15 @@ const PreviewSelect = (properties: {
               ))}
             </ListBox>
           </Popover>
-        </Select>
+        </ComboBox>
       </Form>
     </div>
   );
 };
 
 const meta = {
-  component: PreviewSelect,
-} satisfies Meta<typeof PreviewSelect>;
+  component: PreviewComboBox,
+} satisfies Meta<typeof PreviewComboBox>;
 
 type Story = StoryObj<typeof meta>;
 

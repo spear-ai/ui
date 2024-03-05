@@ -5332,6 +5332,7 @@ __metadata:
     react-dom: "npm:18.2.0"
     react-hook-form: "npm:7.51.0"
     react-intl: "npm:6.6.2"
+    react-stately: "npm:3.30.1"
     storybook: "npm:8.0.0-rc.1"
     tailwindcss: "npm:3.4.1"
     ts-invariant: "npm:0.10.3"
@@ -16364,7 +16365,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-stately@npm:^3.30.1":
+"react-stately@npm:3.30.1, react-stately@npm:^3.30.1":
   version: 3.30.1
   resolution: "react-stately@npm:3.30.1"
   dependencies:
