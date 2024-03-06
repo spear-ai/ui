@@ -10,10 +10,10 @@ import {
   ListBox,
   ListBoxItem,
   Popover,
-  Select,
   SelectValue,
 } from "react-aria-components";
 import { useIntl } from "react-intl";
+import { Select } from "./select";
 
 const sensorList = [
   { id: "1", name: "Pyramid Array C1" },
@@ -57,7 +57,6 @@ const PreviewSelect = (properties: {
     <div className={`w-full ${isSquished ? "max-w-36" : "max-w-xs"}`}>
       <Form className="relative w-full">
         <Select
-          className="group w-full focus:outline-none"
           isDisabled={isDisabled}
           isInvalid={isInvalid}
           isOpen={isAlwaysOpen ? true : undefined}
