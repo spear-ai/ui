@@ -3,7 +3,6 @@ import { useControlledState } from "@react-stately/utils";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useId } from "react";
 import {
-  Button,
   FieldError,
   Form,
   Label,
@@ -13,7 +12,7 @@ import {
   SelectValue,
 } from "react-aria-components";
 import { useIntl } from "react-intl";
-import { Select } from "./select";
+import { Button,Select } from "./select";
 
 const sensorList = [
   { id: "1", name: "Pyramid Array C1" },
@@ -92,7 +91,7 @@ const PreviewSelect = (properties: {
               })}
             </p>
           ) : null}
-          <Button className="group mt-2 inline-flex h-9 w-full cursor-default select-none items-center justify-between gap-1 rounded-lg border border-transparent bg-white-a-3 pe-2 ps-3.5 text-base leading-none shadow outline outline-offset-0 outline-neutral-a-7 entering:outline-2 entering:outline-primary-a-8 group-invalid:outline-x-negative-a-7 group-disabled:pointer-events-none group-invalid:group-disabled:outline-x-negative-a-6 focus-visible:outline-primary-a-8 theme-dfs:bg-canvas-1 theme-galapago:bg-white theme-dfs:dark:bg-white-a-3 theme-forerunner:dark:bg-black-a-3 theme-galapago:dark:bg-black-a-3 sm:ps-3 sm:text-sm">
+          <Button >
             <SelectValue className="truncate text-neutral-12 placeholder-shown:text-neutral-11 group-disabled:text-neutral-a-8" />
             <span aria-hidden className="text-neutral-11 group-disabled:text-neutral-8">
               <CaretSortIcon className="size-5" />
