@@ -10,7 +10,6 @@
   "type": "module",
   "dependencies": {
     "@radix-ui/react-icons": "1.3.0",
-    "@radix-ui/react-select": "2.0.0",
     "@react-hookz/web": "24.0.4",
     "@sentry/nextjs": "7.102.1",
     "@spear-ai/logo": "2.1.1",
