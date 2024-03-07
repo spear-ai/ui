@@ -6,6 +6,7 @@ import {
   FieldError as BaseFieldError,
   Form as BaseForm,
   Label as BaseLabel,
+  ListBox as BaseListBox,
   ListBoxItem as BaseListBoxItem,
   Popover as BasePopover,
   Select as BaseSelect,
@@ -24,6 +25,14 @@ export const Select = (
   const { className = "", ...rest } = properties;
   const mergedClassName = cx("group w-full focus:outline-none", className);
   return <BaseSelect className={mergedClassName} {...rest} />;
+};
+
+export const ListBox = (
+  properties: ComponentProps<typeof BaseListBox> & { className?: string | undefined },
+) => {
+  const { className = "", ...rest } = properties;
+  const mergedClassName = cx("outline-none", className);
+  return <BaseListBox className={mergedClassName} {...rest} />;
 };
 
 export const Label = (properties: ComponentProps<typeof BaseLabel> & { className?: string | undefined }) => {
