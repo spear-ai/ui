@@ -2,17 +2,9 @@ import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 import { useControlledState } from "@react-stately/utils";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useId } from "react";
-import {
-  FieldError,
-  Form,
-  Label,
-  ListBox,
-  ListBoxItem,
-  Popover,
-  SelectValue,
-} from "react-aria-components";
+import { FieldError, Form, Label, ListBox, ListBoxItem, Popover, SelectValue } from "react-aria-components";
 import { useIntl } from "react-intl";
-import { Button,Select } from "./select";
+import { Button, Select } from "./select";
 
 const sensorList = [
   { id: "1", name: "Pyramid Array C1" },
@@ -91,7 +83,7 @@ const PreviewSelect = (properties: {
               })}
             </p>
           ) : null}
-          <Button >
+          <Button>
             <SelectValue className="truncate text-neutral-12 placeholder-shown:text-neutral-11 group-disabled:text-neutral-a-8" />
             <span aria-hidden className="text-neutral-11 group-disabled:text-neutral-8">
               <CaretSortIcon className="size-5" />
