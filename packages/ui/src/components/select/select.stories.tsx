@@ -2,9 +2,19 @@ import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 import { useControlledState } from "@react-stately/utils";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useId } from "react";
-import { FieldError, Form, Label, ListBox, ListBoxItem, Popover, SelectValue } from "react-aria-components";
 import { useIntl } from "react-intl";
-import { Button, Select } from "./select";
+import {
+  Button,
+  DefaultListBoxItem,
+  FieldError,
+  Form,
+  Label,
+  ListBox,
+  ListBoxItem,
+  Popover,
+  Select,
+  SelectValue,
+} from "./select";
 
 const sensorList = [
   { id: "1", name: "Pyramid Array C1" },
@@ -46,7 +56,7 @@ const PreviewSelect = (properties: {
 
   return (
     <div className={`w-full ${isSquished ? "max-w-36" : "max-w-xs"}`}>
-      <Form className="relative w-full">
+      <Form>
         <Select
           isDisabled={isDisabled}
           isInvalid={isInvalid}
@@ -65,10 +75,7 @@ const PreviewSelect = (properties: {
           selectedKey={isOptional ? value : undefined}
         >
           {hasLabel ? (
-            <Label
-              className="block select-none text-base/6 text-neutral-12 group-disabled:text-neutral-11 sm:text-sm/6"
-              htmlFor={sensorFormId}
-            >
+            <Label htmlFor={sensorFormId}>
               {intl.formatMessage({
                 defaultMessage: "Sensor",
                 id: "SCewMo",
@@ -84,37 +91,29 @@ const PreviewSelect = (properties: {
             </p>
           ) : null}
           <Button>
-            <SelectValue className="truncate text-neutral-12 placeholder-shown:text-neutral-11 group-disabled:text-neutral-a-8" />
+            <SelectValue />
             <span aria-hidden className="text-neutral-11 group-disabled:text-neutral-8">
               <CaretSortIcon className="size-5" />
             </span>
           </Button>
           {isInvalid ? (
-            <FieldError className="mt-2 block text-base/6 text-x-negative-11 group-disabled:opacity-50 sm:text-sm/6">
+            <FieldError>
               {intl.formatMessage({
                 defaultMessage: "Sensor is invalid.",
                 id: "JsiKrm",
               })}
             </FieldError>
           ) : null}
-          <Popover className="isolate min-w-select-trigger-width overflow-auto rounded-xl border-transparent bg-canvas-1 p-1 shadow-lg outline outline-1 outline-offset-0 outline-neutral-a-6 backdrop-blur placement-left:slide-in-from-right-2 placement-right:slide-in-from-left-2 placement-top:slide-in-from-bottom-2 placement-bottom:slide-in-from-top-2 entering:duration-100 entering:animate-in entering:fade-in exiting:duration-75 exiting:animate-out exiting:fade-out exiting:zoom-out-95 theme-forerunner:bg-white-a-3 theme-galapago:bg-white theme-underway:shadow-2xl theme-galapago:dark:bg-black-a-3">
-            <ListBox className="outline-none">
-              <ListBoxItem
-                className="cursor-default select-none rounded-lg py-2.5 pe-5 ps-2 text-base leading-none text-neutral-11 outline-none hover:bg-primary-4 focus:bg-primary-5 focus:outline-none sm:py-1.5 sm:text-sm"
-                id=""
-              >
+          <Popover>
+            <ListBox>
+              <DefaultListBoxItem id="">
                 {intl.formatMessage({
                   defaultMessage: "No sensor",
                   id: "W2b7y5",
                 })}
-              </ListBoxItem>
+              </DefaultListBoxItem>
               {sensorList.map((sensor) => (
-                <ListBoxItem
-                  className="group/item relative cursor-default select-none rounded-lg py-2.5 pe-7 ps-2 text-base leading-none text-neutral-12 outline-none hover:bg-primary-4 focus:bg-primary-5 sm:py-1.5 sm:text-sm rtl:text-right"
-                  id={sensor.id}
-                  key={sensor.id}
-                  textValue={sensor.name}
-                >
+                <ListBoxItem id={sensor.id} key={sensor.id} textValue={sensor.name}>
                   <span>{sensor.name}</span>
                   <span className="absolute end-1.5 top-2 inline-flex size-4 items-center justify-center opacity-0 group-selected/item:opacity-100">
                     <CheckIcon className="size-4" />
