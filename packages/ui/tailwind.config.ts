@@ -22,6 +22,10 @@ const tailwindConfig: Config = {
     ...baseTailwindConfig.theme,
     extend: {
       ...baseTailwindConfig.theme?.extend,
+      spacing: {
+        ...baseTailwindConfig.theme?.extend?.space,
+        "trigger-width": "var(--trigger-width)",
+      },
       themes: {
         dfs: {
           canvas: "orange",
