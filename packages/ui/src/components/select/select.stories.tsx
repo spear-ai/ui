@@ -4,13 +4,13 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { useId } from "react";
 import { useIntl } from "react-intl";
 import {
-  Button,
-  DefaultListBoxItem,
-  FieldError,
-  Label,
-  ListBox,
-  ListBoxItem,
-  Popover,
+  SelectButton,
+  SelectDefaultListBoxItem,
+  SelectFieldError,
+  SelectLabel,
+  SelectListBox,
+  SelectListBoxItem,
+  SelectPopover,
   Select,
   SelectValue,
 } from "./select";
@@ -76,12 +76,12 @@ const PreviewSelect = (properties: {
           selectedKey={isOptional ? value : undefined}
         >
           {hasLabel ? (
-            <Label htmlFor={sensorFormId}>
+            <SelectLabel htmlFor={sensorFormId}>
               {intl.formatMessage({
                 defaultMessage: "Sensor",
                 id: "SCewMo",
               })}
-            </Label>
+            </SelectLabel>
           ) : null}
           {hasLabel && hasLabelDescription ? (
             <p className="mt-1 text-base/6 text-neutral-11 group-disabled:text-neutral-9 sm:text-sm/6">
@@ -91,38 +91,38 @@ const PreviewSelect = (properties: {
               })}
             </p>
           ) : null}
-          <Button>
+          <SelectButton>
             <SelectValue />
             <span aria-hidden className="text-neutral-11 group-disabled:text-neutral-8">
               <CaretSortIcon className="size-5" />
             </span>
-          </Button>
+          </SelectButton>
           {isInvalid ? (
-            <FieldError>
+            <SelectFieldError>
               {intl.formatMessage({
                 defaultMessage: "Sensor is invalid.",
                 id: "JsiKrm",
               })}
-            </FieldError>
+            </SelectFieldError>
           ) : null}
-          <Popover>
-            <ListBox>
-              <DefaultListBoxItem id="">
+          <SelectPopover>
+            <SelectListBox>
+              <SelectDefaultListBoxItem id="">
                 {intl.formatMessage({
                   defaultMessage: "No sensor",
                   id: "W2b7y5",
                 })}
-              </DefaultListBoxItem>
+              </SelectDefaultListBoxItem>
               {sensorList.map((sensor) => (
-                <ListBoxItem id={sensor.id} key={sensor.id} textValue={sensor.name}>
+                <SelectListBoxItem id={sensor.id} key={sensor.id} textValue={sensor.name}>
                   <span>{sensor.name}</span>
                   <span className="absolute end-1.5 top-2 inline-flex size-4 items-center justify-center opacity-0 group-selected/item:opacity-100">
                     <CheckIcon className="size-4" />
                   </span>
-                </ListBoxItem>
+                </SelectListBoxItem>
               ))}
-            </ListBox>
-          </Popover>
+            </SelectListBox>
+          </SelectPopover>
         </Select>
       </Form>
     </div>

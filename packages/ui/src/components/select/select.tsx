@@ -20,7 +20,7 @@ export const Select = (
   return <BaseSelect className={mergedClassName} {...rest} />;
 };
 
-export const ListBox = (
+export const SelectListBox = (
   properties: ComponentProps<typeof BaseListBox> & { className?: string | undefined },
 ) => {
   const { className = "", ...rest } = properties;
@@ -28,7 +28,7 @@ export const ListBox = (
   return <BaseListBox className={mergedClassName} {...rest} />;
 };
 
-export const Label = (properties: ComponentProps<typeof BaseLabel> & { className?: string | undefined }) => {
+export const SelectLabel = (properties: ComponentProps<typeof BaseLabel> & { className?: string | undefined }) => {
   const { className = "", ...rest } = properties;
   const mergedClassName = cx(
     "block select-none text-base/6 text-neutral-12 group-disabled:text-neutral-11 sm:text-sm/6",
@@ -46,7 +46,7 @@ export const SelectDescription = (properties: { className?: string | undefined; 
   return <p className={mergedClassName}>{description}</p>;
 };
 
-export const Button = (
+export const SelectButton = (
   properties: ComponentProps<typeof BaseButton> & { className?: string | undefined },
 ) => {
   const { className = "", ...rest } = properties;
@@ -68,7 +68,7 @@ export const SelectValue = (
   return <BaseSelectValue className={mergedClassName} {...rest} />;
 };
 
-export const FieldError = (
+export const SelectFieldError = (
   properties: ComponentProps<typeof BaseFieldError> & { className?: string | undefined },
 ) => {
   const { className = "", ...rest } = properties;
@@ -79,7 +79,7 @@ export const FieldError = (
   return <BaseFieldError className={mergedClassName} {...rest} />;
 };
 
-export const Popover = (
+export const SelectPopover = (
   properties: ComponentProps<typeof BasePopover> & { className?: string | undefined },
 ) => {
   const { className = "", ...rest } = properties;
@@ -90,7 +90,7 @@ export const Popover = (
   return <BasePopover className={mergedClassName} {...rest} />;
 };
 
-export const DefaultListBoxItem = (
+export const SelectDefaultListBoxItem = (
   properties: ComponentProps<typeof BaseListBoxItem> & { className?: string | undefined },
 ) => {
   const { className = "", ...rest } = properties;
@@ -101,7 +101,7 @@ export const DefaultListBoxItem = (
   return <BaseListBoxItem className={mergedClassName} {...rest} />;
 };
 
-export const ListBoxItem = (
+export const SelectListBoxItem = (
   properties: ComponentProps<typeof BaseListBoxItem> & { className?: string | undefined },
 ) => {
   const { className = "", ...rest } = properties;
