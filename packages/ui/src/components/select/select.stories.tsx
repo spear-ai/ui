@@ -7,7 +7,6 @@ import {
   Button,
   DefaultListBoxItem,
   FieldError,
-  Form,
   Label,
   ListBox,
   ListBoxItem,
@@ -15,6 +14,8 @@ import {
   Select,
   SelectValue,
 } from "./select";
+
+import { Form } from "react-aria-components";
 
 const sensorList = [
   { id: "1", name: "Pyramid Array C1" },
@@ -56,7 +57,7 @@ const PreviewSelect = (properties: {
 
   return (
     <div className={`w-full ${isSquished ? "max-w-36" : "max-w-xs"}`}>
-      <Form>
+      <Form className="relative w-full">
         <Select
           isDisabled={isDisabled}
           isInvalid={isInvalid}

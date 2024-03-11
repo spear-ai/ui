@@ -4,7 +4,6 @@ import React, { ComponentProps } from "react";
 import {
   Button as BaseButton,
   FieldError as BaseFieldError,
-  Form as BaseForm,
   Label as BaseLabel,
   ListBox as BaseListBox,
   ListBoxItem as BaseListBoxItem,
@@ -12,12 +11,6 @@ import {
   Select as BaseSelect,
   SelectValue as BaseSelectValue,
 } from "react-aria-components";
-
-export const Form = (properties: ComponentProps<typeof BaseForm> & { className?: string | undefined }) => {
-  const { className = "", ...rest } = properties;
-  const mergedClassName = cx("relative w-full", className);
-  return <BaseForm className={mergedClassName} {...rest} />;
-};
 
 export const Select = (
   properties: ComponentProps<typeof BaseSelect> & { className?: string | undefined },
