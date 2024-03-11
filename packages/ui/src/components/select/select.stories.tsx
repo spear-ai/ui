@@ -13,6 +13,7 @@ import {
   SelectPopover,
   Select,
   SelectValue,
+  SelectIcon,
 } from "./select";
 
 import { Form } from "react-aria-components";
@@ -93,9 +94,7 @@ const PreviewSelect = (properties: {
           ) : null}
           <SelectButton>
             <SelectValue />
-            <span aria-hidden className="text-neutral-11 group-disabled:text-neutral-8">
-              <CaretSortIcon className="size-5" />
-            </span>
+            <SelectIcon />
           </SelectButton>
           {isInvalid ? (
             <SelectFieldError>

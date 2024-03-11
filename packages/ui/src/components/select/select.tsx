@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { cx } from "classix";
 import React, { ComponentProps } from "react";
+import { CaretSortIcon } from "@radix-ui/react-icons";
 import {
   Button as BaseButton,
   FieldError as BaseFieldError,
@@ -28,7 +29,9 @@ export const SelectListBox = (
   return <BaseListBox className={mergedClassName} {...rest} />;
 };
 
-export const SelectLabel = (properties: ComponentProps<typeof BaseLabel> & { className?: string | undefined }) => {
+export const SelectLabel = (
+  properties: ComponentProps<typeof BaseLabel> & { className?: string | undefined },
+) => {
   const { className = "", ...rest } = properties;
   const mergedClassName = cx(
     "block select-none text-base/6 text-neutral-12 group-disabled:text-neutral-11 sm:text-sm/6",
@@ -44,6 +47,16 @@ export const SelectDescription = (properties: { className?: string | undefined; 
     className,
   );
   return <p className={mergedClassName}>{description}</p>;
+};
+
+export const SelectIcon = (properties: { className?: string | undefined }) => {
+  const { className = "" } = properties;
+  const mergedClassName = cx("text-neutral-11 group-disabled:text-neutral-8", className);
+  return (
+    <span aria-hidden className={mergedClassName}>
+      <CaretSortIcon className="size-5" />
+    </span>
+  );
 };
 
 export const SelectButton = (
