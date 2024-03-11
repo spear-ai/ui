@@ -2,21 +2,20 @@ import { CheckIcon } from "@radix-ui/react-icons";
 import { useControlledState } from "@react-stately/utils";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useId } from "react";
+import { Form } from "react-aria-components";
 import { useIntl } from "react-intl";
 import {
+  Select,
   SelectButton,
   SelectDefaultListBoxItem,
   SelectFieldError,
+  SelectIcon,
   SelectLabel,
   SelectListBox,
   SelectListBoxItem,
   SelectPopover,
-  Select,
   SelectValue,
-  SelectIcon,
 } from "./select";
-
-import { Form } from "react-aria-components";
 
 const sensorList = [
   { id: "1", name: "Pyramid Array C1" },

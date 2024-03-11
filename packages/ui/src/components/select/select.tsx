@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
+import { CaretSortIcon } from "@radix-ui/react-icons";
 import { cx } from "classix";
 import React, { ComponentProps } from "react";
-import { CaretSortIcon } from "@radix-ui/react-icons";
 import {
   Button as BaseButton,
   FieldError as BaseFieldError,
