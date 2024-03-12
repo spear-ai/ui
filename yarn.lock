@@ -5319,6 +5319,7 @@ __metadata:
     "@types/react": "npm:18.2.63"
     "@types/react-dom": "npm:18.2.19"
     autoprefixer: "npm:10.4.18"
+    classix: "npm:2.1.36"
     eslint: "npm:8.57.0"
     eslint-config-prettier: "npm:9.1.0"
     graphql: "npm:16.8.1"
@@ -8864,6 +8865,13 @@ __metadata:
   version: 1.2.3
   resolution: "cjs-module-lexer@npm:1.2.3"
   checksum: 10/f96a5118b0a012627a2b1c13bd2fcb92509778422aaa825c5da72300d6dcadfb47134dd2e9d97dfa31acd674891dd91642742772d19a09a8adc3e56bd2f5928c
+  languageName: node
+  linkType: hard
+
+"classix@npm:2.1.36":
+  version: 2.1.36
+  resolution: "classix@npm:2.1.36"
+  checksum: 10/365bf02ac4cb9ee586923fa401721f9d53b5ad9359fa61c49d6b66bef3e97f10ea5671050c1bb2e2f8352e2e9d60f351ac00486d4920f160fce821b3285bc899
   languageName: node
   linkType: hard
 
