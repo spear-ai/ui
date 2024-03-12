@@ -13,13 +13,15 @@ import {
   SelectValue as SelectValuePrimitive,
 } from "react-aria-components";
 
-export const Select = (
-  properties: ComponentProps<typeof SelectPrimitive> & { className?: string | undefined },
-) => {
-  const { className = "", ...rest } = properties;
+export const Select = React.forwardRef<
+  React.ElementRef<typeof SelectPrimitive>,
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive> & { className?: string | undefined }
+>(({ className, ...properties }, reference) => {
   const mergedClassName = cx("group w-full focus:outline-none", className);
-  return <SelectPrimitive className={mergedClassName} {...rest} />;
-};
+  return <SelectPrimitive className={mergedClassName} {...properties} ref={reference} />;
+});
+
+Select.displayName = "Select";
 
 export const SelectListBox = (
   properties: ComponentProps<typeof ListBoxPrimitive> & { className?: string | undefined },
