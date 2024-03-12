@@ -1,19 +1,21 @@
-import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
+import { CheckIcon } from "@radix-ui/react-icons";
 import { useControlledState } from "@react-stately/utils";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useId } from "react";
-import {
-  Button,
-  FieldError,
-  Form,
-  Label,
-  ListBox,
-  ListBoxItem,
-  Popover,
-  Select,
-  SelectValue,
-} from "react-aria-components";
+import { Form } from "react-aria-components";
 import { useIntl } from "react-intl";
+import {
+  Select,
+  SelectButton,
+  SelectDefaultListBoxItem,
+  SelectFieldError,
+  SelectIcon,
+  SelectLabel,
+  SelectListBox,
+  SelectListBoxItem,
+  SelectPopover,
+  SelectValue,
+} from "./select";
 
 const sensorList = [
   { id: "1", name: "Pyramid Array C1" },
@@ -57,7 +59,6 @@ const PreviewSelect = (properties: {
     <div className={`w-full ${isSquished ? "max-w-36" : "max-w-xs"}`}>
       <Form className="relative w-full">
         <Select
-          className="group w-full focus:outline-none"
           isDisabled={isDisabled}
           isInvalid={isInvalid}
           isOpen={isAlwaysOpen ? true : undefined}
@@ -75,15 +76,12 @@ const PreviewSelect = (properties: {
           selectedKey={isOptional ? value : undefined}
         >
           {hasLabel ? (
-            <Label
-              className="block select-none text-base/6 text-neutral-12 group-disabled:text-neutral-11 sm:text-sm/6"
-              htmlFor={sensorFormId}
-            >
+            <SelectLabel htmlFor={sensorFormId}>
               {intl.formatMessage({
                 defaultMessage: "Sensor",
                 id: "SCewMo",
               })}
-            </Label>
+            </SelectLabel>
           ) : null}
           {hasLabel && hasLabelDescription ? (
             <p className="mt-1 text-base/6 text-neutral-11 group-disabled:text-neutral-9 sm:text-sm/6">
@@ -93,46 +91,36 @@ const PreviewSelect = (properties: {
               })}
             </p>
           ) : null}
-          <Button className="group mt-2 inline-flex h-9 w-full cursor-default select-none items-center justify-between gap-1 rounded-lg border border-transparent bg-white-a-3 pe-2 ps-3.5 text-base leading-none shadow outline outline-offset-0 outline-neutral-a-7 entering:outline-2 entering:outline-primary-a-8 group-invalid:outline-x-negative-a-7 focus-visible:outline-primary-a-8 group-disabled:pointer-events-none group-disabled:bg-neutral-a-3 group-disabled:outline-neutral-a-6 group-invalid:group-disabled:outline-x-negative-a-6 theme-dfs:bg-canvas-1 theme-dfs:group-disabled:bg-neutral-a-3 theme-forerunner:group-disabled:bg-neutral-a-3 theme-galapago:bg-white theme-galapago:group-disabled:bg-neutral-a-3 theme-dfs:dark:bg-white-a-3 theme-forerunner:dark:bg-black-a-3 theme-galapago:dark:bg-black-a-3 sm:ps-3 sm:text-sm">
-            <SelectValue className="truncate text-neutral-12 placeholder-shown:text-neutral-10 group-disabled:text-neutral-a-8" />
-            <span aria-hidden className="text-neutral-11 group-disabled:text-neutral-8">
-              <CaretSortIcon className="size-5" />
-            </span>
-          </Button>
+          <SelectButton>
+            <SelectValue />
+            <SelectIcon />
+          </SelectButton>
           {isInvalid ? (
-            <FieldError className="mt-2 block text-base/6 text-x-negative-11 group-disabled:opacity-50 sm:text-sm/6">
+            <SelectFieldError>
               {intl.formatMessage({
                 defaultMessage: "Sensor is invalid.",
                 id: "JsiKrm",
               })}
-            </FieldError>
+            </SelectFieldError>
           ) : null}
-          <Popover className="isolate min-w-trigger-width overflow-auto rounded-xl border-transparent bg-canvas-1 p-1 shadow-lg outline outline-1 outline-offset-0 outline-neutral-a-6 backdrop-blur placement-left:slide-in-from-right-2 placement-right:slide-in-from-left-2 placement-top:slide-in-from-bottom-2 placement-bottom:slide-in-from-top-2 entering:duration-100 entering:animate-in entering:fade-in exiting:duration-75 exiting:animate-out exiting:fade-out exiting:zoom-out-95 theme-forerunner:bg-white-a-3 theme-galapago:bg-white theme-underway:shadow-2xl theme-galapago:dark:bg-black-a-3">
-            <ListBox className="outline-none">
-              <ListBoxItem
-                className="cursor-default select-none rounded-lg py-2.5 pe-5 ps-2 text-base leading-none text-neutral-11 outline-none hover:bg-primary-4 focus:bg-primary-5 focus:outline-none sm:py-1.5 sm:text-sm"
-                id=""
-              >
+          <SelectPopover>
+            <SelectListBox>
+              <SelectDefaultListBoxItem id="">
                 {intl.formatMessage({
                   defaultMessage: "No sensor",
                   id: "W2b7y5",
                 })}
-              </ListBoxItem>
+              </SelectDefaultListBoxItem>
               {sensorList.map((sensor) => (
-                <ListBoxItem
-                  className="group/item relative cursor-default select-none rounded-lg py-2.5 pe-7 ps-2 text-base leading-none text-neutral-12 outline-none hover:bg-primary-4 focus:bg-primary-5 sm:py-1.5 sm:text-sm rtl:text-right"
-                  id={sensor.id}
-                  key={sensor.id}
-                  textValue={sensor.name}
-                >
+                <SelectListBoxItem id={sensor.id} key={sensor.id} textValue={sensor.name}>
                   <span>{sensor.name}</span>
                   <span className="absolute end-1.5 top-2 inline-flex size-4 items-center justify-center opacity-0 group-selected/item:opacity-100">
                     <CheckIcon className="size-4" />
                   </span>
-                </ListBoxItem>
+                </SelectListBoxItem>
               ))}
-            </ListBox>
-          </Popover>
+            </SelectListBox>
+          </SelectPopover>
         </Select>
       </Form>
     </div>
