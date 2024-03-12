@@ -1,141 +1,130 @@
-import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 import { useControlledState } from "@react-stately/utils";
 import type { Meta, StoryObj } from "@storybook/react";
-import { useId } from "react";
-import {
-  Button,
-  ComboBox,
-  FieldError,
-  Form,
-  Input,
-  Label,
-  ListBox,
-  ListBoxItem,
-  Popover,
-} from "react-aria-components";
+import { useCallback, useMemo } from "react";
+import { Form } from "react-aria-components";
 import { useIntl } from "react-intl";
+import {
+  ComboBox,
+  ComboBoxButton,
+  ComboBoxDescription,
+  ComboBoxFieldError,
+  ComboBoxIcon,
+  ComboBoxInput,
+  ComboBoxLabel,
+  ComboBoxListBox,
+  ComboBoxListBoxItem,
+  ComboBoxListBoxItemCheck,
+  ComboBoxListBoxItemCheckIcon,
+  ComboBoxListBoxItemLabel,
+  ComboBoxPopover,
+  ComboBoxTrigger,
+} from "@/components/combo-box/combo-box";
+import { querySensorConnection } from "@/data/sensor";
 
-const sensorList = [
-  { id: "1", name: "Pyramid Array C1" },
-  { id: "2", name: "Pyramid Array C2B" },
-  { id: "3", name: "Pyramid Array C3" },
-  { id: "4", name: "Pyramid Array C3-Pro" },
-  { id: "5", name: "Pyramid Array C3" },
-  { id: "6", name: "Pyramid Array D" },
-  { id: "7", name: "Pyramid Array DS" },
-  { id: "8", name: "Pyramid Array DX" },
-  { id: "9", name: "Pyramid Array E-Standard" },
-  { id: "10", name: "Pyramid Array E-Plus" },
-  { id: "11", name: "Hyper Matrix Prototype 1" },
-  { id: "12", name: "Hyper Matrix Prototype 2" },
-  { id: "13", name: "Hyper Matrix 1" },
-  { id: "14", name: "Hyper Matrix 2" },
-  { id: "15", name: "Hyper Matrix 3" },
-  { id: "16", name: "Hyper Matrix 4-S" },
-  { id: "17", name: "Hyper Matrix 4-U" },
-  { id: "18", name: "Hyper Matrix 5-S" },
-  { id: "19", name: "Hyper Matrix 5-U" },
-  { id: "20", name: "Hyper Matrix 6" },
-];
+type SensorEdge = Awaited<ReturnType<typeof querySensorConnection>>["edges"][0];
 
 const PreviewComboBox = (properties: {
   hasLabel: boolean;
   hasLabelDescription: boolean;
-  isAlwaysOpen: boolean;
   isDisabled: boolean;
   isInvalid: boolean;
   isOptional: boolean;
   isSquished: boolean;
 }) => {
-  const { hasLabel, hasLabelDescription, isAlwaysOpen, isDisabled, isInvalid, isOptional, isSquished } =
-    properties;
+  const { hasLabel, hasLabelDescription, isDisabled, isInvalid, isOptional, isSquished } = properties;
   const intl = useIntl();
-  const sensorFormId = useId();
-  const [value, setValue] = useControlledState<string | null>(undefined, null);
+  const [selectedKey, setSelectedKey] = useControlledState<string | null>(undefined, null);
+  const [isOpen, setIsOpen] = useControlledState<boolean>(undefined, false);
+  const itemList = useMemo(() => {
+    const result = querySensorConnection({ first: 200 });
+    return isOptional ? [{ cursor: "", highlightedText: null, node: null }, ...result.edges] : result.edges;
+  }, [isOptional]);
+
+  const handleSelectionChange = useCallback(
+    (key: number | string) => {
+      if (isOptional && key === "") {
+        setSelectedKey(null);
+        setIsOpen(false);
+      } else {
+        setSelectedKey(`${key}`);
+      }
+    },
+    [isOptional, setIsOpen, setSelectedKey],
+  );
 
   return (
     <div className={`w-full ${isSquished ? "max-w-36" : "max-w-xs"}`}>
       <Form className="relative w-full">
         <ComboBox
-          className="group w-full focus:outline-none"
+          className="w-full"
+          defaultItems={itemList}
           isDisabled={isDisabled}
           isInvalid={isInvalid}
-          isOpen={isAlwaysOpen ? true : undefined}
-          // OnSelectionChange={
-          //   isOptional
-          //     ? (key) => {
-          //         setValue(key === "" ? null : `${key}`);
-          //       }
-          //     : undefined
-          // }
           menuTrigger="focus"
-          placeholder={intl.formatMessage({
-            defaultMessage: "Select a sensor",
-            id: "W2C6Wt",
-          })}
-          selectedKey={isOptional ? value : undefined}
+          onOpenChange={setIsOpen}
+          onSelectionChange={handleSelectionChange}
+          selectedKey={selectedKey}
         >
           {hasLabel ? (
-            <Label
-              className="block select-none text-base/6 text-neutral-12 group-disabled:text-neutral-11 sm:text-sm/6"
-              htmlFor={sensorFormId}
-            >
+            <ComboBoxLabel>
               {intl.formatMessage({
                 defaultMessage: "Sensor",
                 id: "SCewMo",
               })}
-            </Label>
+            </ComboBoxLabel>
           ) : null}
           {hasLabel && hasLabelDescription ? (
-            <p className="mt-1 text-base/6 text-neutral-11 group-disabled:text-neutral-9 sm:text-sm/6">
+            <ComboBoxDescription>
               {intl.formatMessage({
                 defaultMessage: "A mechanical device sensitive to sound.",
                 id: "2YVoI/",
               })}
-            </p>
+            </ComboBoxDescription>
           ) : null}
-          <div className="relative mt-2">
-            <Input className="theme-galapago::group-disabled:bg-neutral-a-3 group inline-flex h-9 w-full rounded-lg border border-transparent bg-white-a-3 pe-2 ps-3.5 text-base leading-none text-neutral-12 shadow outline outline-offset-0 outline-neutral-a-7 placeholder:text-neutral-9 entering:outline-2 entering:outline-primary-a-8 group-invalid:outline-x-negative-a-7 group-disabled:pointer-events-none group-disabled:bg-neutral-a-3 group-disabled:outline-neutral-a-6 group-invalid:group-disabled:outline-x-negative-a-6 focus-visible:outline-primary-a-8 theme-dfs:bg-canvas-1 theme-dfs:group-disabled:bg-neutral-a-3 theme-forerunner:group-disabled:bg-neutral-a-3 theme-galapago:bg-white theme-dfs:dark:bg-white-a-3 theme-forerunner:dark:bg-black-a-3 theme-galapago:dark:bg-black-a-3 sm:ps-3 sm:text-sm" />
-            <Button className="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
-              <span aria-hidden className="text-neutral-11 group-disabled:text-neutral-8">
-                <CaretSortIcon className="size-5" />
-              </span>
-            </Button>
-          </div>
+          <ComboBoxTrigger>
+            <ComboBoxInput
+              placeholder={intl.formatMessage({
+                defaultMessage: "Select a sensor",
+                id: "W2C6Wt",
+              })}
+            />
+            <ComboBoxButton>
+              <ComboBoxIcon />
+            </ComboBoxButton>
+          </ComboBoxTrigger>
           {isInvalid ? (
-            <FieldError className="mt-2 block text-base/6 text-x-negative-11 group-disabled:opacity-50 sm:text-sm/6">
+            <ComboBoxFieldError>
               {intl.formatMessage({
                 defaultMessage: "Sensor is invalid.",
                 id: "JsiKrm",
               })}
-            </FieldError>
+            </ComboBoxFieldError>
           ) : null}
-          <Popover className="isolate min-w-select-trigger-width overflow-auto rounded-xl border-transparent bg-canvas-1 p-1 shadow-lg outline outline-1 outline-offset-0 outline-neutral-a-6 backdrop-blur placement-left:slide-in-from-right-2 placement-right:slide-in-from-left-2 placement-top:slide-in-from-bottom-2 placement-bottom:slide-in-from-top-2 entering:duration-100 entering:animate-in entering:fade-in exiting:duration-75 exiting:animate-out exiting:fade-out exiting:zoom-out-95 theme-forerunner:bg-white-a-3 theme-galapago:bg-white theme-underway:shadow-2xl theme-galapago:dark:bg-black-a-3">
-            <ListBox className="outline-none">
-              <ListBoxItem
-                className="cursor-default select-none rounded-lg py-2.5 pe-5 ps-2 text-base leading-none text-neutral-11 outline-none hover:bg-primary-4 focus:bg-primary-5 focus:outline-none sm:py-1.5 sm:text-sm"
-                id=""
-              >
-                {intl.formatMessage({
-                  defaultMessage: "No sensor",
-                  id: "W2b7y5",
-                })}
-              </ListBoxItem>
-              {sensorList.map((sensor) => (
-                <ListBoxItem
-                  className="group/item relative cursor-default select-none rounded-lg py-2.5 pe-7 ps-2 text-base leading-none text-neutral-12 outline-none hover:bg-primary-4 focus:bg-primary-5 sm:py-1.5 sm:text-sm rtl:text-right"
-                  id={sensor.id}
-                  key={sensor.id}
-                  textValue={sensor.name}
-                >
-                  <span>{sensor.name}</span>
-                  <span className="absolute end-1.5 top-2 inline-flex size-4 items-center justify-center opacity-0 group-selected/item:opacity-100">
-                    <CheckIcon className="size-4" />
-                  </span>
-                </ListBoxItem>
-              ))}
-            </ListBox>
-          </Popover>
+          <ComboBoxPopover isOpen={isOpen}>
+            <ComboBoxListBox>
+              {(edge: SensorEdge) => {
+                if (edge.cursor === "") {
+                  return (
+                    <ComboBoxListBoxItem id="" isNone>
+                      {intl.formatMessage({
+                        defaultMessage: "None",
+                        id: "450Fty",
+                      })}
+                    </ComboBoxListBoxItem>
+                  );
+                }
+
+                return edge.node == null ? null : (
+                  <ComboBoxListBoxItem id={edge.node.id} key={edge.node.id} textValue={edge.node.name}>
+                    <ComboBoxListBoxItemLabel>{edge.node.name}</ComboBoxListBoxItemLabel>
+                    <ComboBoxListBoxItemCheck>
+                      <ComboBoxListBoxItemCheckIcon />
+                    </ComboBoxListBoxItemCheck>
+                  </ComboBoxListBoxItem>
+                );
+              }}
+            </ComboBoxListBox>
+          </ComboBoxPopover>
         </ComboBox>
       </Form>
     </div>
@@ -152,7 +141,6 @@ export const Standard: Story = {
   args: {
     hasLabel: true,
     hasLabelDescription: true,
-    isAlwaysOpen: false,
     isDisabled: false,
     isInvalid: false,
     isOptional: true,

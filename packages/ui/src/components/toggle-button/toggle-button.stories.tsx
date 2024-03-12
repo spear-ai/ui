@@ -54,7 +54,7 @@ const PreviewToggleButton = (properties: {
         })}
       >
         <ToggleButton
-          className={`group size-8 cursor-default rounded-md p-2 opacity-0 selected:text-neutral-9 selected:opacity-100 hover:bg-primary-a-4 hover:text-primary-11 hover:opacity-100 focus-visible:text-primary-11 focus-visible:opacity-100 focus-visible:outline-primary-7 active:bg-primary-a-5 disabled:pointer-events-none disabled:text-neutral-9 ${isReady ? "" : "pointer-events-none"}`}
+          className={`group size-8 cursor-default rounded-md p-2 opacity-0 active:bg-primary-a-5 hover:bg-primary-a-4 hover:text-primary-11 hover:opacity-100 focus-visible:text-primary-11 focus-visible:opacity-100 focus-visible:outline-primary-7 selected:text-neutral-9 selected:opacity-100 disabled:pointer-events-none disabled:text-neutral-9 ${isReady ? "" : "pointer-events-none"}`}
           defaultSelected
           isDisabled={isDisabled}
         >
@@ -74,7 +74,7 @@ const PreviewToggleButton = (properties: {
         })}
       >
         <ToggleButton
-          className={`group size-8 cursor-default rounded-md p-2 text-primary-11 hover:bg-primary-a-4 focus-visible:outline-primary-7 active:bg-primary-a-5 disabled:pointer-events-none disabled:text-neutral-9 ${isReady ? "" : "pointer-events-none"}`}
+          className={`group size-8 cursor-default rounded-md p-2 text-primary-11 active:bg-primary-a-5 hover:bg-primary-a-4 focus-visible:outline-primary-7 disabled:pointer-events-none disabled:text-neutral-9 ${isReady ? "" : "pointer-events-none"}`}
           isDisabled={isDisabled}
         >
           <MoonIcon className={`hidden size-4 group-selected:block ${isReady ? "" : "!hidden"}`} />
@@ -92,7 +92,7 @@ const PreviewToggleButton = (properties: {
       })}
     >
       <ToggleButton
-        className={`group size-8 cursor-default rounded-md p-2 text-primary-11 selected:bg-primary-5 hover:bg-primary-a-4 focus-visible:outline-primary-7 active:bg-primary-a-5 disabled:pointer-events-none disabled:text-neutral-9 ${isReady ? "" : "pointer-events-none"}`}
+        className={`group size-8 cursor-default rounded-md p-2 text-primary-11 active:bg-primary-a-5 hover:bg-primary-a-4 focus-visible:outline-primary-7 selected:bg-primary-5 disabled:pointer-events-none disabled:text-neutral-9 ${isReady ? "" : "pointer-events-none"}`}
         isDisabled={isDisabled}
       >
         <LetterCaseCapitalizeIcon className={`size-4 ${isReady ? "" : "!hidden"}`} />

@@ -1515,7 +1515,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.20.1, @babel/runtime@npm:^7.23.2, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.20.1, @babel/runtime@npm:^7.23.2, @babel/runtime@npm:^7.23.7, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
   version: 7.24.0
   resolution: "@babel/runtime@npm:7.24.0"
   dependencies:
@@ -3006,6 +3006,13 @@ __metadata:
     "@jridgewell/resolve-uri": "npm:^3.1.0"
     "@jridgewell/sourcemap-codec": "npm:^1.4.14"
   checksum: 10/dced32160a44b49d531b80a4a2159dceab6b3ddf0c8e95a0deae4b0e894b172defa63d5ac52a19c2068e1fe7d31ea4ba931fbeec103233ecb4208953967120fc
+  languageName: node
+  linkType: hard
+
+"@leeoniya/ufuzzy@npm:1.0.14":
+  version: 1.0.14
+  resolution: "@leeoniya/ufuzzy@npm:1.0.14"
+  checksum: 10/852b580a8eaaf92e2d448f5b720e3c53e4bea22187bf5e8459256677c47183321b47b8384982e15751f42da7e77a216fd86c80e6185677d8270adeab4a4fb771
   languageName: node
   linkType: hard
 
@@ -5296,6 +5303,7 @@ __metadata:
     "@chromatic-com/storybook": "npm:1.2.3"
     "@dotenv-run/cli": "npm:1.3.5"
     "@formatjs/cli": "npm:6.2.7"
+    "@leeoniya/ufuzzy": "npm:1.0.14"
     "@radix-ui/react-icons": "npm:1.3.0"
     "@react-hookz/web": "npm:24.0.4"
     "@react-stately/utils": "npm:3.9.1"
@@ -5319,9 +5327,12 @@ __metadata:
     "@types/react": "npm:18.2.63"
     "@types/react-dom": "npm:18.2.19"
     autoprefixer: "npm:10.4.18"
+    classix: "npm:2.1.36"
+    delay: "npm:6.0.0"
     eslint: "npm:8.57.0"
     eslint-config-prettier: "npm:9.1.0"
     graphql: "npm:16.8.1"
+    graphql-relay: "npm:0.10.0"
     next: "npm:14.1.2"
     next-themes: "npm:0.2.1"
     npm-package-json-lint: "npm:7.1.0"
@@ -5334,10 +5345,12 @@ __metadata:
     react-intl: "npm:6.6.2"
     react-stately: "npm:3.30.1"
     storybook: "npm:8.0.0-rc.1"
+    tailwind-merge: "npm:2.2.1"
     tailwindcss: "npm:3.4.1"
     ts-invariant: "npm:0.10.3"
     turbo: "npm:1.12.4"
     typescript: "npm:5.3.3"
+    use-debounce: "npm:10.0.0"
   languageName: unknown
   linkType: soft
 
@@ -8868,6 +8881,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"classix@npm:2.1.36":
+  version: 2.1.36
+  resolution: "classix@npm:2.1.36"
+  checksum: 10/365bf02ac4cb9ee586923fa401721f9d53b5ad9359fa61c49d6b66bef3e97f10ea5671050c1bb2e2f8352e2e9d60f351ac00486d4920f160fce821b3285bc899
+  languageName: node
+  linkType: hard
+
 "clean-css@npm:^5.2.2":
   version: 5.3.3
   resolution: "clean-css@npm:5.3.3"
@@ -9735,6 +9755,13 @@ __metadata:
     rimraf: "npm:^3.0.2"
     slash: "npm:^3.0.0"
   checksum: 10/563288b73b8b19a7261c47fd21a330eeab6e2acd7c6208c49790dfd369127120dd7836cdf0c1eca216b77c94782a81507eac6b4734252d3bef2795cb366996b6
+  languageName: node
+  linkType: hard
+
+"delay@npm:6.0.0":
+  version: 6.0.0
+  resolution: "delay@npm:6.0.0"
+  checksum: 10/e00190cf6e56e3f746af6664a9b7a837a582a70b96ce18d83b86a97300cc9f727189b9f6a7082557134223c0bd23eee88e681cab54cb4e5d8f6b2f4054e7b49a
   languageName: node
   linkType: hard
 
@@ -12159,6 +12186,15 @@ __metadata:
   peerDependencies:
     graphql: "*"
   checksum: 10/fc45ac82f002d8130f9997cbe3d650409fbb5c33f4f9a057218f5847a2cb1cfceb89d6b4271f22693370a1f1c82e3697a9da7667e1d8f55672700f97c4b973b0
+  languageName: node
+  linkType: hard
+
+"graphql-relay@npm:0.10.0":
+  version: 0.10.0
+  resolution: "graphql-relay@npm:0.10.0"
+  peerDependencies:
+    graphql: ^16.2.0
+  checksum: 10/3c5f6521e766597d9da21f57cab01fc560bc934a69b597d0b4f45238833e46611798672dc47ac49ffc71a7d1bb5687edc9b3c8c13dbb92170ad6f1c97af09f49
   languageName: node
   linkType: hard
 
@@ -17895,6 +17931,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tailwind-merge@npm:2.2.1":
+  version: 2.2.1
+  resolution: "tailwind-merge@npm:2.2.1"
+  dependencies:
+    "@babel/runtime": "npm:^7.23.7"
+  checksum: 10/3d8aecfa03c077472a038f25e95504ca47c1e7549ab843a854a690509098caac4e2e57790a7cadda4054fd07ec31421980a7afac33547013cf22299788625e72
+  languageName: node
+  linkType: hard
+
 "tailwind-scrollbar@npm:^3.1.0":
   version: 3.1.0
   resolution: "tailwind-scrollbar@npm:3.1.0"
@@ -18944,6 +18989,15 @@ __metadata:
   version: 8.0.2
   resolution: "urlpattern-polyfill@npm:8.0.2"
   checksum: 10/fd86b5c55473f3abbf9ed317b953c9cbb4fa6b3f75f681a1d982fe9c17bbc8d9bcf988f4cf3bda35e2e5875984086c97e177f97f076bb80dfa2beb85d1dd7b23
+  languageName: node
+  linkType: hard
+
+"use-debounce@npm:10.0.0":
+  version: 10.0.0
+  resolution: "use-debounce@npm:10.0.0"
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: 10/b0fd28112aa3d7b5333f64e845aa1a4b5223bae7f0800fcb496d4796816bc9490bc3bb050c8c104d32262f7cffa06c6145455cc6054add4fdd8dccf2be52f0c9
   languageName: node
   linkType: hard
 
