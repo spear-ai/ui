@@ -10,14 +10,14 @@ import {
   SVGAttributes,
 } from "react";
 import {
-  Button,
+  Button as ButtonPrimitive,
   ComboBox as ComboBoxPrimitive,
-  FieldError,
-  Input,
-  Label,
-  ListBox,
-  ListBoxItem,
-  Popover,
+  FieldError as FieldErrorPrimitive,
+  Input as InputPrimitive,
+  Label as LabelPrimitive,
+  ListBox as ListBoxPrimitive,
+  ListBoxItem as ListBoxItemPrimitive,
+  Popover as PopoverPrimitive,
 } from "react-aria-components";
 import { cx } from "@/helpers/cx";
 
@@ -32,14 +32,14 @@ export const ComboBox = forwardRef<
 ComboBox.displayName = "ComboBox";
 
 export const ComboBoxLabel = forwardRef<
-  ElementRef<typeof Label>,
-  ComponentPropsWithoutRef<typeof Label> & { className?: string | undefined }
+  ElementRef<typeof LabelPrimitive>,
+  ComponentPropsWithoutRef<typeof LabelPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
     "mb-2 block select-none text-base/6 text-neutral-12 group-disabled:text-neutral-11 sm:text-sm/6",
     className,
   );
-  return <Label className={mergedClassName} {...properties} ref={reference} />;
+  return <LabelPrimitive className={mergedClassName} {...properties} ref={reference} />;
 });
 
 ComboBoxLabel.displayName = "ComboBoxLabel";
@@ -68,40 +68,40 @@ export const ComboBoxTrigger = forwardRef<
 ComboBoxTrigger.displayName = "ComboBoxTrigger";
 
 export const ComboBoxFieldError = forwardRef<
-  ElementRef<typeof FieldError>,
-  ComponentPropsWithoutRef<typeof FieldError> & { className?: string | undefined }
+  ElementRef<typeof FieldErrorPrimitive>,
+  ComponentPropsWithoutRef<typeof FieldErrorPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
     "mt-2 block text-base/6 text-x-negative-11 group-disabled:opacity-50 sm:text-sm/6",
     className,
   );
-  return <FieldError className={mergedClassName} {...properties} ref={reference} />;
+  return <FieldErrorPrimitive className={mergedClassName} {...properties} ref={reference} />;
 });
 
 ComboBoxFieldError.displayName = "ComboBoxFieldError";
 
 export const ComboBoxInput = forwardRef<
-  ElementRef<typeof Input>,
-  ComponentPropsWithoutRef<typeof Input> & { className?: string | undefined }
+  ElementRef<typeof InputPrimitive>,
+  ComponentPropsWithoutRef<typeof InputPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "theme-galapago::group-disabled:bg-neutral-a-3 group inline-flex h-9 w-full rounded-lg border border-transparent bg-white-a-3 pe-2 ps-3.5 text-base leading-none text-neutral-12 shadow outline outline-offset-0 outline-neutral-a-7 placeholder:text-neutral-10 entering:outline-2 entering:outline-primary-a-8 group-invalid:outline-x-negative-a-7 focus-visible:outline-primary-a-8 group-disabled:pointer-events-none group-disabled:bg-neutral-a-3 group-disabled:outline-neutral-a-6 group-invalid:group-disabled:outline-x-negative-a-6 theme-dfs:bg-canvas-1 theme-dfs:group-disabled:bg-neutral-a-3 theme-forerunner:group-disabled:bg-neutral-a-3 theme-galapago:bg-white theme-dfs:dark:bg-white-a-3 theme-forerunner:dark:bg-black-a-3 theme-galapago:dark:bg-black-a-3 sm:ps-3 sm:text-sm",
+    "theme-galapago::group-disabled:bg-neutral-a-3 group inline-flex h-9 w-full select-none rounded-lg border border-transparent bg-white-a-3 pe-2 ps-3.5 text-base leading-none text-neutral-12 shadow outline outline-offset-0 outline-neutral-a-7 placeholder:text-neutral-10 entering:outline-2 entering:outline-primary-a-8 group-invalid:outline-x-negative-a-7 focus-visible:outline-primary-a-8 group-disabled:pointer-events-none group-disabled:bg-neutral-a-3 group-disabled:outline-neutral-a-6 group-invalid:group-disabled:outline-x-negative-a-6 theme-dfs:bg-canvas-1 theme-dfs:group-disabled:bg-neutral-a-3 theme-forerunner:group-disabled:bg-neutral-a-3 theme-galapago:bg-white theme-dfs:dark:bg-white-a-3 theme-forerunner:dark:bg-black-a-3 theme-galapago:dark:bg-black-a-3 sm:ps-3 sm:text-sm",
     className,
   );
-  return <Input className={mergedClassName} {...properties} ref={reference} />;
+  return <InputPrimitive className={mergedClassName} {...properties} ref={reference} />;
 });
 
 ComboBoxInput.displayName = "ComboBoxInput";
 
 export const ComboBoxButton = forwardRef<
-  ElementRef<typeof Button>,
-  ComponentPropsWithoutRef<typeof Button> & { className?: string | undefined }
+  ElementRef<typeof ButtonPrimitive>,
+  ComponentPropsWithoutRef<typeof ButtonPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
     "absolute right-0 top-0 flex h-9 cursor-default items-center rounded-md p-2 text-neutral-11 before:absolute before:inset-1 before:rounded-md before:content-[''] hover:before:bg-neutral-a-4 focus:outline-none group-disabled:text-neutral-8",
     className,
   );
-  return <Button className={mergedClassName} {...properties} ref={reference} />;
+  return <ButtonPrimitive className={mergedClassName} {...properties} ref={reference} />;
 });
 
 ComboBoxButton.displayName = "ComboBoxButton";
@@ -119,14 +119,14 @@ export const ComboBoxIcon = forwardRef<
 ComboBoxIcon.displayName = "ComboBoxIcon";
 
 export const ComboBoxPopover = forwardRef<
-  ElementRef<typeof Popover>,
-  ComponentPropsWithoutRef<typeof Popover> & { className?: string | undefined }
+  ElementRef<typeof PopoverPrimitive>,
+  ComponentPropsWithoutRef<typeof PopoverPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
     "isolate min-w-trigger-width overflow-auto rounded-xl border-transparent bg-canvas-1 p-1 shadow-lg outline outline-1 outline-offset-0 outline-neutral-a-6 backdrop-blur placement-left:slide-in-from-right-2 placement-right:slide-in-from-left-2 placement-top:slide-in-from-bottom-2 placement-bottom:slide-in-from-top-2 entering:duration-100 entering:animate-in entering:fade-in exiting:duration-75 exiting:animate-out exiting:fade-out exiting:zoom-out-95 theme-forerunner:bg-white-a-3 theme-galapago:bg-white theme-underway:shadow-2xl theme-galapago:dark:bg-black-a-3",
     className,
   );
-  return <Popover className={mergedClassName} {...properties} ref={reference} />;
+  return <PopoverPrimitive className={mergedClassName} {...properties} ref={reference} />;
 });
 
 ComboBoxPopover.displayName = "ComboBoxPopover";
@@ -134,22 +134,22 @@ ComboBoxPopover.displayName = "ComboBoxPopover";
 // The ListBox component supports a generic type, but we don’t use it
 // because passing it through `forwardRef(…)` is challenging.
 export const ComboBoxListBox = forwardRef<
-  ElementRef<typeof ListBox>,
-  Omit<ComponentPropsWithoutRef<typeof ListBox>, "children"> & {
+  ElementRef<typeof ListBoxPrimitive>,
+  Omit<ComponentPropsWithoutRef<typeof ListBoxPrimitive>, "children"> & {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     children?: ReactNode | ((item: any) => ReactNode);
     className?: string | undefined;
   }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx("outline-none", className);
-  return <ListBox className={mergedClassName} {...properties} ref={reference} />;
+  return <ListBoxPrimitive className={mergedClassName} {...properties} ref={reference} />;
 });
 
 ComboBoxListBox.displayName = "ComboBoxListBox";
 
 export const ComboBoxListBoxItem = forwardRef<
-  ElementRef<typeof ListBoxItem>,
-  ComponentPropsWithoutRef<typeof ListBoxItem> & {
+  ElementRef<typeof ListBoxItemPrimitive>,
+  ComponentPropsWithoutRef<typeof ListBoxItemPrimitive> & {
     className?: string | undefined;
     isNone?: boolean | undefined;
   }
@@ -159,7 +159,7 @@ export const ComboBoxListBoxItem = forwardRef<
     isNone ? "text-neutral-11" : "",
     className,
   );
-  return <ListBoxItem className={mergedClassName} {...properties} ref={reference} />;
+  return <ListBoxItemPrimitive className={mergedClassName} {...properties} ref={reference} />;
 });
 
 ComboBoxListBoxItem.displayName = "ComboBoxListBoxItem";
