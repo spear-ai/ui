@@ -97,7 +97,7 @@ export const ComboBoxButton = forwardRef<
   ComponentPropsWithoutRef<typeof Button> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "absolute right-0 top-0 flex h-9 cursor-default items-center rounded-md p-2 text-neutral-11 before:absolute before:inset-1 before:rounded-md before:content-[''] hover:before:bg-neutral-4 focus:outline-none group-disabled:text-neutral-8",
+    "absolute right-0 top-0 flex h-9 cursor-default items-center rounded-md p-2 text-neutral-11 before:absolute before:inset-1 before:rounded-md before:content-[''] hover:before:bg-neutral-a-4 focus:outline-none group-disabled:text-neutral-8",
     className,
   );
   return <Button className={mergedClassName} {...properties} ref={reference} />;

@@ -30,8 +30,10 @@ const PreviewComboBox = (properties: {
   isInvalid: boolean;
   isOptional: boolean;
   isSquished: boolean;
+  menuTrigger: "focus" | "input";
 }) => {
-  const { hasLabel, hasLabelDescription, isDisabled, isInvalid, isOptional, isSquished } = properties;
+  const { hasLabel, hasLabelDescription, isDisabled, isInvalid, isOptional, isSquished, menuTrigger } =
+    properties;
   const intl = useIntl();
   const [selectedKey, setSelectedKey] = useControlledState<string | null>(undefined, null);
   const [isOpen, setIsOpen] = useControlledState<boolean>(undefined, false);
@@ -60,7 +62,7 @@ const PreviewComboBox = (properties: {
           defaultItems={itemList}
           isDisabled={isDisabled}
           isInvalid={isInvalid}
-          menuTrigger="focus"
+          menuTrigger={menuTrigger}
           onOpenChange={setIsOpen}
           onSelectionChange={handleSelectionChange}
           selectedKey={selectedKey}
@@ -132,6 +134,9 @@ const PreviewComboBox = (properties: {
 };
 
 const meta = {
+  argTypes: {
+    menuTrigger: { control: { type: "select" }, options: ["focus", "input"] },
+  },
   component: PreviewComboBox,
 } satisfies Meta<typeof PreviewComboBox>;
 
@@ -145,6 +150,7 @@ export const Standard: Story = {
     isInvalid: false,
     isOptional: true,
     isSquished: false,
+    menuTrigger: "focus",
   },
   parameters: {
     layout: "centered",
