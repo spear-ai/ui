@@ -26,14 +26,23 @@ type SensorEdge = Awaited<ReturnType<typeof querySensorConnection>>["edges"][0];
 const PreviewComboBox = (properties: {
   hasLabel: boolean;
   hasLabelDescription: boolean;
+  isAlwaysOpen: boolean;
   isDisabled: boolean;
   isInvalid: boolean;
   isOptional: boolean;
   isSquished: boolean;
   menuTrigger: "focus" | "input";
 }) => {
-  const { hasLabel, hasLabelDescription, isDisabled, isInvalid, isOptional, isSquished, menuTrigger } =
-    properties;
+  const {
+    hasLabel,
+    hasLabelDescription,
+    isAlwaysOpen,
+    isDisabled,
+    isInvalid,
+    isOptional,
+    isSquished,
+    menuTrigger,
+  } = properties;
   const intl = useIntl();
   const [selectedKey, setSelectedKey] = useControlledState<string | null>(undefined, null);
   const [isOpen, setIsOpen] = useControlledState<boolean>(undefined, false);
@@ -102,7 +111,7 @@ const PreviewComboBox = (properties: {
               })}
             </ComboBoxFieldError>
           ) : null}
-          <ComboBoxPopover isOpen={isOpen}>
+          <ComboBoxPopover isOpen={isAlwaysOpen ? true : isOpen}>
             <ComboBoxListBox>
               {(edge: SensorEdge) => {
                 if (edge.cursor === "") {
@@ -146,6 +155,7 @@ export const Standard: Story = {
   args: {
     hasLabel: true,
     hasLabelDescription: true,
+    isAlwaysOpen: false,
     isDisabled: false,
     isInvalid: false,
     isOptional: true,

@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
+import { Slot } from "@radix-ui/react-slot";
 import {
   ComponentPropsWithoutRef,
   ElementRef,
@@ -108,9 +109,12 @@ ComboBoxButton.displayName = "ComboBoxButton";
 export const ComboBoxIcon = forwardRef<
   SVGSVGElement,
   SVGAttributes<SVGElement> & { className?: string | undefined }
->(({ className }, reference) => {
+  SVGAttributes<SVGElement> & { asChild?: boolean | undefined; className?: string | undefined }
+>(({ asChild, className }, reference) => {
+  const Component = asChild ? Slot : CaretSortIcon;
   const mergedClassName = cx("relative h-full w-auto", className);
-  return <CaretSortIcon aria-hidden className={mergedClassName} ref={reference} />;
+  // @ts-expect-error the Slot component’s type definition doesn’t play nice with SVGs
+  return <Component aria-hidden className={mergedClassName} ref={reference} {...properties} />;
 });
 
 ComboBoxIcon.displayName = "ComboBoxIcon";
@@ -183,10 +187,12 @@ ComboBoxListBoxItemCheck.displayName = "ComboBoxListBoxItemCheck";
 
 export const ComboBoxListBoxItemCheckIcon = forwardRef<
   SVGSVGElement,
-  SVGAttributes<SVGElement> & { className?: string | undefined }
->(({ className }, reference) => {
+  SVGAttributes<SVGElement> & { asChild?: boolean | undefined; className?: string | undefined }
+>(({ asChild = false, className, ...properties }, reference) => {
+  const Component = asChild ? Slot : CheckIcon;
   const mergedClassName = cx("h-full w-auto", className);
-  return <CheckIcon aria-hidden className={mergedClassName} ref={reference} />;
+  // @ts-expect-error the Slot component’s type definition doesn’t play nice with SVGs
+  return <Component aria-hidden className={mergedClassName} ref={reference} {...properties} />;
 });
 
 ComboBoxListBoxItemCheckIcon.displayName = "ComboBoxListBoxItemCheckIcon";
