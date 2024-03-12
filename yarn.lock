@@ -5329,7 +5329,6 @@ __metadata:
     "@types/react-dom": "npm:18.2.19"
     autoprefixer: "npm:10.4.18"
     classix: "npm:2.1.36"
-    delay: "npm:6.0.0"
     eslint: "npm:8.57.0"
     eslint-config-prettier: "npm:9.1.0"
     graphql: "npm:16.8.1"
@@ -9756,13 +9755,6 @@ __metadata:
     rimraf: "npm:^3.0.2"
     slash: "npm:^3.0.0"
   checksum: 10/563288b73b8b19a7261c47fd21a330eeab6e2acd7c6208c49790dfd369127120dd7836cdf0c1eca216b77c94782a81507eac6b4734252d3bef2795cb366996b6
-  languageName: node
-  linkType: hard
-
-"delay@npm:6.0.0":
-  version: 6.0.0
-  resolution: "delay@npm:6.0.0"
-  checksum: 10/e00190cf6e56e3f746af6664a9b7a837a582a70b96ce18d83b86a97300cc9f727189b9f6a7082557134223c0bd23eee88e681cab54cb4e5d8f6b2f4054e7b49a
   languageName: node
   linkType: hard
 

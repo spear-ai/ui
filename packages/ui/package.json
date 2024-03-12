@@ -52,7 +52,6 @@
     "@types/react": "18.2.63",
     "@types/react-dom": "18.2.19",
     "autoprefixer": "10.4.18",
-    "delay": "6.0.0",
     "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
     "graphql": "16.8.1",
