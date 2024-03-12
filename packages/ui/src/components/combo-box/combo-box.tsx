@@ -108,7 +108,6 @@ ComboBoxButton.displayName = "ComboBoxButton";
 
 export const ComboBoxIcon = forwardRef<
   SVGSVGElement,
-  SVGAttributes<SVGElement> & { className?: string | undefined }
   SVGAttributes<SVGElement> & { asChild?: boolean | undefined; className?: string | undefined }
 >(({ asChild, className }, reference) => {
   const Component = asChild ? Slot : CaretSortIcon;
