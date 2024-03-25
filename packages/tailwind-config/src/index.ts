@@ -23,10 +23,10 @@ export const tailwindConfig: Config = {
     containerQueriesPlugin,
     formsPlugin,
     radixColorThemePlugin,
-    reactAriaComponentsPlugin,
     scrollbarPlugin,
     threeDPlugin,
     typographyPlugin,
+    reactAriaComponentsPlugin,
   ],
   theme: {
     colors,

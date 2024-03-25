@@ -40,7 +40,7 @@ const PreviewTextField = (properties: {
             </p>
           ) : null}
           <Input
-            className="mt-2 h-9 w-full rounded-lg border-none bg-white-a-3 pe-2 ps-3.5 text-base leading-none text-neutral-12 shadow outline outline-offset-0 outline-neutral-a-7 placeholder:text-neutral-11 invalid:outline-x-negative-a-7 group-disabled:pointer-events-none group-disabled:text-neutral-a-8 invalid:group-disabled:outline-x-negative-a-6 focus-visible:outline-offset-0 focus-visible:outline-primary-a-8 theme-dfs:bg-canvas-1 theme-galapago:bg-white dark:bg-white-a-3 theme-dfs:dark:bg-white-a-3 theme-forerunner:dark:bg-black-a-3 theme-galapago:dark:bg-black-a-3 sm:ps-3 sm:text-sm"
+            className="mt-2 h-9 w-full rounded-lg border-none bg-white-a-3 pe-2 ps-3.5 text-base leading-none text-neutral-12 shadow outline outline-offset-0 outline-neutral-a-7 placeholder:text-neutral-11 invalid:outline-x-negative-a-7 focus-visible:outline-offset-0 focus-visible:outline-primary-a-8 group-disabled:pointer-events-none group-disabled:text-neutral-a-8 invalid:group-disabled:outline-x-negative-a-6 theme-dfs:bg-canvas-1 theme-galapago:bg-white dark:bg-white-a-3 theme-dfs:dark:bg-white-a-3 theme-forerunner:dark:bg-black-a-3 theme-galapago:dark:bg-black-a-3 sm:ps-3 sm:text-sm"
             placeholder={intl.formatMessage({
               defaultMessage: "example@email.com",
               id: "SvELQW",
