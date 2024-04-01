@@ -13,7 +13,7 @@
     "@radix-ui/colors": "^3.0.0",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "^0.5.7",
-    "@tailwindcss/typography": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.12",
     "change-case": "^5.4.3",
     "culori": "^4.0.1",
     "tailwind-scrollbar": "^3.1.0",
