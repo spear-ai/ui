@@ -21,7 +21,7 @@
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-react-aria-components": "^1.1.1",
     "ts-invariant": "^0.10.3",
-    "type-fest": "^4.11.1"
+    "type-fest": "^4.14.0"
   },
   "devDependencies": {
     "@spear-ai/eslint-config": "18.0.0",
