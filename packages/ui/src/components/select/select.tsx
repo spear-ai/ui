@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { CaretSortIcon } from "@radix-ui/react-icons";
-import { cx } from "classix";
 import React, { forwardRef, HTMLAttributes } from "react";
 import {
   Button as ButtonPrimitive,
@@ -12,6 +11,7 @@ import {
   Select as SelectPrimitive,
   SelectValue as SelectValuePrimitive,
 } from "react-aria-components";
+import { cx } from "@/helpers/cx";
 
 export const Select = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive>,
@@ -38,7 +38,7 @@ export const SelectLabel = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof LabelPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "block select-none text-base/6 text-neutral-12 group-disabled:text-neutral-11 sm:text-sm/6",
+    "mb-2 block select-none text-base/6 text-neutral-12 group-disabled:text-neutral-11 sm:text-sm/6",
     className,
   );
   return <LabelPrimitive className={mergedClassName} {...properties} ref={reference} />;
@@ -51,7 +51,7 @@ export const SelectDescription = forwardRef<
   HTMLAttributes<HTMLParagraphElement> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "mt-1 text-base/6 text-neutral-11 group-disabled:text-neutral-9 sm:text-sm/6",
+    "-mt-1 mb-2 text-base/6 text-neutral-11 group-disabled:text-neutral-9 sm:text-sm/6",
     className,
   );
   return <p className={mergedClassName} {...properties} ref={reference} />;
@@ -78,7 +78,7 @@ export const SelectButton = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof ButtonPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "group mt-2 inline-flex h-9 w-full cursor-default select-none items-center justify-between gap-1 rounded-lg border border-transparent bg-white-a-3 pe-2 ps-3.5 text-base leading-none shadow outline outline-offset-0 outline-neutral-a-7 entering:outline-2 entering:outline-primary-a-8 group-invalid:outline-x-negative-a-7 focus-visible:outline-primary-a-8 group-disabled:pointer-events-none group-disabled:bg-neutral-a-3 group-disabled:outline-neutral-a-6 group-invalid:group-disabled:outline-x-negative-a-6 theme-dfs:bg-canvas-1 theme-dfs:group-disabled:bg-neutral-a-3 theme-forerunner:group-disabled:bg-neutral-a-3 theme-galapago:bg-white theme-galapago:group-disabled:bg-neutral-a-3 theme-dfs:dark:bg-white-a-3 theme-forerunner:dark:bg-black-a-3 theme-galapago:dark:bg-black-a-3 sm:ps-3 sm:text-sm",
+    "group inline-flex h-9 w-full cursor-default select-none items-center justify-between gap-1 rounded-lg border border-transparent bg-white-a-3 pe-2 ps-3.5 text-base leading-none shadow outline -outline-offset-1 outline-neutral-a-7 entering:outline-2 entering:outline-primary-a-8 group-invalid:outline-x-negative-a-7 focus-visible:outline-primary-a-8 group-disabled:pointer-events-none group-disabled:bg-neutral-a-3 group-disabled:outline-neutral-a-6 group-invalid:group-disabled:outline-x-negative-a-6 theme-dfs:bg-canvas-1 theme-dfs:group-disabled:bg-neutral-a-3 theme-forerunner:group-disabled:bg-neutral-a-3 theme-galapago:bg-white theme-galapago:group-disabled:bg-neutral-a-3 theme-dfs:dark:bg-white-a-3 theme-forerunner:dark:bg-black-a-3 theme-galapago:dark:bg-black-a-3 sm:ps-3 sm:text-sm",
     className,
   );
   return <ButtonPrimitive className={mergedClassName} {...properties} ref={reference} />;

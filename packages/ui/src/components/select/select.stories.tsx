@@ -8,6 +8,7 @@ import {
   Select,
   SelectButton,
   SelectDefaultListBoxItem,
+  SelectDescription,
   SelectFieldError,
   SelectIcon,
   SelectLabel,
@@ -84,12 +85,12 @@ const PreviewSelect = (properties: {
             </SelectLabel>
           ) : null}
           {hasLabel && hasLabelDescription ? (
-            <p className="mt-1 text-base/6 text-neutral-11 group-disabled:text-neutral-9 sm:text-sm/6">
+            <SelectDescription>
               {intl.formatMessage({
                 defaultMessage: "A mechanical device sensitive to sound.",
                 id: "2YVoI/",
               })}
-            </p>
+            </SelectDescription>
           ) : null}
           <SelectButton>
             <SelectValue />
