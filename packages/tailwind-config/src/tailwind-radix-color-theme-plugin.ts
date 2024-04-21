@@ -94,77 +94,77 @@ const colors: Colors = {};
 for (const themeColorName of themeColorNameList) {
   // {
   //   primary: {
-  //     1: "oklch(var(--colors-primary-1) / <alpha-value>)",
-  //     2: "oklch(var(--colors-primary-2) / <alpha-value>)",
+  //     1: "rgb(var(--colors-primary-1) / <alpha-value>)",
+  //     2: "rgb(var(--colors-primary-2) / <alpha-value>)",
   //     ⋮
-  //     12: "oklch(var(--colors-primary-12) / <alpha-value>)",
+  //     12: "rgb(var(--colors-primary-12) / <alpha-value>)",
   //   },
   // }
   colors[themeColorName] = Object.fromEntries(
-    stepList.map((step) => [step, `oklch(var(--colors-${themeColorName}-${step}) / <alpha-value>)`]),
+    stepList.map((step) => [step, `rgb(var(--colors-${themeColorName}-${step}) / <alpha-value>)`]),
   );
 
   // {
   //   "primary-a": {
-  //     1: "oklch(var(--colors-primary-a-1))",
-  //     2: "oklch(var(--colors-primary-a-2))",
+  //     1: "rgb(var(--colors-primary-a-1))",
+  //     2: "rgb(var(--colors-primary-a-2))",
   //     ⋮
-  //     12: "oklch(var(--colors-primary-a-12))",
+  //     12: "rgb(var(--colors-primary-a-12))",
   //   },
   // }
   colors[`${themeColorName}-a`] = Object.fromEntries(
     // The alpha value is built-in to the color
-    stepList.map((step) => [step, `oklch(var(--colors-${themeColorName}-a-${step}))`]),
+    stepList.map((step) => [step, `rgb(var(--colors-${themeColorName}-a-${step}))`]),
   );
 
   // {
   //   "primary-light": {
-  //     1: "oklch(var(--colors-primary-light-1) / <alpha-value>)",
-  //     2: "oklch(var(--colors-primary-light-2) / <alpha-value>)",
+  //     1: "rgb(var(--colors-primary-light-1) / <alpha-value>)",
+  //     2: "rgb(var(--colors-primary-light-2) / <alpha-value>)",
   //     ⋮
-  //     12: "oklch(var(--colors-primary-light-12) / <alpha-value>)",
+  //     12: "rgb(var(--colors-primary-light-12) / <alpha-value>)",
   //   },
   // }
   colors[`${themeColorName}-light`] = Object.fromEntries(
-    stepList.map((step) => [step, `oklch(var(--colors-${themeColorName}-light-${step}) / <alpha-value>)`]),
+    stepList.map((step) => [step, `rgb(var(--colors-${themeColorName}-light-${step}) / <alpha-value>)`]),
   );
 
   // {
   //   "primary-light-a": {
-  //     1: "oklch(var(--colors-primary-light-a-1))",
-  //     2: "oklch(var(--colors-primary-light-a-2))",
+  //     1: "rgb(var(--colors-primary-light-a-1))",
+  //     2: "rgb(var(--colors-primary-light-a-2))",
   //     ⋮
-  //     12: "oklch(var(--colors-primary-light-a-12))",
+  //     12: "rgb(var(--colors-primary-light-a-12))",
   //   },
   // }
   colors[`${themeColorName}-light-a`] = Object.fromEntries(
     // The alpha value is built-in to the color
-    stepList.map((step) => [step, `oklch(var(--colors-${themeColorName}-light-a-${step}))`]),
+    stepList.map((step) => [step, `rgb(var(--colors-${themeColorName}-light-a-${step}))`]),
   );
 
   // {
   //   "primary-dark": {
-  //     1: "oklch(var(--colors-primary-dark-1) / <alpha-value>)",
-  //     2: "oklch(var(--colors-primary-dark-2) / <alpha-value>)",
+  //     1: "rgb(var(--colors-primary-dark-1) / <alpha-value>)",
+  //     2: "rgb(var(--colors-primary-dark-2) / <alpha-value>)",
   //     ⋮
-  //     12: "oklch(var(--colors-primary-dark-12) / <alpha-value>)",
+  //     12: "rgb(var(--colors-primary-dark-12) / <alpha-value>)",
   //   },
   // }
   colors[`${themeColorName}-dark`] = Object.fromEntries(
-    stepList.map((step) => [step, `oklch(var(--colors-${themeColorName}-dark-${step}) / <alpha-value>)`]),
+    stepList.map((step) => [step, `rgb(var(--colors-${themeColorName}-dark-${step}) / <alpha-value>)`]),
   );
 
   // {
   //   "primary-dark-a": {
-  //     1: "oklch(var(--colors-primary-dark-a-1))",
-  //     2: "oklch(var(--colors-primary-dark-a-2))",
+  //     1: "rgb(var(--colors-primary-dark-a-1))",
+  //     2: "rgb(var(--colors-primary-dark-a-2))",
   //     ⋮
-  //     12: "oklch(var(--colors-primary-dark-a-12))",
+  //     12: "rgb(var(--colors-primary-dark-a-12))",
   //   },
   // }
   colors[`${themeColorName}-dark-a`] = Object.fromEntries(
     // The alpha value is built-in to the color
-    stepList.map((step) => [step, `oklch(var(--colors-${themeColorName}-dark-a-${step}))`]),
+    stepList.map((step) => [step, `rgb(var(--colors-${themeColorName}-dark-a-${step}))`]),
   );
 
   colors[`${themeColorName}-contrast`] = `var(--colors-${themeColorName}-contrast)`;
