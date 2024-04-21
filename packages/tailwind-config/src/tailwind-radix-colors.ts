@@ -1,6 +1,6 @@
 import radixColorGroups from "@radix-ui/colors";
 import { kebabCase } from "change-case";
-import { oklch } from "culori";
+import { rgb as toRgb } from "culori";
 import { Replace } from "type-fest";
 
 export type RadixColorScaleName = Replace<
@@ -64,8 +64,6 @@ export const getColorValue = (options: {
     groupKey += "Dark";
   }
 
-  groupKey += "P3";
-
   if (isAlpha) {
     groupKey += "A";
     stepKey += "A";
@@ -75,11 +73,11 @@ export const getColorValue = (options: {
 
   const colorGroup = radixColorGroups[groupKey as keyof typeof radixColorGroups];
   const colorValue = colorGroup[stepKey as keyof typeof colorGroup] as string;
-  const lch = oklch(colorValue);
+  const rgb = toRgb(colorValue);
   const value = isAlpha
-    ? `${lch?.l ?? 0} ${lch?.c ?? 0} ${lch?.h ?? 0} / ${lch?.alpha ?? 1}`
-    : `${lch?.l ?? 0} ${lch?.c ?? 0} ${lch?.h ?? 0}`;
-  return isVariable ? value : `oklch(${value})`;
+    ? `${255 * (rgb?.r ?? 0)} ${255 * (rgb?.g ?? 0)} ${255 * (rgb?.b ?? 0)} / ${rgb?.alpha ?? 1}`
+    : `${255 * (rgb?.r ?? 0)} ${255 * (rgb?.g ?? 0)} ${255 * (rgb?.b ?? 0)}`;
+  return isVariable ? value : `rgb(${value})`;
 };
 
 export type Colors = Record<string, Record<string, string> | string>;
