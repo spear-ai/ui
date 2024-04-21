@@ -1,5 +1,29 @@
 # @spear-ai/ui
 
+## 4.0.0
+
+### Major Changes
+
+- [#154](https://github.com/spear-ai/ui/pull/154) [`88546d6`](https://github.com/spear-ai/ui/commit/88546d6ba9a359ebe281e8e26e101d62cc20ce73) Thanks [@psirenny](https://github.com/psirenny)! - Bumped placeholder color from step 9 to step 10.
+
+### Minor Changes
+
+- [#150](https://github.com/spear-ai/ui/pull/150) [`a0011de`](https://github.com/spear-ai/ui/commit/a0011de5a0215273c323c0b30180c28d631234b8) Thanks [@psirenny](https://github.com/psirenny)! - Added Switch story.
+
+- [#154](https://github.com/spear-ai/ui/pull/154) [`88546d6`](https://github.com/spear-ai/ui/commit/88546d6ba9a359ebe281e8e26e101d62cc20ce73) Thanks [@psirenny](https://github.com/psirenny)! - Added `cx` helper function to merge class names.
+
+- [#154](https://github.com/spear-ai/ui/pull/154) [`88546d6`](https://github.com/spear-ai/ui/commit/88546d6ba9a359ebe281e8e26e101d62cc20ce73) Thanks [@psirenny](https://github.com/psirenny)! - Added ComboBox component.
+
+- [#136](https://github.com/spear-ai/ui/pull/136) [`9d3586a`](https://github.com/spear-ai/ui/commit/9d3586a4ab234a8c88ea65eb04dd11aea6a99c7c) Thanks [@psirenny](https://github.com/psirenny)! - Added Checkbox component story.
+
+### Patch Changes
+
+- [#172](https://github.com/spear-ai/ui/pull/172) [`8f5ed85`](https://github.com/spear-ai/ui/commit/8f5ed859ad9bc0293d8946e812cd7860596eeb83) Thanks [@psirenny](https://github.com/psirenny)! - Fixed Select/ComboBox component outline offset.
+
+- [#172](https://github.com/spear-ai/ui/pull/172) [`8f5ed85`](https://github.com/spear-ai/ui/commit/8f5ed859ad9bc0293d8946e812cd7860596eeb83) Thanks [@psirenny](https://github.com/psirenny)! - Removed top margin from Select button.
+
+- [#149](https://github.com/spear-ai/ui/pull/149) [`1aef84d`](https://github.com/spear-ai/ui/commit/1aef84de312fac948d56f430ce36f5348c4ca234) Thanks [@psirenny](https://github.com/psirenny)! - Updated dependencies.
+
 ## 3.2.0
 
 ### Minor Changes

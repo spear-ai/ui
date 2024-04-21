@@ -1,5 +1,21 @@
 # @spear-ai/tailwind-config
 
+## 5.0.0
+
+### Major Changes
+
+- [#176](https://github.com/spear-ai/ui/pull/176) [`97ba11a`](https://github.com/spear-ai/ui/commit/97ba11a20424fc2be3f8d8bfccc62c15bdc287cf) Thanks [@psirenny](https://github.com/psirenny)! - Reverted from OKLCH color model and P3 color space to RGB / sRGB.
+
+### Minor Changes
+
+- [#154](https://github.com/spear-ai/ui/pull/154) [`88546d6`](https://github.com/spear-ai/ui/commit/88546d6ba9a359ebe281e8e26e101d62cc20ce73) Thanks [@psirenny](https://github.com/psirenny)! - Added `trigger-width` spacing to Tailwind config.
+
+### Patch Changes
+
+- [#154](https://github.com/spear-ai/ui/pull/154) [`88546d6`](https://github.com/spear-ai/ui/commit/88546d6ba9a359ebe281e8e26e101d62cc20ce73) Thanks [@psirenny](https://github.com/psirenny)! - Reordered Tailwind plugins so that React Aria Components has the highest priority.
+
+- [#149](https://github.com/spear-ai/ui/pull/149) [`1aef84d`](https://github.com/spear-ai/ui/commit/1aef84de312fac948d56f430ce36f5348c4ca234) Thanks [@psirenny](https://github.com/psirenny)! - Updated dependencies.
+
 ## 4.1.2
 
 ### Patch Changes
