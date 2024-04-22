@@ -47,18 +47,19 @@ const createFetchResponse = (options: {
   return async (parameters: RequestParameters, variables: Variables, cacheConfig: CacheConfig) => {
     const isQuery = parameters.operationKind === "query";
     const cacheKey = parameters.id ?? parameters.cacheID;
-    const forceFetch = cacheConfig.force;
+    const shouldUseCache = !(cacheConfig.force ?? false);
 
-    if (isQuery && !forceFetch) {
-      const fromCache = responseCache.get(cacheKey, variables);
+    // Don’t cache GraphQL mutations or subscriptions
+    if (isQuery && shouldUseCache) {
+      const cacheResponse = responseCache.get(cacheKey, variables);
 
-      if (fromCache != null) {
-        return fromCache;
+      if (cacheResponse != null) {
+        return cacheResponse;
       }
     }
 
     const fetchStart = performance.now();
-    const fetchResult = await networkFetch(parameters, variables, apiUrl);
+    const fetchResponse = await networkFetch(parameters, variables, apiUrl);
     const fetchEnd = performance.now();
 
     recentFetchLatencyList.push(fetchEnd - fetchStart);
@@ -67,7 +68,7 @@ const createFetchResponse = (options: {
       recentFetchLatencyList.shift();
     }
 
-    return fetchResult;
+    return fetchResponse;
   };
 };
 

@@ -109,7 +109,7 @@ ComboBoxButton.displayName = "ComboBoxButton";
 export const ComboBoxIcon = forwardRef<
   SVGSVGElement,
   SVGAttributes<SVGElement> & { asChild?: boolean | undefined; className?: string | undefined }
->(({ asChild, className, ...properties }, reference) => {
+>(({ asChild = false, className, ...properties }, reference) => {
   const Component = asChild ? Slot : CaretSortIcon;
   const mergedClassName = cx("relative h-full w-auto", className);
   // @ts-expect-error the Slot component’s type definition doesn’t play nice with SVGs
