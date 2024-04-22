@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Form, Switch } from "react-aria-components";
+import { Form } from "react-aria-components";
 import { useIntl } from "react-intl";
+import { Switch, SwitchButton, SwitchLabel, SwitchThumb } from "./switch";
 
 const PreviewSwitch = (properties: {
   hasLabel: boolean;
@@ -15,28 +16,26 @@ const PreviewSwitch = (properties: {
   return (
     <div className={`w-full ${isSquished ? "max-w-36" : "max-w-sm"}`}>
       <Form className="relative w-full">
-        <div className="mt-3">
-          <Switch
-            className="group flex"
-            isDisabled={isDisabled}
-            isReadOnly={isReadonly}
-            value="isLimitedToFriends"
+        <Switch
+          className="group inline-flex"
+          isDisabled={isDisabled}
+          isReadOnly={isReadonly}
+          value="isLimitedToFriends"
+        >
+          <SwitchButton
+            className={`group relative isolate inline-flex h-6 w-11 rounded-full border-2 border-transparent bg-neutral-a-3 transition duration-200 ease-in-out group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-primary-7 group-disabled:bg-neutral-a-3 ${isPrimary ? "group-selected:bg-primary-9" : "group-selected:bg-neutral-9"}`}
           >
-            <span
-              className={`group relative isolate inline-flex h-6 w-11 rounded-full border-2 border-transparent bg-neutral-a-3 transition duration-200 ease-in-out group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-primary-7 group-disabled:bg-neutral-a-3 ${isPrimary ? "group-selected:bg-primary-9" : "group-selected:bg-neutral-9"}`}
-            >
-              <span className="pointer-events-none relative inline-block size-5 rounded-full bg-white shadow transition-all duration-200 ease-in-out will-change-transform translate-x-0 group-selected:translate-x-5 group-disabled:bg-neutral-2 group-disabled:shadow-none" />
-            </span>
-            {hasLabel ? (
-              <span className="ms-3 flex-1 text-sm font-medium leading-6 text-neutral-12 group-disabled:text-neutral-11">
-                {intl.formatMessage({
-                  defaultMessage: "Receive notifications",
-                  id: "D6jkwD",
-                })}
-              </span>
-            ) : null}
-          </Switch>
-        </div>
+            <SwitchThumb />
+          </SwitchButton>
+          {hasLabel ? (
+            <SwitchLabel>
+              {intl.formatMessage({
+                defaultMessage: "Receive notifications",
+                id: "D6jkwD",
+              })}
+            </SwitchLabel>
+          ) : null}
+        </Switch>
       </Form>
     </div>
   );
