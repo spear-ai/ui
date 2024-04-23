@@ -4,12 +4,15 @@ import typographyPlugin from "@tailwindcss/typography";
 import scrollbarPlugin from "tailwind-scrollbar";
 import { Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme";
+import plugin from "tailwindcss/plugin";
 import threeDPlugin from "tailwindcss-3d";
 import animatePlugin from "tailwindcss-animate";
 import reactAriaComponentsPlugin from "tailwindcss-react-aria-components";
 import { radixColorThemePlugin } from "./tailwind-radix-color-theme-plugin";
 import { colors } from "./tailwind-radix-colors";
 import { data } from "./tailwind-radix-primitives";
+
+const productList = ["dfs", "forerunner", "galapago", "underway"];
 
 // Work around limitation of the `theme()` function not parsing `"<alpha-value>"`:
 // https://github.com/tailwindlabs/tailwindcss/issues/9143#issuecomment-1674128599
@@ -19,6 +22,17 @@ export const tailwindConfig: Config = {
   content: ["./src/**/*.{cjs,js,jsx,mjs,ts,tsx}"],
   darkMode: ["class"],
   plugins: [
+    plugin(({ addUtilities, matchVariant }) => {
+      addUtilities(
+        // ["forerunner", "galapago"] → { ".theme-forerunner": {}, ".theme-galapago": {} }
+        Object.fromEntries(productList.map((product) => [`.theme-${product}`, {}])),
+      );
+
+      matchVariant("theme", (value) => `.theme-${value} &`, {
+        // ["forerunner", "galapago"] → { "forerunner": "forerunner", "galapago": "galapago" }
+        values: Object.fromEntries(productList.map((product) => [product, product])),
+      });
+    }),
     animatePlugin,
     containerQueriesPlugin,
     formsPlugin,
@@ -28,6 +42,7 @@ export const tailwindConfig: Config = {
     typographyPlugin,
     reactAriaComponentsPlugin,
   ],
+  safelist: productList.map((product) => `theme-${product}`),
   theme: {
     colors,
     extend: {
