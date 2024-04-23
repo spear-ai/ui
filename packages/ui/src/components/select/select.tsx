@@ -1,6 +1,13 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { CaretSortIcon } from "@radix-ui/react-icons";
-import React, { ComponentPropsWithoutRef, ElementRef, forwardRef, HTMLAttributes } from "react";
+import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
+import { Slot } from "@radix-ui/react-slot";
+import React, {
+  ComponentPropsWithoutRef,
+  ElementRef,
+  forwardRef,
+  HTMLAttributes,
+  SVGAttributes,
+} from "react";
 import {
   Button as ButtonPrimitive,
   FieldError as FieldErrorPrimitive,
@@ -150,3 +157,35 @@ export const SelectListBoxItem = forwardRef<
 });
 
 SelectListBoxItem.displayName = "SelectListBoxItem";
+
+export const SelectListBoxItemLabel = forwardRef<
+  HTMLSpanElement,
+  HTMLAttributes<HTMLSpanElement> & { className?: string | undefined }
+>((properties, reference) => <span {...properties} ref={reference} />);
+
+SelectListBoxItemLabel.displayName = "SelectListBoxItemLabel";
+
+export const SelectListBoxItemCheck = forwardRef<
+  HTMLSpanElement,
+  HTMLAttributes<HTMLSpanElement> & { className?: string | undefined }
+>(({ className, ...properties }, reference) => {
+  const mergedClassName = cx(
+    "absolute end-1.5 top-1 inline-flex size-4 size-6 items-center justify-center p-1 opacity-0 group-selected/item:opacity-100",
+    className,
+  );
+  return <span className={mergedClassName} {...properties} ref={reference} />;
+});
+
+SelectListBoxItemCheck.displayName = "SelectListBoxItemCheck";
+
+export const SelectListBoxItemCheckIcon = forwardRef<
+  SVGSVGElement,
+  SVGAttributes<SVGElement> & { asChild?: boolean | undefined; className?: string | undefined }
+>(({ asChild = false, className, ...properties }, reference) => {
+  const Component = asChild ? Slot : CheckIcon;
+  const mergedClassName = cx("h-full w-auto", className);
+  // @ts-expect-error the Slot component’s type definition doesn’t play nice with SVGs
+  return <Component aria-hidden className={mergedClassName} ref={reference} {...properties} />;
+});
+
+SelectListBoxItemCheckIcon.displayName = "SelectListBoxItemCheckIcon";

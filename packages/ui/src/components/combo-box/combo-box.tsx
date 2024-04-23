@@ -176,7 +176,7 @@ export const ComboBoxListBoxItemCheck = forwardRef<
   HTMLAttributes<HTMLSpanElement> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "absolute end-1.5 top-2 inline-flex size-4 size-6 items-center justify-center p-1 opacity-0 group-selected/item:opacity-100",
+    "absolute end-1.5 top-1 inline-flex size-4 size-6 items-center justify-center p-1 opacity-0 group-selected/item:opacity-100",
     className,
   );
   return <span className={mergedClassName} {...properties} ref={reference} />;
