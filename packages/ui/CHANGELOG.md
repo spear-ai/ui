@@ -1,5 +1,25 @@
 # @spear-ai/ui
 
+## 4.1.0
+
+### Minor Changes
+
+- [#188](https://github.com/spear-ai/ui/pull/188) [`bd5e424`](https://github.com/spear-ai/ui/commit/bd5e42447d9b26e5c5afc43c4fa278744cd6fc84) Thanks [@psirenny](https://github.com/psirenny)! - Created Checkbox components.
+
+- [#192](https://github.com/spear-ai/ui/pull/192) [`476dc61`](https://github.com/spear-ai/ui/commit/476dc615b64ab602b8951460c4af9b3e45ac2291) Thanks [@psirenny](https://github.com/psirenny)! - Created Spinner component.
+
+### Patch Changes
+
+- [#195](https://github.com/spear-ai/ui/pull/195) [`788423f`](https://github.com/spear-ai/ui/commit/788423fd51cb7266aeef37d7a9b4ce92f18fd93d) Thanks [@psirenny](https://github.com/psirenny)! - Updated dependencies.
+
+- [#191](https://github.com/spear-ai/ui/pull/191) [`c718a88`](https://github.com/spear-ai/ui/commit/c718a88d96ee05270851f999f82aba76aab27adc) Thanks [@psirenny](https://github.com/psirenny)! - Fixed uncentered ComboBox checkmark.
+
+- [#178](https://github.com/spear-ai/ui/pull/178) [`d975e7e`](https://github.com/spear-ai/ui/commit/d975e7eaa58c17b01b521a4f6309f18e1deb39f7) Thanks [@psirenny](https://github.com/psirenny)! - Updated dependencies.
+
+- [#191](https://github.com/spear-ai/ui/pull/191) [`c718a88`](https://github.com/spear-ai/ui/commit/c718a88d96ee05270851f999f82aba76aab27adc) Thanks [@psirenny](https://github.com/psirenny)! - Added missing Select components.
+
+- [#194](https://github.com/spear-ai/ui/pull/194) [`da849b5`](https://github.com/spear-ai/ui/commit/da849b5cd4fe96990620d5b1a0565f158039f8b2) Thanks [@psirenny](https://github.com/psirenny)! - Updated dependencies.
+
 ## 4.0.0
 
 ### Major Changes
