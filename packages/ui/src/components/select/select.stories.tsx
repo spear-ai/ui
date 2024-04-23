@@ -1,4 +1,3 @@
-import { CheckIcon } from "@radix-ui/react-icons";
 import { useControlledState } from "@react-stately/utils";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useId } from "react";
@@ -14,6 +13,9 @@ import {
   SelectLabel,
   SelectListBox,
   SelectListBoxItem,
+  SelectListBoxItemCheck,
+  SelectListBoxItemCheckIcon,
+  SelectListBoxItemLabel,
   SelectPopover,
   SelectValue,
 } from "./select";
@@ -114,10 +116,10 @@ const PreviewSelect = (properties: {
               </SelectDefaultListBoxItem>
               {sensorList.map((sensor) => (
                 <SelectListBoxItem id={sensor.id} key={sensor.id} textValue={sensor.name}>
-                  <span>{sensor.name}</span>
-                  <span className="absolute end-1.5 top-2 inline-flex size-4 items-center justify-center opacity-0 group-selected/item:opacity-100">
-                    <CheckIcon className="size-4" />
-                  </span>
+                  <SelectListBoxItemLabel>{sensor.name}</SelectListBoxItemLabel>
+                  <SelectListBoxItemCheck>
+                    <SelectListBoxItemCheckIcon />
+                  </SelectListBoxItemCheck>
                 </SelectListBoxItem>
               ))}
             </SelectListBox>
