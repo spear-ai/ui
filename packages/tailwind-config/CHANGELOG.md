@@ -1,5 +1,15 @@
 # @spear-ai/tailwind-config
 
+## 5.1.0
+
+### Minor Changes
+
+- [#195](https://github.com/spear-ai/ui/pull/195) [`788423f`](https://github.com/spear-ai/ui/commit/788423fd51cb7266aeef37d7a9b4ce92f18fd93d) Thanks [@psirenny](https://github.com/psirenny)! - Added themes to Tailwind Config. For example,`theme-dfs`, `theme-forerunner`, `theme-galapago`, and `theme-underway`.
+
+### Patch Changes
+
+- [#178](https://github.com/spear-ai/ui/pull/178) [`d975e7e`](https://github.com/spear-ai/ui/commit/d975e7eaa58c17b01b521a4f6309f18e1deb39f7) Thanks [@psirenny](https://github.com/psirenny)! - Updated dependencies.
+
 ## 5.0.0
 
 ### Major Changes
