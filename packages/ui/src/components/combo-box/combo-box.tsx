@@ -33,7 +33,7 @@ ComboBox.displayName = "ComboBox";
 
 export const ComboBoxLabel = forwardRef<
   ElementRef<typeof LabelPrimitive>,
-  ComponentPropsWithoutRef<typeof LabelPrimitive> & { className?: string | undefined }
+  ComponentPropsWithoutRef<typeof LabelPrimitive>
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
     "mb-2 block select-none text-base/6 text-neutral-12 group-disabled:text-neutral-11 sm:text-sm/6",
@@ -44,26 +44,24 @@ export const ComboBoxLabel = forwardRef<
 
 ComboBoxLabel.displayName = "ComboBoxLabel";
 
-export const ComboBoxDescription = forwardRef<
-  HTMLParagraphElement,
-  HTMLAttributes<HTMLParagraphElement> & { className?: string | undefined }
->(({ className, ...properties }, reference) => {
-  const mergedClassName = cx(
-    "-mt-1 mb-2 text-base/6 text-neutral-11 group-disabled:text-neutral-9 sm:text-sm/6",
-    className,
-  );
-  return <p className={mergedClassName} {...properties} ref={reference} />;
-});
+export const ComboBoxDescription = forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLParagraphElement>>(
+  ({ className, ...properties }, reference) => {
+    const mergedClassName = cx(
+      "-mt-1 mb-2 text-base/6 text-neutral-11 group-disabled:text-neutral-9 sm:text-sm/6",
+      className,
+    );
+    return <p className={mergedClassName} {...properties} ref={reference} />;
+  },
+);
 
 ComboBoxLabel.displayName = "ComboBoxDescription";
 
-export const ComboBoxTrigger = forwardRef<
-  HTMLDivElement,
-  HTMLAttributes<HTMLDivElement> & { className?: string | undefined }
->(({ className, ...properties }, reference) => {
-  const mergedClassName = cx("relative", className);
-  return <div className={mergedClassName} {...properties} ref={reference} />;
-});
+export const ComboBoxTrigger = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...properties }, reference) => {
+    const mergedClassName = cx("relative", className);
+    return <div className={mergedClassName} {...properties} ref={reference} />;
+  },
+);
 
 ComboBoxTrigger.displayName = "ComboBoxTrigger";
 
@@ -108,7 +106,7 @@ ComboBoxButton.displayName = "ComboBoxButton";
 
 export const ComboBoxIcon = forwardRef<
   SVGSVGElement,
-  SVGAttributes<SVGElement> & { asChild?: boolean | undefined; className?: string | undefined }
+  SVGAttributes<SVGElement> & { asChild?: boolean | undefined }
 >(({ asChild = false, className, ...properties }, reference) => {
   const Component = asChild ? Slot : CaretSortIcon;
   const mergedClassName = cx("relative h-full w-auto", className);
@@ -164,29 +162,27 @@ export const ComboBoxListBoxItem = forwardRef<
 
 ComboBoxListBoxItem.displayName = "ComboBoxListBoxItem";
 
-export const ComboBoxListBoxItemLabel = forwardRef<
-  HTMLSpanElement,
-  HTMLAttributes<HTMLSpanElement> & { className?: string | undefined }
->((properties, reference) => <span {...properties} ref={reference} />);
+export const ComboBoxListBoxItemLabel = forwardRef<HTMLSpanElement, HTMLAttributes<HTMLSpanElement>>(
+  (properties, reference) => <span {...properties} ref={reference} />,
+);
 
 ComboBoxListBoxItemLabel.displayName = "ComboBoxListBoxItemLabel";
 
-export const ComboBoxListBoxItemCheck = forwardRef<
-  HTMLSpanElement,
-  HTMLAttributes<HTMLSpanElement> & { className?: string | undefined }
->(({ className, ...properties }, reference) => {
-  const mergedClassName = cx(
-    "absolute end-1.5 top-1 inline-flex size-4 size-6 items-center justify-center p-1 opacity-0 group-selected/item:opacity-100",
-    className,
-  );
-  return <span className={mergedClassName} {...properties} ref={reference} />;
-});
+export const ComboBoxListBoxItemCheck = forwardRef<HTMLSpanElement, HTMLAttributes<HTMLSpanElement>>(
+  ({ className, ...properties }, reference) => {
+    const mergedClassName = cx(
+      "absolute end-1.5 top-1 inline-flex size-4 size-6 items-center justify-center p-1 opacity-0 group-selected/item:opacity-100",
+      className,
+    );
+    return <span className={mergedClassName} {...properties} ref={reference} />;
+  },
+);
 
 ComboBoxListBoxItemCheck.displayName = "ComboBoxListBoxItemCheck";
 
 export const ComboBoxListBoxItemCheckIcon = forwardRef<
   SVGSVGElement,
-  SVGAttributes<SVGElement> & { asChild?: boolean | undefined; className?: string | undefined }
+  SVGAttributes<SVGElement> & { asChild?: boolean | undefined }
 >(({ asChild = false, className, ...properties }, reference) => {
   const Component = asChild ? Slot : CheckIcon;
   const mergedClassName = cx("h-full w-auto", className);
