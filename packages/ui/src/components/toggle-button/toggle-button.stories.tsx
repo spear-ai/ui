@@ -5,13 +5,20 @@ import {
   LetterCaseCapitalizeIcon,
   MoonIcon,
   SunIcon,
-  TriangleDownIcon,
 } from "@radix-ui/react-icons";
 import type { Meta, StoryObj } from "@storybook/react";
 import type { ReactNode } from "react";
-import { OverlayArrow, ToggleButton, Tooltip, TooltipTrigger } from "react-aria-components";
+import { ToggleButton } from "react-aria-components";
 import { useIntl } from "react-intl";
 import { useStorybook } from "@/components/storybook-provider/storybook-provider";
+import {
+  Tooltip,
+  TooltipArrow,
+  TooltipArrowSvg,
+  TooltipBody,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/tooltip/tooltip";
 
 const ToggleButtonTooltip = (properties: { children: ReactNode; text: ReactNode }) => {
   const { children, text } = properties;
@@ -20,16 +27,13 @@ const ToggleButtonTooltip = (properties: { children: ReactNode; text: ReactNode 
   return (
     <TooltipTrigger>
       {children}
-      <Tooltip
-        UNSTABLE_portalContainer={portalContainer}
-        className="group select-none will-change-transform entering:duration-100 entering:animate-in entering:fade-in-0 entering:zoom-in-95 placement-left:entering:slide-in-from-right-1 placement-right:entering:slide-in-from-left-1 placement-top:entering:slide-in-from-bottom-1 placement-bottom:entering:slide-in-from-top-1 exiting:duration-75 exiting:animate-out exiting:fade-out-0 exiting:zoom-out-95 placement-left:exiting:slide-out-to-right-1 placement-right:exiting:slide-out-to-left-1 placement-top:exiting:slide-out-to-bottom-1 placement-bottom:exiting:slide-out-to-top-1"
-      >
-        <div className="rounded-sm bg-black-a-12 p-1.5 text-xs leading-none text-white-a-12 shadow-sm group-placement-left:-translate-x-3 group-placement-right:translate-x-3 group-placement-top:-translate-y-3 group-placement-bottom:translate-y-3 dark:bg-white-a-12 dark:text-black-a-12">
-          <OverlayArrow>
-            <TriangleDownIcon className="block size-5 text-black-a-12 group-placement-left:-ml-2 group-placement-left:-rotate-90 group-placement-right:-mr-2 group-placement-right:rotate-90 group-placement-top:-mt-2 group-placement-bottom:-mb-2 group-placement-bottom:rotate-180 dark:text-white-a-12" />
-          </OverlayArrow>
-          {text}
-        </div>
+      <Tooltip UNSTABLE_portalContainer={portalContainer} offset={4}>
+        <TooltipBody>
+          <TooltipContent>{text}</TooltipContent>
+          <TooltipArrow>
+            <TooltipArrowSvg />
+          </TooltipArrow>
+        </TooltipBody>
       </Tooltip>
     </TooltipTrigger>
   );

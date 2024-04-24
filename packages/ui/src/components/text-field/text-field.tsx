@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { CaretSortIcon } from "@radix-ui/react-icons";
 import React, { ComponentPropsWithoutRef, ElementRef, forwardRef, HTMLAttributes } from "react";
 import {
   FieldError as FieldErrorPrimitive,
@@ -21,7 +20,7 @@ TextField.displayName = "TextField";
 
 export const TextFieldLabel = forwardRef<
   ElementRef<typeof LabelPrimitive>,
-  ComponentPropsWithoutRef<typeof LabelPrimitive> & { className?: string | undefined }
+  ComponentPropsWithoutRef<typeof LabelPrimitive>
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
     "mb-2 block select-none text-base/6 text-neutral-12 group-disabled:text-neutral-11 sm:text-sm/6",
@@ -32,32 +31,17 @@ export const TextFieldLabel = forwardRef<
 
 TextFieldLabel.displayName = "TextFieldLabel";
 
-export const TextFieldDescription = forwardRef<
-  HTMLParagraphElement,
-  HTMLAttributes<HTMLParagraphElement> & { className?: string | undefined }
->(({ className, ...properties }, reference) => {
-  const mergedClassName = cx(
-    "-mt-1 mb-2 text-base/6 text-neutral-11 group-disabled:text-neutral-9 sm:text-sm/6",
-    className,
-  );
-  return <p className={mergedClassName} {...properties} ref={reference} />;
-});
+export const TextFieldDescription = forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLParagraphElement>>(
+  ({ className, ...properties }, reference) => {
+    const mergedClassName = cx(
+      "-mt-1 mb-2 text-base/6 text-neutral-11 group-disabled:text-neutral-9 sm:text-sm/6",
+      className,
+    );
+    return <p className={mergedClassName} {...properties} ref={reference} />;
+  },
+);
 
 TextFieldDescription.displayName = "TextFieldDescription";
-
-export const TextFieldIcon = forwardRef<
-  HTMLSpanElement,
-  HTMLAttributes<HTMLSpanElement> & { className?: string | undefined }
->(({ className, ...properties }, reference) => {
-  const mergedClassName = cx("text-neutral-11 group-disabled:text-neutral-8", className);
-  return (
-    <span aria-hidden className={mergedClassName} {...properties} ref={reference}>
-      <CaretSortIcon className="size-5" />
-    </span>
-  );
-});
-
-TextFieldIcon.displayName = "TextFieldIcon";
 
 export const TextFieldInput = forwardRef<
   ElementRef<typeof InputPrimitive>,

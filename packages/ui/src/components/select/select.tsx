@@ -32,7 +32,7 @@ Select.displayName = "Select";
 
 export const SelectLabel = forwardRef<
   ElementRef<typeof LabelPrimitive>,
-  ComponentPropsWithoutRef<typeof LabelPrimitive> & { className?: string | undefined }
+  ComponentPropsWithoutRef<typeof LabelPrimitive>
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
     "mb-2 block select-none text-base/6 text-neutral-12 group-disabled:text-neutral-11 sm:text-sm/6",
@@ -43,16 +43,15 @@ export const SelectLabel = forwardRef<
 
 SelectLabel.displayName = "SelectLabel";
 
-export const SelectDescription = forwardRef<
-  HTMLParagraphElement,
-  HTMLAttributes<HTMLParagraphElement> & { className?: string | undefined }
->(({ className, ...properties }, reference) => {
-  const mergedClassName = cx(
-    "-mt-1 mb-2 text-base/6 text-neutral-11 group-disabled:text-neutral-9 sm:text-sm/6",
-    className,
-  );
-  return <p className={mergedClassName} {...properties} ref={reference} />;
-});
+export const SelectDescription = forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLParagraphElement>>(
+  ({ className, ...properties }, reference) => {
+    const mergedClassName = cx(
+      "-mt-1 mb-2 text-base/6 text-neutral-11 group-disabled:text-neutral-9 sm:text-sm/6",
+      className,
+    );
+    return <p className={mergedClassName} {...properties} ref={reference} />;
+  },
+);
 
 SelectDescription.displayName = "SelectDescription";
 
@@ -66,17 +65,16 @@ export const SelectListBox = forwardRef<
 
 SelectListBox.displayName = "SelectListBox";
 
-export const SelectIcon = forwardRef<
-  HTMLSpanElement,
-  HTMLAttributes<HTMLSpanElement> & { className?: string | undefined }
->(({ className, ...properties }, reference) => {
-  const mergedClassName = cx("text-neutral-11 group-disabled:text-neutral-8", className);
-  return (
-    <span aria-hidden className={mergedClassName} {...properties} ref={reference}>
-      <CaretSortIcon className="size-5" />
-    </span>
-  );
-});
+export const SelectIcon = forwardRef<HTMLSpanElement, HTMLAttributes<HTMLSpanElement>>(
+  ({ className, ...properties }, reference) => {
+    const mergedClassName = cx("text-neutral-11 group-disabled:text-neutral-8", className);
+    return (
+      <span aria-hidden className={mergedClassName} {...properties} ref={reference}>
+        <CaretSortIcon className="size-5" />
+      </span>
+    );
+  },
+);
 
 SelectIcon.displayName = "SelectIcon";
 
@@ -158,29 +156,27 @@ export const SelectListBoxItem = forwardRef<
 
 SelectListBoxItem.displayName = "SelectListBoxItem";
 
-export const SelectListBoxItemLabel = forwardRef<
-  HTMLSpanElement,
-  HTMLAttributes<HTMLSpanElement> & { className?: string | undefined }
->((properties, reference) => <span {...properties} ref={reference} />);
+export const SelectListBoxItemLabel = forwardRef<HTMLSpanElement, HTMLAttributes<HTMLSpanElement>>(
+  (properties, reference) => <span {...properties} ref={reference} />,
+);
 
 SelectListBoxItemLabel.displayName = "SelectListBoxItemLabel";
 
-export const SelectListBoxItemCheck = forwardRef<
-  HTMLSpanElement,
-  HTMLAttributes<HTMLSpanElement> & { className?: string | undefined }
->(({ className, ...properties }, reference) => {
-  const mergedClassName = cx(
-    "absolute end-1.5 top-1 inline-flex size-4 size-6 items-center justify-center p-1 opacity-0 group-selected/item:opacity-100",
-    className,
-  );
-  return <span className={mergedClassName} {...properties} ref={reference} />;
-});
+export const SelectListBoxItemCheck = forwardRef<HTMLSpanElement, HTMLAttributes<HTMLSpanElement>>(
+  ({ className, ...properties }, reference) => {
+    const mergedClassName = cx(
+      "absolute end-1.5 top-1 inline-flex size-4 size-6 items-center justify-center p-1 opacity-0 group-selected/item:opacity-100",
+      className,
+    );
+    return <span className={mergedClassName} {...properties} ref={reference} />;
+  },
+);
 
 SelectListBoxItemCheck.displayName = "SelectListBoxItemCheck";
 
 export const SelectListBoxItemCheckIcon = forwardRef<
   SVGSVGElement,
-  SVGAttributes<SVGElement> & { asChild?: boolean | undefined; className?: string | undefined }
+  SVGAttributes<SVGElement> & { asChild?: boolean | undefined }
 >(({ asChild = false, className, ...properties }, reference) => {
   const Component = asChild ? Slot : CheckIcon;
   const mergedClassName = cx("h-full w-auto", className);

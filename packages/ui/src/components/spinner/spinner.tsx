@@ -4,7 +4,7 @@ import { cx } from "@/helpers/cx";
 
 export const Spinner = forwardRef<
   SVGSVGElement,
-  SVGAttributes<SVGElement> & { className?: string | undefined; isPrimary?: boolean | undefined }
+  SVGAttributes<SVGElement> & { isPrimary?: boolean | undefined }
 >(({ className, isPrimary = false, ...properties }, reference) => {
   const mergedClassName = cx(
     "group size-5 animate-spin text-neutral-9 data-[is-primary=true]:text-primary-9",
