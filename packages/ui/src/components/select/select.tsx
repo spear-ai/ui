@@ -11,10 +11,12 @@ import React, {
 import {
   Button as ButtonPrimitive,
   FieldError as FieldErrorPrimitive,
+  Header as HeaderPrimitive,
   Label as LabelPrimitive,
   ListBox as ListBoxPrimitive,
   ListBoxItem as ListBoxItemPrimitive,
   Popover as PopoverPrimitive,
+  Section as SectionPrimitive,
   Select as SelectPrimitive,
   SelectValue as SelectValuePrimitive,
 } from "react-aria-components";
@@ -130,25 +132,39 @@ export const SelectPopover = forwardRef<
 
 SelectPopover.displayName = "SelectPopover";
 
-export const SelectDefaultListBoxItem = forwardRef<
-  ElementRef<typeof ListBoxItemPrimitive>,
-  ComponentPropsWithoutRef<typeof ListBoxItemPrimitive> & { className?: string | undefined }
+export const SelectSection = forwardRef<
+  ElementRef<typeof SectionPrimitive>,
+  ComponentPropsWithoutRef<typeof SectionPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "cursor-default select-none rounded-lg py-2.5 pe-5 ps-2 text-base leading-none text-neutral-11 outline-none hover:bg-primary-4 focus:bg-primary-5 focus:outline-none sm:py-1.5 sm:text-sm",
+    "relative mt-1 pt-1 before:absolute before:inset-x-2 before:top-0 before:h-px before:bg-neutral-6 before:content-[''] first:mt-0 first:pt-0 first:before:content-none theme-forerunner:dark:before:bg-white-a-6",
     className,
   );
-  return <ListBoxItemPrimitive className={mergedClassName} {...properties} ref={reference} />;
+  return <SectionPrimitive className={mergedClassName} {...properties} ref={reference} />;
 });
 
-SelectDefaultListBoxItem.displayName = "SelectDefaultListBoxItem";
+SelectSection.displayName = "SelectSection";
+
+export const SelectHeader = forwardRef<
+  ElementRef<typeof HeaderPrimitive>,
+  ComponentPropsWithoutRef<typeof HeaderPrimitive> & { className?: string | undefined }
+>(({ className, ...properties }, reference) => {
+  const mergedClassName = cx("px-2 pt-2 text-sm/5 font-medium text-neutral-11 sm:text-xs/5", className);
+  return <HeaderPrimitive className={mergedClassName} {...properties} ref={reference} />;
+});
+
+SelectHeader.displayName = "SelectHeader";
 
 export const SelectListBoxItem = forwardRef<
   ElementRef<typeof ListBoxItemPrimitive>,
-  ComponentPropsWithoutRef<typeof ListBoxItemPrimitive> & { className?: string | undefined }
->(({ className, ...properties }, reference) => {
+  ComponentPropsWithoutRef<typeof ListBoxItemPrimitive> & {
+    className?: string | undefined;
+    isNone?: boolean | undefined;
+  }
+>(({ className, isNone = false, ...properties }, reference) => {
   const mergedClassName = cx(
     "group/item relative cursor-default select-none rounded-lg py-2.5 pe-7 ps-2 text-base leading-none text-neutral-12 outline-none hover:bg-primary-4 focus:bg-primary-5 sm:py-1.5 sm:text-sm rtl:text-right",
+    isNone ? "text-neutral-11" : "",
     className,
   );
   return <ListBoxItemPrimitive className={mergedClassName} {...properties} ref={reference} />;

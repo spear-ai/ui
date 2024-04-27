@@ -1,6 +1,6 @@
 import { useControlledState } from "@react-stately/utils";
 import type { Meta, StoryObj } from "@storybook/react";
-import { useCallback, useMemo } from "react";
+import { useCallback } from "react";
 import { Form } from "react-aria-components";
 import { useIntl } from "react-intl";
 import {
@@ -8,6 +8,7 @@ import {
   ComboBoxButton,
   ComboBoxDescription,
   ComboBoxFieldError,
+  ComboBoxHeader,
   ComboBoxIcon,
   ComboBoxInput,
   ComboBoxLabel,
@@ -17,15 +18,19 @@ import {
   ComboBoxListBoxItemCheckIcon,
   ComboBoxListBoxItemLabel,
   ComboBoxPopover,
+  ComboBoxSection,
   ComboBoxTrigger,
 } from "@/components/combo-box/combo-box";
-import { querySensorConnection } from "@/data/sensor";
-
-type SensorEdge = Awaited<ReturnType<typeof querySensorConnection>>["edges"][0];
+import { specialSensorList1, specialSensorList2, standardSensorList } from "@/data/sensor";
 
 const PreviewComboBox = (properties: {
+  hasDefaultItem: boolean;
   hasLabel: boolean;
   hasLabelDescription: boolean;
+  hasSection1: boolean;
+  hasSection1Header: boolean;
+  hasSection2: boolean;
+  hasSection2Header: boolean;
   isAlwaysOpen: boolean;
   isDisabled: boolean;
   isInvalid: boolean;
@@ -34,8 +39,13 @@ const PreviewComboBox = (properties: {
   menuTrigger: "focus" | "input";
 }) => {
   const {
+    hasDefaultItem,
     hasLabel,
     hasLabelDescription,
+    hasSection1,
+    hasSection1Header,
+    hasSection2,
+    hasSection2Header,
     isAlwaysOpen,
     isDisabled,
     isInvalid,
@@ -46,10 +56,6 @@ const PreviewComboBox = (properties: {
   const intl = useIntl();
   const [selectedKey, setSelectedKey] = useControlledState<string | null>(undefined, null);
   const [isOpen, setIsOpen] = useControlledState<boolean>(undefined, false);
-  const itemList = useMemo(() => {
-    const result = querySensorConnection({ first: 200 });
-    return isOptional ? [{ cursor: "", highlightedText: null, node: null }, ...result.edges] : result.edges;
-  }, [isOptional]);
 
   const handleSelectionChange = useCallback(
     (key: number | string) => {
@@ -68,7 +74,6 @@ const PreviewComboBox = (properties: {
       <Form className="relative w-full">
         <ComboBox
           className="w-full"
-          defaultItems={itemList}
           isDisabled={isDisabled}
           isInvalid={isInvalid}
           menuTrigger={menuTrigger}
@@ -77,12 +82,7 @@ const PreviewComboBox = (properties: {
           selectedKey={selectedKey}
         >
           {hasLabel ? (
-            <ComboBoxLabel>
-              {intl.formatMessage({
-                defaultMessage: "Sensor",
-                id: "SCewMo",
-              })}
-            </ComboBoxLabel>
+            <ComboBoxLabel>{intl.formatMessage({ defaultMessage: "Sensor", id: "SCewMo" })}</ComboBoxLabel>
           ) : null}
           {hasLabel && hasLabelDescription ? (
             <ComboBoxDescription>
@@ -113,27 +113,72 @@ const PreviewComboBox = (properties: {
           ) : null}
           <ComboBoxPopover isOpen={isAlwaysOpen ? true : isOpen}>
             <ComboBoxListBox>
-              {(edge: SensorEdge) => {
-                if (edge.cursor === "") {
-                  return (
-                    <ComboBoxListBoxItem id="" isNone>
+              {hasSection1 ? (
+                <ComboBoxSection>
+                  {hasSection1Header ? (
+                    <ComboBoxHeader>
                       {intl.formatMessage({
-                        defaultMessage: "None",
-                        id: "450Fty",
+                        defaultMessage: "Section 1",
+                        id: "GUDhpC",
                       })}
+                    </ComboBoxHeader>
+                  ) : null}
+                  {specialSensorList1.map((sensor) => (
+                    <ComboBoxListBoxItem id={sensor.id} key={sensor.id} textValue={sensor.name}>
+                      <ComboBoxListBoxItemLabel>{sensor.name}</ComboBoxListBoxItemLabel>
+                      <ComboBoxListBoxItemCheck>
+                        <ComboBoxListBoxItemCheckIcon />
+                      </ComboBoxListBoxItemCheck>
                     </ComboBoxListBoxItem>
-                  );
-                }
-
-                return edge.node == null ? null : (
-                  <ComboBoxListBoxItem id={edge.node.id} key={edge.node.id} textValue={edge.node.name}>
-                    <ComboBoxListBoxItemLabel>{edge.node.name}</ComboBoxListBoxItemLabel>
+                  ))}
+                </ComboBoxSection>
+              ) : null}
+              {hasSection2 ? (
+                <ComboBoxSection>
+                  {hasSection2Header ? (
+                    <ComboBoxHeader>
+                      {intl.formatMessage({
+                        defaultMessage: "Section 2",
+                        id: "H+Wcch",
+                      })}
+                    </ComboBoxHeader>
+                  ) : null}
+                  {specialSensorList2.map((sensor) => (
+                    <ComboBoxListBoxItem id={sensor.id} key={sensor.id} textValue={sensor.name}>
+                      <ComboBoxListBoxItemLabel>{sensor.name}</ComboBoxListBoxItemLabel>
+                      <ComboBoxListBoxItemCheck>
+                        <ComboBoxListBoxItemCheckIcon />
+                      </ComboBoxListBoxItemCheck>
+                    </ComboBoxListBoxItem>
+                  ))}
+                </ComboBoxSection>
+              ) : null}
+              <ComboBoxSection>
+                {isOptional ? (
+                  <ComboBoxListBoxItem id="" isNone>
+                    {intl.formatMessage({
+                      defaultMessage: "None",
+                      id: "450Fty",
+                    })}
+                  </ComboBoxListBoxItem>
+                ) : null}
+                {hasDefaultItem ? (
+                  <ComboBoxListBoxItem id="Default">
+                    {intl.formatMessage({
+                      defaultMessage: "Default",
+                      id: "lKv8ex",
+                    })}
+                  </ComboBoxListBoxItem>
+                ) : null}
+                {standardSensorList.map((item) => (
+                  <ComboBoxListBoxItem id={item.id} key={item.id} textValue={item.name}>
+                    <ComboBoxListBoxItemLabel>{item.name}</ComboBoxListBoxItemLabel>
                     <ComboBoxListBoxItemCheck>
                       <ComboBoxListBoxItemCheckIcon />
                     </ComboBoxListBoxItemCheck>
                   </ComboBoxListBoxItem>
-                );
-              }}
+                ))}
+              </ComboBoxSection>
             </ComboBoxListBox>
           </ComboBoxPopover>
         </ComboBox>
@@ -153,8 +198,13 @@ type Story = StoryObj<typeof meta>;
 
 export const Standard: Story = {
   args: {
+    hasDefaultItem: true,
     hasLabel: true,
     hasLabelDescription: true,
+    hasSection1: true,
+    hasSection1Header: true,
+    hasSection2: true,
+    hasSection2Header: true,
     isAlwaysOpen: false,
     isDisabled: false,
     isInvalid: false,
