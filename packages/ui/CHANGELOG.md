@@ -1,5 +1,19 @@
 # @spear-ai/ui
 
+## 4.2.0
+
+### Minor Changes
+
+- [#205](https://github.com/spear-ai/ui/pull/205) [`01490ac`](https://github.com/spear-ai/ui/commit/01490ac56bb6b71019f7111849c81ebecd36558e) Thanks [@psirenny](https://github.com/psirenny)! - Added sections/headers to Select and ComboBox components.
+
+- [#196](https://github.com/spear-ai/ui/pull/196) [`f67732d`](https://github.com/spear-ai/ui/commit/f67732d35a4f959ea4fac8dea4e173a73c58f0fe) Thanks [@psirenny](https://github.com/psirenny)! - Created Tooltip component.
+
+- [#205](https://github.com/spear-ai/ui/pull/205) [`01490ac`](https://github.com/spear-ai/ui/commit/01490ac56bb6b71019f7111849c81ebecd36558e) Thanks [@psirenny](https://github.com/psirenny)! - Added stories around selecting countries, currencies, and languages.
+
+### Patch Changes
+
+- [#200](https://github.com/spear-ai/ui/pull/200) [`0ce9eba`](https://github.com/spear-ai/ui/commit/0ce9eba12ea91972b16f281c14876a9adc1a475b) Thanks [@psirenny](https://github.com/psirenny)! - Prevented input text from overflowing into the ComboBox icon.
+
 ## 4.1.0
 
 ### Minor Changes
