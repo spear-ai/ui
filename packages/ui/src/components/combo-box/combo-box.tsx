@@ -13,11 +13,13 @@ import {
   Button as ButtonPrimitive,
   ComboBox as ComboBoxPrimitive,
   FieldError as FieldErrorPrimitive,
+  Header as HeaderPrimitive,
   Input as InputPrimitive,
   Label as LabelPrimitive,
   ListBox as ListBoxPrimitive,
   ListBoxItem as ListBoxItemPrimitive,
   Popover as PopoverPrimitive,
+  Section as SectionPrimitive,
 } from "react-aria-components";
 import { cx } from "@/helpers/cx";
 
@@ -146,6 +148,29 @@ export const ComboBoxPopover = forwardRef<
 );
 
 ComboBoxPopover.displayName = "ComboBoxPopover";
+
+export const ComboBoxSection = forwardRef<
+  ElementRef<typeof SectionPrimitive>,
+  ComponentPropsWithoutRef<typeof SectionPrimitive> & { className?: string | undefined }
+>(({ className, ...properties }, reference) => {
+  const mergedClassName = cx(
+    "relative mt-1 pt-1 before:absolute before:inset-x-2 before:top-0 before:h-px before:bg-neutral-6 before:content-[''] first:mt-0 first:pt-0 first:before:content-none theme-forerunner:dark:before:bg-white-a-6",
+    className,
+  );
+  return <SectionPrimitive className={mergedClassName} {...properties} ref={reference} />;
+});
+
+ComboBoxSection.displayName = "ComboBoxSection";
+
+export const ComboBoxHeader = forwardRef<
+  ElementRef<typeof HeaderPrimitive>,
+  ComponentPropsWithoutRef<typeof HeaderPrimitive> & { className?: string | undefined }
+>(({ className, ...properties }, reference) => {
+  const mergedClassName = cx("px-2 pt-2 text-sm/5 font-medium text-neutral-11 sm:text-xs/5", className);
+  return <HeaderPrimitive className={mergedClassName} {...properties} ref={reference} />;
+});
+
+ComboBoxHeader.displayName = "ComboBoxHeader";
 
 // The ListBox component supports a generic type, but we don’t use it
 // because passing it through `forwardRef(…)` is challenging.

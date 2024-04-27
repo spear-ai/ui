@@ -1,14 +1,13 @@
 import { useControlledState } from "@react-stately/utils";
 import type { Meta, StoryObj } from "@storybook/react";
-import { useId } from "react";
 import { Form } from "react-aria-components";
 import { useIntl } from "react-intl";
 import {
   Select,
   SelectButton,
-  SelectDefaultListBoxItem,
   SelectDescription,
   SelectFieldError,
+  SelectHeader,
   SelectIcon,
   SelectLabel,
   SelectListBox,
@@ -17,46 +16,42 @@ import {
   SelectListBoxItemCheckIcon,
   SelectListBoxItemLabel,
   SelectPopover,
+  SelectSection,
   SelectValue,
-} from "./select";
-
-const sensorList = [
-  { id: "1", name: "Pyramid Array C1" },
-  { id: "2", name: "Pyramid Array C2B" },
-  { id: "3", name: "Pyramid Array C3" },
-  { id: "4", name: "Pyramid Array C3-Pro" },
-  { id: "5", name: "Pyramid Array C3" },
-  { id: "6", name: "Pyramid Array D" },
-  { id: "7", name: "Pyramid Array DS" },
-  { id: "8", name: "Pyramid Array DX" },
-  { id: "9", name: "Pyramid Array E-Standard" },
-  { id: "10", name: "Pyramid Array E-Plus" },
-  { id: "11", name: "Hyper Matrix Prototype 1" },
-  { id: "12", name: "Hyper Matrix Prototype 2" },
-  { id: "13", name: "Hyper Matrix 1" },
-  { id: "14", name: "Hyper Matrix 2" },
-  { id: "15", name: "Hyper Matrix 3" },
-  { id: "16", name: "Hyper Matrix 4-S" },
-  { id: "17", name: "Hyper Matrix 4-U" },
-  { id: "18", name: "Hyper Matrix 5-S" },
-  { id: "19", name: "Hyper Matrix 5-U" },
-  { id: "20", name: "Hyper Matrix 6" },
-];
+} from "@/components/select/select";
+import { specialSensorList1, specialSensorList2, standardSensorList } from "@/data/sensor";
 
 const PreviewSelect = (properties: {
+  hasDefaultItem: boolean;
   hasLabel: boolean;
   hasLabelDescription: boolean;
+  hasSection1: boolean;
+  hasSection1Header: boolean;
+  hasSection2: boolean;
+  hasSection2Header: boolean;
   isAlwaysOpen: boolean;
   isDisabled: boolean;
   isInvalid: boolean;
   isOptional: boolean;
   isSquished: boolean;
 }) => {
-  const { hasLabel, hasLabelDescription, isAlwaysOpen, isDisabled, isInvalid, isOptional, isSquished } =
-    properties;
+  const {
+    hasDefaultItem,
+    hasLabel,
+    hasLabelDescription,
+    hasSection1,
+    hasSection1Header,
+    hasSection2,
+    hasSection2Header,
+    isAlwaysOpen,
+    isDisabled,
+    isInvalid,
+    isOptional,
+    isSquished,
+  } = properties;
   const intl = useIntl();
-  const sensorFormId = useId();
   const [value, setValue] = useControlledState<string | null>(undefined, null);
+  const list = standardSensorList;
 
   return (
     <div className={`w-full ${isSquished ? "max-w-36" : "max-w-xs"}`}>
@@ -79,12 +74,7 @@ const PreviewSelect = (properties: {
           selectedKey={isOptional ? value : undefined}
         >
           {hasLabel ? (
-            <SelectLabel htmlFor={sensorFormId}>
-              {intl.formatMessage({
-                defaultMessage: "Sensor",
-                id: "SCewMo",
-              })}
-            </SelectLabel>
+            <SelectLabel>{intl.formatMessage({ defaultMessage: "Sensor", id: "SCewMo" })}</SelectLabel>
           ) : null}
           {hasLabel && hasLabelDescription ? (
             <SelectDescription>
@@ -108,20 +98,72 @@ const PreviewSelect = (properties: {
           ) : null}
           <SelectPopover>
             <SelectListBox>
-              <SelectDefaultListBoxItem id="">
-                {intl.formatMessage({
-                  defaultMessage: "No sensor",
-                  id: "W2b7y5",
-                })}
-              </SelectDefaultListBoxItem>
-              {sensorList.map((sensor) => (
-                <SelectListBoxItem id={sensor.id} key={sensor.id} textValue={sensor.name}>
-                  <SelectListBoxItemLabel>{sensor.name}</SelectListBoxItemLabel>
-                  <SelectListBoxItemCheck>
-                    <SelectListBoxItemCheckIcon />
-                  </SelectListBoxItemCheck>
-                </SelectListBoxItem>
-              ))}
+              {hasSection1 ? (
+                <SelectSection>
+                  {hasSection1Header ? (
+                    <SelectHeader>
+                      {intl.formatMessage({
+                        defaultMessage: "Section 1",
+                        id: "GUDhpC",
+                      })}
+                    </SelectHeader>
+                  ) : null}
+                  {specialSensorList1.map((sensor) => (
+                    <SelectListBoxItem id={sensor.id} key={sensor.id} textValue={sensor.name}>
+                      <SelectListBoxItemLabel>{sensor.name}</SelectListBoxItemLabel>
+                      <SelectListBoxItemCheck>
+                        <SelectListBoxItemCheckIcon />
+                      </SelectListBoxItemCheck>
+                    </SelectListBoxItem>
+                  ))}
+                </SelectSection>
+              ) : null}
+              {hasSection2 ? (
+                <SelectSection>
+                  {hasSection2Header ? (
+                    <SelectHeader>
+                      {intl.formatMessage({
+                        defaultMessage: "Section 2",
+                        id: "H+Wcch",
+                      })}
+                    </SelectHeader>
+                  ) : null}
+                  {specialSensorList2.map((sensor) => (
+                    <SelectListBoxItem id={sensor.id} key={sensor.id} textValue={sensor.name}>
+                      <SelectListBoxItemLabel>{sensor.name}</SelectListBoxItemLabel>
+                      <SelectListBoxItemCheck>
+                        <SelectListBoxItemCheckIcon />
+                      </SelectListBoxItemCheck>
+                    </SelectListBoxItem>
+                  ))}
+                </SelectSection>
+              ) : null}
+              <SelectSection>
+                {isOptional ? (
+                  <SelectListBoxItem id="" isNone>
+                    {intl.formatMessage({
+                      defaultMessage: "None",
+                      id: "450Fty",
+                    })}
+                  </SelectListBoxItem>
+                ) : null}
+                {hasDefaultItem ? (
+                  <SelectListBoxItem id="Default">
+                    {intl.formatMessage({
+                      defaultMessage: "Default",
+                      id: "lKv8ex",
+                    })}
+                  </SelectListBoxItem>
+                ) : null}
+                {list.map((item) => (
+                  <SelectListBoxItem id={item.id} key={item.id} textValue={item.name}>
+                    <SelectListBoxItemLabel>{item.name}</SelectListBoxItemLabel>
+                    <SelectListBoxItemCheck>
+                      <SelectListBoxItemCheckIcon />
+                    </SelectListBoxItemCheck>
+                  </SelectListBoxItem>
+                ))}
+              </SelectSection>
             </SelectListBox>
           </SelectPopover>
         </Select>
@@ -138,8 +180,13 @@ type Story = StoryObj<typeof meta>;
 
 export const Standard: Story = {
   args: {
+    hasDefaultItem: true,
     hasLabel: true,
     hasLabelDescription: true,
+    hasSection1: true,
+    hasSection1Header: true,
+    hasSection2: true,
+    hasSection2Header: true,
     isAlwaysOpen: false,
     isDisabled: false,
     isInvalid: false,
