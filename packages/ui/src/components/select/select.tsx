@@ -19,6 +19,7 @@ import {
   Section as SectionPrimitive,
   Select as SelectPrimitive,
   SelectValue as SelectValuePrimitive,
+  Separator as SeparatorPrimitive,
 } from "react-aria-components";
 import { cx } from "@/helpers/cx";
 
@@ -57,16 +58,6 @@ export const SelectDescription = forwardRef<HTMLParagraphElement, HTMLAttributes
 
 SelectDescription.displayName = "SelectDescription";
 
-export const SelectListBox = forwardRef<
-  ElementRef<typeof ListBoxPrimitive>,
-  ComponentPropsWithoutRef<typeof ListBoxPrimitive> & { className?: string | undefined }
->(({ className, ...properties }, reference) => {
-  const mergedClassName = cx("outline-none", className);
-  return <ListBoxPrimitive className={mergedClassName} {...properties} ref={reference} />;
-});
-
-SelectListBox.displayName = "SelectListBox";
-
 export const SelectIcon = forwardRef<HTMLSpanElement, HTMLAttributes<HTMLSpanElement>>(
   ({ className, ...properties }, reference) => {
     const mergedClassName = cx("text-neutral-11 group-disabled:text-neutral-8", className);
@@ -85,7 +76,7 @@ export const SelectButton = forwardRef<
   ComponentPropsWithoutRef<typeof ButtonPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "group inline-flex h-9 w-full cursor-default select-none items-center justify-between gap-1 rounded-lg border border-transparent bg-white-a-3 pe-2 ps-3.5 text-base leading-none shadow outline -outline-offset-1 outline-neutral-a-7 theme-dfs:bg-canvas-1 theme-galapago:bg-white entering:outline-2 entering:outline-primary-a-8 group-invalid:outline-x-negative-a-7 focus-visible:outline-primary-a-8 group-disabled:pointer-events-none group-disabled:bg-neutral-a-3 group-disabled:outline-neutral-a-6 theme-dfs:group-disabled:bg-neutral-a-3 theme-forerunner:group-disabled:bg-neutral-a-3 theme-galapago:group-disabled:bg-neutral-a-3 group-invalid:group-disabled:outline-x-negative-a-6 theme-dfs:dark:bg-white-a-3 theme-forerunner:dark:bg-black-a-3 theme-galapago:dark:bg-black-a-3 sm:ps-3 sm:text-sm",
+    "group inline-flex h-9 w-full cursor-default select-none items-center justify-between gap-1 rounded-lg bg-white-a-3 pe-2 ps-3.5 text-base leading-none shadow outline -outline-offset-1 outline-neutral-a-7 theme-dfs:bg-canvas-1 theme-galapago:bg-white entering:outline-2 entering:outline-primary-a-8 group-invalid:outline-x-negative-a-7 focus-visible:outline-primary-a-8 group-disabled:pointer-events-none group-disabled:bg-neutral-a-3 group-disabled:outline-neutral-a-6 theme-dfs:group-disabled:bg-neutral-a-3 theme-forerunner:group-disabled:bg-neutral-a-3 theme-galapago:group-disabled:bg-neutral-a-3 group-invalid:group-disabled:outline-x-negative-a-6 theme-dfs:dark:bg-white-a-3 theme-forerunner:dark:bg-black-a-3 theme-galapago:dark:bg-black-a-3 sm:ps-3 sm:text-sm",
     className,
   );
   return <ButtonPrimitive className={mergedClassName} {...properties} ref={reference} />;
@@ -134,26 +125,46 @@ SelectPopover.displayName = "SelectPopover";
 
 export const SelectSection = forwardRef<
   ElementRef<typeof SectionPrimitive>,
-  ComponentPropsWithoutRef<typeof SectionPrimitive> & { className?: string | undefined }
->(({ className, ...properties }, reference) => {
-  const mergedClassName = cx(
-    "relative mt-1 pt-1 before:absolute before:inset-x-2 before:top-0 before:h-px before:bg-neutral-6 before:content-[''] first:mt-0 first:pt-0 first:before:content-none theme-forerunner:dark:before:bg-white-a-6",
-    className,
-  );
-  return <SectionPrimitive className={mergedClassName} {...properties} ref={reference} />;
-});
+  ComponentPropsWithoutRef<typeof SectionPrimitive>
+>((properties, reference) => <SectionPrimitive {...properties} ref={reference} />);
 
 SelectSection.displayName = "SelectSection";
+
+export const SelectSeparator = forwardRef<
+  ElementRef<typeof SeparatorPrimitive>,
+  ComponentPropsWithoutRef<typeof SeparatorPrimitive> & { className?: string | undefined }
+>(({ className, ...properties }, reference) => {
+  const mergedClassName = cx(
+    "mx-2 my-1 h-px bg-neutral-a-6 px-4 theme-forerunner:dark:bg-white-a-6",
+    className,
+  );
+  return <SeparatorPrimitive className={mergedClassName} {...properties} ref={reference} />;
+});
+
+SelectSeparator.displayName = "SelectSeparator";
 
 export const SelectHeader = forwardRef<
   ElementRef<typeof HeaderPrimitive>,
   ComponentPropsWithoutRef<typeof HeaderPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
-  const mergedClassName = cx("px-2 pt-2 text-sm/5 font-medium text-neutral-11 sm:text-xs/5", className);
+  const mergedClassName = cx(
+    "select-none px-2 pt-2 text-sm/5 font-medium text-neutral-11 sm:text-xs/5",
+    className,
+  );
   return <HeaderPrimitive className={mergedClassName} {...properties} ref={reference} />;
 });
 
 SelectHeader.displayName = "SelectHeader";
+
+export const SelectListBox = forwardRef<
+  ElementRef<typeof ListBoxPrimitive>,
+  ComponentPropsWithoutRef<typeof ListBoxPrimitive> & { className?: string | undefined }
+>(({ className, ...properties }, reference) => {
+  const mergedClassName = cx("outline-none", className);
+  return <ListBoxPrimitive className={mergedClassName} {...properties} ref={reference} />;
+});
+
+SelectListBox.displayName = "SelectListBox";
 
 export const SelectListBoxItem = forwardRef<
   ElementRef<typeof ListBoxItemPrimitive>,
@@ -181,7 +192,7 @@ SelectListBoxItemLabel.displayName = "SelectListBoxItemLabel";
 export const SelectListBoxItemCheck = forwardRef<HTMLSpanElement, HTMLAttributes<HTMLSpanElement>>(
   ({ className, ...properties }, reference) => {
     const mergedClassName = cx(
-      "absolute end-1.5 top-1 inline-flex size-4 size-6 items-center justify-center p-1 opacity-0 group-selected/item:opacity-100",
+      "absolute end-1.5 top-1 inline-flex size-6 items-center justify-center p-1 opacity-0 group-selected/item:opacity-100",
       className,
     );
     return <span className={mergedClassName} {...properties} ref={reference} />;

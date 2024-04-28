@@ -16,9 +16,11 @@ import {
   ComboBoxPopover,
   ComboBoxTrigger,
 } from "@/components/combo-box/combo-box";
+import { useStorybook } from "@/components/storybook-provider/storybook-provider";
 import { useRegionList } from "@/hooks/use-region-list";
 
 const PreviewComboBox = () => {
+  const { portalContainer } = useStorybook();
   const intl = useIntl();
   const [value, setValue] = useControlledState<string | null>(undefined, null);
   const regionList = useRegionList(["US", "GB"]);
@@ -50,7 +52,7 @@ const PreviewComboBox = () => {
               <ComboBoxIcon />
             </ComboBoxButton>
           </ComboBoxTrigger>
-          <ComboBoxPopover>
+          <ComboBoxPopover UNSTABLE_portalContainer={portalContainer}>
             <ComboBoxListBox>
               <ComboBoxListBoxItem id="" isNone>
                 {intl.formatMessage({

@@ -20,6 +20,7 @@ import {
   ListBoxItem as ListBoxItemPrimitive,
   Popover as PopoverPrimitive,
   Section as SectionPrimitive,
+  Separator as SeparatorPrimitive,
 } from "react-aria-components";
 import { cx } from "@/helpers/cx";
 
@@ -85,7 +86,7 @@ export const ComboBoxInput = forwardRef<
   ComponentPropsWithoutRef<typeof InputPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "theme-galapago::group-disabled:bg-neutral-a-3 group inline-flex h-9 w-full select-none text-ellipsis rounded-lg border border-transparent bg-white-a-3 pe-8 ps-3.5 text-base leading-none text-neutral-12 shadow outline -outline-offset-1 outline-neutral-a-7 placeholder:text-neutral-10 theme-dfs:bg-canvas-1 theme-galapago:bg-white entering:outline-2 entering:outline-primary-a-8 group-invalid:outline-x-negative-a-7 focus-visible:outline-primary-a-8 group-disabled:pointer-events-none group-disabled:bg-neutral-a-3 group-disabled:outline-neutral-a-6 theme-dfs:group-disabled:bg-neutral-a-3 theme-forerunner:group-disabled:bg-neutral-a-3 group-invalid:group-disabled:outline-x-negative-a-6 theme-dfs:dark:bg-white-a-3 theme-forerunner:dark:bg-black-a-3 theme-galapago:dark:bg-black-a-3 sm:ps-3 sm:text-sm",
+    "theme-galapago::group-disabled:bg-neutral-a-3 group inline-flex h-9 w-full select-none text-ellipsis rounded-lg border-none bg-white-a-3 pe-8 ps-3.5 text-base leading-none text-neutral-12 shadow outline -outline-offset-1 outline-neutral-a-7 placeholder:text-neutral-10 theme-dfs:bg-canvas-1 theme-galapago:bg-white entering:outline-2 entering:outline-primary-a-8 group-invalid:outline-x-negative-a-7 focus-visible:outline-primary-a-8 group-disabled:pointer-events-none group-disabled:bg-neutral-a-3 group-disabled:outline-neutral-a-6 theme-dfs:group-disabled:bg-neutral-a-3 theme-forerunner:group-disabled:bg-neutral-a-3 group-invalid:group-disabled:outline-x-negative-a-6 theme-dfs:dark:bg-white-a-3 theme-forerunner:dark:bg-black-a-3 theme-galapago:dark:bg-black-a-3 sm:ps-3 sm:text-sm",
     className,
   );
   return <InputPrimitive className={mergedClassName} {...properties} ref={reference} />;
@@ -98,7 +99,7 @@ export const ComboBoxButton = forwardRef<
   ComponentPropsWithoutRef<typeof ButtonPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "absolute right-0 top-0 flex h-9 cursor-default items-center rounded-md p-2 text-neutral-11 before:absolute before:inset-1 before:rounded-md before:content-[''] hover:before:bg-neutral-a-4 focus:outline-none group-disabled:text-neutral-8",
+    "absolute end-0 top-0 flex h-9 cursor-default items-center rounded-md p-2 text-neutral-11 before:absolute before:inset-1 before:rounded-md before:content-[''] hover:before:bg-neutral-a-4 focus:outline-none group-disabled:text-neutral-8",
     className,
   );
   return <ButtonPrimitive className={mergedClassName} {...properties} ref={reference} />;
@@ -151,22 +152,32 @@ ComboBoxPopover.displayName = "ComboBoxPopover";
 
 export const ComboBoxSection = forwardRef<
   ElementRef<typeof SectionPrimitive>,
-  ComponentPropsWithoutRef<typeof SectionPrimitive> & { className?: string | undefined }
->(({ className, ...properties }, reference) => {
-  const mergedClassName = cx(
-    "relative mt-1 pt-1 before:absolute before:inset-x-2 before:top-0 before:h-px before:bg-neutral-6 before:content-[''] first:mt-0 first:pt-0 first:before:content-none theme-forerunner:dark:before:bg-white-a-6",
-    className,
-  );
-  return <SectionPrimitive className={mergedClassName} {...properties} ref={reference} />;
-});
+  ComponentPropsWithoutRef<typeof SectionPrimitive>
+>((properties, reference) => <SectionPrimitive {...properties} ref={reference} />);
 
 ComboBoxSection.displayName = "ComboBoxSection";
+
+export const ComboBoxSeparator = forwardRef<
+  ElementRef<typeof SeparatorPrimitive>,
+  ComponentPropsWithoutRef<typeof SeparatorPrimitive> & { className?: string | undefined }
+>(({ className, ...properties }, reference) => {
+  const mergedClassName = cx(
+    "mx-2 my-1 h-px bg-neutral-a-6 px-4 theme-forerunner:dark:bg-white-a-6",
+    className,
+  );
+  return <SeparatorPrimitive className={mergedClassName} {...properties} ref={reference} />;
+});
+
+ComboBoxSeparator.displayName = "ComboBoxSeparator";
 
 export const ComboBoxHeader = forwardRef<
   ElementRef<typeof HeaderPrimitive>,
   ComponentPropsWithoutRef<typeof HeaderPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
-  const mergedClassName = cx("px-2 pt-2 text-sm/5 font-medium text-neutral-11 sm:text-xs/5", className);
+  const mergedClassName = cx(
+    "select-none px-2 pt-2 text-sm/5 font-medium text-neutral-11 sm:text-xs/5",
+    className,
+  );
   return <HeaderPrimitive className={mergedClassName} {...properties} ref={reference} />;
 });
 
@@ -214,7 +225,7 @@ ComboBoxListBoxItemLabel.displayName = "ComboBoxListBoxItemLabel";
 export const ComboBoxListBoxItemCheck = forwardRef<HTMLSpanElement, HTMLAttributes<HTMLSpanElement>>(
   ({ className, ...properties }, reference) => {
     const mergedClassName = cx(
-      "absolute end-1.5 top-1 inline-flex size-4 size-6 items-center justify-center p-1 opacity-0 group-selected/item:opacity-100",
+      "absolute end-1.5 top-1 inline-flex size-6 items-center justify-center p-1 opacity-0 group-selected/item:opacity-100",
       className,
     );
     return <span className={mergedClassName} {...properties} ref={reference} />;

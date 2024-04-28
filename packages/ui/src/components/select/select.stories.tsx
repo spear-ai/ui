@@ -17,8 +17,10 @@ import {
   SelectListBoxItemLabel,
   SelectPopover,
   SelectSection,
+  SelectSeparator,
   SelectValue,
 } from "@/components/select/select";
+import { useStorybook } from "@/components/storybook-provider/storybook-provider";
 import { specialSensorList1, specialSensorList2, standardSensorList } from "@/data/sensor";
 
 const PreviewSelect = (properties: {
@@ -49,6 +51,7 @@ const PreviewSelect = (properties: {
     isOptional,
     isSquished,
   } = properties;
+  const { portalContainer } = useStorybook();
   const intl = useIntl();
   const [value, setValue] = useControlledState<string | null>(undefined, null);
   const list = standardSensorList;
@@ -96,47 +99,53 @@ const PreviewSelect = (properties: {
               })}
             </SelectFieldError>
           ) : null}
-          <SelectPopover>
+          <SelectPopover UNSTABLE_portalContainer={portalContainer}>
             <SelectListBox>
               {hasSection1 ? (
-                <SelectSection>
-                  {hasSection1Header ? (
-                    <SelectHeader>
-                      {intl.formatMessage({
-                        defaultMessage: "Section 1",
-                        id: "GUDhpC",
-                      })}
-                    </SelectHeader>
-                  ) : null}
-                  {specialSensorList1.map((sensor) => (
-                    <SelectListBoxItem id={sensor.id} key={sensor.id} textValue={sensor.name}>
-                      <SelectListBoxItemLabel>{sensor.name}</SelectListBoxItemLabel>
-                      <SelectListBoxItemCheck>
-                        <SelectListBoxItemCheckIcon />
-                      </SelectListBoxItemCheck>
-                    </SelectListBoxItem>
-                  ))}
-                </SelectSection>
+                <>
+                  <SelectSection>
+                    {hasSection1Header ? (
+                      <SelectHeader>
+                        {intl.formatMessage({
+                          defaultMessage: "Section 1",
+                          id: "GUDhpC",
+                        })}
+                      </SelectHeader>
+                    ) : null}
+                    {specialSensorList1.map((sensor) => (
+                      <SelectListBoxItem id={sensor.id} key={sensor.id} textValue={sensor.name}>
+                        <SelectListBoxItemLabel>{sensor.name}</SelectListBoxItemLabel>
+                        <SelectListBoxItemCheck>
+                          <SelectListBoxItemCheckIcon />
+                        </SelectListBoxItemCheck>
+                      </SelectListBoxItem>
+                    ))}
+                  </SelectSection>
+                  <SelectSeparator />
+                </>
               ) : null}
               {hasSection2 ? (
-                <SelectSection>
-                  {hasSection2Header ? (
-                    <SelectHeader>
-                      {intl.formatMessage({
-                        defaultMessage: "Section 2",
-                        id: "H+Wcch",
-                      })}
-                    </SelectHeader>
-                  ) : null}
-                  {specialSensorList2.map((sensor) => (
-                    <SelectListBoxItem id={sensor.id} key={sensor.id} textValue={sensor.name}>
-                      <SelectListBoxItemLabel>{sensor.name}</SelectListBoxItemLabel>
-                      <SelectListBoxItemCheck>
-                        <SelectListBoxItemCheckIcon />
-                      </SelectListBoxItemCheck>
-                    </SelectListBoxItem>
-                  ))}
-                </SelectSection>
+                <>
+                  <SelectSection>
+                    {hasSection2Header ? (
+                      <SelectHeader>
+                        {intl.formatMessage({
+                          defaultMessage: "Section 2",
+                          id: "H+Wcch",
+                        })}
+                      </SelectHeader>
+                    ) : null}
+                    {specialSensorList2.map((sensor) => (
+                      <SelectListBoxItem id={sensor.id} key={sensor.id} textValue={sensor.name}>
+                        <SelectListBoxItemLabel>{sensor.name}</SelectListBoxItemLabel>
+                        <SelectListBoxItemCheck>
+                          <SelectListBoxItemCheckIcon />
+                        </SelectListBoxItemCheck>
+                      </SelectListBoxItem>
+                    ))}
+                  </SelectSection>
+                  <SelectSeparator />
+                </>
               ) : null}
               <SelectSection>
                 {isOptional ? (
