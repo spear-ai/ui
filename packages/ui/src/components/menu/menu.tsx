@@ -118,12 +118,21 @@ export const MenuItemDescription = forwardRef<
 
 MenuItemDescription.displayName = "MenuItemDescription";
 
+export const MenuItemKeyboard = forwardRef<HTMLSpanElement, HTMLAttributes<HTMLSpanElement>>(
+  ({ className, ...properties }, reference) => {
+    const mergedClassName = cx("absolute end-2 top-1", className);
+    return <span className={mergedClassName} {...properties} ref={reference} />;
+  },
+);
+
+MenuItemKeyboard.displayName = "MenuItemKeyboard";
+
 export const MenuItemKeyboardShortcut = forwardRef<
   ElementRef<typeof KeyboardPrimitive>,
   ComponentPropsWithoutRef<typeof KeyboardPrimitive>
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "absolute right-2 top-1.5 font-mono text-sm text-neutral-a-11 group-disabled/item:text-neutral-a-9",
+    "font-mono text-sm text-neutral-a-11 group-disabled/item:text-neutral-a-9",
     className,
   );
   return <KeyboardPrimitive className={mergedClassName} {...properties} ref={reference} />;
@@ -134,7 +143,7 @@ MenuItemKeyboardShortcut.displayName = "MenuItemKeyboardShortcut";
 export const MenuItemExpand = forwardRef<HTMLSpanElement, HTMLAttributes<HTMLSpanElement>>(
   ({ className, ...properties }, reference) => {
     const mergedClassName = cx(
-      "absolute right-1 top-1 size-6 p-1 text-neutral-a-12 group-disabled/item:text-neutral-a-10",
+      "absolute end-1 top-1 size-6 p-1 text-neutral-a-12 group-disabled/item:text-neutral-a-10",
       className,
     );
     return <span className={mergedClassName} {...properties} ref={reference} />;
@@ -148,7 +157,7 @@ export const MenuItemExpandIcon = forwardRef<
   SVGAttributes<SVGElement> & { asChild?: boolean | undefined }
 >(({ asChild = false, className, ...properties }, reference) => {
   const Component = asChild ? Slot : ChevronRightIcon;
-  const mergedClassName = cx("relative h-full w-auto", className);
+  const mergedClassName = cx("relative h-full w-auto rtl:-scale-x-100", className);
   // @ts-expect-error the Slot component’s type definition doesn’t play nice with SVGs
   return <Component aria-hidden className={mergedClassName} ref={reference} {...properties} />;
 });

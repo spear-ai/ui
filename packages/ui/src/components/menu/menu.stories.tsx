@@ -8,6 +8,7 @@ import {
   MenuItemDescription,
   MenuItemExpand,
   MenuItemExpandIcon,
+  MenuItemKeyboard,
   MenuItemKeyboardShortcut,
   MenuItemLabel,
   MenuPopover,
@@ -52,9 +53,11 @@ const PreviewMenu = () => {
                   id: "oxEUIP",
                 })}
               </MenuItemDescription>
-              <MenuItemKeyboardShortcut>
-                {/* eslint-disable-line formatjs/no-literal-string-in-jsx */}⌘X
-              </MenuItemKeyboardShortcut>
+              <MenuItemKeyboard>
+                <MenuItemKeyboardShortcut>
+                  {/* eslint-disable-line formatjs/no-literal-string-in-jsx */}⌘X
+                </MenuItemKeyboardShortcut>
+              </MenuItemKeyboard>
             </MenuItem>
             <MenuItem id="2">
               <MenuItemLabel>
@@ -69,10 +72,11 @@ const PreviewMenu = () => {
                   id: "fkgqp+",
                 })}
               </MenuItemDescription>
-              <MenuItemKeyboardShortcut>
-                {/* eslint-disable-line formatjs/no-literal-string-in-jsx */}
-                ⌘Y
-              </MenuItemKeyboardShortcut>
+              <MenuItemKeyboard>
+                <MenuItemKeyboardShortcut>
+                  {/* eslint-disable-line formatjs/no-literal-string-in-jsx */}⌘Y
+                </MenuItemKeyboardShortcut>
+              </MenuItemKeyboard>
             </MenuItem>
             <MenuItem id="3">
               <MenuItemLabel>
@@ -81,9 +85,11 @@ const PreviewMenu = () => {
                   id: "drtU5J",
                 })}
               </MenuItemLabel>
-              <MenuItemKeyboardShortcut>
-                {/* eslint-disable-line formatjs/no-literal-string-in-jsx */}⌘Z
-              </MenuItemKeyboardShortcut>
+              <MenuItemKeyboard>
+                <MenuItemKeyboardShortcut>
+                  {/* eslint-disable-line formatjs/no-literal-string-in-jsx */}⌘Z
+                </MenuItemKeyboardShortcut>
+              </MenuItemKeyboard>
             </MenuItem>
           </MenuSection>
           <MenuSeparator />

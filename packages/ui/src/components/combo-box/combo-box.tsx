@@ -86,7 +86,7 @@ export const ComboBoxInput = forwardRef<
   ComponentPropsWithoutRef<typeof InputPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "theme-galapago::group-disabled:bg-neutral-a-3 group inline-flex h-9 w-full select-none text-ellipsis rounded-lg border border-transparent bg-white-a-3 pe-8 ps-3.5 text-base leading-none text-neutral-12 shadow outline -outline-offset-1 outline-neutral-a-7 placeholder:text-neutral-10 theme-dfs:bg-canvas-1 theme-galapago:bg-white entering:outline-2 entering:outline-primary-a-8 group-invalid:outline-x-negative-a-7 focus-visible:outline-primary-a-8 group-disabled:pointer-events-none group-disabled:bg-neutral-a-3 group-disabled:outline-neutral-a-6 theme-dfs:group-disabled:bg-neutral-a-3 theme-forerunner:group-disabled:bg-neutral-a-3 group-invalid:group-disabled:outline-x-negative-a-6 theme-dfs:dark:bg-white-a-3 theme-forerunner:dark:bg-black-a-3 theme-galapago:dark:bg-black-a-3 sm:ps-3 sm:text-sm",
+    "theme-galapago::group-disabled:bg-neutral-a-3 group inline-flex h-9 w-full select-none text-ellipsis rounded-lg border-none bg-white-a-3 pe-8 ps-3.5 text-base leading-none text-neutral-12 shadow outline -outline-offset-1 outline-neutral-a-7 placeholder:text-neutral-10 theme-dfs:bg-canvas-1 theme-galapago:bg-white entering:outline-2 entering:outline-primary-a-8 group-invalid:outline-x-negative-a-7 focus-visible:outline-primary-a-8 group-disabled:pointer-events-none group-disabled:bg-neutral-a-3 group-disabled:outline-neutral-a-6 theme-dfs:group-disabled:bg-neutral-a-3 theme-forerunner:group-disabled:bg-neutral-a-3 group-invalid:group-disabled:outline-x-negative-a-6 theme-dfs:dark:bg-white-a-3 theme-forerunner:dark:bg-black-a-3 theme-galapago:dark:bg-black-a-3 sm:ps-3 sm:text-sm",
     className,
   );
   return <InputPrimitive className={mergedClassName} {...properties} ref={reference} />;
@@ -99,7 +99,7 @@ export const ComboBoxButton = forwardRef<
   ComponentPropsWithoutRef<typeof ButtonPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "absolute right-0 top-0 flex h-9 cursor-default items-center rounded-md p-2 text-neutral-11 before:absolute before:inset-1 before:rounded-md before:content-[''] hover:before:bg-neutral-a-4 focus:outline-none group-disabled:text-neutral-8",
+    "absolute end-0 top-0 flex h-9 cursor-default items-center rounded-md p-2 text-neutral-11 before:absolute before:inset-1 before:rounded-md before:content-[''] hover:before:bg-neutral-a-4 focus:outline-none group-disabled:text-neutral-8",
     className,
   );
   return <ButtonPrimitive className={mergedClassName} {...properties} ref={reference} />;
