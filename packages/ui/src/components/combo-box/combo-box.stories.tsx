@@ -19,8 +19,10 @@ import {
   ComboBoxListBoxItemLabel,
   ComboBoxPopover,
   ComboBoxSection,
+  ComboBoxSeparator,
   ComboBoxTrigger,
 } from "@/components/combo-box/combo-box";
+import { useStorybook } from "@/components/storybook-provider/storybook-provider";
 import { specialSensorList1, specialSensorList2, standardSensorList } from "@/data/sensor";
 
 const PreviewComboBox = (properties: {
@@ -53,6 +55,7 @@ const PreviewComboBox = (properties: {
     isSquished,
     menuTrigger,
   } = properties;
+  const { portalContainer } = useStorybook();
   const intl = useIntl();
   const [selectedKey, setSelectedKey] = useControlledState<string | null>(undefined, null);
   const [isOpen, setIsOpen] = useControlledState<boolean>(undefined, false);
@@ -111,47 +114,53 @@ const PreviewComboBox = (properties: {
               })}
             </ComboBoxFieldError>
           ) : null}
-          <ComboBoxPopover isOpen={isAlwaysOpen ? true : isOpen}>
+          <ComboBoxPopover UNSTABLE_portalContainer={portalContainer} isOpen={isAlwaysOpen ? true : isOpen}>
             <ComboBoxListBox>
               {hasSection1 ? (
-                <ComboBoxSection>
-                  {hasSection1Header ? (
-                    <ComboBoxHeader>
-                      {intl.formatMessage({
-                        defaultMessage: "Section 1",
-                        id: "GUDhpC",
-                      })}
-                    </ComboBoxHeader>
-                  ) : null}
-                  {specialSensorList1.map((sensor) => (
-                    <ComboBoxListBoxItem id={sensor.id} key={sensor.id} textValue={sensor.name}>
-                      <ComboBoxListBoxItemLabel>{sensor.name}</ComboBoxListBoxItemLabel>
-                      <ComboBoxListBoxItemCheck>
-                        <ComboBoxListBoxItemCheckIcon />
-                      </ComboBoxListBoxItemCheck>
-                    </ComboBoxListBoxItem>
-                  ))}
-                </ComboBoxSection>
+                <>
+                  <ComboBoxSection>
+                    {hasSection1Header ? (
+                      <ComboBoxHeader>
+                        {intl.formatMessage({
+                          defaultMessage: "Section 1",
+                          id: "GUDhpC",
+                        })}
+                      </ComboBoxHeader>
+                    ) : null}
+                    {specialSensorList1.map((sensor) => (
+                      <ComboBoxListBoxItem id={sensor.id} key={sensor.id} textValue={sensor.name}>
+                        <ComboBoxListBoxItemLabel>{sensor.name}</ComboBoxListBoxItemLabel>
+                        <ComboBoxListBoxItemCheck>
+                          <ComboBoxListBoxItemCheckIcon />
+                        </ComboBoxListBoxItemCheck>
+                      </ComboBoxListBoxItem>
+                    ))}
+                  </ComboBoxSection>
+                  <ComboBoxSeparator />
+                </>
               ) : null}
               {hasSection2 ? (
-                <ComboBoxSection>
-                  {hasSection2Header ? (
-                    <ComboBoxHeader>
-                      {intl.formatMessage({
-                        defaultMessage: "Section 2",
-                        id: "H+Wcch",
-                      })}
-                    </ComboBoxHeader>
-                  ) : null}
-                  {specialSensorList2.map((sensor) => (
-                    <ComboBoxListBoxItem id={sensor.id} key={sensor.id} textValue={sensor.name}>
-                      <ComboBoxListBoxItemLabel>{sensor.name}</ComboBoxListBoxItemLabel>
-                      <ComboBoxListBoxItemCheck>
-                        <ComboBoxListBoxItemCheckIcon />
-                      </ComboBoxListBoxItemCheck>
-                    </ComboBoxListBoxItem>
-                  ))}
-                </ComboBoxSection>
+                <>
+                  <ComboBoxSection>
+                    {hasSection2Header ? (
+                      <ComboBoxHeader>
+                        {intl.formatMessage({
+                          defaultMessage: "Section 2",
+                          id: "H+Wcch",
+                        })}
+                      </ComboBoxHeader>
+                    ) : null}
+                    {specialSensorList2.map((sensor) => (
+                      <ComboBoxListBoxItem id={sensor.id} key={sensor.id} textValue={sensor.name}>
+                        <ComboBoxListBoxItemLabel>{sensor.name}</ComboBoxListBoxItemLabel>
+                        <ComboBoxListBoxItemCheck>
+                          <ComboBoxListBoxItemCheckIcon />
+                        </ComboBoxListBoxItemCheck>
+                      </ComboBoxListBoxItem>
+                    ))}
+                  </ComboBoxSection>
+                  <ComboBoxSeparator />
+                </>
               ) : null}
               <ComboBoxSection>
                 {isOptional ? (

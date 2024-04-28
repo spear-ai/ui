@@ -15,9 +15,11 @@ import {
   SelectPopover,
   SelectValue,
 } from "@/components/select/select";
+import { useStorybook } from "@/components/storybook-provider/storybook-provider";
 import { useCurrencyList } from "@/hooks/use-currency-list";
 
 const PreviewSelect = () => {
+  const { portalContainer } = useStorybook();
   const intl = useIntl();
   const [value, setValue] = useControlledState<string | null>(undefined, null);
   const currencyList = useCurrencyList();
@@ -45,7 +47,7 @@ const PreviewSelect = () => {
             <SelectValue />
             <SelectIcon />
           </SelectButton>
-          <SelectPopover>
+          <SelectPopover UNSTABLE_portalContainer={portalContainer}>
             <SelectListBox>
               <SelectListBoxItem id="" isNone>
                 {intl.formatMessage({

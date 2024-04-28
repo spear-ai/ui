@@ -20,6 +20,7 @@ import {
   ListBoxItem as ListBoxItemPrimitive,
   Popover as PopoverPrimitive,
   Section as SectionPrimitive,
+  Separator as SeparatorPrimitive,
 } from "react-aria-components";
 import { cx } from "@/helpers/cx";
 
@@ -151,22 +152,32 @@ ComboBoxPopover.displayName = "ComboBoxPopover";
 
 export const ComboBoxSection = forwardRef<
   ElementRef<typeof SectionPrimitive>,
-  ComponentPropsWithoutRef<typeof SectionPrimitive> & { className?: string | undefined }
->(({ className, ...properties }, reference) => {
-  const mergedClassName = cx(
-    "relative mt-1 pt-1 before:absolute before:inset-x-2 before:top-0 before:h-px before:bg-neutral-6 before:content-[''] first:mt-0 first:pt-0 first:before:content-none theme-forerunner:dark:before:bg-white-a-6",
-    className,
-  );
-  return <SectionPrimitive className={mergedClassName} {...properties} ref={reference} />;
-});
+  ComponentPropsWithoutRef<typeof SectionPrimitive>
+>((properties, reference) => <SectionPrimitive {...properties} ref={reference} />);
 
 ComboBoxSection.displayName = "ComboBoxSection";
+
+export const ComboBoxSeparator = forwardRef<
+  ElementRef<typeof SeparatorPrimitive>,
+  ComponentPropsWithoutRef<typeof SeparatorPrimitive> & { className?: string | undefined }
+>(({ className, ...properties }, reference) => {
+  const mergedClassName = cx(
+    "mx-2 my-1 h-px bg-neutral-a-6 px-4 theme-forerunner:dark:bg-white-a-6",
+    className,
+  );
+  return <SeparatorPrimitive className={mergedClassName} {...properties} ref={reference} />;
+});
+
+ComboBoxSeparator.displayName = "ComboBoxSeparator";
 
 export const ComboBoxHeader = forwardRef<
   ElementRef<typeof HeaderPrimitive>,
   ComponentPropsWithoutRef<typeof HeaderPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
-  const mergedClassName = cx("px-2 pt-2 text-sm/5 font-medium text-neutral-11 sm:text-xs/5", className);
+  const mergedClassName = cx(
+    "select-none px-2 pt-2 text-sm/5 font-medium text-neutral-11 sm:text-xs/5",
+    className,
+  );
   return <HeaderPrimitive className={mergedClassName} {...properties} ref={reference} />;
 });
 
@@ -214,7 +225,7 @@ ComboBoxListBoxItemLabel.displayName = "ComboBoxListBoxItemLabel";
 export const ComboBoxListBoxItemCheck = forwardRef<HTMLSpanElement, HTMLAttributes<HTMLSpanElement>>(
   ({ className, ...properties }, reference) => {
     const mergedClassName = cx(
-      "absolute end-1.5 top-1 inline-flex size-4 size-6 items-center justify-center p-1 opacity-0 group-selected/item:opacity-100",
+      "absolute end-1.5 top-1 inline-flex size-6 items-center justify-center p-1 opacity-0 group-selected/item:opacity-100",
       className,
     );
     return <span className={mergedClassName} {...properties} ref={reference} />;
