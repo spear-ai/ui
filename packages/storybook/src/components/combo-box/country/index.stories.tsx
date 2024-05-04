@@ -15,7 +15,7 @@ import {
 } from "@spear-ai/ui/components/combo-box";
 import { useRegionList } from "@spear-ai/ui/hooks/use-region-list";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Form } from "react-aria-components";
+import { Form, Key } from "react-aria-components";
 import { useIntl } from "react-intl";
 import { useStorybook } from "@/components/storybook-provider/storybook-provider";
 
@@ -30,7 +30,7 @@ const PreviewComboBox = () => {
       <Form className="relative w-full">
         <ComboBox
           menuTrigger="focus"
-          onSelectionChange={(key: number | string) => {
+          onSelectionChange={(key: Key | null) => {
             setValue(key === "" ? null : `${key}`);
           }}
           selectedKey={value}

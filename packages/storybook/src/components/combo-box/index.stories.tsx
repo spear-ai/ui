@@ -20,7 +20,7 @@ import {
 } from "@spear-ai/ui/components/combo-box";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useCallback } from "react";
-import { Form } from "react-aria-components";
+import { Form, Key } from "react-aria-components";
 import { useIntl } from "react-intl";
 import { useStorybook } from "@/components/storybook-provider/storybook-provider";
 import { specialSensorList1, specialSensorList2, standardSensorList } from "@/data/sensor";
@@ -61,7 +61,7 @@ const PreviewComboBox = (properties: {
   const [isOpen, setIsOpen] = useControlledState<boolean>(undefined, false);
 
   const handleSelectionChange = useCallback(
-    (key: number | string) => {
+    (key: Key | null) => {
       if (isOptional && key === "") {
         setSelectedKey(null);
         setIsOpen(false);

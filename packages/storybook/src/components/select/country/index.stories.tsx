@@ -14,7 +14,7 @@ import {
 } from "@spear-ai/ui/components/select";
 import { useRegionList } from "@spear-ai/ui/hooks/use-region-list";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Form } from "react-aria-components";
+import { Form, Key } from "react-aria-components";
 import { useIntl } from "react-intl";
 import { useStorybook } from "@/components/storybook-provider/storybook-provider";
 
@@ -28,7 +28,7 @@ const PreviewSelect = () => {
     <div className="w-full max-w-xs">
       <Form className="relative w-full">
         <Select
-          onSelectionChange={(key: number | string) => {
+          onSelectionChange={(key: Key | null) => {
             setValue(key === "" ? null : `${key}`);
           }}
           placeholder={intl.formatMessage({
