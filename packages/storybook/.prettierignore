@@ -1,0 +1,7 @@
+!.*
+.next
+data
+node_modules
+package.json
+storybook-static
+public
