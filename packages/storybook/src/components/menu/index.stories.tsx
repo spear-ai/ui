@@ -32,7 +32,7 @@ const PreviewMenu = () => {
         })}
       </Button>
       <MenuPopover UNSTABLE_portalContainer={portalContainer}>
-        <Menu disabledKeys={["2", "5"]}>
+        <Menu>
           <MenuSection>
             <MenuHeader>
               {intl.formatMessage({
@@ -40,7 +40,7 @@ const PreviewMenu = () => {
                 id: "pp6/fU",
               })}
             </MenuHeader>
-            <MenuItem id="1">
+            <MenuItem>
               <MenuItemLabel>
                 {intl.formatMessage({
                   defaultMessage: "Option 1",
@@ -59,11 +59,11 @@ const PreviewMenu = () => {
                 </MenuItemKeyboardShortcut>
               </MenuItemKeyboard>
             </MenuItem>
-            <MenuItem id="2">
+            <MenuItem href="#" isDisabled>
               <MenuItemLabel>
                 {intl.formatMessage({
-                  defaultMessage: "Option 2",
-                  id: "+EJqlX",
+                  defaultMessage: "Option 2 (Link)",
+                  id: "SyZePE",
                 })}
               </MenuItemLabel>
               <MenuItemDescription>
@@ -78,7 +78,7 @@ const PreviewMenu = () => {
                 </MenuItemKeyboardShortcut>
               </MenuItemKeyboard>
             </MenuItem>
-            <MenuItem id="3">
+            <MenuItem>
               <MenuItemLabel>
                 {intl.formatMessage({
                   defaultMessage: "Option 3",
@@ -100,7 +100,7 @@ const PreviewMenu = () => {
                 id: "+MKFek",
               })}
             </MenuHeader>
-            <MenuItem id="4">
+            <MenuItem>
               <MenuItemLabel>
                 {intl.formatMessage({
                   defaultMessage: "Option 4",
@@ -109,7 +109,7 @@ const PreviewMenu = () => {
               </MenuItemLabel>
             </MenuItem>
             <SubmenuTrigger>
-              <MenuItem id="5">
+              <MenuItem isDisabled>
                 <MenuItemLabel>
                   {intl.formatMessage({
                     defaultMessage: "Option 5",
@@ -125,7 +125,7 @@ const PreviewMenu = () => {
               </MenuPopover>
             </SubmenuTrigger>
             <SubmenuTrigger>
-              <MenuItem id="6">
+              <MenuItem>
                 <MenuItemLabel>
                   {intl.formatMessage({
                     defaultMessage: "Option 6",
@@ -138,7 +138,7 @@ const PreviewMenu = () => {
               </MenuItem>
               <MenuPopover UNSTABLE_portalContainer={portalContainer}>
                 <Menu>
-                  <MenuItem id="a">
+                  <MenuItem>
                     <MenuItemLabel>
                       {intl.formatMessage({
                         defaultMessage: "Option A",
@@ -146,7 +146,7 @@ const PreviewMenu = () => {
                       })}
                     </MenuItemLabel>
                   </MenuItem>
-                  <MenuItem id="b">
+                  <MenuItem>
                     <MenuItemLabel>
                       {intl.formatMessage({
                         defaultMessage: "Option B",
@@ -154,7 +154,7 @@ const PreviewMenu = () => {
                       })}
                     </MenuItemLabel>
                   </MenuItem>
-                  <MenuItem id="c">
+                  <MenuItem>
                     <MenuItemLabel>
                       {intl.formatMessage({
                         defaultMessage: "Option C",
@@ -165,7 +165,7 @@ const PreviewMenu = () => {
                 </Menu>
               </MenuPopover>
             </SubmenuTrigger>
-            <MenuItem id="7">
+            <MenuItem>
               <MenuItemLabel>
                 {intl.formatMessage({
                   defaultMessage: "Option 7",
@@ -176,7 +176,7 @@ const PreviewMenu = () => {
           </MenuSection>
           <MenuSeparator />
           <MenuSection>
-            <MenuItem id="8">
+            <MenuItem>
               <MenuItemLabel>
                 {intl.formatMessage({
                   defaultMessage: "Option 8",

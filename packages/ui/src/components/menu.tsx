@@ -83,7 +83,7 @@ export const MenuItem = forwardRef<
   ComponentPropsWithoutRef<typeof MenuItemPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "group/item hover:bg-primary-4 focus:bg-primary-5 relative cursor-default select-none rounded-lg py-2.5 pe-7 ps-2 outline-none sm:py-1.5 rtl:text-right",
+    "group/item hover:bg-primary-4 focus:bg-primary-5 relative block cursor-default select-none rounded-lg py-2.5 pe-7 ps-2 outline-none sm:py-1.5 rtl:text-right",
     className,
   );
   return <MenuItemPrimitive className={mergedClassName} {...properties} ref={reference} />;
