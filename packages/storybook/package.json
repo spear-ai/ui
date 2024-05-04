@@ -58,6 +58,7 @@
     "typescript": "5.4.5"
   },
   "license": "UNLICENSED",
+  "private": true,
   "repository": {
     "type": "git",
     "directory": "packages/storybook",
