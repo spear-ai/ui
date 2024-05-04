@@ -1,5 +1,23 @@
 # @spear-ai/ui
 
+## 5.0.0
+
+### Major Changes
+
+- [#222](https://github.com/spear-ai/ui/pull/222) [`70e8d3c`](https://github.com/spear-ai/ui/commit/70e8d3cb399d40ade9cb3dbe18ca011ddd01a403) Thanks [@psirenny](https://github.com/psirenny)! - Separated UI library from Storybook application.
+
+### Minor Changes
+
+- [#206](https://github.com/spear-ai/ui/pull/206) [`6a0c27c`](https://github.com/spear-ai/ui/commit/6a0c27ce383b83ac833c611c459de838a8b42285) Thanks [@psirenny](https://github.com/psirenny)! - Added Menu component(s).
+
+- [#222](https://github.com/spear-ai/ui/pull/222) [`70e8d3c`](https://github.com/spear-ai/ui/commit/70e8d3cb399d40ade9cb3dbe18ca011ddd01a403) Thanks [@psirenny](https://github.com/psirenny)! - Published UI library to NPM and GitHub Packages.
+
+### Patch Changes
+
+- [#206](https://github.com/spear-ai/ui/pull/206) [`6a0c27c`](https://github.com/spear-ai/ui/commit/6a0c27ce383b83ac833c611c459de838a8b42285) Thanks [@psirenny](https://github.com/psirenny)! - Fixed RTL rendering for Field components.
+
+- [#206](https://github.com/spear-ai/ui/pull/206) [`6a0c27c`](https://github.com/spear-ai/ui/commit/6a0c27ce383b83ac833c611c459de838a8b42285) Thanks [@psirenny](https://github.com/psirenny)! - Fixed off-by-1 layout calculation due to border in Field components.
+
 ## 4.2.0
 
 ### Minor Changes
