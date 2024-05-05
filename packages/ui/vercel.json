@@ -1,7 +1,0 @@
-{
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "yarn turbo run storybook:build",
-  "devCommand": "yarn turbo run build && yarn turbo run dev",
-  "installCommand": "yarn install",
-  "outputDirectory": "storybook-static"
-}
