@@ -40,11 +40,15 @@
       "import": "./dist/*",
       "require": "./dist/*.cjs",
       "types": "./dist/*.d.ts"
+    },
+    "./styles/*": {
+      "import": "./src/styles/*"
     }
   },
   "files": [
     "CHANGELOG.md",
-    "dist"
+    "dist",
+    "src"
   ],
   "license": "UNLICENSED",
   "peerDependencies": {
@@ -58,7 +62,7 @@
     "url": "https://github.com/spear-ai/ui.git"
   },
   "scripts": {
-    "build": "tsup --config tsup.config.ts --clean --dts --format cjs,esm --publicDir src/static",
+    "build": "tsup --config tsup.config.ts --clean --dts --format cjs,esm",
     "dev": "yarn run build --watch",
     "eslint:check": "eslint --max-warnings 0 .",
     "eslint:fix": "yarn run eslint:check --fix",
