@@ -51,16 +51,16 @@ const PreviewRadio = (properties: {
           {hasGroupLabel ? (
             <RadioGroupLabel>
               {intl.formatMessage({
-                defaultMessage: "Privacy",
-                id: "cXBJ7U",
+                defaultMessage: "Side order",
+                id: "Er8inG",
               })}
             </RadioGroupLabel>
           ) : null}
           {hasGroupLabel && hasGroupLabelDescription ? (
             <RadioGroupDescription>
               {intl.formatMessage({
-                defaultMessage: "Control your post’s privacy settings.",
-                id: "dBZIgO",
+                defaultMessage: "Round off your dish with a side order.",
+                id: "5biyWl",
               })}
             </RadioGroupDescription>
           ) : null}
@@ -72,16 +72,16 @@ const PreviewRadio = (properties: {
                 </RadioButton>
                 <RadioLabel>
                   {intl.formatMessage({
-                    defaultMessage: "Show only to friends",
-                    id: "709cRj",
+                    defaultMessage: "Veggies",
+                    id: "DmB6s4",
                   })}
                 </RadioLabel>
               </Radio>
               {hasLabelDescription ? (
                 <RadioDescription>
                   {intl.formatMessage({
-                    defaultMessage: "Whether only friends can see this post.",
-                    id: "WuPCNC",
+                    defaultMessage: "Lower in calories and yummies.",
+                    id: "Ti5D0d",
                   })}
                 </RadioDescription>
               ) : null}
@@ -93,16 +93,16 @@ const PreviewRadio = (properties: {
                 </RadioButton>
                 <RadioLabel>
                   {intl.formatMessage({
-                    defaultMessage: "Allow sharing",
-                    id: "MmQn2H",
+                    defaultMessage: "Fruit",
+                    id: "V35hcy",
                   })}
                 </RadioLabel>
               </Radio>
               {hasLabelDescription ? (
                 <RadioDescription>
                   {intl.formatMessage({
-                    defaultMessage: "Whether this post can be shared by others.",
-                    id: "qysWYY",
+                    defaultMessage: "Higher in yummies and calories.",
+                    id: "+iJVw/",
                   })}
                 </RadioDescription>
               ) : null}
