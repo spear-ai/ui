@@ -15,7 +15,6 @@ import {
   ComboBoxListBoxItemLabel,
   ComboBoxPopover,
   ComboBoxSection,
-  ComboBoxSeparator,
   ComboBoxTrigger,
 } from "@spear-ai/ui/components/combo-box";
 import type { Meta, StoryObj } from "@storybook/react";
@@ -117,50 +116,44 @@ const PreviewComboBox = (properties: {
           <ComboBoxPopover UNSTABLE_portalContainer={portalContainer} isOpen={isAlwaysOpen ? true : isOpen}>
             <ComboBoxListBox>
               {hasSection1 ? (
-                <>
-                  <ComboBoxSection>
-                    {hasSection1Header ? (
-                      <ComboBoxHeader>
-                        {intl.formatMessage({
-                          defaultMessage: "Section 1",
-                          id: "GUDhpC",
-                        })}
-                      </ComboBoxHeader>
-                    ) : null}
-                    {specialSensorList1.map((sensor) => (
-                      <ComboBoxListBoxItem id={sensor.id} key={sensor.id} textValue={sensor.name}>
-                        <ComboBoxListBoxItemLabel>{sensor.name}</ComboBoxListBoxItemLabel>
-                        <ComboBoxListBoxItemCheck>
-                          <ComboBoxListBoxItemCheckIcon />
-                        </ComboBoxListBoxItemCheck>
-                      </ComboBoxListBoxItem>
-                    ))}
-                  </ComboBoxSection>
-                  <ComboBoxSeparator />
-                </>
+                <ComboBoxSection>
+                  {hasSection1Header ? (
+                    <ComboBoxHeader>
+                      {intl.formatMessage({
+                        defaultMessage: "Section 1",
+                        id: "GUDhpC",
+                      })}
+                    </ComboBoxHeader>
+                  ) : null}
+                  {specialSensorList1.map((sensor) => (
+                    <ComboBoxListBoxItem id={sensor.id} key={sensor.id} textValue={sensor.name}>
+                      <ComboBoxListBoxItemLabel>{sensor.name}</ComboBoxListBoxItemLabel>
+                      <ComboBoxListBoxItemCheck>
+                        <ComboBoxListBoxItemCheckIcon />
+                      </ComboBoxListBoxItemCheck>
+                    </ComboBoxListBoxItem>
+                  ))}
+                </ComboBoxSection>
               ) : null}
               {hasSection2 ? (
-                <>
-                  <ComboBoxSection>
-                    {hasSection2Header ? (
-                      <ComboBoxHeader>
-                        {intl.formatMessage({
-                          defaultMessage: "Section 2",
-                          id: "H+Wcch",
-                        })}
-                      </ComboBoxHeader>
-                    ) : null}
-                    {specialSensorList2.map((sensor) => (
-                      <ComboBoxListBoxItem id={sensor.id} key={sensor.id} textValue={sensor.name}>
-                        <ComboBoxListBoxItemLabel>{sensor.name}</ComboBoxListBoxItemLabel>
-                        <ComboBoxListBoxItemCheck>
-                          <ComboBoxListBoxItemCheckIcon />
-                        </ComboBoxListBoxItemCheck>
-                      </ComboBoxListBoxItem>
-                    ))}
-                  </ComboBoxSection>
-                  <ComboBoxSeparator />
-                </>
+                <ComboBoxSection>
+                  {hasSection2Header ? (
+                    <ComboBoxHeader>
+                      {intl.formatMessage({
+                        defaultMessage: "Section 2",
+                        id: "H+Wcch",
+                      })}
+                    </ComboBoxHeader>
+                  ) : null}
+                  {specialSensorList2.map((sensor) => (
+                    <ComboBoxListBoxItem id={sensor.id} key={sensor.id} textValue={sensor.name}>
+                      <ComboBoxListBoxItemLabel>{sensor.name}</ComboBoxListBoxItemLabel>
+                      <ComboBoxListBoxItemCheck>
+                        <ComboBoxListBoxItemCheckIcon />
+                      </ComboBoxListBoxItemCheck>
+                    </ComboBoxListBoxItem>
+                  ))}
+                </ComboBoxSection>
               ) : null}
               <ComboBoxSection>
                 {isOptional ? (

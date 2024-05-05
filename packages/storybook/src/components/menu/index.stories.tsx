@@ -10,7 +10,6 @@ import {
   MenuItemLabel,
   MenuPopover,
   MenuSection,
-  MenuSeparator,
   MenuTrigger,
   SubmenuTrigger,
 } from "@spear-ai/ui/components/menu";
@@ -92,7 +91,6 @@ const PreviewMenu = () => {
               </MenuItemKeyboard>
             </MenuItem>
           </MenuSection>
-          <MenuSeparator />
           <MenuSection>
             <MenuHeader>
               {intl.formatMessage({
@@ -174,7 +172,6 @@ const PreviewMenu = () => {
               </MenuItemLabel>
             </MenuItem>
           </MenuSection>
-          <MenuSeparator />
           <MenuSection>
             <MenuItem>
               <MenuItemLabel>
