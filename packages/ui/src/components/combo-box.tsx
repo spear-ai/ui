@@ -152,7 +152,13 @@ ComboBoxPopover.displayName = "ComboBoxPopover";
 export const ComboBoxSection = forwardRef<
   ElementRef<typeof SectionPrimitive>,
   ComponentPropsWithoutRef<typeof SectionPrimitive>
->((properties, reference) => <SectionPrimitive {...properties} ref={reference} />);
+>(({ className, ...properties }, reference) => {
+  const mergedClassName = cx(
+    "before:bg-neutral-a-6 relative mt-2 pt-2 before:absolute before:left-2 before:right-2 before:top-0 before:h-px before:content-[''] first:mt-0 first:pt-0 first:before:content-none",
+    className,
+  );
+  return <SectionPrimitive className={mergedClassName} {...properties} ref={reference} />;
+});
 
 ComboBoxSection.displayName = "ComboBoxSection";
 
@@ -174,7 +180,7 @@ export const ComboBoxHeader = forwardRef<
   ComponentPropsWithoutRef<typeof HeaderPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "text-neutral-11 select-none px-2 pt-2 text-sm/5 font-medium sm:text-xs/5",
+    "text-neutral-11 select-none px-2 pt-1 text-sm/5 font-medium sm:text-xs/5",
     className,
   );
   return <HeaderPrimitive className={mergedClassName} {...properties} ref={reference} />;
