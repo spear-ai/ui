@@ -53,7 +53,13 @@ export const tailwindConfig: Config = {
       borderWidth: {
         1: "1px",
       },
-      data,
+      data: {
+        ...data,
+        "has-error": "has-error=true",
+        "is-skeleton": "is-skeleton=true",
+        "slot-visible-image": 'slot-visible="image"',
+        "slot-visible-text": 'slot-visible="text"',
+      },
       fontFamily: {
         sans: ["Inter", ...defaultTheme.fontFamily.sans],
       },
