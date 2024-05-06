@@ -14,7 +14,6 @@ import {
   SelectListBoxItemLabel,
   SelectPopover,
   SelectSection,
-  SelectSeparator,
   SelectValue,
 } from "@spear-ai/ui/components/select";
 import type { Meta, StoryObj } from "@storybook/react";
@@ -102,50 +101,44 @@ const PreviewSelect = (properties: {
           <SelectPopover UNSTABLE_portalContainer={portalContainer}>
             <SelectListBox>
               {hasSection1 ? (
-                <>
-                  <SelectSection>
-                    {hasSection1Header ? (
-                      <SelectHeader>
-                        {intl.formatMessage({
-                          defaultMessage: "Section 1",
-                          id: "GUDhpC",
-                        })}
-                      </SelectHeader>
-                    ) : null}
-                    {specialSensorList1.map((sensor) => (
-                      <SelectListBoxItem id={sensor.id} key={sensor.id} textValue={sensor.name}>
-                        <SelectListBoxItemLabel>{sensor.name}</SelectListBoxItemLabel>
-                        <SelectListBoxItemCheck>
-                          <SelectListBoxItemCheckIcon />
-                        </SelectListBoxItemCheck>
-                      </SelectListBoxItem>
-                    ))}
-                  </SelectSection>
-                  <SelectSeparator />
-                </>
+                <SelectSection>
+                  {hasSection1Header ? (
+                    <SelectHeader>
+                      {intl.formatMessage({
+                        defaultMessage: "Section 1",
+                        id: "GUDhpC",
+                      })}
+                    </SelectHeader>
+                  ) : null}
+                  {specialSensorList1.map((sensor) => (
+                    <SelectListBoxItem id={sensor.id} key={sensor.id} textValue={sensor.name}>
+                      <SelectListBoxItemLabel>{sensor.name}</SelectListBoxItemLabel>
+                      <SelectListBoxItemCheck>
+                        <SelectListBoxItemCheckIcon />
+                      </SelectListBoxItemCheck>
+                    </SelectListBoxItem>
+                  ))}
+                </SelectSection>
               ) : null}
               {hasSection2 ? (
-                <>
-                  <SelectSection>
-                    {hasSection2Header ? (
-                      <SelectHeader>
-                        {intl.formatMessage({
-                          defaultMessage: "Section 2",
-                          id: "H+Wcch",
-                        })}
-                      </SelectHeader>
-                    ) : null}
-                    {specialSensorList2.map((sensor) => (
-                      <SelectListBoxItem id={sensor.id} key={sensor.id} textValue={sensor.name}>
-                        <SelectListBoxItemLabel>{sensor.name}</SelectListBoxItemLabel>
-                        <SelectListBoxItemCheck>
-                          <SelectListBoxItemCheckIcon />
-                        </SelectListBoxItemCheck>
-                      </SelectListBoxItem>
-                    ))}
-                  </SelectSection>
-                  <SelectSeparator />
-                </>
+                <SelectSection>
+                  {hasSection2Header ? (
+                    <SelectHeader>
+                      {intl.formatMessage({
+                        defaultMessage: "Section 2",
+                        id: "H+Wcch",
+                      })}
+                    </SelectHeader>
+                  ) : null}
+                  {specialSensorList2.map((sensor) => (
+                    <SelectListBoxItem id={sensor.id} key={sensor.id} textValue={sensor.name}>
+                      <SelectListBoxItemLabel>{sensor.name}</SelectListBoxItemLabel>
+                      <SelectListBoxItemCheck>
+                        <SelectListBoxItemCheckIcon />
+                      </SelectListBoxItemCheck>
+                    </SelectListBoxItem>
+                  ))}
+                </SelectSection>
               ) : null}
               <SelectSection>
                 {isOptional ? (
