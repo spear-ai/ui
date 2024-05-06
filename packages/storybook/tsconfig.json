@@ -6,15 +6,21 @@
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "jsx": "react-jsx",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "jsx": "preserve",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "noUncheckedIndexedAccess": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     },
     "plugins": [
       {
@@ -26,9 +32,15 @@
     "sourceMap": true,
     "strict": true,
     "stripInternal": true,
-    "target": "ESNext"
+    "target": "ESNext",
+    "noEmit": true,
+    "incremental": true
   },
-  "exclude": [".next", "node_modules", "next-env.d.ts"],
+  "exclude": [
+    ".next",
+    "node_modules",
+    "next-env.d.ts"
+  ],
   "include": [
     "**/*.cjs",
     "**/*.js",
@@ -40,5 +52,7 @@
     ".storybook/**/*.tsx",
     "types"
   ],
-  "types": ["types"]
+  "types": [
+    "types"
+  ]
 }

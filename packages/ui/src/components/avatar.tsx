@@ -1,0 +1,160 @@
+"use client";
+
+import { Slot } from "@radix-ui/react-slot";
+import { useUpdateEffect } from "@react-hookz/web";
+import NextImage from "next/image";
+import {
+  ComponentPropsWithoutRef,
+  ElementRef,
+  forwardRef,
+  HTMLAttributes,
+  SVGAttributes,
+  SyntheticEvent,
+  useCallback,
+  useState,
+} from "react";
+import { cx } from "@/helpers/cx";
+
+export const getAvatarUserInitials = (options: {
+  /** The persons’s family name to use as an initial. */
+  familyName: string | null | undefined;
+  /** The persons’s given name to use as an initial. */
+  givenName: string | null | undefined;
+}): string => {
+  const { familyName, givenName } = options;
+
+  const familyInitial =
+    (familyName ?? "")
+      .replaceAll(/[^a-z]/giu, "")
+      .trim()
+      .toUpperCase()
+      .at(0) ?? "";
+
+  const givenInitial =
+    (givenName ?? "")
+      .replaceAll(/[^a-z]/giu, "")
+      .trim()
+      .toUpperCase()
+      .at(0) ?? "";
+
+  return givenInitial === "" ? familyInitial : givenInitial;
+};
+
+export const Avatar = forwardRef<
+  HTMLSpanElement,
+  HTMLAttributes<HTMLSpanElement> & {
+    /** Whether to render as a skeleton loader. */
+    isSkeleton?: boolean | undefined;
+  }
+>(({ className, isSkeleton = false, ...properties }, reference) => {
+  const mergedClassName = cx(
+    "data-is-skeleton:bg-black-a-3 dark:data-is-skeleton:bg-white-a-3 data-is-skeleton:animate-pulse bg-neutral-9 group relative inline-flex size-10 cursor-default items-center justify-center overflow-hidden rounded-full",
+    className,
+  );
+  return <span className={mergedClassName} data-is-skeleton={isSkeleton} {...properties} ref={reference} />;
+});
+
+Avatar.displayName = "Avatar";
+
+export const AvatarImage = forwardRef<
+  ElementRef<typeof NextImage>,
+  ComponentPropsWithoutRef<typeof NextImage>
+>(({ className, onError, src, ...properties }, reference) => {
+  const [hasError, setHasError] = useState(false);
+
+  const handleError = useCallback(
+    (event: SyntheticEvent<HTMLImageElement>) => {
+      setHasError(true);
+
+      if (onError != null) {
+        onError(event);
+      }
+    },
+    [onError, setHasError],
+  );
+
+  useUpdateEffect(() => {
+    setHasError(false);
+  }, [setHasError, src]);
+
+  const mergedClassName = cx(
+    "group-data-is-skeleton:opacity-0 data-has-error:opacity-0 peer absolute inset-0",
+    className,
+  );
+
+  return (
+    <NextImage
+      className={mergedClassName}
+      data-has-error={hasError}
+      data-slot-visible={hasError ? undefined : "image"}
+      onError={handleError}
+      src={src}
+      {...properties}
+      ref={reference}
+    />
+  );
+});
+
+AvatarImage.displayName = "AvatarImage";
+
+export const AvatarText = forwardRef<
+  HTMLSpanElement,
+  HTMLAttributes<HTMLSpanElement> & {
+    /** The text — often initials — to display as an image fallback. */
+    text?: string | null | undefined;
+  }
+>(({ children, className, text, ...properties }, reference) => {
+  const initials = (text ?? "").trim();
+  const mergedClassName = cx(
+    "group-data-is-skeleton:opacity-0 peer-data-slot-visible-image:opacity-0 text-neutral-contrast peer absolute select-none font-medium leading-none",
+    className,
+  );
+
+  return (
+    <span
+      className={mergedClassName}
+      data-slot-visible={initials === "" ? undefined : "text"}
+      {...properties}
+      ref={reference}
+    >
+      {children ?? initials}
+    </span>
+  );
+});
+
+AvatarText.displayName = "AvatarText";
+
+export const AvatarIconUser = forwardRef<SVGSVGElement, SVGAttributes<SVGElement>>(
+  (properties, reference) => (
+    <svg fill="currentColor" ref={reference} viewBox="0 0 24 24" {...properties}>
+      <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+    </svg>
+  ),
+);
+
+AvatarIconUser.displayName = "AvatarIconUser";
+
+Avatar.displayName = "AvatarText";
+
+export const AvatarIcon = forwardRef<
+  SVGSVGElement,
+  SVGAttributes<SVGElement> & { asChild?: boolean | undefined }
+>(({ asChild = false, className, ...properties }, reference) => {
+  const Component = asChild ? Slot : AvatarIconUser;
+  const mergedClassName = cx(
+    "group-data-is-skeleton:opacity-0 peer-data-slot-visible-image:opacity-0 peer-data-slot-visible-text:opacity-0 peer absolute inset-0 size-full",
+    className,
+  );
+
+  return (
+    <Component
+      aria-hidden
+      className={mergedClassName}
+      // @ts-expect-error the Slot component’s type definition doesn’t play nice with SVGs
+      ref={reference}
+      {...properties}
+    />
+  );
+});
+
+AvatarIcon.displayName = "AvatarIcon";
