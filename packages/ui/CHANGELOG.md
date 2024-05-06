@@ -1,5 +1,19 @@
 # @spear-ai/ui
 
+## 5.1.0
+
+### Minor Changes
+
+- [#232](https://github.com/spear-ai/ui/pull/232) [`ad510b5`](https://github.com/spear-ai/ui/commit/ad510b5e0fd3ddd515f08dca48a568f86cc2c92d) Thanks [@psirenny](https://github.com/psirenny)! - Created Avatar components.
+
+- [#229](https://github.com/spear-ai/ui/pull/229) [`b93763d`](https://github.com/spear-ai/ui/commit/b93763d2aea27a454c4e9537b3777bdfa7d6dc60) Thanks [@psirenny](https://github.com/psirenny)! - Include `src` directory with UI library package.
+
+### Patch Changes
+
+- [#226](https://github.com/spear-ai/ui/pull/226) [`a3713b0`](https://github.com/spear-ai/ui/commit/a3713b0078d28264d5234d5a15d38a282be457cb) Thanks [@psirenny](https://github.com/psirenny)! - Fixed menu item link display type.
+
+- [#231](https://github.com/spear-ai/ui/pull/231) [`48f6e31`](https://github.com/spear-ai/ui/commit/48f6e31315c525c057bd78f605357e8617938de3) Thanks [@psirenny](https://github.com/psirenny)! - Fixed dangling separators in empty sections for ComboBox, Menu, and Select components.
+
 ## 5.0.0
 
 ### Major Changes

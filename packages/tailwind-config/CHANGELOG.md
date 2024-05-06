@@ -1,5 +1,11 @@
 # @spear-ai/tailwind-config
 
+## 5.2.0
+
+### Minor Changes
+
+- [#232](https://github.com/spear-ai/ui/pull/232) [`ad510b5`](https://github.com/spear-ai/ui/commit/ad510b5e0fd3ddd515f08dca48a568f86cc2c92d) Thanks [@psirenny](https://github.com/psirenny)! - Created Avatar components.
+
 ## 5.1.0
 
 ### Minor Changes
