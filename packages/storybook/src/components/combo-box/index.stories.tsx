@@ -18,8 +18,7 @@ import {
   ComboBoxTrigger,
 } from "@spear-ai/ui/components/combo-box";
 import type { Meta, StoryObj } from "@storybook/react";
-import { useCallback } from "react";
-import { Form, Key } from "react-aria-components";
+import { Form } from "react-aria-components";
 import { useIntl } from "react-intl";
 import { useStorybook } from "@/components/storybook-provider/storybook-provider";
 import { specialSensorList1, specialSensorList2, standardSensorList } from "@/data/sensor";
@@ -56,20 +55,7 @@ const PreviewComboBox = (properties: {
   } = properties;
   const { portalContainer } = useStorybook();
   const intl = useIntl();
-  const [selectedKey, setSelectedKey] = useControlledState<string | null>(undefined, null);
   const [isOpen, setIsOpen] = useControlledState<boolean>(undefined, false);
-
-  const handleSelectionChange = useCallback(
-    (key: Key | null) => {
-      if (isOptional && key === "") {
-        setSelectedKey(null);
-        setIsOpen(false);
-      } else {
-        setSelectedKey(`${key}`);
-      }
-    },
-    [isOptional, setIsOpen, setSelectedKey],
-  );
 
   return (
     <div className={`w-full ${isSquished ? "max-w-36" : "max-w-xs"}`}>
@@ -80,8 +66,6 @@ const PreviewComboBox = (properties: {
           isInvalid={isInvalid}
           menuTrigger={menuTrigger}
           onOpenChange={setIsOpen}
-          onSelectionChange={handleSelectionChange}
-          selectedKey={selectedKey}
         >
           {hasLabel ? (
             <ComboBoxLabel>{intl.formatMessage({ defaultMessage: "Sensor", id: "SCewMo" })}</ComboBoxLabel>
@@ -157,7 +141,7 @@ const PreviewComboBox = (properties: {
               ) : null}
               <ComboBoxSection>
                 {isOptional ? (
-                  <ComboBoxListBoxItem id="" isNone>
+                  <ComboBoxListBoxItem id="">
                     {intl.formatMessage({
                       defaultMessage: "None",
                       id: "450Fty",

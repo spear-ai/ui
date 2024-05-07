@@ -56,6 +56,7 @@ export const tailwindConfig: Config = {
       data: {
         ...data,
         "has-error": "has-error=true",
+        "is-none": "is-none=true",
         "is-skeleton": "is-skeleton=true",
         "slot-visible-image": 'slot-visible="image"',
         "slot-visible-text": 'slot-visible="text"',

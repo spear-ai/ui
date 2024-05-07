@@ -1,5 +1,6 @@
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 import { Slot } from "@radix-ui/react-slot";
+import { useControlledState } from "@react-stately/utils";
 import {
   ComponentPropsWithoutRef,
   ElementRef,
@@ -7,6 +8,7 @@ import {
   HTMLAttributes,
   ReactNode,
   SVGAttributes,
+  useCallback,
 } from "react";
 import {
   Button as ButtonPrimitive,
@@ -14,6 +16,7 @@ import {
   FieldError as FieldErrorPrimitive,
   Header as HeaderPrimitive,
   Input as InputPrimitive,
+  Key,
   Label as LabelPrimitive,
   ListBox as ListBoxPrimitive,
   ListBoxItem as ListBoxItemPrimitive,
@@ -26,10 +29,47 @@ import { cx } from "@/helpers/cx";
 export const ComboBox = forwardRef<
   ElementRef<typeof ComboBoxPrimitive>,
   ComponentPropsWithoutRef<typeof ComboBoxPrimitive> & { className?: string | undefined }
->(({ className, ...properties }, reference) => {
-  const mergedClassName = cx("group focus:outline-none", className);
-  return <ComboBoxPrimitive className={mergedClassName} {...properties} ref={reference} />;
-});
+>(
+  (
+    {
+      className,
+      defaultSelectedKey = null,
+      onSelectionChange,
+      selectedKey: controlledSelectedKey,
+      ...properties
+    },
+    reference,
+  ) => {
+    const [selectedKey, setSelectedKey] = useControlledState<Key | null>(
+      controlledSelectedKey,
+      defaultSelectedKey,
+    );
+
+    const handleSelectionChange = useCallback(
+      (originalKey: Key | null) => {
+        const key = originalKey === "" ? null : originalKey;
+        setSelectedKey(key);
+
+        if (onSelectionChange != null) {
+          onSelectionChange(key);
+        }
+      },
+      [onSelectionChange, setSelectedKey],
+    );
+
+    const mergedClassName = cx("group focus:outline-none", className);
+
+    return (
+      <ComboBoxPrimitive
+        className={mergedClassName}
+        onSelectionChange={handleSelectionChange}
+        selectedKey={selectedKey}
+        {...properties}
+        ref={reference}
+      />
+    );
+  },
+);
 
 ComboBox.displayName = "ComboBox";
 
@@ -208,15 +248,23 @@ export const ComboBoxListBoxItem = forwardRef<
   ElementRef<typeof ListBoxItemPrimitive>,
   ComponentPropsWithoutRef<typeof ListBoxItemPrimitive> & {
     className?: string | undefined;
+    /** Whether this item will deselect the selected key. */
     isNone?: boolean | undefined;
   }
->(({ className, isNone = false, ...properties }, reference) => {
+>(({ className, id, isNone = id === "", ...properties }, reference) => {
   const mergedClassName = cx(
-    "group/item text-neutral-12 hover:bg-primary-4 focus:bg-primary-5 focus-visible:bg-primary-5 relative cursor-default select-none rounded-lg py-2.5 pe-7 ps-2 text-base leading-none outline-none sm:py-1.5 sm:text-sm rtl:text-right",
-    isNone ? "text-neutral-11" : "",
+    "data-is-none:text-neutral-11 group/item text-neutral-12 hover:bg-primary-4 focus:bg-primary-5 focus-visible:bg-primary-5 relative cursor-default select-none rounded-lg py-2.5 pe-7 ps-2 text-base leading-none outline-none sm:py-1.5 sm:text-sm rtl:text-right",
     className,
   );
-  return <ListBoxItemPrimitive className={mergedClassName} {...properties} ref={reference} />;
+  return (
+    <ListBoxItemPrimitive
+      className={mergedClassName}
+      data-is-none={isNone}
+      id={id}
+      {...properties}
+      ref={reference}
+    />
+  );
 });
 
 ComboBoxListBoxItem.displayName = "ComboBoxListBoxItem";

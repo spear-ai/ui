@@ -1,16 +1,19 @@
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 import { Slot } from "@radix-ui/react-slot";
-import React, {
+import { useControlledState } from "@react-stately/utils";
+import {
   ComponentPropsWithoutRef,
   ElementRef,
   forwardRef,
   HTMLAttributes,
   SVGAttributes,
+  useCallback,
 } from "react";
 import {
   Button as ButtonPrimitive,
   FieldError as FieldErrorPrimitive,
   Header as HeaderPrimitive,
+  Key,
   Label as LabelPrimitive,
   ListBox as ListBoxPrimitive,
   ListBoxItem as ListBoxItemPrimitive,
@@ -24,11 +27,51 @@ import { cx } from "@/helpers/cx";
 
 export const Select = forwardRef<
   ElementRef<typeof SelectPrimitive>,
-  ComponentPropsWithoutRef<typeof SelectPrimitive> & { className?: string | undefined }
->(({ className, ...properties }, reference) => {
-  const mergedClassName = cx("group w-full focus:outline-none", className);
-  return <SelectPrimitive className={mergedClassName} {...properties} ref={reference} />;
-});
+  ComponentPropsWithoutRef<typeof SelectPrimitive> & {
+    className?: string | undefined;
+    onSelectionChange?: ((key: Key | null) => void) | undefined;
+  }
+>(
+  (
+    {
+      className,
+      defaultSelectedKey = null,
+      onSelectionChange,
+      selectedKey: controlledSelectedKey,
+      ...properties
+    },
+    reference,
+  ) => {
+    const [selectedKey, setSelectedKey] = useControlledState<Key | null>(
+      controlledSelectedKey,
+      defaultSelectedKey,
+    );
+
+    const handleSelectionChange = useCallback(
+      (originalKey: Key) => {
+        const key = originalKey === "" ? null : originalKey;
+        setSelectedKey(key);
+
+        if (onSelectionChange != null) {
+          onSelectionChange(key);
+        }
+      },
+      [onSelectionChange, setSelectedKey],
+    );
+
+    const mergedClassName = cx("group w-full focus:outline-none", className);
+
+    return (
+      <SelectPrimitive
+        className={mergedClassName}
+        onSelectionChange={handleSelectionChange}
+        selectedKey={selectedKey}
+        {...properties}
+        ref={reference}
+      />
+    );
+  },
+);
 
 Select.displayName = "Select";
 
@@ -175,15 +218,23 @@ export const SelectListBoxItem = forwardRef<
   ElementRef<typeof ListBoxItemPrimitive>,
   ComponentPropsWithoutRef<typeof ListBoxItemPrimitive> & {
     className?: string | undefined;
+    /** Whether this item will deselect the selected key. */
     isNone?: boolean | undefined;
   }
->(({ className, isNone = false, ...properties }, reference) => {
+>(({ className, id, isNone = id === "", ...properties }, reference) => {
   const mergedClassName = cx(
-    "group/item text-neutral-12 hover:bg-primary-4 focus:bg-primary-5 relative cursor-default select-none rounded-lg py-2.5 pe-7 ps-2 text-base leading-none outline-none sm:py-1.5 sm:text-sm rtl:text-right",
-    isNone ? "text-neutral-11" : "",
+    "data-is-none:text-neutral-11 group/item text-neutral-12 hover:bg-primary-4 focus:bg-primary-5 relative cursor-default select-none rounded-lg py-2.5 pe-7 ps-2 text-base leading-none outline-none sm:py-1.5 sm:text-sm rtl:text-right",
     className,
   );
-  return <ListBoxItemPrimitive className={mergedClassName} {...properties} ref={reference} />;
+  return (
+    <ListBoxItemPrimitive
+      className={mergedClassName}
+      data-is-none={isNone}
+      id={id}
+      {...properties}
+      ref={reference}
+    />
+  );
 });
 
 SelectListBoxItem.displayName = "SelectListBoxItem";

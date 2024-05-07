@@ -1,4 +1,3 @@
-import { useControlledState } from "@react-stately/utils";
 import {
   Select,
   SelectButton,
@@ -52,7 +51,6 @@ const PreviewSelect = (properties: {
   } = properties;
   const { portalContainer } = useStorybook();
   const intl = useIntl();
-  const [value, setValue] = useControlledState<string | null>(undefined, null);
   const list = standardSensorList;
 
   return (
@@ -62,18 +60,10 @@ const PreviewSelect = (properties: {
           isDisabled={isDisabled}
           isInvalid={isInvalid}
           isOpen={isAlwaysOpen ? true : undefined}
-          onSelectionChange={
-            isOptional
-              ? (key) => {
-                  setValue(key === "" ? null : `${key}`);
-                }
-              : undefined
-          }
           placeholder={intl.formatMessage({
             defaultMessage: "Select a sensor",
             id: "W2C6Wt",
           })}
-          selectedKey={isOptional ? value : undefined}
         >
           {hasLabel ? (
             <SelectLabel>{intl.formatMessage({ defaultMessage: "Sensor", id: "SCewMo" })}</SelectLabel>
@@ -142,7 +132,7 @@ const PreviewSelect = (properties: {
               ) : null}
               <SelectSection>
                 {isOptional ? (
-                  <SelectListBoxItem id="" isNone>
+                  <SelectListBoxItem id="">
                     {intl.formatMessage({
                       defaultMessage: "None",
                       id: "450Fty",
