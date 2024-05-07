@@ -1,5 +1,11 @@
 # @spear-ai/tailwind-config
 
+## 5.3.0
+
+### Minor Changes
+
+- [#233](https://github.com/spear-ai/ui/pull/233) [`5e3eba0`](https://github.com/spear-ai/ui/commit/5e3eba0f96b5e8a0e4f0ec682d9c395f8d7b280d) Thanks [@psirenny](https://github.com/psirenny)! - Modified List Box Items with blank IDs to be treated as `None` (a deselect).
+
 ## 5.2.0
 
 ### Minor Changes
