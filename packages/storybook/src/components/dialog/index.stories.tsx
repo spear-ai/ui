@@ -51,7 +51,7 @@ const PreviewDialog = (properties: {
               </DialogTitle>
             ) : null}
             <div className="mt-2">
-              <p className="text-sm text-neutral-11">
+              <p className="text-sm text-neutral-11 rtl:text-right">
                 {intl.formatMessage({
                   defaultMessage:
                     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur amet labore.",

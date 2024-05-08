@@ -85,7 +85,7 @@ export const DialogTitle = forwardRef<
   ElementRef<typeof HeadingPrimitive>,
   ComponentPropsWithoutRef<typeof HeadingPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
-  const mergedClassName = cx("text-neutral-12 text-base font-semibold leading-6", className);
+  const mergedClassName = cx("text-neutral-12 text-base font-semibold leading-6 rtl:text-right", className);
   return <HeadingPrimitive className={mergedClassName} slot="title" {...properties} ref={reference} />;
 });
 
