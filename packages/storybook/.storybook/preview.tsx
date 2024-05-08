@@ -1,4 +1,3 @@
-import "@spear-ai/ui/styles/global.css";
 import { withThemeByClassName } from "@storybook/addon-themes";
 import { INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS } from "@storybook/addon-viewport";
 import type { Preview, ReactRenderer } from "@storybook/react";
