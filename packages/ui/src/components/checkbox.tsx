@@ -89,7 +89,7 @@ export const Checkbox = forwardRef<
     isPrimary?: boolean | undefined;
   }
 >(({ className, isPrimary = false, ...properties }, reference) => {
-  const mergedClassName = cx("group peer inline-flex", className);
+  const mergedClassName = cx("group peer inline-flex focus:outline-none", className);
   return (
     <CheckboxPrimitive
       className={mergedClassName}
