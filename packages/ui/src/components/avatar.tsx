@@ -48,7 +48,7 @@ export const Avatar = forwardRef<
   }
 >(({ className, isSkeleton = false, ...properties }, reference) => {
   const mergedClassName = cx(
-    "data-is-skeleton:bg-black-a-3 dark:data-is-skeleton:bg-white-a-3 data-is-skeleton:animate-pulse bg-neutral-9 group relative inline-flex size-10 cursor-default items-center justify-center overflow-hidden rounded-full",
+    "outline-neutral-a-6 data-is-skeleton:bg-black-a-3 dark:data-is-skeleton:bg-white-a-3 data-is-skeleton:animate-pulse bg-neutral-9 group relative inline-flex size-10 cursor-default items-center justify-center overflow-hidden rounded-full outline outline-1 -outline-offset-1",
     className,
   );
   return <span className={mergedClassName} data-is-skeleton={isSkeleton} {...properties} ref={reference} />;
