@@ -1,5 +1,4 @@
 import containerQueriesPlugin from "@tailwindcss/container-queries";
-import formsPlugin from "@tailwindcss/forms";
 import typographyPlugin from "@tailwindcss/typography";
 import scrollbarPlugin from "tailwind-scrollbar";
 import { Config } from "tailwindcss";
@@ -35,7 +34,6 @@ export const tailwindConfig: Config = {
     }),
     animatePlugin,
     containerQueriesPlugin,
-    formsPlugin,
     radixColorThemePlugin,
     scrollbarPlugin,
     threeDPlugin,
