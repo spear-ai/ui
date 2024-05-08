@@ -98,27 +98,38 @@ export const AvatarImage = forwardRef<
 AvatarImage.displayName = "AvatarImage";
 
 export const AvatarText = forwardRef<
-  HTMLSpanElement,
-  HTMLAttributes<HTMLSpanElement> & {
+  SVGSVGElement,
+  SVGAttributes<SVGElement> & {
     /** The text — often initials — to display as an image fallback. */
     text?: string | null | undefined;
   }
 >(({ children, className, text, ...properties }, reference) => {
   const initials = (text ?? "").trim();
   const mergedClassName = cx(
-    "group-data-is-skeleton:opacity-0 peer-data-slot-visible-image:opacity-0 text-neutral-contrast peer absolute select-none font-medium leading-none",
+    "group-data-is-skeleton:opacity-0 peer-data-slot-visible-image:opacity-0 text-neutral-contrast peer absolute select-none fill-current text-[48px] font-medium leading-none",
     className,
   );
 
   return (
-    <span
+    <svg
+      aria-hidden
       className={mergedClassName}
       data-slot-visible={initials === "" ? undefined : "text"}
+      viewBox="0 0 100 100"
       {...properties}
       ref={reference}
     >
-      {children ?? initials}
-    </span>
+      <text
+        alignment-baseline="middle"
+        dominant-baseline="middle"
+        dy=".125em"
+        text-anchor="middle"
+        x="50%"
+        y="50%"
+      >
+        {children ?? initials}
+      </text>
+    </svg>
   );
 });
 
@@ -133,8 +144,6 @@ export const AvatarIconUser = forwardRef<SVGSVGElement, SVGAttributes<SVGElement
 );
 
 AvatarIconUser.displayName = "AvatarIconUser";
-
-Avatar.displayName = "AvatarText";
 
 export const AvatarIcon = forwardRef<
   SVGSVGElement,
