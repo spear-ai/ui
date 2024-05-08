@@ -5,6 +5,7 @@
 
 @layer base {
   * {
+    @apply focus:outline-none;
     @apply focus-visible:outline outline-1 focus-visible:outline-2 outline-offset-2 focus-visible:outline-primary-7;
   }
 
