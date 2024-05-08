@@ -1,5 +1,19 @@
 # @spear-ai/ui
 
+## 5.3.0
+
+### Minor Changes
+
+- [#238](https://github.com/spear-ai/ui/pull/238) [`4af8156`](https://github.com/spear-ai/ui/commit/4af81565daa8757627ac81b9db228b90b1de8a2d) Thanks [@psirenny](https://github.com/psirenny)! - Make Avatar size customizable.
+
+- [#242](https://github.com/spear-ai/ui/pull/242) [`d7c36bf`](https://github.com/spear-ai/ui/commit/d7c36bfa68f2926196731715cb57ebc5ca84c92b) Thanks [@psirenny](https://github.com/psirenny)! - Added clickable avatars.
+
+- [#243](https://github.com/spear-ai/ui/pull/243) [`5edf0bd`](https://github.com/spear-ai/ui/commit/5edf0bdf0ff46bd067ac52c1f00bea5ffe0d4633) Thanks [@psirenny](https://github.com/psirenny)! - Replace all `focus` states with `focus-visible` by removing the TailwindCSS Forms plugin.
+
+- [#240](https://github.com/spear-ai/ui/pull/240) [`ab17f0a`](https://github.com/spear-ai/ui/commit/ab17f0a2e5a08c328d59505d8ab6c53bdde8e9ed) Thanks [@psirenny](https://github.com/psirenny)! - Added subtle border to Avatar to cover cases where the image is transparent or very light.
+
+- [#245](https://github.com/spear-ai/ui/pull/245) [`056be09`](https://github.com/spear-ai/ui/commit/056be0999d9951c662adbd9428762984dc11f8a2) Thanks [@psirenny](https://github.com/psirenny)! - Created Dialog component(s).
+
 ## 5.2.0
 
 ### Minor Changes

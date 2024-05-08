@@ -1,5 +1,11 @@
 # @spear-ai/tailwind-config
 
+## 5.4.0
+
+### Minor Changes
+
+- [#243](https://github.com/spear-ai/ui/pull/243) [`5edf0bd`](https://github.com/spear-ai/ui/commit/5edf0bdf0ff46bd067ac52c1f00bea5ffe0d4633) Thanks [@psirenny](https://github.com/psirenny)! - Replace all `focus` states with `focus-visible` by removing the TailwindCSS Forms plugin.
+
 ## 5.3.0
 
 ### Minor Changes
