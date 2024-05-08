@@ -18,13 +18,23 @@ const PreviewAvatar = (properties: {
   imageIsBroken: boolean;
   imageVariant: "1" | "2";
   isSkeleton: boolean;
+  size: "size-6" | "size-8" | "size-10" | "size-12" | "size-14" | "size-16";
 }) => {
-  const { familyName, givenName, hasIcon, hasImage, hasText, imageIsBroken, imageVariant, isSkeleton } =
-    properties;
+  const {
+    familyName,
+    givenName,
+    hasIcon,
+    hasImage,
+    hasText,
+    imageIsBroken,
+    imageVariant,
+    isSkeleton,
+    size,
+  } = properties;
   const image = imageVariant === "1" ? image1 : image2;
 
   return (
-    <Avatar isSkeleton={isSkeleton}>
+    <Avatar className={size} isSkeleton={isSkeleton}>
       {hasImage ? (
         <AvatarImage
           alt=""
@@ -55,11 +65,26 @@ export const User: Story = {
     imageIsBroken: false,
     imageVariant: "1",
     isSkeleton: false,
+    size: "size-10",
   },
   argTypes: {
     imageVariant: {
       control: { type: "select" },
       options: ["1", "2"],
+    },
+    size: {
+      control: {
+        labels: {
+          "size-6": "6",
+          "size-8": "8",
+          "size-10": "10",
+          "size-12": "12",
+          "size-14": "14",
+          "size-16": "16",
+        },
+        type: "select",
+      },
+      options: ["size-6", "size-8", "size-10", "size-12", "size-14", "size-16"],
     },
   },
   parameters: {
