@@ -13,6 +13,7 @@ import {
   useCallback,
   useState,
 } from "react";
+import { Button as ButtonPrimitive } from "react-aria-components";
 import { cx } from "@/helpers/cx";
 
 export const getAvatarUserInitials = (options: {
@@ -43,18 +44,48 @@ export const getAvatarUserInitials = (options: {
 export const Avatar = forwardRef<
   HTMLSpanElement,
   HTMLAttributes<HTMLSpanElement> & {
+    /** Whether to render as the passed in child element. */
+    asChild?: boolean | undefined;
+    /** Whether to render as a skeleton loader. */
+    isSkeleton?: boolean | undefined;
+  }
+>(({ asChild = false, className, isSkeleton = false, ...properties }, reference) => {
+  const Component = asChild ? Slot : "span";
+  const mergedClassName = cx(
+    "after:border-neutral-a-6 data-is-skeleton:bg-black-a-3 data-is-skeleton:pointer-events-none dark:data-is-skeleton:bg-white-a-3 data-is-skeleton:animate-pulse bg-neutral-9 after-h-full group relative inline-flex size-10 cursor-default items-center justify-center overflow-hidden rounded-full after:absolute after:inset-0 after:rounded-full after:border after:content-['']",
+    className,
+  );
+  return (
+    <Component className={mergedClassName} data-is-skeleton={isSkeleton} {...properties} ref={reference} />
+  );
+});
+
+Avatar.displayName = "Avatar";
+
+export const AvatarButton = forwardRef<
+  ElementRef<typeof ButtonPrimitive>,
+  ComponentPropsWithoutRef<typeof ButtonPrimitive> & {
+    /** Whether to render as the passed in child element. */
+    className?: string | undefined;
     /** Whether to render as a skeleton loader. */
     isSkeleton?: boolean | undefined;
   }
 >(({ className, isSkeleton = false, ...properties }, reference) => {
   const mergedClassName = cx(
-    "outline-neutral-a-6 data-is-skeleton:bg-black-a-3 dark:data-is-skeleton:bg-white-a-3 data-is-skeleton:animate-pulse bg-neutral-9 group relative inline-flex size-10 cursor-default items-center justify-center overflow-hidden rounded-full outline outline-1 -outline-offset-1",
+    "hover:after:border-neutral-a-8 after:border-neutral-a-7 data-is-skeleton:bg-black-a-3 data-is-skeleton:pointer-events-none dark:data-is-skeleton:bg-white-a-3 data-is-skeleton:animate-pulse bg-neutral-9 hover:bg-neutral-10 after-h-full group relative inline-flex size-10 cursor-default items-center justify-center overflow-hidden rounded-full after:absolute after:inset-0 after:rounded-full after:border after:content-['']",
     className,
   );
-  return <span className={mergedClassName} data-is-skeleton={isSkeleton} {...properties} ref={reference} />;
+  return (
+    <ButtonPrimitive
+      className={mergedClassName}
+      data-is-skeleton={isSkeleton}
+      {...properties}
+      ref={reference}
+    />
+  );
 });
 
-Avatar.displayName = "Avatar";
+AvatarButton.displayName = "AvatarButton";
 
 export const AvatarImage = forwardRef<
   ElementRef<typeof NextImage>,

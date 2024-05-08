@@ -1,4 +1,4 @@
-import "@spear-ai/ui/styles/global.css";
+import "@/app/global.css";
 import "@/app/storybook.css";
 import logoIcon from "@spear-ai/logo/assets/logo-icon.svg";
 import type { Metadata } from "next";

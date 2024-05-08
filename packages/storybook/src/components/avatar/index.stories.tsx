@@ -1,5 +1,6 @@
 import {
   Avatar,
+  AvatarButton,
   AvatarIcon,
   AvatarImage,
   AvatarText,
@@ -17,6 +18,7 @@ const PreviewAvatar = (properties: {
   hasText: boolean;
   imageIsBroken: boolean;
   imageVariant: "1" | "2";
+  isButton: boolean;
   isSkeleton: boolean;
   size: "size-6" | "size-8" | "size-10" | "size-12" | "size-14" | "size-16";
 }) => {
@@ -28,13 +30,15 @@ const PreviewAvatar = (properties: {
     hasText,
     imageIsBroken,
     imageVariant,
+    isButton,
     isSkeleton,
     size,
   } = properties;
   const image = imageVariant === "1" ? image1 : image2;
+  const AvatarComponent = isButton ? AvatarButton : Avatar;
 
   return (
-    <Avatar className={size} isSkeleton={isSkeleton}>
+    <AvatarComponent className={size} isSkeleton={isSkeleton}>
       {hasImage ? (
         <AvatarImage
           alt=""
@@ -45,7 +49,7 @@ const PreviewAvatar = (properties: {
       ) : null}
       {hasText ? <AvatarText text={getAvatarUserInitials({ familyName, givenName })} /> : null}
       {hasIcon ? <AvatarIcon /> : null}
-    </Avatar>
+    </AvatarComponent>
   );
 };
 
@@ -64,6 +68,7 @@ export const User: Story = {
     hasText: true,
     imageIsBroken: false,
     imageVariant: "1",
+    isButton: false,
     isSkeleton: false,
     size: "size-10",
   },
