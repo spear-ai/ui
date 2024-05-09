@@ -52,7 +52,7 @@ export const Avatar = forwardRef<
 >(({ asChild = false, className, isSkeleton = false, ...properties }, reference) => {
   const Component = asChild ? Slot : "span";
   const mergedClassName = cx(
-    "after:border-neutral-a-6 data-is-skeleton:bg-black-a-3 data-is-skeleton:pointer-events-none dark:data-is-skeleton:bg-white-a-3 data-is-skeleton:animate-pulse bg-neutral-9 after-h-full group relative inline-flex size-10 cursor-default items-center justify-center overflow-hidden rounded-full after:absolute after:inset-0 after:rounded-full after:border after:content-['']",
+    "text-neutral-contrast after:border-neutral-a-6 data-is-skeleton:bg-black-a-3 data-is-skeleton:pointer-events-none dark:data-is-skeleton:bg-white-a-3 data-is-skeleton:animate-pulse bg-neutral-9 after-h-full group relative inline-flex size-10 cursor-default items-center justify-center overflow-hidden rounded-full after:absolute after:inset-0 after:rounded-full after:border after:content-['']",
     className,
   );
   return (
@@ -72,7 +72,7 @@ export const AvatarButton = forwardRef<
   }
 >(({ className, isSkeleton = false, ...properties }, reference) => {
   const mergedClassName = cx(
-    "hover:after:border-neutral-a-8 after:border-neutral-a-7 data-is-skeleton:bg-black-a-3 data-is-skeleton:pointer-events-none dark:data-is-skeleton:bg-white-a-3 data-is-skeleton:animate-pulse bg-neutral-9 hover:bg-neutral-10 after-h-full group relative inline-flex size-10 cursor-default items-center justify-center overflow-hidden rounded-full after:absolute after:inset-0 after:rounded-full after:border after:content-['']",
+    "text-neutral-contrast hover:after:border-neutral-a-8 after:border-neutral-a-7 data-is-skeleton:bg-black-a-3 data-is-skeleton:pointer-events-none dark:data-is-skeleton:bg-white-a-3 data-is-skeleton:animate-pulse bg-neutral-9 hover:bg-neutral-10 after-h-full group relative inline-flex size-10 cursor-default items-center justify-center overflow-hidden rounded-full after:absolute after:inset-0 after:rounded-full after:border after:content-['']",
     className,
   );
   return (
@@ -137,7 +137,7 @@ export const AvatarText = forwardRef<
 >(({ children, className, text, ...properties }, reference) => {
   const initials = (text ?? "").trim();
   const mergedClassName = cx(
-    "group-data-is-skeleton:opacity-0 peer-data-slot-visible-image:opacity-0 text-neutral-contrast peer absolute select-none fill-current text-[48px] font-medium leading-none",
+    "group-data-is-skeleton:opacity-0 peer-data-slot-visible-image:opacity-0 peer absolute select-none fill-current text-[48px] font-medium leading-none",
     className,
   );
 
@@ -151,10 +151,10 @@ export const AvatarText = forwardRef<
       ref={reference}
     >
       <text
-        alignment-baseline="middle"
-        dominant-baseline="middle"
+        alignmentBaseline="middle"
+        dominantBaseline="middle"
         dy=".125em"
-        text-anchor="middle"
+        textAnchor="middle"
         x="50%"
         y="50%"
       >
