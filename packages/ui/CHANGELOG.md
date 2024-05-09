@@ -1,5 +1,13 @@
 # @spear-ai/ui
 
+## 5.3.1
+
+### Patch Changes
+
+- [#248](https://github.com/spear-ai/ui/pull/248) [`fb15d34`](https://github.com/spear-ai/ui/commit/fb15d34d40d5603b8703eca5b4541f36ff0ce668) Thanks [@psirenny](https://github.com/psirenny)! - Fixed avatar icon color.
+
+- [#248](https://github.com/spear-ai/ui/pull/248) [`fb15d34`](https://github.com/spear-ai/ui/commit/fb15d34d40d5603b8703eca5b4541f36ff0ce668) Thanks [@psirenny](https://github.com/psirenny)! - Fixed avart text SVG properties.
+
 ## 5.3.0
 
 ### Minor Changes
