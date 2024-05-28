@@ -15,9 +15,9 @@ const tailwindConfig: Config = {
       },
       themes: {
         dfs: {
-          canvas: "orange",
-          neutral: "sand",
-          primary: "sand",
+          canvas: "slate",
+          neutral: "slate",
+          primary: "indigo",
         },
         forerunner: {
           primary: "gray",
