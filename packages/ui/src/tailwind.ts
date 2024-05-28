@@ -1,3 +1,6 @@
 /* eslint-disable unicorn/prefer-module */
 
-export const tailwindContent = [`${__dirname}/components/**/*.js`, `${__dirname}/styles/**/*.css`];
+export const tailwindContent = [
+  `${__dirname}/../src/components/**/*.tsx`,
+  `${__dirname}/../src/styles/**/*.css`,
+];
