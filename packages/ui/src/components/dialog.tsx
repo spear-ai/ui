@@ -20,7 +20,7 @@ export const DialogModalOverlay = forwardRef<
     "exiting:animate-out exiting:fade-out exiting:duration-200 exiting:ease-in entering:animate-in entering:fade-in entering:duration-300 entering:ease-out bg-black-a-6 dark:bg-black-a-8 fixed inset-0 z-10 flex min-h-full items-end justify-center overflow-y-auto p-4 text-center backdrop-blur sm:items-center sm:p-0",
     className,
   );
-  return <ModalPrimitive className={mergedClassName} {...properties} ref={reference} />;
+  return <ModalOverlayPrimitive className={mergedClassName} {...properties} ref={reference} />;
 });
 
 DialogModalOverlay.displayName = "DialogModalOverlay";
