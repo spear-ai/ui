@@ -1,5 +1,11 @@
 # @spear-ai/relay-environment
 
+## 1.0.4
+
+### Patch Changes
+
+- [#250](https://github.com/spear-ai/ui/pull/250) [`a062066`](https://github.com/spear-ai/ui/commit/a062066d9ee1268674b0e59b97c24049888fedfe) Thanks [@psirenny](https://github.com/psirenny)! - Updated dependencies.
+
 ## 1.0.3
 
 ### Patch Changes
