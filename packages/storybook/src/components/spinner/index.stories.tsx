@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 const PreviewSpinner = (properties: { isPrimary: boolean }) => {
   const { isPrimary } = properties;
-  return <Spinner isPrimary={isPrimary} />;
+  const color = isPrimary ? "text-primary-11" : "text-neutral-11";
+  return <Spinner className={color} />;
 };
 
 const meta = {

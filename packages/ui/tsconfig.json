@@ -23,7 +23,7 @@
     "stripInternal": true,
     "target": "ESNext"
   },
-  "exclude": ["node_modules"],
+  "exclude": ["dist", "node_modules"],
   "include": ["**/*.cjs", "**/*.js", "**/*.ts", "**/*.tsx", "types", "src/tailwind.ts"],
   "types": ["types"]
 }

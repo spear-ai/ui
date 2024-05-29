@@ -38,7 +38,7 @@ const PreviewDialog = (properties: {
             role={isAlert ? "alertdialog" : undefined}
           >
             {hasCloseButton ? (
-              <DialogCloseIconButton className="end-3 top-3">
+              <DialogCloseIconButton>
                 <DialogCloseIconButtonIcon />
               </DialogCloseIconButton>
             ) : null}

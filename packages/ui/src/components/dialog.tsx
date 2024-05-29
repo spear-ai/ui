@@ -1,6 +1,6 @@
 import { Cross1Icon } from "@radix-ui/react-icons";
 import { Slot } from "@radix-ui/react-slot";
-import { ComponentPropsWithoutRef, ElementRef, forwardRef, SVGAttributes, useContext } from "react";
+import { ComponentPropsWithoutRef, ElementRef, forwardRef, useContext } from "react";
 import {
   Button as ButtonPrimitive,
   Dialog as DialogPrimitive,
@@ -9,6 +9,7 @@ import {
   ModalOverlay as ModalOverlayPrimitive,
   OverlayTriggerStateContext,
 } from "react-aria-components";
+import { IconButton, IconButtonIcon } from "@/components/icon-button";
 import { cx } from "@/helpers/cx";
 
 export const DialogModalOverlay = forwardRef<
@@ -49,35 +50,45 @@ Dialog.displayName = "Dialog";
 
 export const DialogCloseButtonPrimitive = forwardRef<
   ElementRef<typeof ButtonPrimitive>,
-  ComponentPropsWithoutRef<typeof ButtonPrimitive> & { className?: string | undefined }
->((properties, reference) => {
+  ComponentPropsWithoutRef<typeof ButtonPrimitive> & { asChild?: boolean | undefined }
+>(({ asChild = false, ...properties }, reference) => {
+  const Component = asChild ? Slot : ButtonPrimitive;
   // eslint-disable-next-line @typescript-eslint/unbound-method
   const { close } = useContext(OverlayTriggerStateContext);
-  return <ButtonPrimitive onPress={close} {...properties} ref={reference} />;
+  // @ts-expect-error the Slot component’s type definition is missing
+  return <Component onPress={close} {...properties} ref={reference} />;
 });
 
+DialogCloseButtonPrimitive.displayName = "DialogCloseButtonPrimitive";
+
 export const DialogCloseIconButton = forwardRef<
-  ElementRef<typeof DialogCloseButtonPrimitive>,
-  ComponentPropsWithoutRef<typeof DialogCloseButtonPrimitive> & { className?: string | undefined }
->(({ className, ...properties }, reference) => {
-  const mergedClassName = cx(
-    "text-neutral-a-11 hover:bg-neutral-a-4 focus-visible:bg-neutral-a-5 absolute hidden size-7 cursor-default rounded-md p-1.5 sm:block",
-    className,
+  ElementRef<typeof IconButton>,
+  ComponentPropsWithoutRef<typeof IconButton>
+>(({ className, variant = "ghost", ...properties }, reference) => {
+  const mergedClassName = cx("absolute end-3 top-3 hidden size-7 sm:block", className);
+  // eslint-disable-next-line @typescript-eslint/unbound-method
+  const { close } = useContext(OverlayTriggerStateContext);
+  return (
+    <IconButton
+      className={mergedClassName}
+      onPress={close}
+      variant={variant}
+      {...properties}
+      ref={reference}
+    />
   );
-  return <DialogCloseButtonPrimitive className={mergedClassName} {...properties} ref={reference} />;
 });
 
 DialogCloseIconButton.displayName = "DialogCloseIconButton";
 
 export const DialogCloseIconButtonIcon = forwardRef<
-  SVGSVGElement,
-  SVGAttributes<SVGElement> & { asChild?: boolean | undefined }
->(({ asChild = false, className, ...properties }, reference) => {
-  const Component = asChild ? Slot : Cross1Icon;
-  const mergedClassName = cx("h-full w-full", className);
-  // @ts-expect-error the Slot component’s type definition doesn’t play nice with SVGs
-  return <Component aria-hidden className={mergedClassName} ref={reference} {...properties} />;
-});
+  ElementRef<typeof IconButtonIcon>,
+  ComponentPropsWithoutRef<typeof IconButtonIcon>
+>((properties, reference) => (
+  <IconButtonIcon aria-hidden asChild ref={reference} {...properties}>
+    <Cross1Icon />
+  </IconButtonIcon>
+));
 
 DialogCloseIconButtonIcon.displayName = "DialogCloseIconButtonIcon";
 
