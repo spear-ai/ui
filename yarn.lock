@@ -6370,6 +6370,7 @@ __metadata:
     react-intl: "npm:6.6.7"
     react-stately: "npm:3.31.0"
     serve: "npm:14.2.3"
+    sonner: "npm:1.4.41"
     storybook: "npm:8.1.1"
     tailwindcss: "npm:3.4.3"
     turbo: "npm:1.13.3"
@@ -19070,6 +19071,16 @@ __metadata:
     ip-address: "npm:^9.0.5"
     smart-buffer: "npm:^4.2.0"
   checksum: 10/ffcb622c22481dfcd7589aae71fbfd71ca34334064d181df64bf8b7feaeee19706aba4cffd1de35cc7bbaeeaa0af96be2d7f40fcbc7bc0ab69533a7ae9ffc4fb
+  languageName: node
+  linkType: hard
+
+"sonner@npm:1.4.41":
+  version: 1.4.41
+  resolution: "sonner@npm:1.4.41"
+  peerDependencies:
+    react: ^18.0.0
+    react-dom: ^18.0.0
+  checksum: 10/f300db8b2603e72fad94d895935c17f13c93b91396333a7f77f028c1d0f605d9929ea0c36ead1df0b4ded66dfaa7a20c58cd9bd31b70f6efcd0fbcce91e4487f
   languageName: node
   linkType: hard
 
