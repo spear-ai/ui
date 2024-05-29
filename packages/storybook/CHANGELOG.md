@@ -1,5 +1,20 @@
 # @spear-ai/storybook
 
+## 5.4.0
+
+### Minor Changes
+
+- [#262](https://github.com/spear-ai/ui/pull/262) [`83c1a54`](https://github.com/spear-ai/ui/commit/83c1a54445c7cb8933ad162c3e1a57fcb259247a) Thanks [@psirenny](https://github.com/psirenny)! - Created IconButton component(s).
+
+- [#264](https://github.com/spear-ai/ui/pull/264) [`ce0180c`](https://github.com/spear-ai/ui/commit/ce0180c11bc8013ba9ad718fd53c4b32bbeff12b) Thanks [@eakbulut](https://github.com/eakbulut)! - Updated DFS theme.
+
+### Patch Changes
+
+- [#250](https://github.com/spear-ai/ui/pull/250) [`a062066`](https://github.com/spear-ai/ui/commit/a062066d9ee1268674b0e59b97c24049888fedfe) Thanks [@psirenny](https://github.com/psirenny)! - Updated dependencies.
+
+- Updated dependencies [[`83c1a54`](https://github.com/spear-ai/ui/commit/83c1a54445c7cb8933ad162c3e1a57fcb259247a), [`116bb86`](https://github.com/spear-ai/ui/commit/116bb865fd76305cf22a841a45f0bc7407f8e8c9), [`a062066`](https://github.com/spear-ai/ui/commit/a062066d9ee1268674b0e59b97c24049888fedfe), [`83c1a54`](https://github.com/spear-ai/ui/commit/83c1a54445c7cb8933ad162c3e1a57fcb259247a), [`4d64be9`](https://github.com/spear-ai/ui/commit/4d64be916872f471c13680e50b2e87b1b71a0389), [`83c1a54`](https://github.com/spear-ai/ui/commit/83c1a54445c7cb8933ad162c3e1a57fcb259247a)]:
+  - @spear-ai/ui@5.4.0
+
 ## 5.3.0
 
 ### Minor Changes

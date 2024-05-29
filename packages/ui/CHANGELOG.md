@@ -1,5 +1,23 @@
 # @spear-ai/ui
 
+## 5.4.0
+
+### Minor Changes
+
+- [#262](https://github.com/spear-ai/ui/pull/262) [`83c1a54`](https://github.com/spear-ai/ui/commit/83c1a54445c7cb8933ad162c3e1a57fcb259247a) Thanks [@psirenny](https://github.com/psirenny)! - Created IconButton component(s).
+
+- [#262](https://github.com/spear-ai/ui/pull/262) [`83c1a54`](https://github.com/spear-ai/ui/commit/83c1a54445c7cb8933ad162c3e1a57fcb259247a) Thanks [@psirenny](https://github.com/psirenny)! - Made Spinner component more composable by making it inherit the text color.
+
+- [#262](https://github.com/spear-ai/ui/pull/262) [`83c1a54`](https://github.com/spear-ai/ui/commit/83c1a54445c7cb8933ad162c3e1a57fcb259247a) Thanks [@psirenny](https://github.com/psirenny)! - Changed Storybook Spinner color from `step-9` to `step-11` for consistency with loading states inside of UI components.
+
+### Patch Changes
+
+- [#263](https://github.com/spear-ai/ui/pull/263) [`116bb86`](https://github.com/spear-ai/ui/commit/116bb865fd76305cf22a841a45f0bc7407f8e8c9) Thanks [@psirenny](https://github.com/psirenny)! - Fixed Tailwind content not detecting CSS classes inside code chunks.
+
+- [#250](https://github.com/spear-ai/ui/pull/250) [`a062066`](https://github.com/spear-ai/ui/commit/a062066d9ee1268674b0e59b97c24049888fedfe) Thanks [@psirenny](https://github.com/psirenny)! - Updated dependencies.
+
+- [#266](https://github.com/spear-ai/ui/pull/266) [`4d64be9`](https://github.com/spear-ai/ui/commit/4d64be916872f471c13680e50b2e87b1b71a0389) Thanks [@psirenny](https://github.com/psirenny)! - Fixed the Dialog component’s `isDismissable` property.
+
 ## 5.3.1
 
 ### Patch Changes
