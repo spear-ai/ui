@@ -5,10 +5,7 @@ export const Spinner = forwardRef<
   SVGSVGElement,
   SVGAttributes<SVGElement> & { isPrimary?: boolean | undefined }
 >(({ className, isPrimary = false, ...properties }, reference) => {
-  const mergedClassName = cx(
-    "text-neutral-9 data-[is-primary=true]:text-primary-9 group size-5 animate-spin",
-    className,
-  );
+  const mergedClassName = cx("group size-5 animate-spin text-inherit", className);
 
   return (
     <svg

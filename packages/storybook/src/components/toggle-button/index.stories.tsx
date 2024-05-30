@@ -44,7 +44,7 @@ const PreviewToggleButton = (properties: {
   isDisabled: boolean;
   isReady: boolean;
   isVanishing: boolean;
-  style: "Ghost";
+  variant: "ghost";
 }) => {
   const { isAlternating, isDisabled, isReady, isVanishing } = properties;
   const intl = useIntl();
@@ -107,7 +107,7 @@ const PreviewToggleButton = (properties: {
 
 const meta = {
   argTypes: {
-    style: { control: { type: "select" }, options: ["Ghost"] },
+    variant: { control: { type: "select" }, options: ["ghost"] },
   },
   component: PreviewToggleButton,
 } satisfies Meta<typeof PreviewToggleButton>;
@@ -120,7 +120,7 @@ export const Activating: Story = {
     isDisabled: false,
     isReady: true,
     isVanishing: false,
-    style: "Ghost",
+    variant: "ghost",
   },
   parameters: {
     controls: {
@@ -137,7 +137,7 @@ export const Alternating: Story = {
     isDisabled: false,
     isReady: true,
     isVanishing: false,
-    style: "Ghost",
+    variant: "ghost",
   },
   parameters: {
     controls: {
@@ -154,7 +154,7 @@ export const Vanishing: Story = {
     isDisabled: false,
     isReady: true,
     isVanishing: false,
-    style: "Ghost",
+    variant: "ghost",
   },
   parameters: {
     controls: {
