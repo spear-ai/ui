@@ -6359,6 +6359,7 @@ __metadata:
     eslint: "npm:8.57.0"
     eslint-config-prettier: "npm:9.1.0"
     graphql: "npm:16.8.1"
+    input-otp: "npm:1.2.4"
     next: "npm:14.2.3"
     next-themes: "npm:0.3.0"
     npm-package-json-lint: "npm:7.1.0"
@@ -6456,6 +6457,7 @@ __metadata:
     eslint: "npm:8.57.0"
     eslint-config-prettier: "npm:9.1.0"
     graphql: "npm:16.8.1"
+    input-otp: "npm:1.2.4"
     next: "npm:^14.2.3"
     npm-package-json-lint: "npm:7.1.0"
     prettier: "npm:3.2.5"
@@ -6469,6 +6471,7 @@ __metadata:
     turbo: "npm:1.13.3"
     typescript: "npm:5.4.5"
   peerDependencies:
+    input-otp: ^1.2.4
     react: ^18.3.1
     react-aria-components: ^1.2.0
     react-intl: ^6.6.5
@@ -14017,6 +14020,16 @@ __metadata:
   version: 1.3.8
   resolution: "ini@npm:1.3.8"
   checksum: 10/314ae176e8d4deb3def56106da8002b462221c174ddb7ce0c49ee72c8cd1f9044f7b10cc555a7d8850982c3b9ca96fc212122749f5234bc2b6fb05fb942ed566
+  languageName: node
+  linkType: hard
+
+"input-otp@npm:1.2.4":
+  version: 1.2.4
+  resolution: "input-otp@npm:1.2.4"
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  checksum: 10/dde21c35334864f0add026f6a66e87eac572278c24edb72c97ba9541e5133f3d6750a4230b9a9c6093f4bd84633e4e417c8849ef844a565834392b9119b4110f
   languageName: node
   linkType: hard
 
