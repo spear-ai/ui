@@ -6464,6 +6464,7 @@ __metadata:
     react-aria-components: "npm:1.2.0"
     react-dom: "npm:18.3.1"
     react-intl: "npm:6.6.7"
+    sonner: "npm:1.4.41"
     tailwind-merge: "npm:^2.3.0"
     tailwindcss: "npm:3.4.3"
     tsup: "npm:8.0.2"
@@ -6473,6 +6474,7 @@ __metadata:
     react: ^18.3.1
     react-aria-components: ^1.2.0
     react-intl: ^6.6.5
+    sonner: ^1.4.41
   languageName: unknown
   linkType: soft
 
