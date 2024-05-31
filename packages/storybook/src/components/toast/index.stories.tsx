@@ -3,8 +3,20 @@ import {
   CrossCircledIcon,
   ExclamationTriangleIcon,
   InfoCircledIcon,
+  PaperPlaneIcon,
 } from "@radix-ui/react-icons";
-import { Toast, Toaster, useRenderToast } from "@spear-ai/ui/components/toast";
+import {
+  closeToast,
+  Toast,
+  ToastCloseButtonPrimitive,
+  ToastCloseIconButton,
+  ToastCloseIconButtonIcon,
+  ToastDescription,
+  Toaster,
+  ToastIcon,
+  ToastTitle,
+  useRenderToast,
+} from "@spear-ai/ui/components/toast";
 import { cx } from "@spear-ai/ui/helpers/cx";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useCallback } from "react";
@@ -12,9 +24,12 @@ import { Button } from "react-aria-components";
 import { useIntl } from "react-intl";
 
 const PreviewToast = (properties: {
+  hasActionButton1: boolean;
+  hasActionButton2: boolean;
+  hasCloseButton: boolean;
   hasDescription: boolean;
   hasIcon: boolean;
-  hasTitle: boolean;
+  hasInlineActionButton: boolean;
   kind: "error" | "info" | "success" | "warning" | null;
   position:
     | "bottom-center"
@@ -31,42 +46,73 @@ const PreviewToast = (properties: {
 }) => {
   const intl = useIntl();
   const renderToast = useRenderToast();
-  const { hasDescription, hasIcon, hasTitle, kind, position, shouldRemainOpen } = properties;
+  const {
+    hasActionButton1,
+    hasActionButton2,
+    hasCloseButton,
+    hasDescription,
+    hasIcon,
+    hasInlineActionButton,
+    kind,
+    position,
+    shouldRemainOpen,
+  } = properties;
   let icon = null;
 
   if (hasIcon) {
     switch (kind) {
       case "error": {
-        icon = <CrossCircledIcon className="size-full text-x-negative-11" />;
+        icon = (
+          <ToastIcon asChild>
+            <CrossCircledIcon className="text-x-negative-11" />
+          </ToastIcon>
+        );
         break;
       }
       case "info": {
-        icon = <InfoCircledIcon className="size-full text-positive-11" />;
+        icon = (
+          <ToastIcon asChild>
+            <InfoCircledIcon className="text-positive-11" />
+          </ToastIcon>
+        );
         break;
       }
       case "success": {
-        icon = <CheckCircledIcon className="size-full text-x-positive-11" />;
+        icon = (
+          <ToastIcon asChild>
+            <CheckCircledIcon className="text-x-positive-11" />
+          </ToastIcon>
+        );
         break;
       }
       case "warning": {
-        icon = <ExclamationTriangleIcon className="size-full text-negative-11" />;
+        icon = (
+          <ToastIcon asChild>
+            <ExclamationTriangleIcon className="text-negative-11" />
+          </ToastIcon>
+        );
         break;
       }
       default: {
+        icon = (
+          <ToastIcon asChild>
+            <PaperPlaneIcon />
+          </ToastIcon>
+        );
         break;
       }
     }
   }
 
   const render = useCallback(() => {
-    renderToast(
-      <Toast className="flex p-4">
-        {icon == null ? null : <div className="me-2.5 size-5 shrink-0">{icon}</div>}
-        <div>
-          {hasTitle ? (
-            <h1
+    const id = renderToast(
+      <Toast className="items-start p-4">
+        {icon}
+        <div className="w-0 flex-1">
+          <header className="flex justify-between">
+            <ToastTitle
               className={cx(
-                "text-sm font-medium text-neutral-12",
+                "flex-1",
                 kind === "info" ? "text-positive-12" : undefined,
                 kind === "success" ? "text-x-positive-12" : undefined,
                 kind === "warning" ? "text-negative-12" : undefined,
@@ -77,16 +123,55 @@ const PreviewToast = (properties: {
                 defaultMessage: "Nullam mattis sollicitudin",
                 id: "ErlK/z",
               })}
-            </h1>
-          ) : null}
+            </ToastTitle>
+            <div className="-my-1 -me-2 flex shrink-0">
+              {hasActionButton1 && hasInlineActionButton && !hasActionButton2 ? (
+                <Button
+                  className="ms-1 cursor-default rounded-md px-2 py-1 text-sm font-medium text-primary-11 hover:bg-primary-a-4 pressed:bg-primary-a-5"
+                  onPress={() => closeToast(id)}
+                >
+                  {intl.formatMessage({
+                    defaultMessage: "Undo",
+                    id: "JkS37H",
+                  })}
+                </Button>
+              ) : null}
+              {hasCloseButton ? (
+                <ToastCloseIconButton>
+                  <ToastCloseIconButtonIcon />
+                </ToastCloseIconButton>
+              ) : null}
+            </div>
+          </header>
           {hasDescription ? (
-            <p className="mt-1 text-sm text-neutral-11">
+            <ToastDescription>
               {intl.formatMessage({
                 defaultMessage:
                   "Proin vestibulum metus purus vel vulputate ante sollicitudin quis phasellus.",
                 id: "hlCqEj",
               })}
-            </p>
+            </ToastDescription>
+          ) : null}
+          {hasActionButton1 && !hasInlineActionButton ? (
+            <div className="-ms-3 mt-2 flex space-x-2">
+              <Button
+                className="ms-1 cursor-default rounded-md px-2 py-1 text-sm font-medium text-primary-11 hover:bg-primary-a-4 pressed:bg-primary-a-5"
+                onPress={() => closeToast(id)}
+              >
+                {intl.formatMessage({
+                  defaultMessage: "Undo",
+                  id: "JkS37H",
+                })}
+              </Button>
+              {hasActionButton2 ? (
+                <ToastCloseButtonPrimitive className="ms-1 cursor-default rounded-md px-2 py-1 text-sm font-medium text-neutral-11 hover:bg-neutral-a-4 pressed:bg-neutral-a-5">
+                  {intl.formatMessage({
+                    defaultMessage: "Dismiss",
+                    id: "TDaF6J",
+                  })}
+                </ToastCloseButtonPrimitive>
+              ) : null}
+            </div>
           ) : null}
         </div>
       </Toast>,
@@ -95,7 +180,19 @@ const PreviewToast = (properties: {
         position,
       },
     );
-  }, [hasDescription, icon, intl, hasTitle, kind, position, renderToast, shouldRemainOpen]);
+  }, [
+    hasCloseButton,
+    hasDescription,
+    hasActionButton1,
+    hasActionButton2,
+    hasInlineActionButton,
+    icon,
+    intl,
+    kind,
+    position,
+    renderToast,
+    shouldRemainOpen,
+  ]);
 
   return (
     <>
@@ -118,9 +215,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Standard: Story = {
   args: {
+    hasActionButton1: false,
+    hasActionButton2: false,
+    hasCloseButton: false,
     hasDescription: false,
     hasIcon: false,
-    hasTitle: true,
+    hasInlineActionButton: true,
     kind: null,
     position: "bottom-end",
     shouldRemainOpen: false,
