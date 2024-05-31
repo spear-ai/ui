@@ -2,31 +2,37 @@
 import {
   OneTimePasscodeInput,
   OneTimePasscodeInputDash,
+  OneTimePasscodeInputSegment,
   OneTimePasscodeInputSlot,
 } from "@spear-ai/ui/components/one-time-passcode-input";
 import type { Meta, StoryObj } from "@storybook/react";
 import { SlotProps } from "input-otp";
 
-const PreviewOneTimePasscodeInput = () => (
-  <OneTimePasscodeInput
-    maxLength={6}
-    render={({ slots }: { slots: SlotProps[] }) => (
-      <>
-        <div className="flex">
-          {slots.slice(0, 3).map((slot, index) => (
-            <OneTimePasscodeInputSlot key={index} {...slot} />
-          ))}
-        </div>
-        <OneTimePasscodeInputDash />
-        <div className="flex">
-          {slots.slice(3).map((slot, index) => (
-            <OneTimePasscodeInputSlot key={index} {...slot} />
-          ))}
-        </div>
-      </>
-    )}
-  />
-);
+const PreviewOneTimePasscodeInput = (properties: { isDisabled: boolean }) => {
+  const { isDisabled } = properties;
+
+  return (
+    <OneTimePasscodeInput
+      isDisabled={isDisabled}
+      maxLength={6}
+      render={({ slots }: { slots: SlotProps[] }) => (
+        <>
+          <OneTimePasscodeInputSegment>
+            {slots.slice(0, 3).map((slot, index) => (
+              <OneTimePasscodeInputSlot key={index} {...slot} />
+            ))}
+          </OneTimePasscodeInputSegment>
+          <OneTimePasscodeInputDash />
+          <OneTimePasscodeInputSegment className="flex">
+            {slots.slice(3).map((slot, index) => (
+              <OneTimePasscodeInputSlot key={index} {...slot} />
+            ))}
+          </OneTimePasscodeInputSegment>
+        </>
+      )}
+    />
+  );
+};
 
 const meta = {
   component: PreviewOneTimePasscodeInput,
@@ -35,6 +41,9 @@ const meta = {
 type Story = StoryObj<typeof meta>;
 
 export const Standard: Story = {
+  args: {
+    isDisabled: false,
+  },
   parameters: {
     layout: "centered",
   },
