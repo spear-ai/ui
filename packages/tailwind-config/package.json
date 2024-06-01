@@ -23,7 +23,7 @@
     "type-fest": "^4.18.2"
   },
   "devDependencies": {
-    "@spear-ai/eslint-config": "19.0.0",
+    "@spear-ai/eslint-config": "20.0.0",
     "@spear-ai/npm-package-json-lint-config": "3.1.1",
     "@spear-ai/prettier-config": "2.2.0",
     "@types/culori": "2.1.0",
