@@ -21,7 +21,7 @@
     "@spear-ai/eslint-config": "19.0.0",
     "@spear-ai/npm-package-json-lint-config": "3.1.1",
     "@spear-ai/prettier-config": "2.2.0",
-    "@types/node": "20.12.12",
+    "@types/node": "20.13.0",
     "@types/react": "18.3.2",
     "@types/react-dom": "18.3.0",
     "eslint": "8.57.0",
