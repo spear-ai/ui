@@ -1,6 +1,6 @@
 {
   "name": "@spear-ai/ui",
-  "version": "5.4.0",
+  "version": "5.4.1",
   "description": "Spear UI",
   "author": {
     "name": "Spear AI",
@@ -34,6 +34,7 @@
     "react-aria-components": "1.2.0",
     "react-dom": "18.3.1",
     "react-intl": "6.6.7",
+    "sonner": "1.4.41",
     "tailwindcss": "3.4.3",
     "tsup": "8.0.2",
     "turbo": "1.13.3",
@@ -59,7 +60,8 @@
     "input-otp": "^1.2.4",
     "react": "^18.3.1",
     "react-aria-components": "^1.2.0",
-    "react-intl": "^6.6.5"
+    "react-intl": "^6.6.5",
+    "sonner": "^1.4.41"
   },
   "repository": {
     "type": "git",

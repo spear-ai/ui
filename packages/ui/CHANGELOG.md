@@ -1,5 +1,11 @@
 # @spear-ai/ui
 
+## 5.4.1
+
+### Patch Changes
+
+- [#268](https://github.com/spear-ai/ui/pull/268) [`e981a89`](https://github.com/spear-ai/ui/commit/e981a89377f41362392cc3d2dbb156c85b17f2eb) Thanks [@psirenny](https://github.com/psirenny)! - Removed shadow from ghost variant Icon Buttons.
+
 ## 5.4.0
 
 ### Minor Changes
