@@ -1,5 +1,12 @@
 import { OTPInput as OTPInputPrimitive, SlotProps } from "input-otp";
-import { ComponentPropsWithoutRef, ElementRef, forwardRef, HTMLAttributes, SVGAttributes } from "react";
+import {
+  ComponentPropsWithoutRef,
+  ElementRef,
+  forwardRef,
+  HTMLAttributes,
+  SVGAttributes,
+  useState,
+} from "react";
 import { cx } from "@/helpers/cx";
 
 export const OneTimePasscodeInput = forwardRef<
@@ -8,15 +15,38 @@ export const OneTimePasscodeInput = forwardRef<
     className?: string | undefined;
     isDisabled?: boolean | undefined;
   }
->(({ className, isDisabled, ...properties }, reference) => {
+>(({ className, isDisabled, maxLength, onChange, onComplete, render, value, ...properties }, reference) => {
+  const [isInvalid, setIsInvalid] = useState(false);
   const mergedClassName = cx("text-neutral-12 flex items-center", className);
   return (
-    <div className="group" data-disabled={isDisabled}>
+    <div className="group" data-disabled={isDisabled} data-invalid={isInvalid}>
+      {/* @ts-expect-error Type gets confused because of the wrapped primitive, I think */}
       <OTPInputPrimitive
         containerClassName={mergedClassName}
         disabled={isDisabled}
         {...properties}
+        inputMode="text"
+        maxLength={maxLength * 3}
+        onChange={(updatedValue: string) => {
+          const dehyphenatedValue = updatedValue.replaceAll("-", "");
+          const shortenedValue = dehyphenatedValue.slice(0, maxLength);
+          const cleanedValue = shortenedValue.replaceAll(/\D/gu, "");
+          if (shortenedValue === cleanedValue) {
+            onChange?.(cleanedValue);
+            if (shortenedValue.length === maxLength) {
+              onComplete?.();
+            }
+            setIsInvalid(false);
+          } else {
+            setIsInvalid(true);
+          }
+        }}
+        pattern="^.+$"
         ref={reference}
+        render={(renderProperties) =>
+          render?.({ ...renderProperties, slots: renderProperties.slots.slice(0, maxLength) }) ?? <div />
+        }
+        value={value}
       />
     </div>
   );
@@ -43,7 +73,7 @@ export const OneTimePasscodeInputSlot = forwardRef<
   HTMLAttributes<HTMLDivElement> & SlotProps
 >(({ char: character, className, isActive, ...properties }, reference) => {
   const mergedClassName = cx(
-    "bg-white-a-3 dark:bg-black-a-3 outline-neutral-a-7 group-data-[disabled=true]:text-neutral-a-8 group-data-[disabled=true]:outline-neutral-a-6 data-[is-active=true]:outline-primary-a-8 group relative flex h-14 w-10 items-center justify-center text-2xl outline outline-1 -outline-offset-1 transition duration-300 first:rounded-s-md last:rounded-e-md data-[is-active=true]:z-10 data-[is-active=true]:outline-2",
+    "bg-white-a-3 dark:bg-black-a-3 group-data-[invalid=true]:data-[is-active=true]:outline-x-negative-8 outline-neutral-a-7 group-data-[disabled=true]:text-neutral-a-8 group-data-[disabled=true]:outline-neutral-a-6 data-[is-active=true]:outline-primary-8 group relative flex h-14 w-10 items-center justify-center text-2xl outline outline-1 -outline-offset-1 transition duration-300 first:rounded-s-md last:rounded-e-md data-[is-active=true]:z-10 data-[is-active=true]:outline-2",
     className,
   );
   return (
