@@ -5,6 +5,14 @@ import {
   IconButtonSpinner,
   LinkIconButton,
 } from "@spear-ai/ui/components/icon-button";
+import {
+  Tooltip,
+  TooltipArrow,
+  TooltipArrowSvg,
+  TooltipBody,
+  TooltipContent,
+  TooltipTrigger,
+} from "@spear-ai/ui/components/tooltip";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useIntl } from "react-intl";
 
@@ -25,45 +33,75 @@ const PreviewIconButton = (properties: {
 
   if (isLink) {
     return (
-      <LinkIconButton
+      <TooltipTrigger>
+        <LinkIconButton
+          aria-label={intl.formatMessage({ defaultMessage: "Fusce dignissim", id: "uEMDBb" })}
+          className={`${size} ${rounded}`}
+          color={color}
+          href="https://ui.spear.ai"
+          isDisabled={isDisabled}
+          isLoading={isLoading}
+          isSkeleton={isSkeleton}
+          rel="nofollow"
+          target="_blank"
+          variant={variant}
+        >
+          {isLoading ? <IconButtonSpinner /> : null}
+          {!isLoading && hasIcon ? (
+            <IconButtonIcon asChild>
+              <ArrowTopRightIcon className="rtl:-scale-x-100" />
+            </IconButtonIcon>
+          ) : null}
+        </LinkIconButton>
+        <Tooltip offset={4}>
+          <TooltipBody>
+            <TooltipContent>
+              {intl.formatMessage({
+                defaultMessage: "Open",
+                id: "JfG49w",
+              })}
+            </TooltipContent>
+            <TooltipArrow>
+              <TooltipArrowSvg />
+            </TooltipArrow>
+          </TooltipBody>
+        </Tooltip>
+      </TooltipTrigger>
+    );
+  }
+
+  return (
+    <TooltipTrigger>
+      <IconButton
         aria-label={intl.formatMessage({ defaultMessage: "Fusce dignissim", id: "uEMDBb" })}
         className={`${size} ${rounded}`}
         color={color}
-        href="https://ui.spear.ai"
         isDisabled={isDisabled}
         isLoading={isLoading}
         isSkeleton={isSkeleton}
-        rel="nofollow"
-        target="_blank"
         variant={variant}
       >
         {isLoading ? <IconButtonSpinner /> : null}
         {!isLoading && hasIcon ? (
           <IconButtonIcon asChild>
-            <ArrowTopRightIcon className="rtl:-scale-x-100" />
+            <PlusIcon />
           </IconButtonIcon>
         ) : null}
-      </LinkIconButton>
-    );
-  }
-
-  return (
-    <IconButton
-      aria-label={intl.formatMessage({ defaultMessage: "Fusce dignissim", id: "uEMDBb" })}
-      className={`${size} ${rounded}`}
-      color={color}
-      isDisabled={isDisabled}
-      isLoading={isLoading}
-      isSkeleton={isSkeleton}
-      variant={variant}
-    >
-      {isLoading ? <IconButtonSpinner /> : null}
-      {!isLoading && hasIcon ? (
-        <IconButtonIcon asChild>
-          <PlusIcon />
-        </IconButtonIcon>
-      ) : null}
-    </IconButton>
+      </IconButton>
+      <Tooltip offset={4}>
+        <TooltipBody>
+          <TooltipContent>
+            {intl.formatMessage({
+              defaultMessage: "Add",
+              id: "2/2yg+",
+            })}
+          </TooltipContent>
+          <TooltipArrow>
+            <TooltipArrowSvg />
+          </TooltipArrow>
+        </TooltipBody>
+      </Tooltip>
+    </TooltipTrigger>
   );
 };
 
