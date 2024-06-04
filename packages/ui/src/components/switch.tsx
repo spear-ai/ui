@@ -9,7 +9,7 @@ export const Switch = forwardRef<
     isPrimary?: boolean | undefined;
   }
 >(({ className, isPrimary = false, ...properties }, reference) => {
-  const mergedClassName = cx("group inline-flex", className);
+  const mergedClassName = cx("group inline-flex outline-none", className);
   return (
     <SwitchPrimitive
       className={mergedClassName}
