@@ -1,5 +1,21 @@
 # @spear-ai/ui
 
+## 5.5.0
+
+### Minor Changes
+
+- [#285](https://github.com/spear-ai/ui/pull/285) [`aee6aed`](https://github.com/spear-ai/ui/commit/aee6aede7a0dedd39ab11c0b0805faba2440aba2) Thanks [@psirenny](https://github.com/psirenny)! - Improved IconButton padding to work better with larger icons.
+
+- [#286](https://github.com/spear-ai/ui/pull/286) [`8c56309`](https://github.com/spear-ai/ui/commit/8c5630985e2d4665aef564b793b2964762621859) Thanks [@psirenny](https://github.com/psirenny)! - Updated focus ring color to use alpha channel for consistency with outline buttons.
+
+- [#286](https://github.com/spear-ai/ui/pull/286) [`8c56309`](https://github.com/spear-ai/ui/commit/8c5630985e2d4665aef564b793b2964762621859) Thanks [@psirenny](https://github.com/psirenny)! - Updated focus ring color to `step-8` to differentiate from UI element outlines of `step-7`.
+
+- [#269](https://github.com/spear-ai/ui/pull/269) [`400dbaa`](https://github.com/spear-ai/ui/commit/400dbaae029905b06566b478112f2f7915d62c55) Thanks [@ThomasSeaver](https://github.com/ThomasSeaver)! - Created one time passcode input component.
+
+### Patch Changes
+
+- [#287](https://github.com/spear-ai/ui/pull/287) [`9ef5767`](https://github.com/spear-ai/ui/commit/9ef5767d7a108b06396cbc70647cb67c62b3b346) Thanks [@psirenny](https://github.com/psirenny)! - Fixed switch component rendering a focus ring around the entire component.
+
 ## 5.4.1
 
 ### Patch Changes

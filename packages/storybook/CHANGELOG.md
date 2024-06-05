@@ -1,5 +1,22 @@
 # @spear-ai/storybook
 
+## 5.5.0
+
+### Minor Changes
+
+- [#286](https://github.com/spear-ai/ui/pull/286) [`8c56309`](https://github.com/spear-ai/ui/commit/8c5630985e2d4665aef564b793b2964762621859) Thanks [@psirenny](https://github.com/psirenny)! - Updated focus ring color to use alpha channel for consistency with outline buttons.
+
+- [#282](https://github.com/spear-ai/ui/pull/282) [`fcde26b`](https://github.com/spear-ai/ui/commit/fcde26ba440aaf980a582fe756a5c36377ec0f40) Thanks [@psirenny](https://github.com/psirenny)! - Added tooltips to IconButton component story.
+
+- [#286](https://github.com/spear-ai/ui/pull/286) [`8c56309`](https://github.com/spear-ai/ui/commit/8c5630985e2d4665aef564b793b2964762621859) Thanks [@psirenny](https://github.com/psirenny)! - Updated focus ring color to `step-8` to differentiate from UI element outlines of `step-7`.
+
+- [#269](https://github.com/spear-ai/ui/pull/269) [`400dbaa`](https://github.com/spear-ai/ui/commit/400dbaae029905b06566b478112f2f7915d62c55) Thanks [@ThomasSeaver](https://github.com/ThomasSeaver)! - Created one time passcode input component.
+
+### Patch Changes
+
+- Updated dependencies [[`aee6aed`](https://github.com/spear-ai/ui/commit/aee6aede7a0dedd39ab11c0b0805faba2440aba2), [`9ef5767`](https://github.com/spear-ai/ui/commit/9ef5767d7a108b06396cbc70647cb67c62b3b346), [`8c56309`](https://github.com/spear-ai/ui/commit/8c5630985e2d4665aef564b793b2964762621859), [`8c56309`](https://github.com/spear-ai/ui/commit/8c5630985e2d4665aef564b793b2964762621859), [`400dbaa`](https://github.com/spear-ai/ui/commit/400dbaae029905b06566b478112f2f7915d62c55)]:
+  - @spear-ai/ui@5.5.0
+
 ## 5.4.0
 
 ### Minor Changes
