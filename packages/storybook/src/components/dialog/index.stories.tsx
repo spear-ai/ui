@@ -32,11 +32,8 @@ const PreviewDialog = (properties: {
         })}
       </Button>
       <DialogModalOverlay UNSTABLE_portalContainer={portalContainer} isDismissable={isDismissable}>
-        <DialogModal>
-          <Dialog
-            className="px-4 pb-4 pt-5 sm:w-full sm:max-w-sm sm:p-6"
-            role={isAlert ? "alertdialog" : undefined}
-          >
+        <DialogModal className="w-full sm:max-w-sm">
+          <Dialog className="px-4 pb-4 pt-5 sm:p-6" role={isAlert ? "alertdialog" : undefined}>
             {hasCloseButton ? (
               <DialogCloseIconButton>
                 <DialogCloseIconButtonIcon />
