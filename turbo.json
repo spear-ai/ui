@@ -1,6 +1,6 @@
 {
-  "$schema": "https://turbo.build/schema.json",
-  "pipeline": {
+  "$schema": "https://turbo.build/schema.v2.json",
+  "tasks": {
     "//#commitlint:check": {},
     "//#eslint:check": {},
     "//#eslint:fix": {},
@@ -13,7 +13,7 @@
     "//#typescript:check": {},
     "build": {
       "dependsOn": ["^build"],
-      "dotEnv": [".env", ".env.local", ".env.production", ".env.production.local"],
+      "inputs": [".env", ".env.local", ".env.production", ".env.production.local"],
       "outputs": ["build/**", "dist/**", "storybook-static/**"]
     },
     "check": {
@@ -97,7 +97,7 @@
     },
     "storybook:build": {
       "dependsOn": ["^build"],
-      "dotEnv": [".env", ".env.local", ".env.production", ".env.production.local"],
+      "inputs": [".env", ".env.local", ".env.production", ".env.production.local"],
       "outputs": ["storybook-static/**"]
     },
     "typescript:check": {
