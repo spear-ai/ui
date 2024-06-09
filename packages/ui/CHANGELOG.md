@@ -1,5 +1,15 @@
 # @spear-ai/ui
 
+## 5.6.0
+
+### Minor Changes
+
+- [#289](https://github.com/spear-ai/ui/pull/289) [`8ff1f32`](https://github.com/spear-ai/ui/commit/8ff1f32007350da03ee79884aeb049d38ddace94) Thanks [@psirenny](https://github.com/psirenny)! - Added TextArea component to TextField.
+
+### Patch Changes
+
+- [#291](https://github.com/spear-ai/ui/pull/291) [`bbe4027`](https://github.com/spear-ai/ui/commit/bbe402704b07786fb760765af264503513583604) Thanks [@psirenny](https://github.com/psirenny)! - Updated to Turbo 2.
+
 ## 5.5.0
 
 ### Minor Changes
