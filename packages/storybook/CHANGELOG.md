@@ -1,5 +1,16 @@
 # @spear-ai/storybook
 
+## 5.5.1
+
+### Patch Changes
+
+- [#291](https://github.com/spear-ai/ui/pull/291) [`bbe4027`](https://github.com/spear-ai/ui/commit/bbe402704b07786fb760765af264503513583604) Thanks [@psirenny](https://github.com/psirenny)! - Updated to Turbo 2.
+
+- [#290](https://github.com/spear-ai/ui/pull/290) [`78486bc`](https://github.com/spear-ai/ui/commit/78486bc297db04fe5b04894c4d75a29b385254fe) Thanks [@psirenny](https://github.com/psirenny)! - Fixed Storybook Dialog component’s width and padding with narrow content and/or on mobile devices.
+
+- Updated dependencies [[`bbe4027`](https://github.com/spear-ai/ui/commit/bbe402704b07786fb760765af264503513583604), [`8ff1f32`](https://github.com/spear-ai/ui/commit/8ff1f32007350da03ee79884aeb049d38ddace94)]:
+  - @spear-ai/ui@5.6.0
+
 ## 5.5.0
 
 ### Minor Changes
