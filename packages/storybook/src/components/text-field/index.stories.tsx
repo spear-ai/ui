@@ -4,19 +4,23 @@ import {
   TextFieldError,
   TextFieldInput,
   TextFieldLabel,
+  TextFieldTextArea,
 } from "@spear-ai/ui/components/text-field";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Form } from "react-aria-components";
 import { useIntl } from "react-intl";
 
 const PreviewTextField = (properties: {
+  canResizeTextArea: boolean;
   hasLabel: boolean;
   hasLabelDescription: boolean;
   isDisabled: boolean;
   isInvalid: boolean;
   isSquished: boolean;
+  isTextArea: boolean;
 }) => {
-  const { hasLabel, hasLabelDescription, isDisabled, isInvalid, isSquished } = properties;
+  const { canResizeTextArea, hasLabel, hasLabelDescription, isDisabled, isInvalid, isSquished, isTextArea } =
+    properties;
   const intl = useIntl();
 
   return (
@@ -46,12 +50,23 @@ const PreviewTextField = (properties: {
               })}
             </TextFieldDescription>
           ) : null}
-          <TextFieldInput
-            placeholder={intl.formatMessage({
-              defaultMessage: "example@email.com",
-              id: "SvELQW",
-            })}
-          />
+          {isTextArea ? (
+            <TextFieldTextArea
+              className={canResizeTextArea ? "resize-y" : undefined}
+              placeholder={intl.formatMessage({
+                defaultMessage: "example@email.com",
+                id: "SvELQW",
+              })}
+              rows={4}
+            />
+          ) : (
+            <TextFieldInput
+              placeholder={intl.formatMessage({
+                defaultMessage: "example@email.com",
+                id: "SvELQW",
+              })}
+            />
+          )}
           <TextFieldError>
             {intl.formatMessage({ defaultMessage: "Email address is invalid", id: "sVgB+Q" })}
           </TextFieldError>
@@ -69,11 +84,13 @@ type Story = StoryObj<typeof meta>;
 
 export const Standard: Story = {
   args: {
+    canResizeTextArea: false,
     hasLabel: true,
     hasLabelDescription: true,
     isDisabled: false,
     isInvalid: false,
     isSquished: false,
+    isTextArea: false,
   },
   parameters: {
     layout: "centered",
