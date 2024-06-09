@@ -1,6 +1,6 @@
 {
-  "$schema": "https://turbo.build/schema.json",
-  "pipeline": {
+  "$schema": "https://turbo.build/schema.v2.json",
+  "tasks": {
     "//#commitlint:check": {},
     "//#eslint:check": {},
     "//#eslint:fix": {},
