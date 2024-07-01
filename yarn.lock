@@ -6489,7 +6489,7 @@ __metadata:
     "@spear-ai/prettier-config": "npm:2.2.0"
     "@tailwindcss/container-queries": "npm:^0.1.1"
     "@tailwindcss/typography": "npm:^0.5.13"
-    "@types/culori": "npm:2.1.0"
+    "@types/culori": "npm:2.1.1"
     "@types/mertasan__tailwindcss-variables": "npm:2.6.4"
     autoprefixer: "npm:10.4.19"
     change-case: "npm:^5.4.4"
@@ -7738,10 +7738,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/culori@npm:2.1.0":
-  version: 2.1.0
-  resolution: "@types/culori@npm:2.1.0"
-  checksum: 10/505d0ff9ccb56ffb71bab7eed415a8c2cfc0117f8c99f91f1aa127c5dc43f294ef04e7cab5e7da9df5545974c16239f60555d01b6b37278ad12a5124a85be682
+"@types/culori@npm:2.1.1":
+  version: 2.1.1
+  resolution: "@types/culori@npm:2.1.1"
+  checksum: 10/b8b8066bd6996fc4c323f0bad3bb923a6082b17f26aade28c309dcfd98f65ef1800fcf7c2f532b8a670f126b8f70cba68f5c2915a96730e80ff5f967de8492f2
   languageName: node
   linkType: hard
 
