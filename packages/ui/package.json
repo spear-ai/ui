@@ -18,9 +18,10 @@
     "tailwind-merge": "^2.4.0"
   },
   "devDependencies": {
-    "@spear-ai/eslint-config": "20.0.0",
+    "@spear-ai/eslint-config": "20.0.1",
     "@spear-ai/npm-package-json-lint-config": "3.1.1",
     "@spear-ai/prettier-config": "2.2.0",
+    "@spear-ai/tsconfig": "4.0.0",
     "@types/node": "20.14.12",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",

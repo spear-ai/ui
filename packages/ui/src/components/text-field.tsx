@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef, ElementRef, forwardRef, HTMLAttributes } from "react";
+import { ComponentPropsWithoutRef, ElementRef, forwardRef, HTMLAttributes } from "react";
 import {
   FieldError as FieldErrorPrimitive,
   Input as InputPrimitive,

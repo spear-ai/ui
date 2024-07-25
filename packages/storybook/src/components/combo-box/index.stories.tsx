@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import { useControlledState } from "@react-stately/utils";
 import {
   ComboBox,
@@ -97,7 +98,10 @@ const PreviewComboBox = (properties: {
               })}
             </ComboBoxFieldError>
           ) : null}
-          <ComboBoxPopover UNSTABLE_portalContainer={portalContainer} isOpen={isAlwaysOpen ? true : isOpen}>
+          <ComboBoxPopover
+            {...(portalContainer === undefined ? {} : { UNSTABLE_portalContainer: portalContainer })}
+            {...(isAlwaysOpen ? { isOpen } : {})}
+          >
             <ComboBoxListBox>
               {hasSection1 ? (
                 <ComboBoxSection>

@@ -365,6 +365,7 @@ export const radixColorThemePlugin = plugin(
       }
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
     const darkModeSelector = (config("darkMode") as [string])[0];
     addComponents(variablesApi.variables(rootVariables));
     addComponents(variablesApi.variables(lightVariables));

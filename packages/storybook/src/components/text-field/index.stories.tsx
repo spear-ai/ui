@@ -52,7 +52,7 @@ const PreviewTextField = (properties: {
           ) : null}
           {isTextArea ? (
             <TextFieldTextArea
-              className={canResizeTextArea ? "resize-y" : undefined}
+              className={canResizeTextArea ? "resize-y" : ""}
               placeholder={intl.formatMessage({
                 defaultMessage: "example@email.com",
                 id: "SvELQW",

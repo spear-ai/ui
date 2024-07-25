@@ -1,29 +1,11 @@
 {
   "compilerOptions": {
-    "allowJs": true,
-    "declaration": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "jsx": "react-jsx",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
-    "noUncheckedIndexedAccess": true,
     "paths": {
       "@/*": ["./src/*"]
-    },
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "strict": true,
-    "stripInternal": true,
-    "target": "ESNext"
+    }
   },
   "exclude": ["dist", "node_modules"],
+  "extends": "@spear-ai/tsconfig",
   "include": ["**/*.cjs", "**/*.js", "**/*.ts", "**/*.tsx", "types", "src/tailwind.ts"],
   "types": ["types"]
 }

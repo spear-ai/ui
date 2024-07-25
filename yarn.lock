@@ -5978,9 +5978,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spear-ai/eslint-config@npm:20.0.0":
-  version: 20.0.0
-  resolution: "@spear-ai/eslint-config@npm:20.0.0"
+"@spear-ai/eslint-config@npm:20.0.1":
+  version: 20.0.1
+  resolution: "@spear-ai/eslint-config@npm:20.0.1"
   dependencies:
     "@eslint-community/eslint-plugin-eslint-comments": "npm:^4.3.0"
     "@graphql-eslint/eslint-plugin": "npm:^3.20.1"
@@ -6026,7 +6026,7 @@ __metadata:
     react: ^18.2.0
     tailwindcss: ^3.3.2
     typescript: ^5.0.4
-  checksum: 10/9c27af9ee3023bdad21ec9a0459d1ad52aa56da602710df6aba1b2cf5c2854ed285236c8dd92f2a14689a5569d2a4c32f1f47f6db7e5879b98b134a6cb26f2de
+  checksum: 10/c5fbd2fe40f72209f3ce57a0ee54c739892ff5319620b39f7b4cbfa378b2fdf3147f7c19ae45b1c16adea9ce2ea2c94fa75715b54e9fcfa6d7f227e031189445
   languageName: node
   linkType: hard
 
@@ -6068,9 +6068,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@spear-ai/relay-environment@workspace:packages/relay-environment"
   dependencies:
-    "@spear-ai/eslint-config": "npm:20.0.0"
+    "@spear-ai/eslint-config": "npm:20.0.1"
     "@spear-ai/npm-package-json-lint-config": "npm:3.1.1"
     "@spear-ai/prettier-config": "npm:2.2.0"
+    "@spear-ai/tsconfig": "npm:4.0.0"
     "@types/relay-runtime": "npm:17.0.2"
     autoprefixer: "npm:10.4.19"
     eslint: "npm:8.57.0"
@@ -6099,11 +6100,12 @@ __metadata:
     "@react-hookz/web": "npm:24.0.4"
     "@react-stately/utils": "npm:3.10.2"
     "@sentry/nextjs": "npm:8.20.0"
-    "@spear-ai/eslint-config": "npm:20.0.0"
+    "@spear-ai/eslint-config": "npm:20.0.1"
     "@spear-ai/logo": "npm:2.1.1"
     "@spear-ai/npm-package-json-lint-config": "npm:3.1.1"
     "@spear-ai/prettier-config": "npm:2.2.0"
     "@spear-ai/tailwind-config": "npm:*"
+    "@spear-ai/tsconfig": "npm:4.0.0"
     "@spear-ai/ui": "npm:*"
     "@storybook/addon-essentials": "npm:8.2.6"
     "@storybook/addon-interactions": "npm:8.2.6"
@@ -6149,9 +6151,10 @@ __metadata:
   dependencies:
     "@mertasan/tailwindcss-variables": "npm:^2.7.0"
     "@radix-ui/colors": "npm:^3.0.0"
-    "@spear-ai/eslint-config": "npm:20.0.0"
+    "@spear-ai/eslint-config": "npm:20.0.1"
     "@spear-ai/npm-package-json-lint-config": "npm:3.1.1"
     "@spear-ai/prettier-config": "npm:2.2.0"
+    "@spear-ai/tsconfig": "npm:4.0.0"
     "@tailwindcss/container-queries": "npm:^0.1.1"
     "@tailwindcss/typography": "npm:^0.5.13"
     "@types/culori": "npm:2.1.1"
@@ -6179,6 +6182,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@spear-ai/tsconfig@npm:4.0.0":
+  version: 4.0.0
+  resolution: "@spear-ai/tsconfig@npm:4.0.0"
+  checksum: 10/f9b1feda7088d55894cd3388b09af65545dfffb083d4eb7ea15861debe7d6096b28510e1d5640343ad933cfc6b615e30c00804f131e5725f49b1a6d682ee115f
+  languageName: node
+  linkType: hard
+
 "@spear-ai/ui-monorepo@workspace:.":
   version: 0.0.0-use.local
   resolution: "@spear-ai/ui-monorepo@workspace:."
@@ -6188,9 +6198,10 @@ __metadata:
     "@commitlint/cli": "npm:19.3.0"
     "@commitlint/types": "npm:19.0.3"
     "@spear-ai/commitlint-config": "npm:3.2.0"
-    "@spear-ai/eslint-config": "npm:20.0.0"
+    "@spear-ai/eslint-config": "npm:20.0.1"
     "@spear-ai/npm-package-json-lint-config": "npm:3.1.1"
     "@spear-ai/prettier-config": "npm:2.2.0"
+    "@spear-ai/tsconfig": "npm:4.0.0"
     commitlint: "npm:19.3.0"
     eslint: "npm:8.57.0"
     graphql: "npm:16.9.0"
@@ -6212,9 +6223,10 @@ __metadata:
     "@radix-ui/react-slot": "npm:^1.1.0"
     "@react-hookz/web": "npm:^24.0.4"
     "@react-stately/utils": "npm:^3.10.2"
-    "@spear-ai/eslint-config": "npm:20.0.0"
+    "@spear-ai/eslint-config": "npm:20.0.1"
     "@spear-ai/npm-package-json-lint-config": "npm:3.1.1"
     "@spear-ai/prettier-config": "npm:2.2.0"
+    "@spear-ai/tsconfig": "npm:4.0.0"
     "@types/node": "npm:20.14.12"
     "@types/react": "npm:18.3.3"
     "@types/react-dom": "npm:18.3.0"

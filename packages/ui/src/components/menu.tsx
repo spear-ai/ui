@@ -1,12 +1,6 @@
 import { ChevronRightIcon } from "@radix-ui/react-icons";
 import { Slot } from "@radix-ui/react-slot";
-import React, {
-  ComponentPropsWithoutRef,
-  ElementRef,
-  forwardRef,
-  HTMLAttributes,
-  SVGAttributes,
-} from "react";
+import { ComponentPropsWithoutRef, ElementRef, forwardRef, HTMLAttributes, SVGAttributes } from "react";
 import {
   Header as HeaderPrimitive,
   Keyboard as KeyboardPrimitive,

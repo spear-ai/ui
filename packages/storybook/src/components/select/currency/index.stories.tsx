@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import { useControlledState } from "@react-stately/utils";
 import {
   Select,
@@ -47,7 +48,9 @@ const PreviewSelect = () => {
             <SelectValue />
             <SelectIcon />
           </SelectButton>
-          <SelectPopover UNSTABLE_portalContainer={portalContainer}>
+          <SelectPopover
+            {...(portalContainer === undefined ? {} : { UNSTABLE_portalContainer: portalContainer })}
+          >
             <SelectListBox>
               <SelectListBoxItem id="" isNone>
                 {intl.formatMessage({

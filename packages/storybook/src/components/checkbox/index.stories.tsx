@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import {
   Checkbox,
   CheckboxButton,
@@ -73,7 +74,7 @@ const PreviewCheckbox = (properties: {
             <CheckboxField>
               <Checkbox
                 isDisabled={firstOptionIsDisabled}
-                isIndeterminate={isIndeterminateWhenSelected ? true : undefined}
+                {...(isIndeterminateWhenSelected ? { isIndeterminate: true } : {})}
                 isInvalid={firstOptionIsInvalid}
                 value="isLimitedToFriends"
               >
@@ -98,7 +99,10 @@ const PreviewCheckbox = (properties: {
               ) : null}
             </CheckboxField>
             <CheckboxField>
-              <Checkbox isIndeterminate={isIndeterminateWhenSelected ? true : undefined} value="isShareable">
+              <Checkbox
+                {...(isIndeterminateWhenSelected ? { isIndeterminate: true } : {})}
+                value="isShareable"
+              >
                 <CheckboxButton>
                   <CheckboxCheckedIcon />
                   <CheckboxIndeterminateIcon />

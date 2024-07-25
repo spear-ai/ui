@@ -27,7 +27,10 @@ const ToggleButtonTooltip = (properties: { children: ReactNode; text: ReactNode 
   return (
     <TooltipTrigger>
       {children}
-      <Tooltip UNSTABLE_portalContainer={portalContainer} offset={4}>
+      <Tooltip
+        {...(portalContainer === undefined ? {} : { UNSTABLE_portalContainer: portalContainer })}
+        offset={4}
+      >
         <TooltipBody>
           <TooltipContent>{text}</TooltipContent>
           <TooltipArrow>
