@@ -1,9 +1,5 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef, HTMLAttributes } from "react";
-import {
-  CheckboxGroup as CheckboxGroupPrimitive,
-  Label as LabelPrimitive,
-  Slider as SliderPrimitive,
-} from "react-aria-components";
+import { Label as LabelPrimitive, Slider as SliderPrimitive } from "react-aria-components";
 import { cx } from "@/helpers/cx";
 
 export const Slider = forwardRef<
