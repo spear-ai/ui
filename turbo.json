@@ -13,7 +13,16 @@
     "//#typescript:check": {},
     "build": {
       "dependsOn": ["^build"],
-      "inputs": [".env", ".env.local", ".env.production", ".env.production.local"],
+      "inputs": [
+        ".env",
+        ".env.local",
+        ".env.production",
+        ".env.production.local",
+        "**/*.cjs",
+        "**/*.js",
+        "**/*.ts",
+        "**/*.tsx"
+      ],
       "outputs": ["build/**", "dist/**", "storybook-static/**"]
     },
     "check": {
