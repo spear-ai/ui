@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import {
   Select,
   SelectButton,
@@ -59,7 +60,7 @@ const PreviewSelect = (properties: {
         <Select
           isDisabled={isDisabled}
           isInvalid={isInvalid}
-          isOpen={isAlwaysOpen ? true : undefined}
+          {...(isAlwaysOpen ? { isOpen: true } : {})}
           placeholder={intl.formatMessage({
             defaultMessage: "Select a sensor",
             id: "W2C6Wt",
@@ -88,7 +89,9 @@ const PreviewSelect = (properties: {
               })}
             </SelectFieldError>
           ) : null}
-          <SelectPopover UNSTABLE_portalContainer={portalContainer}>
+          <SelectPopover
+            {...(portalContainer === undefined ? {} : { UNSTABLE_portalContainer: portalContainer })}
+          >
             <SelectListBox>
               {hasSection1 ? (
                 <SelectSection>

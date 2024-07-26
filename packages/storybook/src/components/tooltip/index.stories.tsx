@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import {
   Tooltip,
   TooltipArrow,
@@ -28,8 +29,8 @@ const PreviewTooltip = (properties: {
         })}
       </Button>
       <Tooltip
-        UNSTABLE_portalContainer={portalContainer}
-        isOpen={isAlwaysOpen ? true : undefined}
+        {...(portalContainer === undefined ? {} : { UNSTABLE_portalContainer: portalContainer })}
+        {...(isAlwaysOpen ? { isOpen: true } : {})}
         placement={placement}
       >
         <TooltipBody>

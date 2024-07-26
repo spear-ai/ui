@@ -260,7 +260,7 @@ export const ComboBoxListBoxItem = forwardRef<
     <ListBoxItemPrimitive
       className={mergedClassName}
       data-is-none={isNone}
-      id={id}
+      {...(id === undefined ? {} : { id })}
       {...properties}
       ref={reference}
     />

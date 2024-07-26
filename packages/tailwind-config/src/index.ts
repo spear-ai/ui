@@ -33,9 +33,11 @@ export const tailwindConfig: Config = {
       });
     }),
     animatePlugin,
+    // @ts-expect-error The `@tailwindcss/container-queries` plugin has an incorrect type definition
     containerQueriesPlugin,
     radixColorThemePlugin,
     scrollbarPlugin,
+    // @ts-expect-error The `tailwindcss-3d` has an incorrect type definition
     threeDPlugin,
     typographyPlugin,
     reactAriaComponentsPlugin,

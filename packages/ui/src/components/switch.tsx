@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef, ElementRef, forwardRef, HTMLAttributes } from "react";
+import { ComponentPropsWithoutRef, ElementRef, forwardRef, HTMLAttributes } from "react";
 import { Switch as SwitchPrimitive } from "react-aria-components";
 import { cx } from "@/helpers/cx";
 

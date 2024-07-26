@@ -117,11 +117,11 @@ export const useRenderToast = () => {
       },
       {
         dismissible: true,
-        duration,
+        ...(duration === undefined ? {} : { duration }),
         id,
         important: isImportant,
-        onAutoClose,
-        onDismiss,
+        ...(onAutoClose === undefined ? {} : { onAutoClose }),
+        ...(onDismiss === undefined ? {} : { onDismiss }),
         position,
         unstyled: true,
       },
@@ -131,7 +131,13 @@ export const useRenderToast = () => {
 
 export const Toaster = (properties: { className?: string | undefined; gap?: number | undefined }) => {
   const { className, gap } = properties;
-  return <ToasterPrimitive className={className} gap={gap} />;
+
+  return (
+    <ToasterPrimitive
+      {...(className === undefined ? {} : { className })}
+      {...(gap === undefined ? {} : { gap })}
+    />
+  );
 };
 
 export const Toast = forwardRef<
