@@ -13,7 +13,7 @@
     "@spear-ai/npm-package-json-lint-config": "3.1.1",
     "@spear-ai/prettier-config": "2.2.0",
     "@spear-ai/tsconfig": "4.0.0",
-    "@types/relay-runtime": "17.0.2",
+    "@types/relay-runtime": "17.0.3",
     "autoprefixer": "10.4.19",
     "eslint": "8.57.0",
     "graphql": "16.9.0",

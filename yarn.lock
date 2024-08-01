@@ -6072,7 +6072,7 @@ __metadata:
     "@spear-ai/npm-package-json-lint-config": "npm:3.1.1"
     "@spear-ai/prettier-config": "npm:2.2.0"
     "@spear-ai/tsconfig": "npm:4.0.0"
-    "@types/relay-runtime": "npm:17.0.2"
+    "@types/relay-runtime": "npm:17.0.3"
     autoprefixer: "npm:10.4.19"
     eslint: "npm:8.57.0"
     graphql: "npm:16.9.0"
@@ -7458,10 +7458,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/relay-runtime@npm:17.0.2":
-  version: 17.0.2
-  resolution: "@types/relay-runtime@npm:17.0.2"
-  checksum: 10/0b8b019bf1977a11a19cacfe356a79b6ecedb0869f78f0ebd070a5e23f197ecba9cc80644b4a9ff1a1b862eb6aea1d85dd6f3758b7dc7634bc5102354294c377
+"@types/relay-runtime@npm:17.0.3":
+  version: 17.0.3
+  resolution: "@types/relay-runtime@npm:17.0.3"
+  checksum: 10/4567e7b0ca4f51e39d401fdfddf4b749daad5fa5bbb288c1bc60773027c19463c405e5c7023e84f7c56d2c0fa7795053592e81c4a3d45ac68bf85286c78f2f12
   languageName: node
   linkType: hard
 
