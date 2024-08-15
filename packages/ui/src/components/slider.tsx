@@ -77,7 +77,7 @@ export const SliderOutput = forwardRef<
   ComponentPropsWithoutRef<typeof SliderOutputPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "text-neutral-11 mb-0.5 ms-auto text-base/6 text-sm tabular-nums sm:text-sm/6",
+    "text-neutral-11 mb-0.5 block text-end text-base/6 text-sm tabular-nums group-data-[orientation=horizontal]:ms-auto sm:text-sm/6",
     className,
   );
   return <SliderOutputPrimitive className={mergedClassName} {...properties} ref={reference} />;
@@ -120,7 +120,7 @@ export const SliderThumb = forwardRef<
   ComponentPropsWithoutRef<typeof SliderThumbPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "shadow-neutral-a-9 bg-neutral-9 absolute h-4 w-4 rounded-full bg-white shadow group-data-[orientation=horizontal]:top-1 group-data-[orientation=vertical]:start-1 dark:shadow-none",
+    "before:shadow-neutral-a-9 absolute h-4 w-4 origin-top-left before:absolute before:h-full before:w-full before:translate-y-1 before:rounded-full before:bg-white before:shadow before:content-[''] group-data-[orientation=vertical]:start-1 dark:shadow-none",
     className,
   );
   return <SliderThumbPrimitive className={mergedClassName} {...properties} ref={reference} />;

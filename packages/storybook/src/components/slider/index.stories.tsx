@@ -1,3 +1,4 @@
+import { SpeakerLoudIcon, SpeakerModerateIcon } from "@radix-ui/react-icons";
 import {
   Slider,
   SliderDescription,
@@ -26,6 +27,7 @@ const PreviewSlider = (properties: {
   orientation: "horizontal" | "vertical";
   originLabel: string;
   originValue: number;
+  thumbShape: "circle" | "pill" | "square";
   variant: "soft" | "surface";
 }) => {
   const {
@@ -41,12 +43,29 @@ const PreviewSlider = (properties: {
     orientation,
     // OriginLabel,
     originValue,
+    thumbShape,
     variant,
   } = properties;
   const intl = useIntl();
   const [value, setValue] = useState(
     Math.max(Math.min(Math.round(maximumValue / 4), maximumValue), minimumValue),
   );
+
+  let thumbShapeClassName = "";
+
+  switch (thumbShape) {
+    case "pill": {
+      thumbShapeClassName = "h-5 w-2.5 group-data-[orientation=vertical]:before:rotate-90";
+      break;
+    }
+    case "square": {
+      thumbShapeClassName = "before:rounded-sm";
+      break;
+    }
+    default: {
+      break;
+    }
+  }
 
   return (
     <div className={`w-full ${isSquished ? "max-w-36" : "max-w-xs"}`}>
@@ -86,7 +105,7 @@ const PreviewSlider = (properties: {
           </SliderLabels>
           <SliderTrack className="h-56">
             {hasRange ? <SliderRange /> : null}
-            <SliderThumb />
+            <SliderThumb className={thumbShapeClassName} />
           </SliderTrack>
         </Slider>
       </Form>
@@ -103,9 +122,11 @@ type Story = StoryObj<typeof meta>;
 export const Standard: Story = {
   args: {
     color: "neutral",
+    hasEndIcon: true,
     hasLabel: true,
     hasLabelDescription: true,
-    hasRange: false,
+    hasRange: true,
+    hasStartIcon: true,
     hasValence: false,
     isDisabled: false,
     isSquished: false,
@@ -114,6 +135,7 @@ export const Standard: Story = {
     orientation: "horizontal",
     originLabel: "",
     originValue: 0,
+    thumbShape: "circle",
     variant: "surface",
   },
   argTypes: {
@@ -126,6 +148,10 @@ export const Standard: Story = {
     orientation: {
       control: { type: "select" },
       options: ["horizontal", "vertical"],
+    },
+    thumbShape: {
+      control: { type: "select" },
+      options: ["circle", "pill", "square"],
     },
     variant: {
       control: { type: "select" },
