@@ -120,7 +120,7 @@ export const SliderThumb = forwardRef<
   ComponentPropsWithoutRef<typeof SliderThumbPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "before:shadow-neutral-a-9 absolute h-4 w-4 origin-top-left before:absolute before:h-full before:w-full before:translate-y-1 before:rounded-full before:bg-white before:shadow before:content-[''] group-data-[orientation=vertical]:start-1 dark:shadow-none",
+    "before:shadow-neutral-a-9 absolute h-4 w-4 origin-top-left before:absolute before:h-full before:w-full before:translate-y-1 before:rounded-full before:bg-white before:shadow before:content-[''] group-data-[orientation=vertical]:start-1 before:dark:shadow-none",
     className,
   );
   return <SliderThumbPrimitive className={mergedClassName} {...properties} ref={reference} />;
