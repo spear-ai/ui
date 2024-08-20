@@ -70,22 +70,23 @@ const PreviewSlider = (properties: {
           {hasLabel ? (
             <SliderGroupLabel>
               {intl.formatMessage({
-                defaultMessage: "Budget",
-                id: "0KKXrH",
+                defaultMessage: "Yearly budget",
+                id: "2BAYgQ",
               })}
             </SliderGroupLabel>
           ) : null}
           {hasLabel && hasLabelDescription ? (
             <SliderGroupDescription>
               {intl.formatMessage({
-                defaultMessage: "Don’t worry, it’s other peoples money",
-                id: "5G09fG",
+                defaultMessage: "Don’t worry, it’s other peoples money.",
+                id: "6olAwT",
               })}
             </SliderGroupDescription>
           ) : null}
           <div className="relative flex w-full justify-around py-7">
             <ol
               aria-hidden
+              // eslint-disable-next-line tailwindcss/no-custom-classname
               className="divide-neutral-a-6 absolute inset-x-0 inset-y-7 divide-y divide-dotted"
             >
               {Array.from({ length: 14 }, (_, index) => (
@@ -96,7 +97,7 @@ const PreviewSlider = (properties: {
               <Slider
                 className="relative inline-flex flex-col items-center justify-center"
                 color={color}
-                defaultValue={isRange ? [15, 85] : 50}
+                defaultValue={isRange ? [-25, 25] : 0}
                 hasValence={isRange ? false : hasValence}
                 isDisabled={groupIsDisabled || (index === 0 ? firstSliderIsDisabled : false)}
                 key={`${index}-${isRange}`}
@@ -129,6 +130,7 @@ const PreviewSlider = (properties: {
                           currency: "USD",
                           maximumFractionDigits: 0,
                           minimumFractionDigits: 0,
+                          signDisplay: "exceptZero",
                           style: "currency",
                         })
                       : intl.formatMessage(
@@ -141,12 +143,14 @@ const PreviewSlider = (properties: {
                               currency: "USD",
                               maximumFractionDigits: 0,
                               minimumFractionDigits: 0,
+                              signDisplay: "exceptZero",
                               style: "currency",
                             }),
                             upper: intl.formatNumber(state.values[1] ?? 0, {
                               currency: "USD",
                               maximumFractionDigits: 0,
                               minimumFractionDigits: 0,
+                              signDisplay: "exceptZero",
                               style: "currency",
                             }),
                           },
@@ -176,12 +180,12 @@ export const Standard: Story = {
     hasFill: true,
     hasLabel: true,
     hasLabelDescription: true,
-    hasValence: false,
+    hasValence: true,
     isRange: false,
     isSquished: false,
     maximumValue: 200,
     minimumValue: -100,
-    originValue: 50,
+    originValue: 0,
     thumbShape: "pill",
     variant: "soft",
   },
