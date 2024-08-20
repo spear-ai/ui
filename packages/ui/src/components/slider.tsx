@@ -36,7 +36,7 @@ export const SliderGroup = forwardRef<
     isDisabled?: boolean | undefined;
   }
 >(({ className, isDisabled = false, ...properties }, reference) => {
-  const mergedClassName = cx("group/group", className);
+  const mergedClassName = cx("group/group outline-0", className);
   const context = useMemo(() => ({ isDisabled }), [isDisabled]);
   return (
     <SliderContext.Provider value={context}>
@@ -228,22 +228,8 @@ export const SliderFill = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivEleme
     const start = state.orientation === "vertical" ? "0%" : `${originPercent}%`;
     const width = state.orientation === "vertical" ? "100%" : `${deltaPercent}%`;
     const height = state.orientation === "vertical" ? `${deltaPercent}%` : "100%";
-    console.log({
-      bottom,
-      deltaPercent,
-      firstPercent,
-      height,
-      lastPercent,
-      maximumValue,
-      minimumValue,
-      originPercent,
-      originValue,
-      start,
-      valence,
-      width,
-    });
     const mergedClassName = cx(
-      "before:group-data-[has-valence=true]:data-[valence=x-negative]:bg-x-negative-9 before:group-data-[has-valence=true]:data-[valence=x-negative]:outline-x-negative-a-7 before:group-data-[has-valence=true]:data-[valence=x-positive]:bg-x-positive-9 before:group-data-[has-valence=true]:data-[valence=x-positive]:outline-x-positive-a-7 before:group-disabled:outline-neutral-a-6 before:outline-neutral-a-7 before:group-data-[color=primary]:outline-primary-a-7 before:bg-neutral-9 before:group-data-[color=primary]:bg-primary-9 before:group-disabled:bg-neutral-3 absolute before:absolute before:inset-0 before:rounded-full before:outline-1 before:-outline-offset-1 before:content-[''] before:group-data-[variant=surface]:outline",
+      "before:group-data-[has-valence=true]:data-[valence=x-negative]:bg-x-negative-9 before:group-data-[has-valence=true]:data-[valence=x-negative]:outline-x-negative-a-7 before:group-data-[has-valence=true]:data-[valence=x-positive]:bg-x-positive-9 before:group-data-[has-valence=true]:data-[valence=x-positive]:outline-x-positive-a-7 before:group-data-[has-valence=true]:group-disabled:outline-neutral-a-6 before:group-disabled:outline-neutral-a-6 before:group-data-[has-valence=true]:data-[valence=x-negative]:group-disabled:outline-x-negative-a-6 before:group-data-[has-valence=true]:data-[valence=x-positive]:group-disabled:outline-x-positive-a-6 before:outline-neutral-a-7 before:group-data-[color=primary]:outline-primary-a-7 before:bg-neutral-9 before:group-data-[color=primary]:bg-primary-9 before:group-data-[has-valence=true]:data-[valence=x-negative]:group-disabled:bg-x-negative-3 before:group-data-[has-valence=true]:data-[valence=x-positive]:group-disabled:bg-x-positive-3 before:group-disabled:bg-neutral-3 absolute before:absolute before:inset-0 before:rounded-full before:outline-1 before:-outline-offset-1 before:content-[''] before:group-data-[variant=surface]:outline",
       className,
     );
 

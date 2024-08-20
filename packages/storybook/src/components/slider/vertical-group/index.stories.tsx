@@ -108,7 +108,7 @@ const PreviewSlider = (properties: {
                 className="relative inline-flex flex-col items-center justify-center"
                 color={color}
                 defaultValue={isRange ? [30, 70] : 0}
-                hasValence={hasValence}
+                hasValence={isRange ? false : hasValence}
                 id={index === 0 ? firstId : ""}
                 isDisabled={groupIsDisabled || (index === 0 ? firstSliderIsDisabled : false)}
                 key={index}
