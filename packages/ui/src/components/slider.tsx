@@ -23,7 +23,7 @@ export const Slider = forwardRef<
     variant?: "soft" | "surface" | undefined;
   }
 >(({ className, color = "neutral", hasValence = false, variant = "surface", ...properties }, reference) => {
-  const mergedClassName = cx("group", className);
+  const mergedClassName = cx("group pt-7", className);
   return (
     <SliderPrimitive
       className={mergedClassName}
@@ -60,6 +60,19 @@ export const SliderLabel = forwardRef<
 
 SliderLabel.displayName = "SliderLabel";
 
+export const SliderInlineLabel = forwardRef<
+  ElementRef<typeof LabelPrimitive>,
+  ComponentPropsWithoutRef<typeof LabelPrimitive>
+>(({ className, ...properties }, reference) => {
+  const mergedClassName = cx(
+    "text-neutral-12 group-disabled:text-neutral-11 absolute top-full mt-1 select-none text-sm/6 sm:text-xs/6",
+    className,
+  );
+  return <LabelPrimitive className={mergedClassName} {...properties} ref={reference} />;
+});
+
+SliderLabel.displayName = "SliderInlineLabel";
+
 export const SliderDescription = forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLParagraphElement>>(
   ({ className, ...properties }, reference) => {
     const mergedClassName = cx(
@@ -77,7 +90,7 @@ export const SliderOutput = forwardRef<
   ComponentPropsWithoutRef<typeof SliderOutputPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "text-neutral-11 mb-0.5 block text-end text-base/6 text-sm tabular-nums group-data-[orientation=horizontal]:ms-auto sm:text-sm/6",
+    "text-neutral-11 mb-0.5 block text-end text-base/6 tabular-nums group-data-[orientation=horizontal]:ms-auto sm:text-sm/6",
     className,
   );
   return <SliderOutputPrimitive className={mergedClassName} {...properties} ref={reference} />;
@@ -85,12 +98,25 @@ export const SliderOutput = forwardRef<
 
 SliderOutput.displayName = "SliderOutput";
 
+export const SliderInlineOutput = forwardRef<
+  ElementRef<typeof SliderOutputPrimitive>,
+  ComponentPropsWithoutRef<typeof SliderOutputPrimitive> & { className?: string | undefined }
+>(({ className, ...properties }, reference) => {
+  const mergedClassName = cx(
+    "text-neutral-11 absolute top-0 mb-1 text-sm/6 tabular-nums group-data-[orientation=horizontal]:ms-auto sm:text-xs/6",
+    className,
+  );
+  return <SliderOutputPrimitive className={mergedClassName} {...properties} ref={reference} />;
+});
+
+SliderOutput.displayName = "SliderInlineOutput";
+
 export const SliderTrack = forwardRef<
   ElementRef<typeof SliderTrackPrimitive>,
   ComponentPropsWithoutRef<typeof SliderTrackPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "bg-neutral-a-3 outline-neutral-a-7 relative rounded-full -outline-offset-1 group-data-[orientation=horizontal]:h-2 group-data-[orientation=horizontal]:w-full group-data-[orientation=vertical]:w-2 group-data-[variant=surface]:outline",
+    "before:bg-neutral-a-6 before:outline-neutral-a-7 relative before:absolute before:h-full before:w-full before:rounded-full before:outline-1 before:-outline-offset-1 before:content-[''] group-data-[orientation=horizontal]:h-2 group-data-[orientation=horizontal]:w-full group-data-[orientation=vertical]:w-2 before:group-data-[orientation=horizontal]:top-1/2 before:group-data-[orientation=horizontal]:-translate-y-1/2 before:group-data-[variant=surface]:outline",
     className,
   );
   return <SliderTrackPrimitive className={mergedClassName} {...properties} ref={reference} />;
@@ -105,7 +131,7 @@ export const SliderRange = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElem
     const width = state.orientation === "horizontal" ? fill : "100%";
     const height = state.orientation === "vertical" ? fill : "100%";
     const mergedClassName = cx(
-      "outline-neutral-a-7 group-data-[color=primary]:outline-primary-a-7 bg-neutral-9 group-data-[color=primary]:bg-primary-9 absolute bottom-0 start-0 rounded-full -outline-offset-1 group-data-[variant=surface]:outline",
+      "outline-neutral-a-7 group-data-[color=primary]:outline-primary-a-7 bg-neutral-9 group-data-[color=primary]:bg-primary-9 absolute bottom-0 start-0 hidden rounded-full -outline-offset-1 group-data-[variant=surface]:outline",
       className,
     );
     // eslint-disable-next-line react/forbid-dom-props
@@ -120,7 +146,7 @@ export const SliderThumb = forwardRef<
   ComponentPropsWithoutRef<typeof SliderThumbPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "before:shadow-neutral-a-9 absolute h-4 w-4 origin-top-left before:absolute before:h-full before:w-full before:translate-y-1 before:rounded-full before:bg-white before:shadow before:content-[''] group-data-[orientation=vertical]:start-1 before:dark:shadow-none",
+    "shadow-neutral-a-9 absolute size-4 origin-top-left !translate-y-0 rounded-full bg-white shadow group-data-[orientation=horizontal]:top-1/2 group-data-[orientation=vertical]:start-1 dark:shadow-none",
     className,
   );
   return <SliderThumbPrimitive className={mergedClassName} {...properties} ref={reference} />;

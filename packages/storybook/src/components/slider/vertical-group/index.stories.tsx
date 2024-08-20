@@ -1,7 +1,8 @@
-import { SpeakerLoudIcon, SpeakerModerateIcon } from "@radix-ui/react-icons";
 import {
   Slider,
   SliderDescription,
+  SliderInlineLabel,
+  SliderInlineOutput,
   SliderLabel,
   SliderLabels,
   SliderOutput,
@@ -55,7 +56,7 @@ const PreviewSlider = (properties: {
 
   switch (thumbShape) {
     case "pill": {
-      thumbShapeClassName = "h-5 w-2.5 group-data-[orientation=vertical]:rotate-90";
+      thumbShapeClassName = "h-5 w-2.5 rotate-90";
       break;
     }
     case "square": {
@@ -70,44 +71,58 @@ const PreviewSlider = (properties: {
   return (
     <div className={`w-full ${isSquished ? "max-w-36" : "max-w-xs"}`}>
       <Form className="relative w-full">
-        <Slider
-          className="w-full"
-          color={color}
-          formatOptions={{}}
-          hasValence={hasValence}
-          isDisabled={isDisabled}
-          maxValue={maximumValue}
-          minValue={minimumValue}
-          onChange={setValue}
-          orientation={orientation}
-          originValue={originValue}
-          value={Math.max(Math.min(value, maximumValue), minimumValue)}
-          variant={variant}
-        >
-          <SliderLabels>
-            {hasLabel ? (
-              <SliderLabel>
-                {intl.formatMessage({
-                  defaultMessage: "Volume",
-                  id: "y867Vs",
-                })}
-              </SliderLabel>
-            ) : null}
-            {hasLabel && hasLabelDescription ? (
-              <SliderDescription>
-                {intl.formatMessage({
-                  defaultMessage: "How loud until the neighbors complain.",
-                  id: "bEWLDO",
-                })}
-              </SliderDescription>
-            ) : null}
-            <SliderOutput>{({ state }) => `${state.getThumbValue(0)} dB`}</SliderOutput>
-          </SliderLabels>
-          <SliderTrack className="h-56">
-            {hasRange ? <SliderRange /> : null}
-            <SliderThumb className={thumbShapeClassName} />
-          </SliderTrack>
-        </Slider>
+        <div className="w-full">
+          <div className="flex w-full justify-around px-2">
+            <ol
+              aria-hidden
+              // eslint-disable-next-line tailwindcss/no-custom-classname
+              className="divide-neutral-a-6 absolute inset-x-2 inset-y-6 divide-y divide-dotted"
+            >
+              {Array.from({ length: 14 }, (_, index) => (
+                <li className="h-4 w-full" key={index} />
+              ))}
+            </ol>
+            {Array.from({ length: 5 }, (_, index) => (
+              <Slider
+                className="inline-flex flex-col items-center justify-center"
+                color={color}
+                defaultValue={50}
+                hasValence={hasValence}
+                isDisabled={isDisabled}
+                key={index}
+                maxValue={maximumValue}
+                minValue={minimumValue}
+                orientation="vertical"
+                originValue={originValue}
+                variant={variant}
+              >
+                <SliderInlineLabel>
+                  {intl.formatMessage(
+                    {
+                      defaultMessage: "FY{year}",
+                      id: "kReONT",
+                    },
+                    {
+                      year: index + 25,
+                    },
+                  )}
+                </SliderInlineLabel>
+                <SliderTrack className="h-56 before:rounded-sm">
+                  {hasRange ? <SliderRange /> : null}
+                  <SliderThumb className={thumbShapeClassName} />
+                </SliderTrack>
+                <SliderInlineOutput>
+                  {({ state }) => (
+                    <>
+                      <span className="absolute right-full">$</span>
+                      <span>{state.values[0]}</span>
+                    </>
+                  )}
+                </SliderInlineOutput>
+              </Slider>
+            ))}
+          </div>
+        </div>
       </Form>
     </div>
   );
@@ -135,8 +150,8 @@ export const Standard: Story = {
     orientation: "horizontal",
     originLabel: "",
     originValue: 0,
-    thumbShape: "circle",
-    variant: "surface",
+    thumbShape: "pill",
+    variant: "soft",
   },
   argTypes: {
     color: {

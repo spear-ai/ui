@@ -55,11 +55,11 @@ const PreviewSlider = (properties: {
 
   switch (thumbShape) {
     case "pill": {
-      thumbShapeClassName = "h-5 w-2.5 group-data-[orientation=vertical]:rotate-90";
+      thumbShapeClassName = "h-5 w-2.5 group-data-[orientation=vertical]:before:rotate-90";
       break;
     }
     case "square": {
-      thumbShapeClassName = "rounded-sm";
+      thumbShapeClassName = "before:rounded-sm";
       break;
     }
     default: {
