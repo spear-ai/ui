@@ -1,5 +1,6 @@
 import {
   ComponentPropsWithoutRef,
+  createContext,
   ElementRef,
   forwardRef,
   HTMLAttributes,
@@ -17,6 +18,12 @@ import {
   SliderTrack as SliderTrackPrimitive,
 } from "react-aria-components";
 import { cx } from "@/helpers/cx";
+
+export const SliderExtraContext = createContext<{
+  originValue: number | null;
+}>({
+  originValue: null,
+});
 
 export const SliderGroup = forwardRef<
   ElementRef<typeof SliderGroupPrimitive>,
@@ -85,19 +92,34 @@ export const Slider = forwardRef<
     /** The Slider variant. */
     variant?: "soft" | "surface" | undefined;
   }
->(({ className, color = "neutral", hasValence = false, variant = "surface", ...properties }, reference) => {
-  const mergedClassName = cx("group", className);
-  return (
-    <SliderPrimitive
-      className={mergedClassName}
-      data-color={color}
-      data-has-valence={hasValence}
-      data-variant={variant}
-      {...properties}
-      ref={reference}
-    />
-  );
-});
+>(
+  (
+    {
+      className,
+      color = "neutral",
+      hasValence = false,
+      originValue = null,
+      variant = "surface",
+      ...properties
+    },
+    reference,
+  ) => {
+    const extraContext = useMemo(() => ({ originValue }), [originValue]);
+    const mergedClassName = cx("group", className);
+    return (
+      <SliderExtraContext.Provider value={extraContext}>
+        <SliderPrimitive
+          className={mergedClassName}
+          data-color={color}
+          data-has-valence={hasValence}
+          data-variant={variant}
+          {...properties}
+          ref={reference}
+        />
+      </SliderExtraContext.Provider>
+    );
+  },
+);
 
 Slider.displayName = "Slider";
 
@@ -190,21 +212,45 @@ SliderTrack.displayName = "SliderTrack";
 export const SliderFill = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
   ({ className, ...properties }, reference) => {
     const state = useContext(SliderStateContext);
-    const first = state.values.length === 2 ? 100 * state.getThumbPercent(0) : 0;
-    const last = state.values.length === 2 ? 100 * state.getThumbPercent(1) : 100 * state.getThumbPercent(0);
-    const delta = last - first;
-    const bottom = state.orientation === "vertical" ? `${first}%` : "0%";
-    const start = state.orientation === "vertical" ? "0%" : `${first}%`;
-    const width = state.orientation === "vertical" ? "100%" : `${delta}%`;
-    const height = state.orientation === "vertical" ? `${delta}%` : "100%";
+    const extra = useContext(SliderExtraContext);
+    const minimumValue = state.getThumbMinValue(0);
+    const maximumValue = state.getThumbMaxValue(0);
+    const originValue = extra.originValue ?? minimumValue;
+    const originPercent =
+      100 * (Math.abs(originValue - minimumValue) / Math.abs(maximumValue - minimumValue));
+    const firstPercent =
+      state.values.length === 2 ? 100 * state.getThumbPercent(1) : 100 * state.getThumbPercent(0);
+    const lastPercent = state.values.length === 2 ? 100 * state.getThumbPercent(0) : originPercent;
+    const deltaPercent = Math.abs(firstPercent - lastPercent);
+    const bottom = state.orientation === "vertical" ? `${Math.min(firstPercent, lastPercent)}%` : "0%";
+    const valence =
+      deltaPercent === 0 ? "neutral" : originPercent > firstPercent ? "x-negative" : "x-positive";
+    const start = state.orientation === "vertical" ? "0%" : `${originPercent}%`;
+    const width = state.orientation === "vertical" ? "100%" : `${deltaPercent}%`;
+    const height = state.orientation === "vertical" ? `${deltaPercent}%` : "100%";
+    console.log({
+      bottom,
+      deltaPercent,
+      firstPercent,
+      height,
+      lastPercent,
+      maximumValue,
+      minimumValue,
+      originPercent,
+      originValue,
+      start,
+      valence,
+      width,
+    });
     const mergedClassName = cx(
-      "before:group-disabled:outline-neutral-a-6 before:outline-neutral-a-7 before:group-data-[color=primary]:outline-primary-a-7 before:bg-neutral-9 before:group-data-[color=primary]:bg-primary-9 before:group-disabled:bg-neutral-3 absolute before:absolute before:inset-0 before:rounded-full before:outline-1 before:-outline-offset-1 before:content-[''] before:group-data-[variant=surface]:outline",
+      "before:group-data-[has-valence=true]:data-[valence=x-negative]:bg-x-negative-9 before:group-data-[has-valence=true]:data-[valence=x-negative]:outline-x-negative-a-7 before:group-data-[has-valence=true]:data-[valence=x-positive]:bg-x-positive-9 before:group-data-[has-valence=true]:data-[valence=x-positive]:outline-x-positive-a-7 before:group-disabled:outline-neutral-a-6 before:outline-neutral-a-7 before:group-data-[color=primary]:outline-primary-a-7 before:bg-neutral-9 before:group-data-[color=primary]:bg-primary-9 before:group-disabled:bg-neutral-3 absolute before:absolute before:inset-0 before:rounded-full before:outline-1 before:-outline-offset-1 before:content-[''] before:group-data-[variant=surface]:outline",
       className,
     );
 
     return (
       <div
         className={mergedClassName}
+        data-valence={valence}
         {...properties}
         ref={reference}
         style={{ bottom, height, left: start, width }}
@@ -213,14 +259,12 @@ export const SliderFill = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivEleme
   },
 );
 
-SliderTrack.displayName = "SliderFill";
-
 export const SliderThumb = forwardRef<
   ElementRef<typeof SliderThumbPrimitive>,
   ComponentPropsWithoutRef<typeof SliderThumbPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "group-disabled:bg-neutral-2 group-disabled:outline-neutral-6 absolute size-4 origin-top-left !translate-y-0 rounded-full bg-white shadow group-disabled:outline group-disabled:outline-1 group-disabled:-outline-offset-1 group-data-[orientation=horizontal]:top-1/2 group-data-[orientation=vertical]:start-1",
+    "group-disabled:bg-neutral-2 group-disabled:outline-neutral-6 absolute size-4 origin-top-left rounded-full bg-white shadow group-disabled:outline group-disabled:outline-1 group-disabled:-outline-offset-1 group-data-[orientation=horizontal]:top-1/2 group-data-[orientation=vertical]:start-1",
     className,
   );
   return <SliderThumbPrimitive className={mergedClassName} {...properties} ref={reference} />;
