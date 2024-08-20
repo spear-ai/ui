@@ -239,7 +239,8 @@ export const SliderFill = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivEleme
         data-valence={valence}
         {...properties}
         ref={reference}
-        style={{ bottom, height, left: start, width }}
+        // eslint-disable-next-line react/forbid-dom-props
+        style={{ bottom, height, insetInlineStart: start, width }}
       />
     );
   },
