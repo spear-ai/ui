@@ -188,7 +188,7 @@ export const SliderInlineOutput = forwardRef<
   ComponentPropsWithoutRef<typeof SliderOutputPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "text-neutral-11 absolute -top-7 mb-1 inline-flex whitespace-nowrap text-sm/6 tabular-nums group-data-[orientation=horizontal]:ms-auto sm:text-xs/6",
+    "group-disabled:text-neutral-10 text-neutral-11 absolute -top-7 mb-1 inline-flex whitespace-nowrap text-sm/6 tabular-nums group-data-[orientation=horizontal]:ms-auto sm:text-xs/6",
     className,
   );
   return <SliderOutputPrimitive className={mergedClassName} {...properties} ref={reference} />;
