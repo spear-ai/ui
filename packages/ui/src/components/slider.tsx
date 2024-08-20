@@ -1,13 +1,76 @@
-import { ComponentPropsWithoutRef, ElementRef, forwardRef, HTMLAttributes, useContext } from "react";
 import {
+  ComponentPropsWithoutRef,
+  ElementRef,
+  forwardRef,
+  HTMLAttributes,
+  useContext,
+  useMemo,
+} from "react";
+import {
+  Group as SliderGroupPrimitive,
   Label as LabelPrimitive,
   Slider as SliderPrimitive,
+  SliderContext,
   SliderOutput as SliderOutputPrimitive,
   SliderStateContext,
   SliderThumb as SliderThumbPrimitive,
   SliderTrack as SliderTrackPrimitive,
 } from "react-aria-components";
 import { cx } from "@/helpers/cx";
+
+export const SliderGroup = forwardRef<
+  ElementRef<typeof SliderGroupPrimitive>,
+  ComponentPropsWithoutRef<typeof SliderGroupPrimitive> & {
+    className?: string | undefined;
+    /**
+     * Whether the slider group is disabled.
+     * @selector [data-disabled]
+     */
+    isDisabled?: boolean | undefined;
+  }
+>(({ className, isDisabled = false, ...properties }, reference) => {
+  const mergedClassName = cx("group/group", className);
+  const context = useMemo(() => ({ isDisabled }), [isDisabled]);
+  return (
+    <SliderContext.Provider value={context}>
+      <SliderGroupPrimitive
+        className={mergedClassName}
+        isDisabled={isDisabled}
+        {...properties}
+        ref={reference}
+      />
+    </SliderContext.Provider>
+  );
+});
+
+SliderGroup.displayName = "SliderGroup";
+
+export const SliderGroupLabel = forwardRef<
+  ElementRef<typeof LabelPrimitive>,
+  ComponentPropsWithoutRef<typeof LabelPrimitive>
+>(({ className, ...properties }, reference) => {
+  const mergedClassName = cx(
+    "text-neutral-12 group-disabled/group:text-neutral-11 mb-2 block select-none text-base/6 sm:text-sm/6",
+    className,
+  );
+  return (
+    <LabelPrimitive className={mergedClassName} data-slot="group-label" {...properties} ref={reference} />
+  );
+});
+
+SliderGroupLabel.displayName = "SliderGroupLabel";
+
+export const SliderGroupDescription = forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLParagraphElement>>(
+  ({ className, ...properties }, reference) => {
+    const mergedClassName = cx(
+      "text-neutral-11 group-disabled/group:text-neutral-9 -mt-1 mb-2 text-base/6 sm:text-sm/6",
+      className,
+    );
+    return <p className={mergedClassName} data-slot="group-description" {...properties} ref={reference} />;
+  },
+);
+
+SliderGroupLabel.displayName = "SliderGroupDescription";
 
 export const Slider = forwardRef<
   ElementRef<typeof SliderPrimitive>,
@@ -116,7 +179,7 @@ export const SliderTrack = forwardRef<
   ComponentPropsWithoutRef<typeof SliderTrackPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "before:bg-neutral-a-3 before:outline-neutral-a-7 relative before:absolute before:h-full before:w-full before:rounded-full before:outline-1 before:-outline-offset-1 before:content-[''] group-data-[orientation=horizontal]:h-2 group-data-[orientation=horizontal]:w-full group-data-[orientation=vertical]:w-2 before:group-data-[orientation=horizontal]:top-1/2 before:group-data-[orientation=horizontal]:-translate-y-1/2 before:group-data-[variant=surface]:outline",
+    "before:bg-neutral-a-3 before:outline-neutral-a-7 before:group-disabled:outline-neutral-a-6 relative before:absolute before:h-full before:w-full before:rounded-full before:outline-1 before:-outline-offset-1 before:content-[''] group-data-[orientation=horizontal]:h-2 group-data-[orientation=horizontal]:w-full group-data-[orientation=vertical]:w-2 before:group-data-[orientation=horizontal]:top-1/2 before:group-data-[orientation=horizontal]:-translate-y-1/2 before:group-data-[variant=surface]:outline",
     className,
   );
   return <SliderTrackPrimitive className={mergedClassName} {...properties} ref={reference} />;
@@ -135,7 +198,7 @@ export const SliderFill = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivEleme
     const width = state.orientation === "vertical" ? "100%" : `${delta}%`;
     const height = state.orientation === "vertical" ? `${delta}%` : "100%";
     const mergedClassName = cx(
-      "before:outline-neutral-a-7 before:group-data-[color=primary]:outline-primary-a-7 before:bg-neutral-9 before:group-data-[color=primary]:bg-primary-9 before:group-disabled:bg-neutral-3 absolute before:absolute before:inset-0 before:rounded-full before:-outline-offset-1 before:content-[''] before:group-data-[variant=surface]:outline",
+      "before:group-disabled:outline-neutral-a-6 before:outline-neutral-a-7 before:group-data-[color=primary]:outline-primary-a-7 before:bg-neutral-9 before:group-data-[color=primary]:bg-primary-9 before:group-disabled:bg-neutral-3 absolute before:absolute before:inset-0 before:rounded-full before:outline-1 before:-outline-offset-1 before:content-[''] before:group-data-[variant=surface]:outline",
       className,
     );
 

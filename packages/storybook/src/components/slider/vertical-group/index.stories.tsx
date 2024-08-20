@@ -2,6 +2,9 @@ import {
   Slider,
   SliderDescription,
   SliderFill,
+  SliderGroup,
+  SliderGroupDescription,
+  SliderGroupLabel,
   SliderInlineLabel,
   SliderInlineOutput,
   SliderLabel,
@@ -17,11 +20,12 @@ import { useIntl } from "react-intl";
 
 const PreviewSlider = (properties: {
   color: "neutral" | "primary";
+  firstSliderIsDisabled: boolean;
+  groupIsDisabled: boolean;
   hasFill: boolean;
   hasLabel: boolean;
   hasLabelDescription: boolean;
   hasValence: boolean;
-  isDisabled: boolean;
   isRange: boolean;
   isSquished: boolean;
   maximumValue: number;
@@ -34,11 +38,12 @@ const PreviewSlider = (properties: {
 }) => {
   const {
     color,
+    firstSliderIsDisabled,
+    groupIsDisabled,
     hasFill,
     hasLabel,
     hasLabelDescription,
     hasValence,
-    isDisabled,
     isRange,
     isSquished,
     maximumValue,
@@ -71,22 +76,22 @@ const PreviewSlider = (properties: {
   return (
     <div className={`w-full ${isSquished ? "max-w-36" : "max-w-xs"}`}>
       <Form className="relative w-full">
-        <div className="w-full">
+        <SliderGroup className="w-full" isDisabled={groupIsDisabled}>
           {hasLabel ? (
-            <SliderLabel>
+            <SliderGroupLabel>
               {intl.formatMessage({
                 defaultMessage: "Budget",
                 id: "0KKXrH",
               })}
-            </SliderLabel>
+            </SliderGroupLabel>
           ) : null}
           {hasLabel && hasLabelDescription ? (
-            <SliderDescription>
+            <SliderGroupDescription>
               {intl.formatMessage({
                 defaultMessage: "Don’t worry, it’s other peoples money",
                 id: "5G09fG",
               })}
-            </SliderDescription>
+            </SliderGroupDescription>
           ) : null}
           <div className="relative flex w-full justify-around py-7">
             <ol
@@ -105,7 +110,7 @@ const PreviewSlider = (properties: {
                 defaultValue={isRange ? [30, 70] : 50}
                 hasValence={hasValence}
                 id={index === 0 ? firstId : ""}
-                isDisabled={isDisabled}
+                isDisabled={groupIsDisabled || (index === 0 ? firstSliderIsDisabled : false)}
                 key={index}
                 maxValue={maximumValue}
                 minValue={minimumValue}
@@ -140,7 +145,7 @@ const PreviewSlider = (properties: {
               </Slider>
             ))}
           </div>
-        </div>
+        </SliderGroup>
       </Form>
     </div>
   );
@@ -155,13 +160,14 @@ type Story = StoryObj<typeof meta>;
 export const Standard: Story = {
   args: {
     color: "neutral",
+    firstSliderIsDisabled: false,
+    groupIsDisabled: false,
     hasEndIcon: true,
     hasFill: true,
     hasLabel: true,
     hasLabelDescription: true,
     hasStartIcon: true,
     hasValence: false,
-    isDisabled: false,
     isRange: false,
     isSquished: false,
     maximumValue: 100,
