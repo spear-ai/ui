@@ -86,7 +86,7 @@ const PreviewSlider = (properties: {
           <div className="relative flex w-full justify-around py-7">
             <ol
               aria-hidden
-              className="absolute inset-x-0 inset-y-7 divide-y divide-dotted divide-neutral-a-6"
+              className="divide-neutral-a-6 absolute inset-x-0 inset-y-7 divide-y divide-dotted"
             >
               {Array.from({ length: 14 }, (_, index) => (
                 <li className="h-4 w-full" key={index} />
@@ -96,10 +96,10 @@ const PreviewSlider = (properties: {
               <Slider
                 className="relative inline-flex flex-col items-center justify-center"
                 color={color}
-                defaultValue={isRange ? [30, 70] : 50}
+                defaultValue={isRange ? [15, 85] : 50}
                 hasValence={isRange ? false : hasValence}
                 isDisabled={groupIsDisabled || (index === 0 ? firstSliderIsDisabled : false)}
-                key={index}
+                key={`${index}-${isRange}`}
                 maxValue={maximumValue}
                 minValue={minimumValue}
                 orientation="vertical"
@@ -123,12 +123,35 @@ const PreviewSlider = (properties: {
                   {isRange ? <SliderThumb className={thumbShapeClassName} index={1} /> : null}
                 </SliderTrack>
                 <SliderInlineOutput>
-                  {({ state }) => (
-                    <>
-                      <span className="absolute right-full">$</span>
-                      <span>{state.values[0]}</span>–<span>{state.values[1]}</span>
-                    </>
-                  )}
+                  {({ state }) =>
+                    state.values.length === 1
+                      ? intl.formatNumber(state.values[0] ?? 0, {
+                          currency: "USD",
+                          maximumFractionDigits: 0,
+                          minimumFractionDigits: 0,
+                          style: "currency",
+                        })
+                      : intl.formatMessage(
+                          {
+                            defaultMessage: "{lower}–{upper}",
+                            id: "zfZnaF",
+                          },
+                          {
+                            lower: intl.formatNumber(state.values[0] ?? 0, {
+                              currency: "USD",
+                              maximumFractionDigits: 0,
+                              minimumFractionDigits: 0,
+                              style: "currency",
+                            }),
+                            upper: intl.formatNumber(state.values[1] ?? 0, {
+                              currency: "USD",
+                              maximumFractionDigits: 0,
+                              minimumFractionDigits: 0,
+                              style: "currency",
+                            }),
+                          },
+                        )
+                  }
                 </SliderInlineOutput>
               </Slider>
             ))}
@@ -156,9 +179,9 @@ export const Standard: Story = {
     hasValence: false,
     isRange: false,
     isSquished: false,
-    maximumValue: 100,
-    minimumValue: 0,
-    originValue: 0,
+    maximumValue: 200,
+    minimumValue: -100,
+    originValue: 50,
     thumbShape: "pill",
     variant: "soft",
   },
