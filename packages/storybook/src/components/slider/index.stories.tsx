@@ -2,10 +2,10 @@ import { SpeakerLoudIcon, SpeakerModerateIcon } from "@radix-ui/react-icons";
 import {
   Slider,
   SliderDescription,
+  SliderFill,
   SliderLabel,
   SliderLabels,
   SliderOutput,
-  SliderRange,
   SliderThumb,
   SliderTrack,
 } from "@spear-ai/ui/components/slider";
@@ -16,11 +16,12 @@ import { useIntl } from "react-intl";
 
 const PreviewSlider = (properties: {
   color: "neutral" | "primary";
+  hasFill: boolean;
   hasLabel: boolean;
   hasLabelDescription: boolean;
-  hasRange: boolean;
   hasValence: boolean;
   isDisabled: boolean;
+  isRange: boolean;
   isSquished: boolean;
   maximumValue: number;
   minimumValue: number;
@@ -32,11 +33,12 @@ const PreviewSlider = (properties: {
 }) => {
   const {
     color,
+    hasFill,
     hasLabel,
     hasLabelDescription,
-    hasRange,
     hasValence,
     isDisabled,
+    isRange,
     isSquished,
     maximumValue,
     minimumValue,
@@ -104,8 +106,9 @@ const PreviewSlider = (properties: {
             <SliderOutput>{({ state }) => `${state.getThumbValue(0)} dB`}</SliderOutput>
           </SliderLabels>
           <SliderTrack className="h-56">
-            {hasRange ? <SliderRange /> : null}
+            {hasFill ? <SliderFill /> : null}
             <SliderThumb className={thumbShapeClassName} />
+            {isRange ? <SliderThumb className={thumbShapeClassName} /> : null}
           </SliderTrack>
         </Slider>
       </Form>
@@ -123,12 +126,13 @@ export const Standard: Story = {
   args: {
     color: "neutral",
     hasEndIcon: true,
+    hasFill: true,
     hasLabel: true,
     hasLabelDescription: true,
-    hasRange: true,
     hasStartIcon: true,
     hasValence: false,
     isDisabled: false,
+    isRange: false,
     isSquished: false,
     maximumValue: 100,
     minimumValue: 0,

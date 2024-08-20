@@ -1,27 +1,28 @@
 import {
   Slider,
   SliderDescription,
+  SliderFill,
   SliderInlineLabel,
   SliderInlineOutput,
   SliderLabel,
   SliderLabels,
   SliderOutput,
-  SliderRange,
   SliderThumb,
   SliderTrack,
 } from "@spear-ai/ui/components/slider";
 import type { Meta, StoryObj } from "@storybook/react";
-import { useState } from "react";
+import { useId } from "react";
 import { Form } from "react-aria-components";
 import { useIntl } from "react-intl";
 
 const PreviewSlider = (properties: {
   color: "neutral" | "primary";
+  hasFill: boolean;
   hasLabel: boolean;
   hasLabelDescription: boolean;
-  hasRange: boolean;
   hasValence: boolean;
   isDisabled: boolean;
+  isRange: boolean;
   isSquished: boolean;
   maximumValue: number;
   minimumValue: number;
@@ -33,11 +34,12 @@ const PreviewSlider = (properties: {
 }) => {
   const {
     color,
+    hasFill,
     hasLabel,
     hasLabelDescription,
-    hasRange,
     hasValence,
     isDisabled,
+    isRange,
     isSquished,
     maximumValue,
     minimumValue,
@@ -48,9 +50,7 @@ const PreviewSlider = (properties: {
     variant,
   } = properties;
   const intl = useIntl();
-  const [value, setValue] = useState(
-    Math.max(Math.min(Math.round(maximumValue / 4), maximumValue), minimumValue),
-  );
+  const firstId = useId();
 
   let thumbShapeClassName = "";
 
@@ -72,11 +72,27 @@ const PreviewSlider = (properties: {
     <div className={`w-full ${isSquished ? "max-w-36" : "max-w-xs"}`}>
       <Form className="relative w-full">
         <div className="w-full">
-          <div className="flex w-full justify-around px-2">
+          {hasLabel ? (
+            <SliderLabel>
+              {intl.formatMessage({
+                defaultMessage: "Budget",
+                id: "0KKXrH",
+              })}
+            </SliderLabel>
+          ) : null}
+          {hasLabel && hasLabelDescription ? (
+            <SliderDescription>
+              {intl.formatMessage({
+                defaultMessage: "Don’t worry, it’s other peoples money",
+                id: "5G09fG",
+              })}
+            </SliderDescription>
+          ) : null}
+          <div className="relative flex w-full justify-around py-7">
             <ol
               aria-hidden
               // eslint-disable-next-line tailwindcss/no-custom-classname
-              className="divide-neutral-a-6 absolute inset-x-2 inset-y-6 divide-y divide-dotted"
+              className="divide-neutral-a-6 absolute inset-x-0 inset-y-7 divide-y divide-dotted"
             >
               {Array.from({ length: 14 }, (_, index) => (
                 <li className="h-4 w-full" key={index} />
@@ -84,15 +100,16 @@ const PreviewSlider = (properties: {
             </ol>
             {Array.from({ length: 5 }, (_, index) => (
               <Slider
-                className="inline-flex flex-col items-center justify-center"
+                className="relative inline-flex flex-col items-center justify-center"
                 color={color}
-                defaultValue={50}
+                defaultValue={isRange ? [30, 70] : 50}
                 hasValence={hasValence}
+                id={index === 0 ? firstId : ""}
                 isDisabled={isDisabled}
                 key={index}
                 maxValue={maximumValue}
                 minValue={minimumValue}
-                orientation="vertical"
+                orientation={orientation}
                 originValue={originValue}
                 variant={variant}
               >
@@ -108,14 +125,15 @@ const PreviewSlider = (properties: {
                   )}
                 </SliderInlineLabel>
                 <SliderTrack className="h-56 before:rounded-sm">
-                  {hasRange ? <SliderRange /> : null}
-                  <SliderThumb className={thumbShapeClassName} />
+                  {hasFill ? <SliderFill /> : null}
+                  <SliderThumb className={thumbShapeClassName} index={0} />
+                  {isRange ? <SliderThumb className={thumbShapeClassName} index={1} /> : null}
                 </SliderTrack>
                 <SliderInlineOutput>
                   {({ state }) => (
                     <>
                       <span className="absolute right-full">$</span>
-                      <span>{state.values[0]}</span>
+                      <span>{state.values[0]}</span>–<span>{state.values[1]}</span>
                     </>
                   )}
                 </SliderInlineOutput>
@@ -138,16 +156,17 @@ export const Standard: Story = {
   args: {
     color: "neutral",
     hasEndIcon: true,
+    hasFill: true,
     hasLabel: true,
     hasLabelDescription: true,
-    hasRange: true,
     hasStartIcon: true,
     hasValence: false,
     isDisabled: false,
+    isRange: false,
     isSquished: false,
     maximumValue: 100,
     minimumValue: 0,
-    orientation: "horizontal",
+    orientation: "vertical",
     originLabel: "",
     originValue: 0,
     thumbShape: "pill",
