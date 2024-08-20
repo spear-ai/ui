@@ -1,20 +1,15 @@
 import {
   Slider,
-  SliderDescription,
   SliderFill,
   SliderGroup,
   SliderGroupDescription,
   SliderGroupLabel,
   SliderInlineLabel,
   SliderInlineOutput,
-  SliderLabel,
-  SliderLabels,
-  SliderOutput,
   SliderThumb,
   SliderTrack,
 } from "@spear-ai/ui/components/slider";
 import type { Meta, StoryObj } from "@storybook/react";
-import { useId } from "react";
 import { Form } from "react-aria-components";
 import { useIntl } from "react-intl";
 
@@ -30,8 +25,6 @@ const PreviewSlider = (properties: {
   isSquished: boolean;
   maximumValue: number;
   minimumValue: number;
-  orientation: "horizontal" | "vertical";
-  originLabel: string;
   originValue: number;
   thumbShape: "circle" | "pill" | "square";
   variant: "soft" | "surface";
@@ -48,14 +41,11 @@ const PreviewSlider = (properties: {
     isSquished,
     maximumValue,
     minimumValue,
-    orientation,
-    // OriginLabel,
     originValue,
     thumbShape,
     variant,
   } = properties;
   const intl = useIntl();
-  const firstId = useId();
 
   let thumbShapeClassName = "";
 
@@ -96,8 +86,7 @@ const PreviewSlider = (properties: {
           <div className="relative flex w-full justify-around py-7">
             <ol
               aria-hidden
-              // eslint-disable-next-line tailwindcss/no-custom-classname
-              className="divide-neutral-a-6 absolute inset-x-0 inset-y-7 divide-y divide-dotted"
+              className="absolute inset-x-0 inset-y-7 divide-y divide-dotted divide-neutral-a-6"
             >
               {Array.from({ length: 14 }, (_, index) => (
                 <li className="h-4 w-full" key={index} />
@@ -109,12 +98,11 @@ const PreviewSlider = (properties: {
                 color={color}
                 defaultValue={isRange ? [30, 70] : 50}
                 hasValence={isRange ? false : hasValence}
-                id={index === 0 ? firstId : ""}
                 isDisabled={groupIsDisabled || (index === 0 ? firstSliderIsDisabled : false)}
                 key={index}
                 maxValue={maximumValue}
                 minValue={minimumValue}
-                orientation={orientation}
+                orientation="vertical"
                 originValue={originValue}
                 variant={variant}
               >
@@ -162,18 +150,14 @@ export const Standard: Story = {
     color: "neutral",
     firstSliderIsDisabled: false,
     groupIsDisabled: false,
-    hasEndIcon: true,
     hasFill: true,
     hasLabel: true,
     hasLabelDescription: true,
-    hasStartIcon: true,
     hasValence: false,
     isRange: false,
     isSquished: false,
     maximumValue: 100,
     minimumValue: 0,
-    orientation: "vertical",
-    originLabel: "",
     originValue: 0,
     thumbShape: "pill",
     variant: "soft",
@@ -184,10 +168,6 @@ export const Standard: Story = {
         type: "select",
       },
       options: ["neutral", "primary"],
-    },
-    orientation: {
-      control: { type: "select" },
-      options: ["horizontal", "vertical"],
     },
     thumbShape: {
       control: { type: "select" },
