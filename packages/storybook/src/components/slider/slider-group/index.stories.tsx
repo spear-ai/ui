@@ -86,8 +86,8 @@ const PreviewSliderGroup = (properties: {
           <div className="relative w-full">
             <ol
               aria-hidden
-              // eslint-disable-next-line tailwindcss/no-custom-classname
-              className="divide-neutral-a-6 pointer-events-none absolute inset-x-0 inset-y-7 divide-y divide-dotted"
+               
+              className="pointer-events-none absolute inset-x-0 inset-y-7 divide-y divide-dotted divide-neutral-a-6"
             >
               {Array.from({ length: 14 }, (_, index) => (
                 <li className="h-4 w-full" key={index} />

@@ -26,7 +26,7 @@ const PreviewDialog = (properties: {
 
   return (
     <DialogTrigger>
-      <Button className="text-neutral-12 cursor-default rounded-md">
+      <Button className="cursor-default rounded-md text-neutral-12">
         {intl.formatMessage({
           defaultMessage: "Trigger",
           id: "B3Q5mz",
@@ -52,7 +52,7 @@ const PreviewDialog = (properties: {
               </DialogTitle>
             ) : null}
             <div className="mt-2">
-              <p className="text-neutral-11 text-sm rtl:text-right">
+              <p className="text-sm text-neutral-11 rtl:text-right">
                 {intl.formatMessage({
                   defaultMessage:
                     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur amet labore.",
@@ -61,7 +61,7 @@ const PreviewDialog = (properties: {
               </p>
             </div>
             <div className="mt-5 sm:mt-6">
-              <DialogCloseButtonPrimitive className="bg-primary-9 text-primary-contrast hover:bg-primary-10 inline-flex w-full cursor-default justify-center rounded-md px-3 py-2 text-sm font-semibold shadow-sm">
+              <DialogCloseButtonPrimitive className="inline-flex w-full cursor-default justify-center rounded-md bg-primary-9 px-3 py-2 text-sm font-semibold text-primary-contrast shadow-sm hover:bg-primary-10">
                 {intl.formatMessage({
                   defaultMessage: "Understood",
                   id: "GcvLBC",
