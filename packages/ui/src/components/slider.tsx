@@ -200,7 +200,10 @@ SliderOutput.displayName = "SliderInlineOutput";
 
 export const SliderField = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
   ({ className, ...properties }, reference) => {
-    const mergedClassName = cx("", className);
+    const mergedClassName = cx(
+      "flex group-data-[orientation=vertical]:flex-col group-data-[orientation=horizontal]:items-center",
+      className,
+    );
     return <div className={mergedClassName} {...properties} ref={reference} />;
   },
 );
@@ -263,14 +266,6 @@ export const SliderFill = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivEleme
       insetInlineStart: state.orientation === "vertical" ? "0%" : `${offset}%`,
       width: state.orientation === "vertical" ? "100%" : `${size}%`,
     };
-
-    console.log({
-      mergedStyle,
-      offset,
-      size,
-      valence,
-      values: state.values,
-    });
 
     return (
       <div

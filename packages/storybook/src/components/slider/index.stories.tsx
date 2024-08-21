@@ -27,7 +27,11 @@ const PreviewSliderDecrementButton = () => {
   }, [decrementThumb]);
 
   return (
-    <IconButton className="-ms-2 me-0.5 rounded-full" onPress={handlePress} variant="ghost">
+    <IconButton
+      className="relative rounded-full group-data-[orientation=vertical]:left-1 group-data-[orientation=vertical]:order-last group-data-[orientation=horizontal]:-ms-2 group-data-[orientation=horizontal]:me-0.5 group-data-[orientation=vertical]:-translate-x-1/2"
+      onPress={handlePress}
+      variant="ghost"
+    >
       <IconButtonIcon asChild>
         <SpeakerModerateIcon />
       </IconButtonIcon>
@@ -46,7 +50,11 @@ const PreviewSliderIncrementButton = () => {
   }, [incrementThumb]);
 
   return (
-    <IconButton className="-me-2 ms-0.5 rounded-full" onPress={handlePress} variant="ghost">
+    <IconButton
+      className="relative rounded-full group-data-[orientation=vertical]:left-1 group-data-[orientation=vertical]:order-first group-data-[orientation=horizontal]:-me-2 group-data-[orientation=horizontal]:ms-0.5 group-data-[orientation=vertical]:-translate-x-1/2"
+      onPress={handlePress}
+      variant="ghost"
+    >
       <IconButtonIcon asChild>
         <SpeakerLoudIcon />
       </IconButtonIcon>
@@ -68,8 +76,7 @@ const PreviewSlider = (properties: {
   maximumValue: number;
   minimumValue: number;
   orientation: "horizontal" | "vertical";
-  originLabel: string;
-  originValue: number | undefined;
+  originValue: number;
   thumbShape: "circle" | "pill" | "square";
   variant: "soft" | "surface";
 }) => {
@@ -142,17 +149,19 @@ const PreviewSlider = (properties: {
                 })}
               </SliderDescription>
             ) : null}
-            <SliderOutput>
-              {({ state }) =>
-                state.values.length === 2
-                  ? `${state.getThumbValue(0)}–${state.getThumbValue(1)} dB`
-                  : `${state.getThumbValue(0)} dB`
-              }
-            </SliderOutput>
+            {orientation === "horizontal" ? (
+              <SliderOutput>
+                {({ state }) =>
+                  state.values.length === 2
+                    ? `${state.getThumbValue(0)}–${state.getThumbValue(1)} dB`
+                    : `${state.getThumbValue(0)} dB`
+                }
+              </SliderOutput>
+            ) : null}
           </SliderLabels>
-          <SliderField className="flex items-center">
+          <SliderField className="group-data-[orientation=vertical]:h-56">
             {hasStartIcon ? <PreviewSliderDecrementButton /> : null}
-            <SliderTrack className="h-56 flex-1">
+            <SliderTrack className="flex-1">
               {hasFill ? <SliderFill /> : null}
               <SliderThumb className={thumbShapeClassName} index={0} />
               {isRange ? <SliderThumb className={thumbShapeClassName} index={1} /> : null}
@@ -186,8 +195,7 @@ export const Standard: Story = {
     maximumValue: 100,
     minimumValue: 0,
     orientation: "horizontal",
-    originLabel: "",
-    originValue: undefined,
+    originValue: 0,
     thumbShape: "circle",
     variant: "surface",
   },
