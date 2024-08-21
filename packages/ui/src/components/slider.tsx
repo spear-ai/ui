@@ -20,8 +20,10 @@ import {
 import { cx } from "@/helpers/cx";
 
 export const SliderExtraContext = createContext<{
+  hasValence: boolean;
   originValue: number | null;
 }>({
+  hasValence: false,
   originValue: null,
 });
 
@@ -104,10 +106,10 @@ export const Slider = forwardRef<
     },
     reference,
   ) => {
-    const extraContext = useMemo(() => ({ originValue }), [originValue]);
+    const extra = useMemo(() => ({ hasValence, originValue }), [hasValence, originValue]);
     const mergedClassName = cx("group", className);
     return (
-      <SliderExtraContext.Provider value={extraContext}>
+      <SliderExtraContext.Provider value={extra}>
         <SliderPrimitive
           className={mergedClassName}
           data-color={color}
@@ -175,7 +177,7 @@ export const SliderOutput = forwardRef<
   ComponentPropsWithoutRef<typeof SliderOutputPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "text-neutral-11 mb-0.5 block text-end text-base/6 tabular-nums group-data-[orientation=horizontal]:ms-auto sm:text-sm/6",
+    "text-neutral-11 block text-end text-base/6 tabular-nums group-data-[orientation=horizontal]:ms-auto sm:text-sm/6",
     className,
   );
   return <SliderOutputPrimitive className={mergedClassName} {...properties} ref={reference} />;
@@ -196,6 +198,15 @@ export const SliderInlineOutput = forwardRef<
 
 SliderOutput.displayName = "SliderInlineOutput";
 
+export const SliderField = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...properties }, reference) => {
+    const mergedClassName = cx("", className);
+    return <div className={mergedClassName} {...properties} ref={reference} />;
+  },
+);
+
+SliderField.displayName = "SliderField";
+
 export const SliderTrack = forwardRef<
   ElementRef<typeof SliderTrackPrimitive>,
   ComponentPropsWithoutRef<typeof SliderTrackPrimitive> & { className?: string | undefined }
@@ -210,28 +221,56 @@ export const SliderTrack = forwardRef<
 SliderTrack.displayName = "SliderTrack";
 
 export const SliderFill = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...properties }, reference) => {
+  ({ className, style, ...properties }, reference) => {
     const state = useContext(SliderStateContext);
     const extra = useContext(SliderExtraContext);
-    const minimumValue = state.getThumbMinValue(0);
-    const maximumValue = state.getThumbMaxValue(0);
-    const originValue = extra.originValue ?? minimumValue;
-    const originPercent =
-      100 * (Math.abs(originValue - minimumValue) / Math.abs(maximumValue - minimumValue));
-    const firstPercent =
-      state.values.length === 2 ? 100 * state.getThumbPercent(1) : 100 * state.getThumbPercent(0);
-    const lastPercent = state.values.length === 2 ? 100 * state.getThumbPercent(0) : originPercent;
-    const deltaPercent = Math.abs(firstPercent - lastPercent);
-    const bottom = state.orientation === "vertical" ? `${Math.min(firstPercent, lastPercent)}%` : "0%";
-    const valence =
-      deltaPercent === 0 ? "neutral" : originPercent > firstPercent ? "x-negative" : "x-positive";
-    const start = state.orientation === "vertical" ? "0%" : `${originPercent}%`;
-    const width = state.orientation === "vertical" ? "100%" : `${deltaPercent}%`;
-    const height = state.orientation === "vertical" ? `${deltaPercent}%` : "100%";
+    let valence = "";
+    let size = 0;
+    let offset = 0;
+
+    if (state.values.length === 2) {
+      const thumbDistance1 = 100 * state.getThumbPercent(0);
+      const thumbDistance2 = 100 * state.getThumbPercent(1);
+      size = Math.abs(thumbDistance2 - thumbDistance1);
+      offset = Math.min(thumbDistance1, thumbDistance2);
+    } else {
+      const minValue = state.getThumbMinValue(0);
+      const maxValue = state.getThumbMaxValue(0);
+      const thumbDistance = 100 * state.getThumbPercent(0);
+      const originValue = extra.originValue ?? minValue;
+      const originDistance = 100 * (Math.abs(originValue - minValue) / Math.abs(maxValue - minValue));
+      size = Math.abs(thumbDistance - originDistance);
+      offset = Math.min(thumbDistance, originDistance);
+
+      if (extra.hasValence) {
+        if (size === 0) {
+          valence = "neutral";
+        } else {
+          valence = thumbDistance > originDistance ? "x-positive" : "x-negative";
+        }
+      }
+    }
+
     const mergedClassName = cx(
-      "before:group-data-[has-valence=true]:data-[valence=x-negative]:bg-x-negative-9 before:group-data-[has-valence=true]:data-[valence=x-negative]:outline-x-negative-a-7 before:group-data-[has-valence=true]:data-[valence=x-positive]:bg-x-positive-9 before:group-data-[has-valence=true]:data-[valence=x-positive]:outline-x-positive-a-7 before:group-data-[has-valence=true]:group-disabled:outline-neutral-a-6 before:group-disabled:outline-neutral-a-6 before:group-data-[has-valence=true]:data-[valence=x-negative]:group-disabled:outline-x-negative-a-6 before:group-data-[has-valence=true]:data-[valence=x-positive]:group-disabled:outline-x-positive-a-6 before:outline-neutral-a-7 before:group-data-[color=primary]:outline-primary-a-7 before:bg-neutral-9 before:group-data-[color=primary]:bg-primary-9 before:group-data-[has-valence=true]:data-[valence=x-negative]:group-disabled:bg-x-negative-3 before:group-data-[has-valence=true]:data-[valence=x-positive]:group-disabled:bg-x-positive-3 before:group-disabled:bg-neutral-3 absolute before:absolute before:inset-0 before:rounded-full before:outline-1 before:-outline-offset-1 before:content-[''] before:group-data-[variant=surface]:outline",
+      "before:data-[valence=x-negative]:bg-x-negative-9 before:data-[valence=x-negative]:outline-x-negative-a-7 before:data-[valence=x-positive]:bg-x-positive-9 before:data-[valence=x-positive]:outline-x-positive-a-7 before:group-disabled:outline-neutral-a-6 before:data-[valence=x-negative]:group-disabled:outline-x-negative-a-6 before:data-[valence=x-positive]:group-disabled:outline-x-positive-a-6 before:outline-neutral-a-7 before:group-data-[color=primary]:outline-primary-a-7 before:bg-neutral-9 before:group-data-[color=primary]:bg-primary-9 before:data-[valence=x-negative]:group-disabled:bg-x-negative-3 before:data-[valence=x-positive]:group-disabled:bg-x-positive-3 before:group-disabled:bg-neutral-3 absolute before:absolute before:inset-0 before:rounded-full before:outline-1 before:-outline-offset-1 before:content-[''] before:group-data-[variant=surface]:outline",
       className,
     );
+
+    const mergedStyle = {
+      ...style,
+      bottom: state.orientation === "vertical" ? `${offset}%` : "0%",
+      height: state.orientation === "vertical" ? `${size}%` : "100%",
+      insetInlineStart: state.orientation === "vertical" ? "0%" : `${offset}%`,
+      width: state.orientation === "vertical" ? "100%" : `${size}%`,
+    };
+
+    console.log({
+      mergedStyle,
+      offset,
+      size,
+      valence,
+      values: state.values,
+    });
 
     return (
       <div
@@ -240,7 +279,7 @@ export const SliderFill = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivEleme
         {...properties}
         ref={reference}
         // eslint-disable-next-line react/forbid-dom-props
-        style={{ bottom, height, insetInlineStart: start, width }}
+        style={mergedStyle}
       />
     );
   },

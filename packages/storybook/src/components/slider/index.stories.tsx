@@ -1,7 +1,9 @@
 import { SpeakerLoudIcon, SpeakerModerateIcon } from "@radix-ui/react-icons";
+import { IconButton, IconButtonIcon } from "@spear-ai/ui/components/icon-button";
 import {
   Slider,
   SliderDescription,
+  SliderField,
   SliderFill,
   SliderLabel,
   SliderLabels,
@@ -10,15 +12,55 @@ import {
   SliderTrack,
 } from "@spear-ai/ui/components/slider";
 import type { Meta, StoryObj } from "@storybook/react";
-import { useState } from "react";
-import { Form } from "react-aria-components";
+import { useCallback, useContext } from "react";
+import { Form, SliderStateContext } from "react-aria-components";
 import { useIntl } from "react-intl";
+
+const PreviewSliderDecrementButton = () => {
+  const state = useContext(SliderStateContext);
+  // eslint-disable-next-line @typescript-eslint/unbound-method
+  const { decrementThumb } = state;
+
+  const handlePress = useCallback(() => {
+    decrementThumb(0);
+    decrementThumb(1);
+  }, [decrementThumb]);
+
+  return (
+    <IconButton className="-ms-2 me-0.5 rounded-full" onPress={handlePress} variant="ghost">
+      <IconButtonIcon asChild>
+        <SpeakerModerateIcon />
+      </IconButtonIcon>
+    </IconButton>
+  );
+};
+
+const PreviewSliderIncrementButton = () => {
+  const state = useContext(SliderStateContext);
+  // eslint-disable-next-line @typescript-eslint/unbound-method
+  const { incrementThumb } = state;
+
+  const handlePress = useCallback(() => {
+    incrementThumb(0);
+    incrementThumb(1);
+  }, [incrementThumb]);
+
+  return (
+    <IconButton className="-me-2 ms-0.5 rounded-full" onPress={handlePress} variant="ghost">
+      <IconButtonIcon asChild>
+        <SpeakerLoudIcon />
+      </IconButtonIcon>
+    </IconButton>
+  );
+};
 
 const PreviewSlider = (properties: {
   color: "neutral" | "primary";
+  hasEndIcon: boolean;
   hasFill: boolean;
   hasLabel: boolean;
   hasLabelDescription: boolean;
+  hasStartIcon: boolean;
   hasValence: boolean;
   isDisabled: boolean;
   isRange: boolean;
@@ -27,15 +69,17 @@ const PreviewSlider = (properties: {
   minimumValue: number;
   orientation: "horizontal" | "vertical";
   originLabel: string;
-  originValue: number;
+  originValue: number | undefined;
   thumbShape: "circle" | "pill" | "square";
   variant: "soft" | "surface";
 }) => {
   const {
     color,
+    hasEndIcon,
     hasFill,
     hasLabel,
     hasLabelDescription,
+    hasStartIcon,
     hasValence,
     isDisabled,
     isRange,
@@ -43,15 +87,11 @@ const PreviewSlider = (properties: {
     maximumValue,
     minimumValue,
     orientation,
-    // OriginLabel,
     originValue,
     thumbShape,
     variant,
   } = properties;
   const intl = useIntl();
-  const [value, setValue] = useState(
-    Math.max(Math.min(Math.round(maximumValue / 4), maximumValue), minimumValue),
-  );
 
   let thumbShapeClassName = "";
 
@@ -75,15 +115,14 @@ const PreviewSlider = (properties: {
         <Slider
           className="w-full"
           color={color}
-          formatOptions={{}}
+          defaultValue={isRange ? [15, 35] : 25}
           hasValence={hasValence}
           isDisabled={isDisabled}
+          key={`${isRange}`}
           maxValue={maximumValue}
           minValue={minimumValue}
-          onChange={setValue}
           orientation={orientation}
           originValue={originValue}
-          value={Math.max(Math.min(value, maximumValue), minimumValue)}
           variant={variant}
         >
           <SliderLabels>
@@ -103,13 +142,23 @@ const PreviewSlider = (properties: {
                 })}
               </SliderDescription>
             ) : null}
-            <SliderOutput>{({ state }) => `${state.getThumbValue(0)} dB`}</SliderOutput>
+            <SliderOutput>
+              {({ state }) =>
+                state.values.length === 2
+                  ? `${state.getThumbValue(0)}–${state.getThumbValue(1)} dB`
+                  : `${state.getThumbValue(0)} dB`
+              }
+            </SliderOutput>
           </SliderLabels>
-          <SliderTrack className="h-56">
-            {hasFill ? <SliderFill /> : null}
-            <SliderThumb className={thumbShapeClassName} />
-            {isRange ? <SliderThumb className={thumbShapeClassName} /> : null}
-          </SliderTrack>
+          <SliderField className="flex items-center">
+            {hasStartIcon ? <PreviewSliderDecrementButton /> : null}
+            <SliderTrack className="h-56 flex-1">
+              {hasFill ? <SliderFill /> : null}
+              <SliderThumb className={thumbShapeClassName} index={0} />
+              {isRange ? <SliderThumb className={thumbShapeClassName} index={1} /> : null}
+            </SliderTrack>
+            {hasEndIcon ? <PreviewSliderIncrementButton /> : null}
+          </SliderField>
         </Slider>
       </Form>
     </div>
@@ -138,7 +187,7 @@ export const Standard: Story = {
     minimumValue: 0,
     orientation: "horizontal",
     originLabel: "",
-    originValue: 0,
+    originValue: undefined,
     thumbShape: "circle",
     variant: "surface",
   },

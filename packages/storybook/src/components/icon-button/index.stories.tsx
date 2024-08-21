@@ -35,7 +35,6 @@ const PreviewIconButton = (properties: {
     return (
       <TooltipTrigger>
         <LinkIconButton
-          aria-label={intl.formatMessage({ defaultMessage: "Fusce dignissim", id: "uEMDBb" })}
           className={`${size} ${rounded}`}
           color={color}
           href="https://ui.spear.ai"
@@ -73,7 +72,6 @@ const PreviewIconButton = (properties: {
   return (
     <TooltipTrigger>
       <IconButton
-        aria-label={intl.formatMessage({ defaultMessage: "Fusce dignissim", id: "uEMDBb" })}
         className={`${size} ${rounded}`}
         color={color}
         isDisabled={isDisabled}
