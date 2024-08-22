@@ -3,18 +3,20 @@ import { IconButton, IconButtonIcon } from "@spear-ai/ui/components/icon-button"
 import {
   Slider,
   SliderDescription,
-  SliderField,
   SliderFill,
   SliderLabel,
   SliderLabels,
   SliderOutput,
   SliderThumb,
   SliderTrack,
+  SliderTrackGroup,
 } from "@spear-ai/ui/components/slider";
 import type { Meta, StoryObj } from "@storybook/react";
-import { useCallback, useContext } from "react";
+import { useCallback, useContext, useMemo } from "react";
 import { Form, SliderStateContext } from "react-aria-components";
 import { useIntl } from "react-intl";
+import { getDefaultSliderValue } from "@/helpers/get-default-slider-value";
+import { getUniqueSliderKey } from "@/helpers/get-unique-slider-key";
 
 const PreviewSliderDecrementButton = () => {
   const state = useContext(SliderStateContext);
@@ -28,7 +30,7 @@ const PreviewSliderDecrementButton = () => {
 
   return (
     <IconButton
-      className="relative rounded-full group-data-[orientation=vertical]:left-1 group-data-[orientation=vertical]:order-last group-data-[orientation=horizontal]:-ms-2 group-data-[orientation=horizontal]:me-0.5 group-data-[orientation=vertical]:-translate-x-1/2"
+      className="relative rounded-full group-data-[orientation=vertical]:order-last group-data-[orientation=horizontal]:-ms-2 group-data-[orientation=horizontal]:me-0.5"
       onPress={handlePress}
       variant="ghost"
     >
@@ -51,7 +53,7 @@ const PreviewSliderIncrementButton = () => {
 
   return (
     <IconButton
-      className="relative rounded-full group-data-[orientation=vertical]:left-1 group-data-[orientation=vertical]:order-first group-data-[orientation=horizontal]:-me-2 group-data-[orientation=horizontal]:ms-0.5 group-data-[orientation=vertical]:-translate-x-1/2"
+      className="relative rounded-full group-data-[orientation=vertical]:order-first group-data-[orientation=horizontal]:-me-2 group-data-[orientation=horizontal]:ms-0.5"
       onPress={handlePress}
       variant="ghost"
     >
@@ -68,15 +70,17 @@ const PreviewSlider = (properties: {
   hasFill: boolean;
   hasLabel: boolean;
   hasLabelDescription: boolean;
+  hasOrigin: boolean;
   hasStartIcon: boolean;
   hasValence: boolean;
   isDisabled: boolean;
   isRange: boolean;
   isSquished: boolean;
-  maximumValue: number;
-  minimumValue: number;
+  maxValue: number;
+  minValue: number;
   orientation: "horizontal" | "vertical";
   originValue: number;
+  step: number;
   thumbShape: "circle" | "pill" | "square";
   variant: "soft" | "surface";
 }) => {
@@ -86,15 +90,17 @@ const PreviewSlider = (properties: {
     hasFill,
     hasLabel,
     hasLabelDescription,
+    hasOrigin,
     hasStartIcon,
     hasValence,
     isDisabled,
     isRange,
     isSquished,
-    maximumValue,
-    minimumValue,
+    maxValue,
+    minValue,
     orientation,
     originValue,
+    step,
     thumbShape,
     variant,
   } = properties;
@@ -116,20 +122,41 @@ const PreviewSlider = (properties: {
     }
   }
 
+  const defaultValue = useMemo(
+    () =>
+      getDefaultSliderValue({
+        isRange,
+        maxValue,
+        minValue,
+      }),
+    [isRange, maxValue, minValue],
+  );
+
+  const key = useMemo(
+    () =>
+      getUniqueSliderKey({
+        isRange,
+        maxValue,
+        minValue,
+      }),
+    [isRange, maxValue, minValue],
+  );
+
   return (
     <div className={`w-full ${isSquished ? "max-w-36" : "max-w-xs"}`}>
       <Form className="relative w-full">
         <Slider
           className="w-full"
           color={color}
-          defaultValue={isRange ? [15, 35] : 25}
+          defaultValue={defaultValue}
           hasValence={hasValence}
           isDisabled={isDisabled}
-          key={`${isRange}`}
-          maxValue={maximumValue}
-          minValue={minimumValue}
+          key={key}
+          maxValue={maxValue}
+          minValue={minValue}
           orientation={orientation}
-          originValue={originValue}
+          originValue={hasOrigin ? originValue : minValue}
+          step={step}
           variant={variant}
         >
           <SliderLabels>
@@ -159,7 +186,7 @@ const PreviewSlider = (properties: {
               </SliderOutput>
             ) : null}
           </SliderLabels>
-          <SliderField className="group-data-[orientation=vertical]:h-56">
+          <SliderTrackGroup className="group-data-[orientation=vertical]:h-56">
             {hasStartIcon ? <PreviewSliderDecrementButton /> : null}
             <SliderTrack className="flex-1">
               {hasFill ? <SliderFill /> : null}
@@ -167,7 +194,7 @@ const PreviewSlider = (properties: {
               {isRange ? <SliderThumb className={thumbShapeClassName} index={1} /> : null}
             </SliderTrack>
             {hasEndIcon ? <PreviewSliderIncrementButton /> : null}
-          </SliderField>
+          </SliderTrackGroup>
         </Slider>
       </Form>
     </div>
@@ -187,15 +214,17 @@ export const Standard: Story = {
     hasFill: true,
     hasLabel: true,
     hasLabelDescription: true,
+    hasOrigin: false,
     hasStartIcon: true,
     hasValence: false,
     isDisabled: false,
     isRange: false,
     isSquished: false,
-    maximumValue: 100,
-    minimumValue: 0,
+    maxValue: 100,
+    minValue: 0,
     orientation: "horizontal",
     originValue: 0,
+    step: 1,
     thumbShape: "circle",
     variant: "surface",
   },

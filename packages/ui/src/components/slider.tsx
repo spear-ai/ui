@@ -147,18 +147,18 @@ export const SliderLabel = forwardRef<
 
 SliderLabel.displayName = "SliderLabel";
 
-export const SliderInlineLabel = forwardRef<
+export const SliderAddonLabel = forwardRef<
   ElementRef<typeof LabelPrimitive>,
   ComponentPropsWithoutRef<typeof LabelPrimitive>
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "text-neutral-12 group-disabled:text-neutral-11 absolute top-full mt-1 select-none text-sm/6 sm:text-xs/6",
+    "text-neutral-12 group-disabled:text-neutral-11 mt-1 inline-block select-none whitespace-nowrap text-sm/6 group-data-[orientation=vertical]:order-last group-data-[orientation=vertical]:text-center sm:text-xs/6",
     className,
   );
   return <LabelPrimitive className={mergedClassName} {...properties} ref={reference} />;
 });
 
-SliderLabel.displayName = "SliderInlineLabel";
+SliderLabel.displayName = "SliderAddonLabel";
 
 export const SliderDescription = forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLParagraphElement>>(
   ({ className, ...properties }, reference) => {
@@ -185,30 +185,30 @@ export const SliderOutput = forwardRef<
 
 SliderOutput.displayName = "SliderOutput";
 
-export const SliderInlineOutput = forwardRef<
+export const SliderAddonOutput = forwardRef<
   ElementRef<typeof SliderOutputPrimitive>,
   ComponentPropsWithoutRef<typeof SliderOutputPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "group-disabled:text-neutral-10 text-neutral-11 absolute -top-7 mb-1 inline-flex whitespace-nowrap text-sm/6 tabular-nums group-data-[orientation=horizontal]:ms-auto sm:text-xs/6",
+    "group-disabled:text-neutral-10 text-neutral-11 mb-1 inline-block whitespace-nowrap text-sm/6 tabular-nums group-data-[orientation=vertical]:order-first group-data-[orientation=horizontal]:ms-auto group-data-[orientation=vertical]:text-center sm:text-xs/6",
     className,
   );
   return <SliderOutputPrimitive className={mergedClassName} {...properties} ref={reference} />;
 });
 
-SliderOutput.displayName = "SliderInlineOutput";
+SliderOutput.displayName = "SliderAddonOutput";
 
-export const SliderField = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
+export const SliderTrackGroup = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
   ({ className, ...properties }, reference) => {
     const mergedClassName = cx(
-      "flex group-data-[orientation=vertical]:flex-col group-data-[orientation=horizontal]:items-center",
+      "items-center group-data-[orientation=horizontal]:flex group-data-[orientation=vertical]:inline-flex group-data-[orientation=vertical]:flex-col",
       className,
     );
     return <div className={mergedClassName} {...properties} ref={reference} />;
   },
 );
 
-SliderField.displayName = "SliderField";
+SliderTrackGroup.displayName = "SliderTrackGroup";
 
 export const SliderTrack = forwardRef<
   ElementRef<typeof SliderTrackPrimitive>,
@@ -263,7 +263,7 @@ export const SliderFill = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivEleme
       ...style,
       bottom: state.orientation === "vertical" ? `${offset}%` : "0%",
       height: state.orientation === "vertical" ? `${size}%` : "100%",
-      insetInlineStart: state.orientation === "vertical" ? "0%" : `${offset}%`,
+      insetAddonStart: state.orientation === "vertical" ? "0%" : `${offset}%`,
       width: state.orientation === "vertical" ? "100%" : `${size}%`,
     };
 
