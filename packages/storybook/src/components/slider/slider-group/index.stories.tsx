@@ -167,7 +167,7 @@ const PreviewSliderGroup = (properties: {
                     {hasOutput ? (
                       <SliderAddonOutput className="relative mb-1 size-6">
                         {({ state }) => (
-                          <span className="absolute -translate-x-1/2">
+                          <span className="absolute ltr:-translate-x-1/2 rtl:translate-x-1/2">
                             {state.values.length === 1
                               ? intl.formatNumber(state.values[0] ?? 0, {
                                   currency: "USD",

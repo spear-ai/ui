@@ -284,12 +284,26 @@ export const SliderFill = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivEleme
 export const SliderThumb = forwardRef<
   ElementRef<typeof SliderThumbPrimitive>,
   ComponentPropsWithoutRef<typeof SliderThumbPrimitive> & { className?: string | undefined }
->(({ className, ...properties }, reference) => {
+>(({ className, style, ...properties }, reference) => {
   const mergedClassName = cx(
-    "group-disabled:bg-neutral-2 group-disabled:outline-neutral-6 absolute size-4 origin-top-left rounded-full bg-white shadow group-disabled:outline group-disabled:outline-1 group-disabled:-outline-offset-1 group-data-[orientation=horizontal]:top-1/2 group-data-[orientation=vertical]:start-1",
+    "group-disabled:bg-neutral-2 group-disabled:outline-neutral-6 absolute size-4 rounded-full bg-white shadow group-disabled:outline group-disabled:outline-1 group-disabled:-outline-offset-1 group-data-[orientation=horizontal]:top-1/2 group-data-[orientation=vertical]:start-1 group-data-[orientation=horizontal]:-translate-x-1/2 group-data-[orientation=horizontal]:-translate-y-1/2 group-data-[orientation=vertical]:-translate-y-1/2 ltr:group-data-[orientation=vertical]:-translate-x-1/2 rtl:group-data-[orientation=vertical]:translate-x-1/2",
     className,
   );
-  return <SliderThumbPrimitive className={mergedClassName} {...properties} ref={reference} />;
+
+  const mergedStyle: CSSProperties = {
+    transform: "",
+    ...style,
+  };
+
+  return (
+    <SliderThumbPrimitive
+      className={mergedClassName}
+      {...properties}
+      ref={reference}
+      // eslint-disable-next-line react/forbid-component-props
+      style={mergedStyle}
+    />
+  );
 });
 
 SliderThumb.displayName = "SliderThumb";
