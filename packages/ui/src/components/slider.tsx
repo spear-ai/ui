@@ -1,6 +1,7 @@
 import {
   ComponentPropsWithoutRef,
   createContext,
+  CSSProperties,
   ElementRef,
   forwardRef,
   HTMLAttributes,
@@ -259,11 +260,11 @@ export const SliderFill = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivEleme
       className,
     );
 
-    const mergedStyle = {
+    const mergedStyle: CSSProperties = {
       ...style,
       bottom: state.orientation === "vertical" ? `${offset}%` : "0%",
       height: state.orientation === "vertical" ? `${size}%` : "100%",
-      insetAddonStart: state.orientation === "vertical" ? "0%" : `${offset}%`,
+      insetInlineStart: state.orientation === "vertical" ? "0%" : `${offset}%`,
       width: state.orientation === "vertical" ? "100%" : `${size}%`,
     };
 
