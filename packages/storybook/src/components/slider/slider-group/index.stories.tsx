@@ -132,7 +132,7 @@ const PreviewSliderGroup = (properties: {
             <div className="flex w-full justify-around overflow-auto">
               {Array.from({ length: 5 }, (_, index) => (
                 <Slider
-                  className="relative mx-5 inline-flex flex-col items-center justify-center"
+                  className="relative mx-2 inline-flex flex-col items-center justify-center"
                   color={color}
                   defaultValue={defaultValue}
                   hasValence={isRange ? false : hasValence}
@@ -147,7 +147,7 @@ const PreviewSliderGroup = (properties: {
                 >
                   <SliderTrackGroup>
                     {hasLabel ? (
-                      <SliderAddonLabel className="mt-1 size-6">
+                      <SliderAddonLabel className="mt-1">
                         {intl.formatMessage(
                           {
                             defaultMessage: "FY{year}",
