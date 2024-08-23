@@ -1,5 +1,11 @@
 # @spear-ai/ui
 
+## 5.8.0
+
+### Minor Changes
+
+- [#326](https://github.com/spear-ai/ui/pull/326) [`d565a29`](https://github.com/spear-ai/ui/commit/d565a2964027749ad5257bbcb71361e13ee3b6c7) Thanks [@psirenny](https://github.com/psirenny)! - Removed patch to ComboBox’s Popover component making it non-modal by default. This worked around an auto-dismiss bug that was fixed.
+
 ## 5.7.0
 
 ### Minor Changes
