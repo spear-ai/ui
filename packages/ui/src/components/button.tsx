@@ -88,10 +88,7 @@ export const ButtonIcon = forwardRef<
   SVGAttributes<SVGElement> & { asChild?: boolean | undefined }
 >(({ asChild = false, className, ...properties }, reference) => {
   const Component = asChild ? Slot : "svg";
-  const mergedClassName = cx(
-    "size-3 group-data-[size='small']:size-2.5 group-data-[size='x-small']:size-2.5",
-    className,
-  );
+  const mergedClassName = cx("size-4 group-data-[size='x-small']:size-3.5", className);
   // @ts-expect-error the Slot component’s type definition doesn’t play nice with SVGs
   return <Component aria-hidden className={mergedClassName} ref={reference} {...properties} />;
 });
