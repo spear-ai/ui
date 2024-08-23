@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import {
   Menu,
   MenuHeader,
@@ -30,7 +31,7 @@ const PreviewMenu = () => {
           id: "B3Q5mz",
         })}
       </Button>
-      <MenuPopover UNSTABLE_portalContainer={portalContainer}>
+      <MenuPopover {...(portalContainer === undefined ? {} : { UNSTABLE_portalContainer: portalContainer })}>
         <Menu>
           <MenuSection>
             <MenuHeader>
@@ -118,7 +119,9 @@ const PreviewMenu = () => {
                   <MenuItemExpandIcon />
                 </MenuItemExpand>
               </MenuItem>
-              <MenuPopover UNSTABLE_portalContainer={portalContainer}>
+              <MenuPopover
+                {...(portalContainer === undefined ? {} : { UNSTABLE_portalContainer: portalContainer })}
+              >
                 <Menu />
               </MenuPopover>
             </SubmenuTrigger>
@@ -134,7 +137,9 @@ const PreviewMenu = () => {
                   <MenuItemExpandIcon />
                 </MenuItemExpand>
               </MenuItem>
-              <MenuPopover UNSTABLE_portalContainer={portalContainer}>
+              <MenuPopover
+                {...(portalContainer === undefined ? {} : { UNSTABLE_portalContainer: portalContainer })}
+              >
                 <Menu>
                   <MenuItem>
                     <MenuItemLabel>

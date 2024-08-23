@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import { useControlledState } from "@react-stately/utils";
 import {
   ComboBox,
@@ -52,7 +53,9 @@ const PreviewComboBox = () => {
               <ComboBoxIcon />
             </ComboBoxButton>
           </ComboBoxTrigger>
-          <ComboBoxPopover UNSTABLE_portalContainer={portalContainer}>
+          <ComboBoxPopover
+            {...(portalContainer === undefined ? {} : { UNSTABLE_portalContainer: portalContainer })}
+          >
             <ComboBoxListBox>
               <ComboBoxListBoxItem id="" isNone>
                 {intl.formatMessage({

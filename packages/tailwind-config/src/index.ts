@@ -33,6 +33,7 @@ export const tailwindConfig: Config = {
       });
     }),
     animatePlugin,
+    // @ts-expect-error The `@tailwindcss/container-queries` plugin has an incorrect type definition
     containerQueriesPlugin,
     radixColorThemePlugin,
     scrollbarPlugin,

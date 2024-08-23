@@ -6,7 +6,7 @@
 @layer base {
   * {
     @apply focus:outline-none;
-    @apply focus-visible:outline outline-1 focus-visible:outline-2 outline-offset-2 focus-visible:outline-primary-7;
+    @apply focus-visible:outline outline-1 focus-visible:outline-2 outline-offset-2 focus-visible:outline-primary-a-8;
   }
 
   [type="text"]:focus,
@@ -26,6 +26,6 @@
   [multiple]:focus,
   textarea:focus,
   select:focus {
-    @apply outline outline-2 outline-offset-0 outline-primary-a-7 border-transparent ring-0 ring-offset-0;
+    @apply outline outline-2 outline-offset-0 outline-primary-a-8 border-transparent ring-0 ring-offset-0;
   }
 }

@@ -1,12 +1,6 @@
 import { TriangleDownIcon } from "@radix-ui/react-icons";
 import { Slot } from "@radix-ui/react-slot";
-import React, {
-  ComponentPropsWithoutRef,
-  ElementRef,
-  forwardRef,
-  HTMLAttributes,
-  SVGAttributes,
-} from "react";
+import { ComponentPropsWithoutRef, ElementRef, forwardRef, HTMLAttributes, SVGAttributes } from "react";
 import { Tooltip as TooltipPrimitive } from "react-aria-components";
 import { cx } from "@/helpers/cx";
 

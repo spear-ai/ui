@@ -1,5 +1,44 @@
 # @spear-ai/storybook
 
+## 5.6.0
+
+### Minor Changes
+
+- [#314](https://github.com/spear-ai/ui/pull/314) [`cac8bb5`](https://github.com/spear-ai/ui/commit/cac8bb52ebea4786013e61de7227d931bdd6345e) Thanks [@psirenny](https://github.com/psirenny)! - Created Slider component(s).
+
+### Patch Changes
+
+- Updated dependencies [[`cac8bb5`](https://github.com/spear-ai/ui/commit/cac8bb52ebea4786013e61de7227d931bdd6345e)]:
+  - @spear-ai/ui@5.7.0
+
+## 5.5.1
+
+### Patch Changes
+
+- [#291](https://github.com/spear-ai/ui/pull/291) [`bbe4027`](https://github.com/spear-ai/ui/commit/bbe402704b07786fb760765af264503513583604) Thanks [@psirenny](https://github.com/psirenny)! - Updated to Turbo 2.
+
+- [#290](https://github.com/spear-ai/ui/pull/290) [`78486bc`](https://github.com/spear-ai/ui/commit/78486bc297db04fe5b04894c4d75a29b385254fe) Thanks [@psirenny](https://github.com/psirenny)! - Fixed Storybook Dialog component’s width and padding with narrow content and/or on mobile devices.
+
+- Updated dependencies [[`bbe4027`](https://github.com/spear-ai/ui/commit/bbe402704b07786fb760765af264503513583604), [`8ff1f32`](https://github.com/spear-ai/ui/commit/8ff1f32007350da03ee79884aeb049d38ddace94)]:
+  - @spear-ai/ui@5.6.0
+
+## 5.5.0
+
+### Minor Changes
+
+- [#286](https://github.com/spear-ai/ui/pull/286) [`8c56309`](https://github.com/spear-ai/ui/commit/8c5630985e2d4665aef564b793b2964762621859) Thanks [@psirenny](https://github.com/psirenny)! - Updated focus ring color to use alpha channel for consistency with outline buttons.
+
+- [#282](https://github.com/spear-ai/ui/pull/282) [`fcde26b`](https://github.com/spear-ai/ui/commit/fcde26ba440aaf980a582fe756a5c36377ec0f40) Thanks [@psirenny](https://github.com/psirenny)! - Added tooltips to IconButton component story.
+
+- [#286](https://github.com/spear-ai/ui/pull/286) [`8c56309`](https://github.com/spear-ai/ui/commit/8c5630985e2d4665aef564b793b2964762621859) Thanks [@psirenny](https://github.com/psirenny)! - Updated focus ring color to `step-8` to differentiate from UI element outlines of `step-7`.
+
+- [#269](https://github.com/spear-ai/ui/pull/269) [`400dbaa`](https://github.com/spear-ai/ui/commit/400dbaae029905b06566b478112f2f7915d62c55) Thanks [@ThomasSeaver](https://github.com/ThomasSeaver)! - Created one time passcode input component.
+
+### Patch Changes
+
+- Updated dependencies [[`aee6aed`](https://github.com/spear-ai/ui/commit/aee6aede7a0dedd39ab11c0b0805faba2440aba2), [`9ef5767`](https://github.com/spear-ai/ui/commit/9ef5767d7a108b06396cbc70647cb67c62b3b346), [`8c56309`](https://github.com/spear-ai/ui/commit/8c5630985e2d4665aef564b793b2964762621859), [`8c56309`](https://github.com/spear-ai/ui/commit/8c5630985e2d4665aef564b793b2964762621859), [`400dbaa`](https://github.com/spear-ai/ui/commit/400dbaae029905b06566b478112f2f7915d62c55)]:
+  - @spear-ai/ui@5.5.0
+
 ## 5.4.0
 
 ### Minor Changes

@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef, ElementRef, forwardRef, HTMLAttributes } from "react";
+import { ComponentPropsWithoutRef, ElementRef, forwardRef, HTMLAttributes } from "react";
 import { Switch as SwitchPrimitive } from "react-aria-components";
 import { cx } from "@/helpers/cx";
 
@@ -9,7 +9,7 @@ export const Switch = forwardRef<
     isPrimary?: boolean | undefined;
   }
 >(({ className, isPrimary = false, ...properties }, reference) => {
-  const mergedClassName = cx("group inline-flex", className);
+  const mergedClassName = cx("group inline-flex outline-none", className);
   return (
     <SwitchPrimitive
       className={mergedClassName}
@@ -37,7 +37,7 @@ SwitchLabel.displayName = "SwitchLabel";
 export const SwitchButton = forwardRef<HTMLSpanElement, HTMLAttributes<HTMLSpanElement>>(
   ({ className, ...properties }, reference) => {
     const mergedClassName = cx(
-      "bg-neutral-a-3 group-data-[is-primary=true]:bg-primary-9 group-focus-visible:outline-primary-7 group-selected:bg-neutral-9 group-disabled:bg-neutral-a-3 group relative isolate inline-flex h-6 w-11 rounded-full border-2 border-transparent transition duration-200 ease-in-out group-focus-visible:outline group-focus-visible:outline-2",
+      "bg-neutral-a-3 group-data-[is-primary=true]:bg-primary-9 group-focus-visible:outline-primary-a-8 group-selected:bg-neutral-9 group-disabled:bg-neutral-a-3 group relative isolate inline-flex h-6 w-11 rounded-full border-2 border-transparent transition duration-200 ease-in-out group-focus-visible:outline group-focus-visible:outline-2",
       className,
     );
     return <span className={mergedClassName} {...properties} ref={reference} />;

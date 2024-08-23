@@ -1,4 +1,9 @@
-import { baseEslintConfig, prettierConfig } from "@spear-ai/eslint-config";
+import {
+  baseEslintConfig,
+  defaultIgnoreFileList,
+  javascriptFamilyInMarkdownFileList,
+  prettierConfig,
+} from "@spear-ai/eslint-config";
 
 /** @type {import("eslint").Linter.FlatConfig} */
 const eslintConfig = [
@@ -17,6 +22,15 @@ const eslintConfig = [
     ],
     rules: {
       "import/no-unresolved": ["off"],
+    },
+  },
+  {
+    files: javascriptFamilyInMarkdownFileList,
+    ignores: defaultIgnoreFileList,
+    rules: {
+      "@typescript-eslint/no-unnecessary-template-expression": ["off"],
+      "@typescript-eslint/prefer-find": ["off"],
+      "@typescript-eslint/prefer-regexp-exec": ["off"],
     },
   },
 ];
