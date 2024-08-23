@@ -37,7 +37,6 @@ export const tailwindConfig: Config = {
     containerQueriesPlugin,
     radixColorThemePlugin,
     scrollbarPlugin,
-    // @ts-expect-error The `tailwindcss-3d` has an incorrect type definition
     threeDPlugin,
     typographyPlugin,
     reactAriaComponentsPlugin,

@@ -1,5 +1,11 @@
 # @spear-ai/ui
 
+## 5.7.0
+
+### Minor Changes
+
+- [#314](https://github.com/spear-ai/ui/pull/314) [`cac8bb5`](https://github.com/spear-ai/ui/commit/cac8bb52ebea4786013e61de7227d931bdd6345e) Thanks [@psirenny](https://github.com/psirenny)! - Created Slider component(s).
+
 ## 5.6.0
 
 ### Minor Changes

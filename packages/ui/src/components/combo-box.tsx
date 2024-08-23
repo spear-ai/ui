@@ -161,31 +161,13 @@ ComboBoxIcon.displayName = "ComboBoxIcon";
 export const ComboBoxPopover = forwardRef<
   ElementRef<typeof PopoverPrimitive>,
   ComponentPropsWithoutRef<typeof PopoverPrimitive> & { className?: string | undefined }
->(
-  (
-    {
-      className,
-      // Modifying input text — that's overflowing — instantly opens/closes the popover unless it's configured as a modal.
-      // https://github.com/adobe/react-spectrum/issues/5653#issuecomment-1922648386
-      isNonModal = false,
-      ...properties
-    },
-    reference,
-  ) => {
-    const mergedClassName = cx(
-      "min-w-trigger-width bg-canvas-1 outline-neutral-a-6 theme-forerunner:bg-white-a-3 theme-galapago:bg-white theme-underway:shadow-2xl placement-left:slide-in-from-right-2 placement-right:slide-in-from-left-2 placement-top:slide-in-from-bottom-2 placement-bottom:slide-in-from-top-2 entering:duration-100 entering:animate-in entering:fade-in exiting:duration-75 exiting:animate-out exiting:fade-out exiting:zoom-out-95 theme-galapago:dark:bg-black-a-3 isolate overflow-auto rounded-xl border-transparent p-1 shadow-lg outline outline-1 outline-offset-0 backdrop-blur",
-      className,
-    );
-    return (
-      <PopoverPrimitive
-        className={mergedClassName}
-        isNonModal={isNonModal}
-        {...properties}
-        ref={reference}
-      />
-    );
-  },
-);
+>(({ className, ...properties }, reference) => {
+  const mergedClassName = cx(
+    "min-w-trigger-width bg-canvas-1 outline-neutral-a-6 theme-forerunner:bg-white-a-3 theme-galapago:bg-white theme-underway:shadow-2xl placement-left:slide-in-from-right-2 placement-right:slide-in-from-left-2 placement-top:slide-in-from-bottom-2 placement-bottom:slide-in-from-top-2 entering:duration-100 entering:animate-in entering:fade-in exiting:duration-75 exiting:animate-out exiting:fade-out exiting:zoom-out-95 theme-galapago:dark:bg-black-a-3 isolate overflow-auto rounded-xl border-transparent p-1 shadow-lg outline outline-1 outline-offset-0 backdrop-blur",
+    className,
+  );
+  return <PopoverPrimitive className={mergedClassName} {...properties} ref={reference} />;
+});
 
 ComboBoxPopover.displayName = "ComboBoxPopover";
 

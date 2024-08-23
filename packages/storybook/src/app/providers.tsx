@@ -3,6 +3,7 @@
 import { usePreviousDistinct } from "@react-hookz/web";
 import { ThemeProvider } from "next-themes";
 import { ReactNode, useEffect } from "react";
+import { I18nProvider } from "react-aria-components";
 import { IntlProvider, ReactIntlErrorCode } from "react-intl";
 import { StorybookProvider } from "@/components/storybook-provider/storybook-provider";
 
@@ -38,9 +39,11 @@ export const AppProviders = (properties: {
           }
         }}
       >
-        <ThemeProvider attribute="class" defaultTheme="dark">
-          {children}
-        </ThemeProvider>
+        <I18nProvider locale={direction === "ltr" ? "en" : "ar"}>
+          <ThemeProvider attribute="class" defaultTheme="dark">
+            {children}
+          </ThemeProvider>
+        </I18nProvider>
       </IntlProvider>
     </StorybookProvider>
   );
