@@ -1,9 +1,12 @@
-import { Button, ButtonSpinner, LinkButton } from "@spear-ai/ui/components/button";
+import { ArrowTopRightIcon, EnvelopeOpenIcon, PaperPlaneIcon } from "@radix-ui/react-icons";
+import { Button, ButtonIcon, ButtonSpinner, LinkButton } from "@spear-ai/ui/components/button";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useIntl } from "react-intl";
 
 const PreviewButton = ({
   color,
+  hasEndIcon,
+  hasStartIcon,
   isDisabled,
   isLink,
   isLoading,
@@ -12,6 +15,8 @@ const PreviewButton = ({
   variant,
 }: {
   color: "negative" | "neutral" | "positive" | "primary" | "x-negative" | "x-positive";
+  hasEndIcon: boolean;
+  hasStartIcon: boolean;
   isDisabled: boolean;
   isLink: boolean;
   isLoading: boolean;
@@ -33,22 +38,36 @@ const PreviewButton = ({
         target="_blank"
         variant={variant}
       >
-        {isLoading ? <ButtonSpinner /> : null}
+        {hasStartIcon && !isLoading ? (
+          <ButtonIcon asChild>
+            <EnvelopeOpenIcon />
+          </ButtonIcon>
+        ) : null}
         {isLoading
           ? intl.formatMessage({
-              defaultMessage: "Sending email…",
-              id: "y/tCC5",
+              defaultMessage: "Opening email…",
+              id: "lO6cYZ",
             })
           : intl.formatMessage({
-              defaultMessage: "Send email",
-              id: "sZIoMy",
+              defaultMessage: "Open email",
+              id: "+y4Ldn",
             })}
+        {hasEndIcon ? (
+          <ButtonIcon asChild>
+            <ArrowTopRightIcon />
+          </ButtonIcon>
+        ) : null}
       </LinkButton>
     );
   }
 
   return (
     <Button color={color} isDisabled={isDisabled} isSkeleton={isSkeleton} size={size} variant={variant}>
+      {hasStartIcon && !isLoading ? (
+        <ButtonIcon asChild>
+          <PaperPlaneIcon />
+        </ButtonIcon>
+      ) : null}
       {isLoading ? <ButtonSpinner /> : null}
       {isLoading
         ? intl.formatMessage({
@@ -59,6 +78,11 @@ const PreviewButton = ({
             defaultMessage: "Send email",
             id: "sZIoMy",
           })}
+      {hasEndIcon ? (
+        <ButtonIcon asChild>
+          <PaperPlaneIcon />
+        </ButtonIcon>
+      ) : null}
     </Button>
   );
 };
@@ -72,6 +96,8 @@ type Story = StoryObj<typeof meta>;
 export const Standard: Story = {
   args: {
     color: "neutral",
+    hasEndIcon: false,
+    hasStartIcon: false,
     isDisabled: false,
     isLink: false,
     isLoading: false,
