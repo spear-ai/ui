@@ -1,5 +1,16 @@
 # @spear-ai/storybook
 
+## 5.7.0
+
+### Minor Changes
+
+- [#329](https://github.com/spear-ai/ui/pull/329) [`ee93344`](https://github.com/spear-ai/ui/commit/ee933449999c98f004112a92e81e09ab019d1c96) Thanks [@psirenny](https://github.com/psirenny)! - Created Button component(s).
+
+### Patch Changes
+
+- Updated dependencies [[`ee93344`](https://github.com/spear-ai/ui/commit/ee933449999c98f004112a92e81e09ab019d1c96), [`43df9d1`](https://github.com/spear-ai/ui/commit/43df9d10cb38db5d9a397e1a01c87edeb0cb5c77)]:
+  - @spear-ai/ui@5.9.0
+
 ## 5.6.0
 
 ### Minor Changes
