@@ -59,7 +59,7 @@ export const Select = forwardRef<
       [onSelectionChange, setSelectedKey],
     );
 
-    const mergedClassName = cx("group w-full focus:outline-none", className);
+    const mergedClassName = cx("group w-full outline-none", className);
 
     return (
       <SelectPrimitive

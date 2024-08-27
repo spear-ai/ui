@@ -57,7 +57,7 @@ export const ComboBox = forwardRef<
       [onSelectionChange, setSelectedKey],
     );
 
-    const mergedClassName = cx("group focus:outline-none", className);
+    const mergedClassName = cx("group outline-none", className);
 
     return (
       <ComboBoxPrimitive
