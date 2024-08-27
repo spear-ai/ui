@@ -118,7 +118,7 @@ export const SelectButton = forwardRef<
   ComponentPropsWithoutRef<typeof ButtonPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "bg-white-a-3 outline-neutral-a-7 theme-dfs:bg-canvas-1 theme-galapago:bg-white entering:outline-2 entering:outline-primary-a-8 group-invalid:outline-x-negative-a-7 focus-visible:outline-primary-a-8 group-disabled:bg-neutral-a-3 group-disabled:outline-neutral-a-6 theme-dfs:group-disabled:bg-neutral-a-3 theme-forerunner:group-disabled:bg-neutral-a-3 theme-galapago:group-disabled:bg-neutral-a-3 group-invalid:group-disabled:outline-x-negative-a-6 theme-dfs:dark:bg-white-a-3 theme-forerunner:dark:bg-black-a-3 theme-galapago:dark:bg-black-a-3 group inline-flex h-9 w-full cursor-default select-none items-center justify-between gap-1 rounded-lg pe-2 ps-3.5 text-base leading-none shadow outline -outline-offset-1 group-disabled:pointer-events-none sm:ps-3 sm:text-sm",
+    "bg-white-a-3 outline-neutral-a-7 theme-dfs:bg-canvas-1 theme-galapago:bg-white entering:outline-2 entering:outline-primary-a-8 group-invalid:outline-x-negative-a-7 focus-visible:outline-primary-a-8 group-disabled:bg-neutral-a-3 group-disabled:outline-neutral-a-6 theme-dfs:group-disabled:bg-neutral-a-3 theme-galapago:group-disabled:bg-neutral-a-3 group-invalid:group-disabled:outline-x-negative-a-6 theme-dfs:dark:bg-white-a-3 theme-galapago:dark:bg-black-a-3 group inline-flex h-9 w-full cursor-default select-none items-center justify-between gap-1 rounded-lg pe-2 ps-3.5 text-base leading-none shadow outline -outline-offset-1 group-disabled:pointer-events-none sm:ps-3 sm:text-sm",
     className,
   );
   return <ButtonPrimitive className={mergedClassName} {...properties} ref={reference} />;
@@ -157,7 +157,7 @@ export const SelectPopover = forwardRef<
   ComponentPropsWithoutRef<typeof PopoverPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "min-w-trigger-width bg-canvas-1 outline-neutral-a-6 theme-forerunner:bg-white-a-3 theme-galapago:bg-white theme-underway:shadow-2xl placement-left:slide-in-from-right-2 placement-right:slide-in-from-left-2 placement-top:slide-in-from-bottom-2 placement-bottom:slide-in-from-top-2 entering:duration-100 entering:animate-in entering:fade-in exiting:duration-75 exiting:animate-out exiting:fade-out exiting:zoom-out-95 theme-galapago:dark:bg-black-a-3 isolate overflow-auto rounded-xl border-transparent p-1 shadow-lg outline outline-1 outline-offset-0 backdrop-blur",
+    "min-w-trigger-width bg-canvas-a-1 outline-neutral-a-6 theme-galapago:bg-white theme-underway:shadow-2xl placement-left:slide-in-from-right-2 placement-right:slide-in-from-left-2 placement-top:slide-in-from-bottom-2 placement-bottom:slide-in-from-top-2 entering:duration-100 entering:animate-in entering:fade-in exiting:duration-75 exiting:animate-out exiting:fade-out exiting:zoom-out-95 theme-galapago:dark:bg-black-a-3 isolate overflow-auto rounded-xl border-transparent p-1 shadow-lg outline outline-1 outline-offset-0 backdrop-blur-xl",
     className,
   );
   return <PopoverPrimitive className={mergedClassName} {...properties} ref={reference} />;
@@ -182,10 +182,7 @@ export const SelectSeparator = forwardRef<
   ElementRef<typeof SeparatorPrimitive>,
   ComponentPropsWithoutRef<typeof SeparatorPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
-  const mergedClassName = cx(
-    "bg-neutral-a-6 theme-forerunner:dark:bg-white-a-6 mx-2 my-1 h-px px-4",
-    className,
-  );
+  const mergedClassName = cx("bg-neutral-a-6 mx-2 my-1 h-px px-4", className);
   return <SeparatorPrimitive className={mergedClassName} {...properties} ref={reference} />;
 });
 
