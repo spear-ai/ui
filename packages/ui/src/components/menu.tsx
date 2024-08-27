@@ -18,7 +18,7 @@ export const MenuPopover = forwardRef<
   ComponentPropsWithoutRef<typeof PopoverPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "min-w-trigger-width bg-canvas-1 outline-neutral-a-6 theme-forerunner:bg-white-a-3 theme-galapago:bg-white theme-underway:shadow-2xl placement-left:slide-in-from-right-2 placement-right:slide-in-from-left-2 placement-top:slide-in-from-bottom-2 placement-bottom:slide-in-from-top-2 entering:duration-100 entering:animate-in entering:fade-in exiting:duration-75 exiting:animate-out exiting:fade-out exiting:zoom-out-95 theme-galapago:dark:bg-black-a-3 isolate overflow-auto rounded-xl border-transparent p-1 shadow-lg outline outline-1 outline-offset-0 backdrop-blur",
+    "min-w-trigger-width bg-canvas-a-1 outline-neutral-a-6 theme-galapago:bg-white theme-underway:shadow-2xl placement-left:slide-in-from-right-2 placement-right:slide-in-from-left-2 placement-top:slide-in-from-bottom-2 placement-bottom:slide-in-from-top-2 entering:duration-100 entering:animate-in entering:fade-in exiting:duration-75 exiting:animate-out exiting:fade-out exiting:zoom-out-95 theme-galapago:dark:bg-black-a-3 isolate overflow-auto rounded-xl border-transparent p-1 shadow-lg outline outline-1 outline-offset-0 backdrop-blur-xl",
     className,
   );
   return <PopoverPrimitive className={mergedClassName} {...properties} ref={reference} />;
@@ -40,10 +40,7 @@ export const MenuSeparator = forwardRef<
   ElementRef<typeof SeparatorPrimitive>,
   ComponentPropsWithoutRef<typeof SeparatorPrimitive>
 >(({ className, ...properties }, reference) => {
-  const mergedClassName = cx(
-    "bg-neutral-a-6 theme-forerunner:dark:bg-white-a-6 mx-2 my-1 h-px px-4",
-    className,
-  );
+  const mergedClassName = cx("bg-neutral-a-6 mx-2 my-1 h-px px-4", className);
   return <SeparatorPrimitive className={mergedClassName} {...properties} ref={reference} />;
 });
 
