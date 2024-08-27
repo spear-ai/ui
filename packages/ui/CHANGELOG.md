@@ -1,5 +1,13 @@
 # @spear-ai/ui
 
+## 5.9.1
+
+### Patch Changes
+
+- [#336](https://github.com/spear-ai/ui/pull/336) [`a469eec`](https://github.com/spear-ai/ui/commit/a469eec5df3aa9b22517002f324a5aec1f51dfd3) Thanks [@psirenny](https://github.com/psirenny)! - Fixed contrast in Forerunner Select/ComboBox popovers.
+
+- [#335](https://github.com/spear-ai/ui/pull/335) [`348c05d`](https://github.com/spear-ai/ui/commit/348c05df93a962a0fea576eed8fa2ea6c72e6cc8) Thanks [@psirenny](https://github.com/psirenny)! - Fixed focus outline on Select/ComboBox components when clicking away from Popover.
+
 ## 5.9.0
 
 ### Minor Changes
