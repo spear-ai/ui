@@ -1,5 +1,11 @@
 # @spear-ai/ui
 
+## 5.9.2
+
+### Patch Changes
+
+- [#338](https://github.com/spear-ai/ui/pull/338) [`be21302`](https://github.com/spear-ai/ui/commit/be213021c679f827e0fa89bda9f78c0c334a5bd1) Thanks [@psirenny](https://github.com/psirenny)! - Fixed Menu component contrast in Forerunner.
+
 ## 5.9.1
 
 ### Patch Changes
