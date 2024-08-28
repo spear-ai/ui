@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ElementRef, forwardRef, HTMLAttributes } from "react";
+import { ComponentPropsWithoutRef, ElementRef, forwardRef, HTMLAttributes, useCallback } from "react";
 import {
   FieldError as FieldErrorPrimitive,
   Input as InputPrimitive,
@@ -9,10 +9,45 @@ import { cx } from "@/helpers/cx";
 
 export const NumberField = forwardRef<
   ElementRef<typeof NumberFieldPrimitive>,
-  ComponentPropsWithoutRef<typeof NumberFieldPrimitive> & { className?: string | undefined }
->(({ className, ...properties }, reference) => {
+  Omit<ComponentPropsWithoutRef<typeof NumberFieldPrimitive>, "onChange" | "value"> & {
+    className?: string | undefined;
+    /** Handler that is called when the value changes. */
+    onChange?: ((value: number | null) => void) | undefined;
+    /** The current value (controlled). */
+    value?: number | null;
+  }
+>(({ className, onChange, value, ...properties }, reference) => {
+  // React Aria Component’s NumberField represents `undefined` or invalid numbers as NaN.
+  //
+  // We replace all NaNs with `null` because the ergonomics are better:
+  // * TypeScript won’t suggest a number be checked for NaN
+  // * TypeScript can’t say whether a number has *already* been checked for NaN
+  // * Compatibility with JSON which serializes NaNs to `null` anyway
+  //
+  // Note: This is an incomplete solution because it doesn’t modify the NumberField’s context.
+  // When using the NumberField’s context, one will still need to account for NaN.
+  const handleChange = useCallback(
+    (rawValue: number) => {
+      const value = Number.isNaN(rawValue) ? null : rawValue;
+
+      if (onChange != null) {
+        onChange(value);
+      }
+    },
+    [onChange],
+  );
+
   const mergedClassName = cx("group", className);
-  return <NumberFieldPrimitive className={mergedClassName} {...properties} ref={reference} />;
+
+  return (
+    <NumberFieldPrimitive
+      className={mergedClassName}
+      onChange={handleChange}
+      {...(value === undefined ? {} : { value: value ?? Number.NaN })}
+      {...properties}
+      ref={reference}
+    />
+  );
 });
 
 NumberField.displayName = "NumberField";
