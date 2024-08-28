@@ -1,5 +1,16 @@
 # @spear-ai/storybook
 
+## 5.9.0
+
+### Minor Changes
+
+- [#344](https://github.com/spear-ai/ui/pull/344) [`f198652`](https://github.com/spear-ai/ui/commit/f198652e84d6702740f48eb296ac60efd05584ce) Thanks [@psirenny](https://github.com/psirenny)! - Added Separator component.
+
+### Patch Changes
+
+- Updated dependencies [[`f198652`](https://github.com/spear-ai/ui/commit/f198652e84d6702740f48eb296ac60efd05584ce)]:
+  - @spear-ai/ui@5.10.0
+
 ## 5.8.0
 
 ### Minor Changes
