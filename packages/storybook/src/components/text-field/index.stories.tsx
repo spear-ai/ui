@@ -68,7 +68,10 @@ const PreviewTextField = (properties: {
             />
           )}
           <TextFieldError>
-            {intl.formatMessage({ defaultMessage: "Email address is invalid", id: "sVgB+Q" })}
+            {intl.formatMessage({
+              defaultMessage: "Email address is invalid",
+              id: "sVgB+Q",
+            })}
           </TextFieldError>
         </TextField>
       </Form>
