@@ -1,5 +1,11 @@
 # @spear-ai/storybook
 
+## 5.8.0
+
+### Minor Changes
+
+- [#341](https://github.com/spear-ai/ui/pull/341) [`8f20246`](https://github.com/spear-ai/ui/commit/8f20246145dbe09fa956bb9f46bb28aee62078a4) Thanks [@psirenny](https://github.com/psirenny)! - Added NumberField component(s).
+
 ## 5.7.0
 
 ### Minor Changes
