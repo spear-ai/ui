@@ -51,8 +51,8 @@ const PreviewNumberField = (properties: {
           ) : null}
           <NumberFieldInput
             placeholder={intl.formatMessage({
-              defaultMessage: "0.00",
-              id: "TkDtvw",
+              defaultMessage: "$0.00",
+              id: "XviFuR",
             })}
           />
           <NumberFieldError>
