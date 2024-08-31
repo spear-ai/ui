@@ -31,7 +31,10 @@ const PreviewMenu = () => {
           id: "B3Q5mz",
         })}
       </Button>
-      <MenuPopover {...(portalContainer === undefined ? {} : { UNSTABLE_portalContainer: portalContainer })}>
+      <MenuPopover
+        className="w-64"
+        {...(portalContainer === undefined ? {} : { UNSTABLE_portalContainer: portalContainer })}
+      >
         <Menu>
           <MenuSection>
             <MenuHeader>
