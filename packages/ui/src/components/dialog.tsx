@@ -17,7 +17,7 @@ export const DialogModalOverlay = forwardRef<
   ComponentPropsWithoutRef<typeof ModalOverlayPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "exiting:animate-out exiting:fade-out exiting:duration-200 exiting:ease-in entering:animate-in entering:fade-in entering:duration-300 entering:ease-out bg-black-a-6 dark:bg-black-a-8 fixed inset-0 z-10 flex min-h-full items-end justify-center overflow-y-auto p-4 text-center backdrop-blur sm:items-center sm:p-0",
+    "before:exiting:animate-out before:exiting:fade-out before:exiting:duration-200 before:exiting:ease-in before:entering:animate-in before:entering:fade-in before:entering:duration-200 before:entering:ease-out before:bg-black-a-6 before:dark:bg-black-a-8 fixed inset-0 grid min-h-full w-screen grid-rows-[1fr_auto] justify-items-center overflow-y-auto p-4 pt-6 before:pointer-events-none before:fixed before:inset-0 before:backdrop-blur before:content-[''] sm:grid-rows-[1fr_auto_3fr]",
     className,
   );
   return <ModalOverlayPrimitive className={mergedClassName} {...properties} ref={reference} />;
@@ -30,7 +30,7 @@ export const DialogModal = forwardRef<
   ComponentPropsWithoutRef<typeof ModalPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
   const mergedClassName = cx(
-    "exiting:animate-out exiting:slide-out-from-top-4 exiting:sm:slide-out-from-top-0 exiting:sm:zoom-out-95 exiting:ease-in exiting:duration-200 entering:animate-in entering:sm:zoom-in-95 entering:slide-in-from-bottom-4 entering:sm:slide-in-from-bottom-0 entering:ease-out entering:duration-300 dark:bg-neutral-2 outline-neutral-6 overflow-hidden rounded-2xl bg-white text-left align-middle shadow-xl outline-1 -outline-offset-1 dark:outline",
+    "entering:fade-in exiting:fade-out exiting:animate-out exiting:slide-out-from-top-4 exiting:sm:slide-out-from-top-0 exiting:sm:zoom-out-95 exiting:ease-in exiting:duration-100 entering:animate-in entering:sm:zoom-in-95 entering:slide-in-from-bottom-4 entering:sm:slide-in-from-bottom-0 entering:ease-out entering:duration-200 row-start-2",
     className,
   );
   return <ModalPrimitive className={mergedClassName} {...properties} ref={reference} />;
@@ -42,7 +42,10 @@ export const Dialog = forwardRef<
   ElementRef<typeof DialogPrimitive>,
   ComponentPropsWithoutRef<typeof DialogPrimitive> & { className?: string | undefined }
 >(({ className, ...properties }, reference) => {
-  const mergedClassName = cx("relative outline-none", className);
+  const mergedClassName = cx(
+    "dark:bg-neutral-2 outline-neutral-6 relative w-full min-w-0 rounded-2xl bg-white shadow-lg outline-none outline-1 -outline-offset-1 transition duration-100 will-change-transform sm:mb-auto sm:max-w-xl dark:outline",
+    className,
+  );
   return <DialogPrimitive className={mergedClassName} {...properties} ref={reference} />;
 });
 
