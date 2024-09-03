@@ -1,5 +1,15 @@
 # @spear-ai/ui
 
+## 6.0.0
+
+### Major Changes
+
+- [#358](https://github.com/spear-ai/ui/pull/358) [`638d382`](https://github.com/spear-ai/ui/commit/638d38298f65a33ebaa429b1cc81d5966efc5def) Thanks [@psirenny](https://github.com/psirenny)! - Reworked Dialog component(s) to scroll with long content.
+
+### Patch Changes
+
+- [#348](https://github.com/spear-ai/ui/pull/348) [`82d887c`](https://github.com/spear-ai/ui/commit/82d887cbfc8a77a4b216ea2efe1ff2bd12e2b676) Thanks [@psirenny](https://github.com/psirenny)! - Updated dependencies.
+
 ## 5.10.0
 
 ### Minor Changes
