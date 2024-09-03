@@ -1,5 +1,11 @@
 # @spear-ai/tailwind-config
 
+## 5.4.2
+
+### Patch Changes
+
+- [#348](https://github.com/spear-ai/ui/pull/348) [`82d887c`](https://github.com/spear-ai/ui/commit/82d887cbfc8a77a4b216ea2efe1ff2bd12e2b676) Thanks [@psirenny](https://github.com/psirenny)! - Updated dependencies.
+
 ## 5.4.1
 
 ### Patch Changes
