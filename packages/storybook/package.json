@@ -16,7 +16,7 @@
     "@spear-ai/logo": "2.1.1",
     "@spear-ai/ui": "*",
     "input-otp": "1.2.4",
-    "next": "14.2.7",
+    "next": "14.2.10",
     "next-themes": "0.3.0",
     "react": "18.3.1",
     "react-aria-components": "1.3.3",
