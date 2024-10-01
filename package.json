@@ -19,7 +19,7 @@
     "@spear-ai/prettier-config": "2.2.0",
     "@spear-ai/tsconfig": "4.0.0",
     "commitlint": "19.4.1",
-    "eslint": "8.57.0",
+    "eslint": "9.11.1",
     "graphql": "16.9.0",
     "husky": "9.1.5",
     "npm-package-json-lint": "8.0.0",
