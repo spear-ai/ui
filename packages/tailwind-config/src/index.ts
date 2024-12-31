@@ -11,7 +11,7 @@ import { radixColorThemePlugin } from "./tailwind-radix-color-theme-plugin";
 import { colors } from "./tailwind-radix-colors";
 import { data } from "./tailwind-radix-primitives";
 
-const productList = ["dfs", "forerunner", "galapago", "underway"];
+const productList = ["dfs", "forerunner", "horizon", "omega"];
 
 // Work around limitation of the `theme()` function not parsing `"<alpha-value>"`:
 // https://github.com/tailwindlabs/tailwindcss/issues/9143#issuecomment-1674128599
@@ -23,17 +23,16 @@ export const tailwindConfig: Config = {
   plugins: [
     plugin(({ addUtilities, matchVariant }) => {
       addUtilities(
-        // ["forerunner", "galapago"] → { ".theme-forerunner": {}, ".theme-galapago": {} }
+        // ["forerunner", "omega"] → { ".theme-forerunner": {}, ".theme-omega": {} }
         Object.fromEntries(productList.map((product) => [`.theme-${product}`, {}])),
       );
 
       matchVariant("theme", (value) => `.theme-${value} &`, {
-        // ["forerunner", "galapago"] → { "forerunner": "forerunner", "galapago": "galapago" }
+        // ["forerunner", "omega"] → { "forerunner": "forerunner", "omega": "omega" }
         values: Object.fromEntries(productList.map((product) => [product, product])),
       });
     }),
     animatePlugin,
-    // @ts-expect-error The `@tailwindcss/container-queries` plugin has an incorrect type definition
     containerQueriesPlugin,
     radixColorThemePlugin,
     scrollbarPlugin,

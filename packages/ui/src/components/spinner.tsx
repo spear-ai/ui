@@ -1,10 +1,11 @@
-import { forwardRef, SVGAttributes } from "react";
+import { SVGAttributes } from "react";
 import { cx } from "@/helpers/cx";
 
-export const Spinner = forwardRef<
-  SVGSVGElement,
-  SVGAttributes<SVGElement> & { isPrimary?: boolean | undefined }
->(({ className, isPrimary = false, ...properties }, reference) => {
+export const Spinner = ({
+  className,
+  isPrimary = false,
+  ...properties
+}: SVGAttributes<SVGElement> & { isPrimary?: boolean | undefined }) => {
   const mergedClassName = cx("group size-5 animate-spin text-inherit", className);
 
   return (
@@ -12,7 +13,6 @@ export const Spinner = forwardRef<
       className={mergedClassName}
       data-is-primary={isPrimary}
       fill="none"
-      ref={reference}
       viewBox="0 0 24 24"
       {...properties}
     >
@@ -24,6 +24,6 @@ export const Spinner = forwardRef<
       />
     </svg>
   );
-});
+};
 
 Spinner.displayName = "Spinner";

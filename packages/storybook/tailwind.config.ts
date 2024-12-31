@@ -22,14 +22,14 @@ const tailwindConfig: Config = {
         forerunner: {
           primary: "gray",
         },
-        galapago: {
+        horizon: {
+          neutral: "mauve",
+          primary: "iris",
+        },
+        omega: {
           canvas: "gray",
           primaryDark: "green",
           primaryLight: "blue",
-        },
-        underway: {
-          neutral: "mauve",
-          primary: "iris",
         },
       },
     },

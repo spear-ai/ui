@@ -11,7 +11,7 @@
       }
     ]
   },
-  "exclude": [".next", "node_modules", "next-env.d.ts"],
+  "exclude": [".next", "node_modules", "next-env.d.ts", "storybook-static"],
   "extends": "@spear-ai/tsconfig",
   "include": [
     "**/*.cjs",

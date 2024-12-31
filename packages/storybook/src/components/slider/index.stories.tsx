@@ -20,12 +20,11 @@ import { getUniqueSliderKey } from "@/helpers/get-unique-slider-key";
 
 const PreviewSliderDecrementButton = () => {
   const state = useContext(SliderStateContext);
-  // eslint-disable-next-line @typescript-eslint/unbound-method
-  const { decrementThumb } = state;
+  const decrementThumb = state?.decrementThumb; // eslint-disable-line @typescript-eslint/unbound-method
 
   const handlePress = useCallback(() => {
-    decrementThumb(0);
-    decrementThumb(1);
+    decrementThumb?.(0);
+    decrementThumb?.(1);
   }, [decrementThumb]);
 
   return (
@@ -43,12 +42,11 @@ const PreviewSliderDecrementButton = () => {
 
 const PreviewSliderIncrementButton = () => {
   const state = useContext(SliderStateContext);
-  // eslint-disable-next-line @typescript-eslint/unbound-method
-  const { incrementThumb } = state;
+  const incrementThumb = state?.incrementThumb; // eslint-disable-line @typescript-eslint/unbound-method
 
   const handlePress = useCallback(() => {
-    incrementThumb(0);
-    incrementThumb(1);
+    incrementThumb?.(0);
+    incrementThumb?.(1);
   }, [incrementThumb]);
 
   return (
