@@ -3,10 +3,8 @@
 import { Cross1Icon } from "@radix-ui/react-icons";
 import { Slot } from "@radix-ui/react-slot";
 import {
-  ComponentPropsWithoutRef,
+  ComponentProps,
   createContext,
-  ElementRef,
-  forwardRef,
   HTMLAttributes,
   ReactElement,
   ReactNode,
@@ -66,8 +64,6 @@ export const useRenderToast = () => {
       duration,
       /** The unique identifier of the toast. */
       id: defaultId,
-      /** Whether to mark the toast as important to screen readers. */
-      isImportant = false,
       /** The event handler called when the toast automatically closes. */
       onAutoClose,
       /** The event handler called when the toast is intentionally dismissed. */
@@ -119,7 +115,6 @@ export const useRenderToast = () => {
         dismissible: true,
         ...(duration === undefined ? {} : { duration }),
         id,
-        important: isImportant,
         ...(onAutoClose === undefined ? {} : { onAutoClose }),
         ...(onDismiss === undefined ? {} : { onDismiss }),
         position,
@@ -140,93 +135,86 @@ export const Toaster = (properties: { className?: string | undefined; gap?: numb
   );
 };
 
-export const Toast = forwardRef<
-  HTMLDivElement,
-  HTMLAttributes<HTMLDivElement> & {
-    asChild?: boolean | undefined;
-    children?: ReactNode;
-  }
->(({ asChild = false, className, ...properties }, reference) => {
+export const Toast = ({
+  asChild = false,
+  className,
+  ...properties
+}: HTMLAttributes<HTMLDivElement> & {
+  asChild?: boolean | undefined;
+  children?: ReactNode;
+}) => {
   const Component = asChild ? Slot : "div";
   const mergedClassName = cx(
     "dark:bg-neutral-dark-2 outline-neutral-light-a-3 dark:outline-neutral-dark-a-6 flex w-[var(--width)] overflow-hidden rounded-lg bg-white p-4 font-sans shadow-lg outline outline-1 -outline-offset-1",
     className,
   );
-  return <Component className={mergedClassName} ref={reference} {...properties} />;
-});
+
+  return <Component className={mergedClassName} {...properties} />;
+};
 
 Toast.displayName = "Toast";
 
-export const ToastTitle = forwardRef<
-  ElementRef<typeof HeadingPrimitive>,
-  ComponentPropsWithoutRef<typeof HeadingPrimitive> & { className?: string | undefined }
->(({ className, ...properties }, reference) => {
+export const ToastTitle = ({
+  className,
+  ...properties
+}: ComponentProps<typeof HeadingPrimitive> & { className?: string | undefined }) => {
   const mergedClassName = cx("text-neutral-12 text-sm font-medium", className);
-  return <HeadingPrimitive className={mergedClassName} slot="title" {...properties} ref={reference} />;
-});
+  return <HeadingPrimitive className={mergedClassName} slot="title" {...properties} />;
+};
 
 ToastTitle.displayName = "ToastTitle";
 
-export const ToastDescription = forwardRef<
-  ElementRef<typeof TextPrimitive>,
-  ComponentPropsWithoutRef<typeof TextPrimitive> & { className?: string | undefined }
->(({ className, ...properties }, reference) => {
+export const ToastDescription = ({
+  className,
+  ...properties
+}: ComponentProps<typeof TextPrimitive> & { className?: string | undefined }) => {
   const mergedClassName = cx("text-neutral-11 mt-1 block text-sm", className);
-  return <TextPrimitive className={mergedClassName} slot="description" {...properties} ref={reference} />;
-});
+  return <TextPrimitive className={mergedClassName} slot="description" {...properties} />;
+};
 
 ToastDescription.displayName = "ToastDescription";
 
-export const ToastIcon = forwardRef<
-  SVGSVGElement,
-  SVGAttributes<SVGElement> & { asChild?: boolean | undefined }
->(({ asChild = false, className, ...properties }, reference) => {
+export const ToastIcon = ({
+  asChild = false,
+  className,
+  ...properties
+}: SVGAttributes<SVGElement> & { asChild?: boolean | undefined }) => {
   const Component = asChild ? Slot : "svg";
   const mergedClassName = cx("text-neutral-11 me-2.5 size-5 shrink-0", className);
   // @ts-expect-error the Slot component’s type definition doesn’t play nice with SVGs
-  return <Component aria-hidden className={mergedClassName} ref={reference} {...properties} />;
-});
+  return <Component aria-hidden className={mergedClassName} {...properties} />;
+};
 
 ToastIcon.displayName = "ToastIcon";
 
-export const ToastCloseButtonPrimitive = forwardRef<
-  ElementRef<typeof ButtonPrimitive>,
-  ComponentPropsWithoutRef<typeof ButtonPrimitive> & { asChild?: boolean | undefined }
->(({ asChild = false, ...properties }, reference) => {
+export const ToastCloseButtonPrimitive = ({
+  asChild = false,
+  ...properties
+}: ComponentProps<typeof ButtonPrimitive> & { asChild?: boolean | undefined }) => {
   const close = useCloseToast();
   const Component = asChild ? Slot : ButtonPrimitive;
   // @ts-expect-error the Slot component’s type definition is missing
-  return <Component onPress={close} {...properties} ref={reference} />;
-});
+  return <Component onPress={close} {...properties} />;
+};
 
 ToastCloseButtonPrimitive.displayName = "ToastCloseButtonPrimitive";
 
-export const ToastCloseIconButton = forwardRef<
-  ElementRef<typeof IconButton>,
-  ComponentPropsWithoutRef<typeof IconButton>
->(({ className, variant = "ghost", ...properties }, reference) => {
+export const ToastCloseIconButton = ({
+  className,
+  variant = "ghost",
+  ...properties
+}: ComponentProps<typeof IconButton>) => {
   const mergedClassName = cx("size-7", className);
   const close = useCloseToast();
-  return (
-    <IconButton
-      className={mergedClassName}
-      onPress={close}
-      variant={variant}
-      {...properties}
-      ref={reference}
-    />
-  );
-});
+  return <IconButton className={mergedClassName} onPress={close} variant={variant} {...properties} />;
+};
 
 ToastCloseIconButton.displayName = "ToastCloseIconButton";
 
-export const ToastCloseIconButtonIcon = forwardRef<
-  ElementRef<typeof IconButtonIcon>,
-  ComponentPropsWithoutRef<typeof IconButtonIcon>
->((properties, reference) => (
-  <IconButtonIcon aria-hidden asChild ref={reference} {...properties}>
+export const ToastCloseIconButtonIcon = (properties: ComponentProps<typeof IconButtonIcon>) => (
+  <IconButtonIcon aria-hidden asChild {...properties}>
     <Cross1Icon />
   </IconButtonIcon>
-));
+);
 
 ToastCloseIconButtonIcon.displayName = "ToastCloseIconButtonIcon";

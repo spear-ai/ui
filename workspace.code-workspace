@@ -1,11 +1,11 @@
 {
   "extensions": {
     "recommendations": [
-      "bungcip.better-toml",
       "dbaeumer.vscode-eslint",
       "esbenp.prettier-vscode",
       "ms-azuretools.vscode-docker",
       "sleistner.vscode-fileutils",
+      "tamasfe.even-better-toml",
       "tyriar.sort-lines",
       "wix.vscode-import-cost",
       "yzhang.markdown-all-in-one",

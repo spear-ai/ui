@@ -12,7 +12,25 @@ updates:
     package-ecosystem: npm
     schedule:
       interval: monthly
+  - directory: /packages/relay-environment
+    labels:
+      - 🔧 maintenance
+    package-ecosystem: npm
+    schedule:
+      interval: monthly
+  - directory: /packages/storybook
+    labels:
+      - 🔧 maintenance
+    package-ecosystem: npm
+    schedule:
+      interval: monthly
   - directory: /packages/tailwind-config
+    labels:
+      - 🔧 maintenance
+    package-ecosystem: npm
+    schedule:
+      interval: monthly
+  - directory: /packages/ui
     labels:
       - 🔧 maintenance
     package-ecosystem: npm

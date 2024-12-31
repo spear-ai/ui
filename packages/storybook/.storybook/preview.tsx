@@ -39,7 +39,7 @@ const storybookPreview: Preview = {
       },
     },
     product: {
-      defaultValue: "underway",
+      defaultValue: "horizon",
       description: "Spear AI Product",
       toolbar: {
         dynamicTitle: true,
@@ -47,8 +47,8 @@ const storybookPreview: Preview = {
         items: [
           { title: "DFS", value: "dfs" },
           { title: "Forerunner", value: "forerunner" },
-          { title: "GalapaGo", value: "galapago" },
-          { title: "Underway", value: "underway" },
+          { title: "Omega", value: "omega" },
+          { title: "Horizon", value: "horizon" },
         ],
         title: "Theme",
       },
