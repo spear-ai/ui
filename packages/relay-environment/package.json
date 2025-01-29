@@ -8,6 +8,11 @@
     "url": "https://spear.ai"
   },
   "type": "module",
+  "dependencies": {
+    "abslog": "^2.4.4",
+    "ky": "^1.7.4",
+    "uuid": "^11.0.5"
+  },
   "devDependencies": {
     "@spear-ai/eslint-config": "20.0.1",
     "@spear-ai/npm-package-json-lint-config": "3.1.1",
@@ -30,7 +35,7 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "peerDependencies": {
-    "relay-runtime": "^16.2.0"
+    "relay-runtime": "^18.2.0"
   },
   "repository": {
     "type": "git",
