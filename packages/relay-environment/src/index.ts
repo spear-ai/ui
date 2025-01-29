@@ -1,3 +1,5 @@
+import abslog, { AbstractLoggerOptions, ValidLogger } from "abslog";
+import ky, { Hooks, Options as KyOptions } from "ky";
 import {
   CacheConfig,
   Environment,
@@ -9,35 +11,70 @@ import {
   Store,
   Variables,
 } from "relay-runtime";
+import { v4 as uuidv4 } from "uuid";
 
-const networkFetch = async (
-  request: RequestParameters,
-  variables: Variables,
-  apiUrl: string,
-): Promise<GraphQLResponse> => {
-  const response = await fetch(apiUrl, {
-    body: JSON.stringify({
-      query: request.text,
-      variables,
-    }),
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    method: "POST",
-  });
+type PartialKyOptions = Pick<KyOptions, "hooks" | "retry" | "timeout">;
 
-  return (await response.json()) as unknown as GraphQLResponse;
-};
+const makeFetchResponse = (
+  options: PartialKyOptions & {
+    apiUrl: string;
+    cacheSize: number;
+    cacheTtl: number;
+    latencyRetentionCount: number;
+    logger: ValidLogger;
+    recentFetchLatencyList: number[];
+  },
+) => {
+  const {
+    apiUrl,
+    cacheSize,
+    cacheTtl,
+    hooks,
+    latencyRetentionCount,
+    logger,
+    recentFetchLatencyList,
+    ...kyOptions
+  } = options;
 
-const createFetchResponse = (options: {
-  apiUrl: string;
-  cacheSize: number;
-  cacheTtl: number;
-  latencyRetentionCount: number;
-  recentFetchLatencyList: number[];
-}) => {
-  const { apiUrl, cacheSize, cacheTtl, latencyRetentionCount, recentFetchLatencyList } = options;
+  const requestId = uuidv4();
+
+  const mergedHooks: Hooks = {
+    ...hooks,
+    afterResponse: [
+      ...(hooks?.afterResponse ?? []),
+      (request, requestOptions, response) => {
+        logger.debug({ request, requestId, requestOptions, response }, "afterResponse");
+      },
+    ],
+    beforeRequest: [
+      ...(hooks?.beforeRequest ?? []),
+      (request, requestOptions) => {
+        logger.debug({ request, requestId, requestOptions }, "beforeRequest");
+      },
+    ],
+    beforeRetry: [
+      ...(hooks?.beforeRetry ?? []),
+      (retryOptions) => {
+        logger.debug({ requestId, retryOptions }, "beforeRetry");
+      },
+    ],
+  };
+
+  const networkFetch = async (
+    request: RequestParameters,
+    variables: Variables,
+  ): Promise<GraphQLResponse> => {
+    const response = await ky.post(apiUrl, {
+      ...kyOptions,
+      hooks: mergedHooks,
+      json: {
+        query: request.text,
+        variables,
+      },
+    });
+
+    return response.json();
+  };
 
   const responseCache: QueryResponseCache = new QueryResponseCache({
     size: cacheSize,
@@ -59,7 +96,7 @@ const createFetchResponse = (options: {
     }
 
     const fetchStart = performance.now();
-    const fetchResponse = await networkFetch(parameters, variables, apiUrl);
+    const fetchResponse = await networkFetch(parameters, variables);
     const fetchEnd = performance.now();
 
     recentFetchLatencyList.push(fetchEnd - fetchStart);
@@ -79,28 +116,40 @@ export type RelayEnvironment = Environment & {
   };
 };
 
-export const createEnvironment = (options: {
-  /** The GraphQL API URL. */
-  apiUrl: string;
-  /** The maximum number of entities to keep inside Relay’s cache. */
-  cacheSize?: number | undefined;
-  /** The maximum time to keep entities inside Relay’s cache. */
-  cacheTtl?: number | undefined;
-  /** The maximum number of latency metrics to retain. */
-  latencyRetentionCount?: number | undefined;
-}): RelayEnvironment => {
-  const { apiUrl, cacheSize = 100, cacheTtl = 5000, latencyRetentionCount = 100 } = options;
+export const createEnvironment = (
+  options: PartialKyOptions & {
+    /** The GraphQL API endpoint URL. */
+    apiUrl: string;
+    /** The maximum number of entities to keep inside Relay's cache. */
+    cacheSize?: number | undefined;
+    /** The maximum time to keep entities inside Relay's cache. */
+    cacheTtl?: number | undefined;
+    /** The maximum number of latency metrics to retain. */
+    latencyRetentionCount?: number | undefined;
+    /** The logger to use when handling requests. */
+    logger?: AbstractLoggerOptions | undefined;
+  },
+): RelayEnvironment => {
+  const {
+    cacheSize = 100,
+    cacheTtl = 5000,
+    latencyRetentionCount = 100,
+    logger: customLogger,
+    ...rest
+  } = options;
   const recentFetchLatencyList: number[] = [];
+  const logger = abslog(customLogger);
 
   return new Environment({
     isServer: false,
     network: Network.create(
-      createFetchResponse({
-        apiUrl,
+      makeFetchResponse({
         cacheSize,
         cacheTtl,
         latencyRetentionCount,
+        logger,
         recentFetchLatencyList,
+        ...rest,
       }),
     ),
     options: { recentFetchLatencyList },

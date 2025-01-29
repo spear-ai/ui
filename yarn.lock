@@ -6210,9 +6210,11 @@ __metadata:
     "@spear-ai/prettier-config": "npm:2.2.0"
     "@spear-ai/tsconfig": "npm:4.0.0"
     "@types/relay-runtime": "npm:18.2.3"
+    abslog: "npm:2.4.4"
     autoprefixer: "npm:10.4.20"
     eslint: "npm:8.57.1"
     graphql: "npm:16.10.0"
+    ky: "npm:1.7.4"
     npm-package-json-lint: "npm:8.0.0"
     prettier: "npm:3.4.2"
     react: "npm:19.0.0"
@@ -6221,8 +6223,9 @@ __metadata:
     tailwindcss: "npm:3.4.17"
     tsup: "npm:8.3.5"
     typescript: "npm:5.7.2"
+    uuid: "npm:11.0.5"
   peerDependencies:
-    relay-runtime: ^16.2.0
+    relay-runtime: ^18.2.0
   languageName: unknown
   linkType: soft
 
@@ -8152,6 +8155,15 @@ __metadata:
   dependencies:
     event-target-shim: "npm:^5.0.0"
   checksum: 10/ed84af329f1828327798229578b4fe03a4dd2596ba304083ebd2252666bdc1d7647d66d0b18704477e1f8aa315f055944aa6e859afebd341f12d0a53c37b4b40
+  languageName: node
+  linkType: hard
+
+"abslog@npm:2.4.4":
+  version: 2.4.4
+  resolution: "abslog@npm:2.4.4"
+  dependencies:
+    nooplog: "npm:1.0.2"
+  checksum: 10/c1596bd07d1bbbbd6ba18d257c5dc6d88cc8c2b339e1b2a3d203a67de4480ff22fed18511b7927c6fc171becafc09fa1b0c2a904bd18af17d7b5d5e37fcbc2b3
   languageName: node
   linkType: hard
 
@@ -13499,6 +13511,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ky@npm:1.7.4":
+  version: 1.7.4
+  resolution: "ky@npm:1.7.4"
+  checksum: 10/a5e98434866e4e8e691f76aaa4b4d5bd3abe6527dbb0e853ee37c4475852af6e0cbeef442be31b6824ca7fd3998740492419a45be60352836b9a21a54458f56c
+  languageName: node
+  linkType: hard
+
 "language-subtag-registry@npm:^0.3.20":
   version: 0.3.23
   resolution: "language-subtag-registry@npm:0.3.23"
@@ -14490,6 +14509,13 @@ __metadata:
   version: 2.0.18
   resolution: "node-releases@npm:2.0.18"
   checksum: 10/241e5fa9556f1c12bafb83c6c3e94f8cf3d8f2f8f904906ecef6e10bcaa1d59aa61212d4651bec70052015fc54bd3fdcdbe7fc0f638a17e6685aa586c076ec4e
+  languageName: node
+  linkType: hard
+
+"nooplog@npm:1.0.2":
+  version: 1.0.2
+  resolution: "nooplog@npm:1.0.2"
+  checksum: 10/ef22d1555d8ec15cea24b223cb3ede48543a9cc90ab73884d413e89c47b842a4e042172478ead252e2f8873fe3cb683694cd546474522b744ae525e5c62ad1eb
   languageName: node
   linkType: hard
 
@@ -18596,6 +18622,15 @@ __metadata:
   version: 0.4.0
   resolution: "utila@npm:0.4.0"
   checksum: 10/b068d8cb140588da0d0c80ee3c14c6b75d3f68760d8a1c6c3908d0270e9e4056454ff16189586481b7382926c44674f6929d08e06eaf9ec8f62736cd900169c5
+  languageName: node
+  linkType: hard
+
+"uuid@npm:11.0.5":
+  version: 11.0.5
+  resolution: "uuid@npm:11.0.5"
+  bin:
+    uuid: dist/esm/bin/uuid
+  checksum: 10/0594ecdff3051e15d4a2c614b4c72e73af373bde0a5d156512353c01156975295d024ae8d7151846d7bd4d22ccd251b16ed51b4318fa71505fb20ad984102dc1
   languageName: node
   linkType: hard
 
