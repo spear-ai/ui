@@ -6210,11 +6210,11 @@ __metadata:
     "@spear-ai/prettier-config": "npm:2.2.0"
     "@spear-ai/tsconfig": "npm:4.0.0"
     "@types/relay-runtime": "npm:18.2.3"
-    abslog: "npm:2.4.4"
+    abslog: "npm:^2.4.4"
     autoprefixer: "npm:10.4.20"
     eslint: "npm:8.57.1"
     graphql: "npm:16.10.0"
-    ky: "npm:1.7.4"
+    ky: "npm:^1.7.4"
     npm-package-json-lint: "npm:8.0.0"
     prettier: "npm:3.4.2"
     react: "npm:19.0.0"
@@ -6223,7 +6223,7 @@ __metadata:
     tailwindcss: "npm:3.4.17"
     tsup: "npm:8.3.5"
     typescript: "npm:5.7.2"
-    uuid: "npm:11.0.5"
+    uuid: "npm:^11.0.5"
   peerDependencies:
     relay-runtime: ^18.2.0
   languageName: unknown
@@ -8158,7 +8158,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"abslog@npm:2.4.4":
+"abslog@npm:^2.4.4":
   version: 2.4.4
   resolution: "abslog@npm:2.4.4"
   dependencies:
@@ -13511,7 +13511,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ky@npm:1.7.4":
+"ky@npm:^1.7.4":
   version: 1.7.4
   resolution: "ky@npm:1.7.4"
   checksum: 10/a5e98434866e4e8e691f76aaa4b4d5bd3abe6527dbb0e853ee37c4475852af6e0cbeef442be31b6824ca7fd3998740492419a45be60352836b9a21a54458f56c
@@ -18625,7 +18625,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uuid@npm:11.0.5":
+"uuid@npm:^11.0.5":
   version: 11.0.5
   resolution: "uuid@npm:11.0.5"
   bin:

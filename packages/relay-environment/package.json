@@ -9,9 +9,9 @@
   },
   "type": "module",
   "dependencies": {
-    "abslog": "2.4.4",
-    "ky": "1.7.4",
-    "uuid": "11.0.5"
+    "abslog": "^2.4.4",
+    "ky": "^1.7.4",
+    "uuid": "^11.0.5"
   },
   "devDependencies": {
     "@spear-ai/eslint-config": "20.0.1",
