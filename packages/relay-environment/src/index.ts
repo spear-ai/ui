@@ -80,7 +80,7 @@ const makeFetchResponse = (
     }
 
     const fetchStart = performance.now();
-    let fetchResponse = await ky.post(apiUrl, {
+    const fetchResponse = await ky.post<GraphQLResponse>(apiUrl, {
       ...kyOptions,
       hooks: mergedHooks,
       json: {
@@ -88,7 +88,7 @@ const makeFetchResponse = (
         variables,
       },
     });
-    fetchResponse = await fetchResponse.json();
+    const response = await fetchResponse.json();
     const fetchEnd = performance.now();
 
     recentFetchLatencyList.push(fetchEnd - fetchStart);
@@ -97,7 +97,7 @@ const makeFetchResponse = (
       recentFetchLatencyList.shift();
     }
 
-    return fetchResponse;
+    return response;
   };
 };
 
