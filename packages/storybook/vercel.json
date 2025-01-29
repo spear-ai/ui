@@ -1,5 +1,5 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "$schema": "https://json-schema.org/draft-07/schema",
   "buildCommand": "yarn turbo run build",
   "devCommand": "yarn turbo run build && yarn turbo run dev",
   "installCommand": "yarn install",
