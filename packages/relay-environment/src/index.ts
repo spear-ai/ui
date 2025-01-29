@@ -60,22 +60,6 @@ const makeFetchResponse = (
     ],
   };
 
-  const networkFetch = async (
-    request: RequestParameters,
-    variables: Variables,
-  ): Promise<GraphQLResponse> => {
-    const response = await ky.post(apiUrl, {
-      ...kyOptions,
-      hooks: mergedHooks,
-      json: {
-        query: request.text,
-        variables,
-      },
-    });
-
-    return response.json();
-  };
-
   const responseCache: QueryResponseCache = new QueryResponseCache({
     size: cacheSize,
     ttl: cacheTtl,
@@ -96,7 +80,15 @@ const makeFetchResponse = (
     }
 
     const fetchStart = performance.now();
-    const fetchResponse = await networkFetch(parameters, variables);
+    let fetchResponse = await ky.post(apiUrl, {
+      ...kyOptions,
+      hooks: mergedHooks,
+      json: {
+        query: parameters.text,
+        variables,
+      },
+    });
+    fetchResponse = await fetchResponse.json();
     const fetchEnd = performance.now();
 
     recentFetchLatencyList.push(fetchEnd - fetchStart);
