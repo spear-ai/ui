@@ -1,5 +1,19 @@
 # @spear-ai/relay-environment
 
+## 3.0.0
+
+### Major Changes
+
+- [#394](https://github.com/spear-ai/ui/pull/394) [`8ac0b2f`](https://github.com/spear-ai/ui/commit/8ac0b2f9733625e143aa126fdda6ddf52d02305e) Thanks [@psirenny](https://github.com/psirenny)! - Requests now throw an `HTTPError` when they timeout or when they return a non-200 status code.
+
+### Minor Changes
+
+- [#394](https://github.com/spear-ai/ui/pull/394) [`8ac0b2f`](https://github.com/spear-ai/ui/commit/8ac0b2f9733625e143aa126fdda6ddf52d02305e) Thanks [@psirenny](https://github.com/psirenny)! - Added debug logging and the ability to pass in a custom logger.
+
+- [#394](https://github.com/spear-ai/ui/pull/394) [`8ac0b2f`](https://github.com/spear-ai/ui/commit/8ac0b2f9733625e143aa126fdda6ddf52d02305e) Thanks [@psirenny](https://github.com/psirenny)! - Backed requests with the [ky](https://github.com/sindresorhus/ky) library which adds support for custom hooks. This makes it easier to integrate authentication workflows.
+
+- [#394](https://github.com/spear-ai/ui/pull/394) [`8ac0b2f`](https://github.com/spear-ai/ui/commit/8ac0b2f9733625e143aa126fdda6ddf52d02305e) Thanks [@psirenny](https://github.com/psirenny)! - Added request retries and timeouts.
+
 ## 2.0.0
 
 ### Major Changes
