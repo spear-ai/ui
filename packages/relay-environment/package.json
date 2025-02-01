@@ -20,7 +20,7 @@
     "@spear-ai/tsconfig": "4.0.0",
     "@types/relay-runtime": "18.2.3",
     "autoprefixer": "10.4.20",
-    "eslint": "8.57.1",
+    "eslint": "9.19.0",
     "graphql": "16.10.0",
     "npm-package-json-lint": "8.0.0",
     "prettier": "3.4.2",
