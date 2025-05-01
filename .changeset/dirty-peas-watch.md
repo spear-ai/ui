@@ -2,4 +2,4 @@
 "@spear-ai/storybook": minor
 ---
 
-Renamed default stories from `Standard` to `Default`
+Renamed default stories from `Standard` to `Default`.
