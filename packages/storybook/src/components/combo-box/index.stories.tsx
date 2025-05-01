@@ -186,7 +186,7 @@ const meta = {
 
 type Story = StoryObj<typeof meta>;
 
-export const Standard: Story = {
+export const Default: Story = {
   args: {
     hasDefaultItem: true,
     hasLabel: true,

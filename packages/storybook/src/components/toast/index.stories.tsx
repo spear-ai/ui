@@ -213,7 +213,7 @@ const meta = {
 
 type Story = StoryObj<typeof meta>;
 
-export const Standard: Story = {
+export const Default: Story = {
   args: {
     hasActionButton1: false,
     hasActionButton2: false,
@@ -253,36 +253,36 @@ export const Standard: Story = {
 };
 
 export const Info: Story = {
-  ...Standard,
+  ...Default,
   args: {
-    ...Standard.args,
+    ...Default.args,
     hasIcon: true,
     kind: "info",
   },
 };
 
 export const Success: Story = {
-  ...Standard,
+  ...Default,
   args: {
-    ...Standard.args,
+    ...Default.args,
     hasIcon: true,
     kind: "success",
   },
 };
 
 export const Warning: Story = {
-  ...Standard,
+  ...Default,
   args: {
-    ...Standard.args,
+    ...Default.args,
     hasIcon: true,
     kind: "warning",
   },
 };
 
 export const Error: Story = {
-  ...Standard,
+  ...Default,
   args: {
-    ...Standard.args,
+    ...Default.args,
     hasIcon: true,
     kind: "error",
   },
