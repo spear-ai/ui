@@ -58,7 +58,8 @@ const PreviewGuideTour = () => {
       </div>
       <GuideTour
         callback={(data: CallBackProps) => {
-          alert(data.status);
+          // eslint-disable-next-line no-console
+          console.log(data.status);
         }}
         run
         steps={steps}
