@@ -70,7 +70,6 @@ const PreviewGuideTour = () => {
 
 const meta = {
   component: PreviewGuideTour,
-  title: "Components/GuideTour",
 } satisfies Meta<typeof PreviewGuideTour>;
 
 export default meta;
