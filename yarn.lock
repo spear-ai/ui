@@ -6396,7 +6396,7 @@ __metadata:
     react-aria-components: "npm:1.5.0"
     react-dom: "npm:19.0.0"
     react-intl: "npm:7.0.4"
-    react-joyride: "npm:2.9.3"
+    react-joyride: "npm:^2.9.3"
     sonner: "npm:1.7.1"
     tailwind-merge: "npm:^2.6.0"
     tailwindcss: "npm:3.4.17"
@@ -16057,7 +16057,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-joyride@npm:2.9.3":
+"react-joyride@npm:^2.9.3":
   version: 2.9.3
   resolution: "react-joyride@npm:2.9.3"
   dependencies:
