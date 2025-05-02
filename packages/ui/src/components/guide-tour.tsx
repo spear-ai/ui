@@ -1,7 +1,7 @@
 import React from "react";
 import { Dialog, DialogTrigger } from "react-aria-components";
 import { useIntl } from "react-intl";
-import Joyride, { CallBackProps, Props as JoyrideProperties, TooltipRenderProps } from "react-joyride";
+import Joyride, { Props as JoyrideProperties, TooltipRenderProps } from "react-joyride";
 import { Button } from "@/components/button";
 import { DialogCloseIconButtonIcon, DialogTitle } from "@/components/dialog";
 import { IconButton } from "@/components/icon-button";
@@ -61,5 +61,3 @@ type GuideTourProperties = Omit<JoyrideProperties, "tooltipComponent">;
 export const GuideTour: React.FC<GuideTourProperties> = (properties) => (
   <Joyride {...properties} tooltipComponent={TourTooltip} />
 );
-
-export type GuideTourCallBackProperties = CallBackProps;

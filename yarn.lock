@@ -6289,6 +6289,7 @@ __metadata:
     react-aria-components: "npm:1.5.0"
     react-dom: "npm:19.0.0"
     react-intl: "npm:7.0.4"
+    react-joyride: "npm:2.9.3"
     react-stately: "npm:3.34.0"
     serve: "npm:14.2.4"
     sonner: "npm:1.7.1"
@@ -6408,6 +6409,7 @@ __metadata:
     react: ^18.3.1
     react-aria-components: ^1.2.0
     react-intl: ^6.6.5
+    react-joyride: ^2.9.3
     sonner: ^1.4.41
   languageName: unknown
   linkType: soft
@@ -16057,7 +16059,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-joyride@npm:^2.9.3":
+"react-joyride@npm:2.9.3, react-joyride@npm:^2.9.3":
   version: 2.9.3
   resolution: "react-joyride@npm:2.9.3"
   dependencies:

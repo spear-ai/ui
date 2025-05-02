@@ -1,6 +1,7 @@
-import { GuideTour, GuideTourCallBackProperties } from "@spear-ai/ui/components/guide-tour";
+import { GuideTour } from "@spear-ai/ui/components/guide-tour";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useIntl } from "react-intl";
+import { CallBackProps, Placement } from "react-joyride";
 
 const PreviewGuideTour = () => {
   const intl = useIntl();
@@ -16,7 +17,7 @@ const PreviewGuideTour = () => {
         </p>
       ),
       disableBeacon: true,
-      placement: "bottom",
+      placement: "bottom" as Placement,
       target: "[data-tour='step1']",
       title: intl.formatMessage({
         defaultMessage: "Welcome to the Tour",
@@ -32,7 +33,7 @@ const PreviewGuideTour = () => {
           })}
         </p>
       ),
-      placement: "right",
+      placement: "right" as Placement,
       target: "[data-tour='step2']",
       title: intl.formatMessage({
         defaultMessage: "Second Step",
@@ -56,7 +57,7 @@ const PreviewGuideTour = () => {
         })}
       </div>
       <GuideTour
-        callback={(data: GuideTourCallBackProperties) => {
+        callback={(data: CallBackProps) => {
           alert(data.status);
         }}
         run
