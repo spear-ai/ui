@@ -63,12 +63,7 @@ const PreviewGuidedTour = () => {
           id: "Sw6KOq",
         })}
       </div>
-      <GuidedTour
-        callback={(data: CallBackProps) => {
-        }}
-        run
-        steps={step_list}
-      />
+      <GuidedTour callback={(data: CallBackProps) => {}} run steps={step_list} />
     </div>
   );
 };
