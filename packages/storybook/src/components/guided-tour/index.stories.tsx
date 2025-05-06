@@ -1,7 +1,7 @@
 import { GuidedTour } from "@spear-ai/ui/components/guided-tour";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useIntl } from "react-intl";
-import { CallBackProps, Placement } from "react-joyride";
+import { Placement } from "react-joyride";
 
 const PreviewGuidedTour = () => {
   const intl = useIntl();
@@ -63,7 +63,7 @@ const PreviewGuidedTour = () => {
           id: "Sw6KOq",
         })}
       </div>
-      <GuidedTour callback={(data: CallBackProps) => {}} run steps={step_list} />
+      <GuidedTour callback={() => {}} run steps={step_list} />
     </div>
   );
 };
