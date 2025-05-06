@@ -40,13 +40,13 @@ const GuidedTourTooltip = (properties: TooltipRenderProps) => {
             <Button size="small" variant="solid" {...primaryProps}>
               {isLastStep
                 ? intl.formatMessage({
-                  defaultMessage: "Done",
-                  id: "JXdbo8",
-                })
+                    defaultMessage: "Done",
+                    id: "JXdbo8",
+                  })
                 : intl.formatMessage({
-                  defaultMessage: "Next",
-                  id: "9+Ddtu",
-                })}
+                    defaultMessage: "Next",
+                    id: "9+Ddtu",
+                  })}
             </Button>
           </div>
         </div>
