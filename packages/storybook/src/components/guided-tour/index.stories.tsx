@@ -5,7 +5,7 @@ import { Placement } from "react-joyride";
 
 const PreviewGuidedTour = () => {
   const intl = useIntl();
-  const step_list = [
+  const STEP_LIST = [
     {
       content: (
         <p className="text-sm text-neutral-11 rtl:text-right">
@@ -17,10 +17,10 @@ const PreviewGuidedTour = () => {
         </p>
       ),
       disableBeacon: true,
-      placement: "bottom" as Placement,
       floaterProps: {
         hideArrow: true,
       },
+      placement: "bottom" as Placement,
       target: "[data-tour='step1']",
       title: intl.formatMessage({
         defaultMessage: "Welcome to the Tour",
@@ -36,11 +36,11 @@ const PreviewGuidedTour = () => {
           })}
         </p>
       ),
-      placement: "right" as Placement,
+      disableBeacon: true,
       floaterProps: {
         hideArrow: true,
       },
-      disableBeacon: true,
+      placement: "right" as Placement,
       target: "[data-tour='step2']",
       title: intl.formatMessage({
         defaultMessage: "Second Step",
@@ -63,7 +63,7 @@ const PreviewGuidedTour = () => {
           id: "Sw6KOq",
         })}
       </div>
-      <GuidedTour callback={() => {}} run steps={step_list} />
+      <GuidedTour callback={() => {}} run steps={STEP_LIST} />
     </div>
   );
 };
