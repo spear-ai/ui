@@ -1,4 +1,4 @@
-import { GuidedTour } from "@spear-ai/ui/components/guide-tour";
+import { GuidedTour } from "@spear-ai/ui/components/guided-tour";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useIntl } from "react-intl";
 import { CallBackProps, Placement } from "react-joyride";
@@ -18,6 +18,9 @@ const PreviewGuidedTour = () => {
       ),
       disableBeacon: true,
       placement: "bottom" as Placement,
+      floaterProps: {
+        hideArrow: true,
+      },
       target: "[data-tour='step1']",
       title: intl.formatMessage({
         defaultMessage: "Welcome to the Tour",
@@ -34,6 +37,9 @@ const PreviewGuidedTour = () => {
         </p>
       ),
       placement: "right" as Placement,
+      floaterProps: {
+        hideArrow: true,
+      },
       disableBeacon: true,
       target: "[data-tour='step2']",
       title: intl.formatMessage({

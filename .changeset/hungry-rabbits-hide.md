@@ -3,4 +3,4 @@
 "@spear-ai/ui": minor
 ---
 
-Added storybook for guide tour component.
+Added storybook for Guided tour component.
