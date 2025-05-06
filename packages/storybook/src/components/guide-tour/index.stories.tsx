@@ -1,11 +1,11 @@
-import { GuideTour } from "@spear-ai/ui/components/guide-tour";
+import { GuidedTour } from "@spear-ai/ui/components/guide-tour";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useIntl } from "react-intl";
 import { CallBackProps, Placement } from "react-joyride";
 
-const PreviewGuideTour = () => {
+const PreviewGuidedTour = () => {
   const intl = useIntl();
-  const steps = [
+  const step_list = [
     {
       content: (
         <p className="text-sm text-neutral-11 rtl:text-right">
@@ -56,21 +56,19 @@ const PreviewGuideTour = () => {
           id: "Sw6KOq",
         })}
       </div>
-      <GuideTour
+      <GuidedTour
         callback={(data: CallBackProps) => {
-          // eslint-disable-next-line no-console
-          console.log(data.status);
         }}
         run
-        steps={steps}
+        steps={step_list}
       />
     </div>
   );
 };
 
 const meta = {
-  component: PreviewGuideTour,
-} satisfies Meta<typeof PreviewGuideTour>;
+  component: PreviewGuidedTour,
+} satisfies Meta<typeof PreviewGuidedTour>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
