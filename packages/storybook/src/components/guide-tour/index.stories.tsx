@@ -34,6 +34,7 @@ const PreviewGuidedTour = () => {
         </p>
       ),
       placement: "right" as Placement,
+      disableBeacon: true,
       target: "[data-tour='step2']",
       title: intl.formatMessage({
         defaultMessage: "Second Step",
