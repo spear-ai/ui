@@ -63,7 +63,7 @@ const PreviewGuidedTour = () => {
           id: "Sw6KOq",
         })}
       </div>
-      <GuidedTour callback={() => { }} run steps={stepList} />
+      <GuidedTour callback={() => {}} run steps={stepList} />
     </div>
   );
 };
