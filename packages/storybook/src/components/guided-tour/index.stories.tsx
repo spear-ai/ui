@@ -5,7 +5,7 @@ import { Placement } from "react-joyride";
 
 const PreviewGuidedTour = () => {
   const intl = useIntl();
-  const STEP_LIST = [
+  const stepList = [
     {
       content: (
         <p className="text-sm text-neutral-11 rtl:text-right">
@@ -63,7 +63,7 @@ const PreviewGuidedTour = () => {
           id: "Sw6KOq",
         })}
       </div>
-      <GuidedTour callback={() => {}} run steps={STEP_LIST} />
+      <GuidedTour callback={() => { }} run steps={stepList} />
     </div>
   );
 };
