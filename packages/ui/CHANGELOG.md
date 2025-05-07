@@ -1,5 +1,11 @@
 # @spear-ai/ui
 
+## 7.1.0
+
+### Minor Changes
+
+- [#450](https://github.com/spear-ai/ui/pull/450) [`ae2f8bb`](https://github.com/spear-ai/ui/commit/ae2f8bb503ebe35d279daca7ca8cb3f994de668a) Thanks [@dgill-spear](https://github.com/dgill-spear)! - Added storybook for Guided tour component.
+
 ## 7.0.0
 
 ### Major Changes
