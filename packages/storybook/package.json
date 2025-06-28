@@ -48,6 +48,7 @@
     "@types/react": "19.0.2",
     "@types/react-dom": "19.0.2",
     "autoprefixer": "10.4.20",
+    "chromatic": "13.0.1",
     "concurrently": "9.1.2",
     "eslint": "8.57.1",
     "eslint-config-prettier": "9.1.0",
@@ -71,6 +72,7 @@
   },
   "scripts": {
     "build": "storybook build",
+    "chromatic": "chromatic --build-script-name build",
     "dev": "storybook dev -p 6006 --no-open",
     "eslint:check": "eslint --max-warnings 0 .",
     "eslint:fix": "yarn run eslint:check --fix",

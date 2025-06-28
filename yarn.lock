@@ -6275,6 +6275,7 @@ __metadata:
     "@types/react": "npm:19.0.2"
     "@types/react-dom": "npm:19.0.2"
     autoprefixer: "npm:10.4.20"
+    chromatic: "npm:13.0.1"
     concurrently: "npm:9.1.2"
     eslint: "npm:8.57.1"
     eslint-config-prettier: "npm:9.1.0"
@@ -9344,6 +9345,25 @@ __metadata:
   version: 2.0.0
   resolution: "chownr@npm:2.0.0"
   checksum: 10/c57cf9dd0791e2f18a5ee9c1a299ae6e801ff58fee96dc8bfd0dcb4738a6ce58dd252a3605b1c93c6418fe4f9d5093b28ffbf4d66648cb2a9c67eaef9679be2f
+  languageName: node
+  linkType: hard
+
+"chromatic@npm:13.0.1":
+  version: 13.0.1
+  resolution: "chromatic@npm:13.0.1"
+  peerDependencies:
+    "@chromatic-com/cypress": ^0.*.* || ^1.0.0
+    "@chromatic-com/playwright": ^0.*.* || ^1.0.0
+  peerDependenciesMeta:
+    "@chromatic-com/cypress":
+      optional: true
+    "@chromatic-com/playwright":
+      optional: true
+  bin:
+    chroma: dist/bin.js
+    chromatic: dist/bin.js
+    chromatic-cli: dist/bin.js
+  checksum: 10/d8690f0f6ea0844142524f858716311c70eaaaa736025e6ed10c62aa0eea998f35349eb76497e39294b27a940ad19de7d768329789da82a1eec9f375b9f7e3d4
   languageName: node
   linkType: hard
 

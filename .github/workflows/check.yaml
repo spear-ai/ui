@@ -9,6 +9,7 @@ on:
     branches:
       - main
 env:
+  CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
   TURBO_TEAM: ${{ vars.TURBO_TEAM }}
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 jobs:
@@ -35,3 +36,5 @@ jobs:
         run: yarn turbo run build
       - name: Check
         run: yarn turbo run check
+      - name: Chromatic
+        run: yarn turbo run chromatic
