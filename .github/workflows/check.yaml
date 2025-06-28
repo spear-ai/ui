@@ -35,3 +35,5 @@ jobs:
         run: yarn turbo run build
       - name: Check
         run: yarn turbo run check
+      - name: Chromatic
+        run: yarn turbo run chromatic
