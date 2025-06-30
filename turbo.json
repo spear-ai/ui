@@ -37,11 +37,6 @@
         "typescript:check"
       ]
     },
-    "chromatic": {
-      "env": ["CHROMATIC_*"],
-      "inputs": ["storybook-static/**"],
-      "outputs": ["storybook-static/**"]
-    },
     "commitlint:check": {
       "cache": false
     },
