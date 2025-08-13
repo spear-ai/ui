@@ -1,5 +1,11 @@
 # @spear-ai/tailwind-config
 
+## 6.0.1
+
+### Patch Changes
+
+- [#455](https://github.com/spear-ai/ui/pull/455) [`737608c`](https://github.com/spear-ai/ui/commit/737608c8c7dc9c6a297b97a4070585717feaa5d9) Thanks [@RabeaAhmad3](https://github.com/RabeaAhmad3)! - Fixed ESM/CJS compatibility by replacing change-case with lodash.
+
 ## 6.0.0
 
 ### Major Changes
