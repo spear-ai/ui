@@ -1,5 +1,5 @@
 import radixColorGroups from "@radix-ui/colors";
-import { kebabCase } from "change-case";
+import { kebabCase } from "lodash";
 import { rgb as toRgb } from "culori";
 import { Replace } from "type-fest";
 
