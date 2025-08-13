@@ -1,6 +1,6 @@
 import radixColorGroups from "@radix-ui/colors";
-import { kebabCase } from "change-case";
 import { rgb as toRgb } from "culori";
+import kebabCase from "lodash/kebabCase";
 import { Replace } from "type-fest";
 
 export type RadixColorScaleName = Replace<
