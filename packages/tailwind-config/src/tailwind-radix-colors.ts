@@ -1,4 +1,4 @@
-import radixColorGroups from "@radix-ui/colors";
+import * as radixColorGroups from "@radix-ui/colors";
 import { rgb as toRgb } from "culori";
 import kebabCase from "lodash/kebabCase";
 import { Replace } from "type-fest";
