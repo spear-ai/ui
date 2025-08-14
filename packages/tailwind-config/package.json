@@ -41,8 +41,8 @@
     "typescript": "5.7.2"
   },
   "license": "MIT",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "peerDependencies": {
     "tailwindcss": "^3.3.2"
   },
