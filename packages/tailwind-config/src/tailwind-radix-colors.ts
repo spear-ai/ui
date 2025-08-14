@@ -71,6 +71,7 @@ export const getColorValue = (options: {
 
   stepKey += `${step}`;
 
+  // eslint-disable-next-line import-x/namespace
   const colorGroup = radixColorGroups[groupKey as keyof typeof radixColorGroups];
   const colorValue = colorGroup[stepKey as keyof typeof colorGroup] as string;
   const rgb = toRgb(colorValue);
