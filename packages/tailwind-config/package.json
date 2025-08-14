@@ -7,7 +7,6 @@
     "email": "org@spear.ai",
     "url": "https://spear.ai"
   },
-  "type": "module",
   "dependencies": {
     "@mertasan/tailwindcss-variables": "^2.7.0",
     "@radix-ui/colors": "^3.0.0",
